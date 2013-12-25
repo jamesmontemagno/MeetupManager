@@ -1,0 +1,40 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.Portable/Models/MemberPhoto.cs">
+    <Files>
+      <File FileName="MeetupManager.Portable/ViewModels/EventViewModel.cs" Line="4" Column="43" />
+      <File FileName="MeetupManager.Portable/ViewModels/FirstViewModel.cs" Line="6" Column="8" />
+      <File FileName="MeetupManager.Portable/Interfaces/IMeetupService.cs" Line="10" Column="3" />
+      <File FileName="MeetupManager.Portable/Services/MeetupService.cs" Line="21" Column="3" />
+      <File FileName="MeetupManager.Portable/Models/Event.cs" Line="3" Column="33" />
+      <File FileName="MeetupManager.Portable/Models/Venue.cs" Line="3" Column="40" />
+      <File FileName="MeetupManager.Portable/Models/Group.cs" Line="3" Column="40" />
+      <File FileName="MeetupManager.Portable/Models/Meta.cs" Line="3" Column="40" />
+      <File FileName="MeetupManager.Portable/Services/Responses/GroupsRootObject.cs" Line="5" Column="23" />
+      <File FileName="MeetupManager.Portable/App.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/Models/Member.cs" Line="3" Column="40" />
+      <File FileName="MeetupManager.Portable/Models/MemberPhoto.cs" Line="3" Column="40" />
+      <File FileName="MeetupManager.Portable/Models/RSVP.cs" Line="3" Column="40" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True" selected="True">
+          <Node name="MeetupManager.Portable" expanded="True">
+            <Node name="Interfaces" expanded="True" />
+            <Node name="Models" expanded="True" />
+            <Node name="Properties" expanded="True" />
+            <Node name="Services" expanded="True">
+              <Node name="Responses" expanded="True" />
+            </Node>
+            <Node name="ToDo-MvvmCross" expanded="True" />
+            <Node name="ViewModels" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
