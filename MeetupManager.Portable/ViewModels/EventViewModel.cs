@@ -21,6 +21,7 @@ namespace MeetupManager.Portable.ViewModels
 		public void Init(string eventId)
 		{
 			this.eventId = eventId;
+			ExecuteRefreshCommand ();
 		}
 
 		private ObservableCollection<MemberViewModel> members;

@@ -30,6 +30,8 @@ namespace MeetupManager.Portable.ViewModels
 			this.Photo = photo;
 		}
 
+		public string Name { get { return this.Member.Name; } }
+
 		private IMvxCommand checkInCommand;
 		public IMvxCommand CheckInCommand
 		{

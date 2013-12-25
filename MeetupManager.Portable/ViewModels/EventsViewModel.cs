@@ -75,7 +75,7 @@ namespace MeetupManager.Portable.ViewModels
 
 		private async Task ExecuteGoToEventCommand(Event e)
 		{
-			ShowViewModel<EventViewModel>(new { Id = e.Id});
+			ShowViewModel<EventViewModel>(new { eventId = e.Id});
 		}
     }
 }
