@@ -90,33 +90,6 @@
     <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite.Droid">
       <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.0.13\lib\MonoAndroid16\Cirrious.MvvmCross.Community.Plugins.Sqlite.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.0.14\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.DownloadCache.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache.Droid">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.0.14\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.DownloadCache.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.File">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.0.14\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.File.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.File.Droid">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.0.14\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.File.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.6\lib\portable-net40+win8\System.IO.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.6\lib\portable-net40+win8\System.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.6\lib\portable-net40+win8\System.Threading.Tasks.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Threading.Tasks">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\portable-net45+win8\Microsoft.Threading.Tasks.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\portable-net45+win8\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -126,10 +99,8 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Bootstrap\CommunitySqlitePluginBootstrap.cs" />
-    <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
     <Compile Include="Views\EventsView.cs" />
     <Compile Include="Views\EventView.cs" />
-    <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -149,12 +120,12 @@
     <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
     <AndroidResource Include="Resources\values\SplashStyle.xml" />
     <AndroidResource Include="Resources\drawable\splash.png" />
-    <AndroidResource Include="Resources\layout\EventView.axml" />
-    <AndroidResource Include="Resources\layout\EventsView.axml" />
-    <AndroidResource Include="Resources\layout\ItemEvent.axml" />
-    <AndroidResource Include="Resources\layout\ItemMember.axml" />
     <AndroidResource Include="Resources\values\integers.xml" />
     <AndroidResource Include="Resources\values-land\integers.xml" />
+    <AndroidResource Include="Resources\layout\item_member.axml" />
+    <AndroidResource Include="Resources\layout\view_events.axml" />
+    <AndroidResource Include="Resources\layout\view_event.axml" />
+    <AndroidResource Include="Resources\layout\item_event.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

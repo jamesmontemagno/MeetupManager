@@ -15,6 +15,7 @@ namespace MeetupManager.Portable.ViewModels
 		public EventsViewModel(IMeetupService meetupService) : base(meetupService)
 		{
 			events = new ObservableCollection<Event> ();
+			ExecuteRefreshCommand ();
 		}
 
 		private ObservableCollection<Event> events;

@@ -16,11 +16,11 @@ namespace MeetupManager.Droid.Views
 		protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-			SetContentView(Resource.Layout.EventsView);
+			SetContentView(Resource.Layout.view_events);
 
-			AndroidHUD.AndHUD.Shared.Show (this, "Loading...");
-			await ViewModel.ExecuteRefreshCommand();
-			AndroidHUD.AndHUD.Shared.Dismiss (this);
+			//AndroidHUD.AndHUD.Shared.Show (this, "Loading...");
+			//await ViewModel.ExecuteRefreshCommand();
+			//AndroidHUD.AndHUD.Shared.Dismiss (this);
         }
     }
 }

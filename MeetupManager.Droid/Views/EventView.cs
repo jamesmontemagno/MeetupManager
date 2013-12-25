@@ -10,7 +10,7 @@ namespace MeetupManager.Droid.Views
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
-			SetContentView(Resource.Layout.EventView);
+			SetContentView(Resource.Layout.view_event);
 		}
 	}
 }

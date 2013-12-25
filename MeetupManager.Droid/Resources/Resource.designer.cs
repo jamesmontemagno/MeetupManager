@@ -1226,31 +1226,31 @@ namespace MeetupManager.Droid
 			public const int abc_search_view = 2130903063;
 			
 			// aapt resource value: 0x7f030018
-			public const int EventsView = 2130903064;
+			public const int item_event = 2130903064;
 			
 			// aapt resource value: 0x7f030019
-			public const int EventView = 2130903065;
+			public const int item_member = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int ItemEvent = 2130903066;
+			public const int loading = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int ItemMember = 2130903067;
+			public const int loadingimage = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int loading = 2130903068;
+			public const int loadingprogress = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int loadingimage = 2130903069;
+			public const int SplashScreen = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int loadingprogress = 2130903070;
+			public const int support_simple_spinner_dropdown_item = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int SplashScreen = 2130903071;
+			public const int view_event = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int support_simple_spinner_dropdown_item = 2130903072;
+			public const int view_events = 2130903072;
 			
 			static Layout()
 			{

@@ -11,7 +11,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         local:MvxBind="ItemsSource Members; ItemClick CheckInCommand"
-        local:MvxItemTemplate="ItemMember"
+        local:MvxItemTemplate="@layout/item_member"
         android:numColumns="@integer/member_columns"
         android:stretchMode="columnWidth"
         android:drawSelectorOnTop="true"
