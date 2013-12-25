@@ -11,8 +11,10 @@ namespace MeetupManager.Portable.Services
 	{
 		#region IMeetupService implementation
 
-		private const string GroupUrlName = "<YOUR GROUP NAME HERE>";
-		private const string ApiKey = "&key=<YOUR API KEY HERE>";
+		//private const string GroupUrlName = "<YOUR GROUP NAME HERE>";
+		private const string GroupUrlName = "SeattleMobileDevelopers";
+		//private const string ApiKey = "&key=<YOUR API KEY HERE>";
+		private const string ApiKey = "&key=365b4c1a4567207641623f61775c6";
 		private const string GetEventsUrl = @"http://api.meetup.com/2/events?group_urlname=" + GroupUrlName + "&status=upcoming,past" + ApiKey;
 		private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?event_id={0}" + ApiKey;
 

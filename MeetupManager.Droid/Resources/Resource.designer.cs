@@ -1022,9 +1022,6 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f050012
 			public const int middle = 2131034130;
 			
-			// aapt resource value: 0x7f050047
-			public const int myButton = 2131034183;
-			
 			// aapt resource value: 0x7f050009
 			public const int never = 2131034121;
 			
@@ -1137,6 +1134,12 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f090000
 			public const int abc_max_action_buttons = 2131296256;
 			
+			// aapt resource value: 0x7f090001
+			public const int event_columns = 2131296257;
+			
+			// aapt resource value: 0x7f090002
+			public const int member_columns = 2131296258;
+			
 			static Integer()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -1223,25 +1226,31 @@ namespace MeetupManager.Droid
 			public const int abc_search_view = 2130903063;
 			
 			// aapt resource value: 0x7f030018
-			public const int FirstView = 2130903064;
+			public const int EventsView = 2130903064;
 			
 			// aapt resource value: 0x7f030019
-			public const int loading = 2130903065;
+			public const int EventView = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int loadingimage = 2130903066;
+			public const int ItemEvent = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int loadingprogress = 2130903067;
+			public const int ItemMember = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int Main = 2130903068;
+			public const int loading = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int SplashScreen = 2130903069;
+			public const int loadingimage = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int support_simple_spinner_dropdown_item = 2130903070;
+			public const int loadingprogress = 2130903070;
+			
+			// aapt resource value: 0x7f03001f
+			public const int SplashScreen = 2130903071;
+			
+			// aapt resource value: 0x7f030020
+			public const int support_simple_spinner_dropdown_item = 2130903072;
 			
 			static Layout()
 			{
@@ -1996,7 +2005,7 @@ namespace MeetupManager.Droid
 					16843055,
 					16843056,
 					16843057,
-					16843829};
+					16843802};
 			
 			// aapt resource value: 4
 			public const int MenuView_android_headerBackground = 4;

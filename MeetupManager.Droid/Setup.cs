@@ -13,7 +13,7 @@ namespace MeetupManager.Droid
 
         protected override IMvxApplication CreateApp()
         {
-            return new Core.App();
+			return new Portable.App();
         }
 		
         protected override IMvxTrace CreateDebugTrace()

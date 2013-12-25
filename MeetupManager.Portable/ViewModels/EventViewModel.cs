@@ -3,6 +3,10 @@ using Cirrious.MvvmCross.ViewModels;
 using MeetupManager.Portable.Interfaces;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Cirrious.CrossCore;
+using Cirrious.CrossCore.Platform;
+using MeetupManager.Portable.Interfaces.Database;
+using MeetupManager.Portable.Models.Database;
 
 namespace MeetupManager.Portable.ViewModels
 {
@@ -34,7 +38,9 @@ namespace MeetupManager.Portable.ViewModels
 
 		private async Task ExecuteRefreshCommand()
 		{
-			//Go to database and check this user in.
+			members.Clear ();
+			RaisePropertyChanged (() => Members);
+			await ExecuteLoadMoreCommand ();
 
 		}
 
@@ -48,6 +54,36 @@ namespace MeetupManager.Portable.ViewModels
 		{
 			//Go to database and check this user in.
 			//CheckedIn = Mvx.Resolve<IDataService> ().IsCheckedIn (eventId, this.Member.MemberId.ToString());
+			IsBusy = true;
+
+
+			try{
+				var eventResults = await this.meetupService.GetRSVPs(eventId, members.Count);
+				foreach(var e in eventResults.RSVPs)
+				{
+					members.Add(new MemberViewModel(e.Member, e.MemberPhoto, eventId));
+				}
+			}
+			catch(Exception ex) {
+				Mvx.Resolve<IMvxTrace> ().Trace (MvxTraceLevel.Error, "EventViewModel", ex.ToString ());
+			}
+			finally{
+				IsBusy = false;
+			}
+		}
+
+		private MvxCommand<MemberViewModel> checkInCommand;
+		public IMvxCommand CheckInCommand
+		{
+			get { return checkInCommand ?? (checkInCommand = new MvxCommand<MemberViewModel> (async (ev)=>ExecuteCheckInCommand(ev))); }
+		}
+
+		private async Task ExecuteCheckInCommand(MemberViewModel member)
+		{
+
+			await Mvx.Resolve<IDataService> ().CheckInMember (new EventRSVP (eventId, member.Member.MemberId.ToString()));
+			member.CheckedIn = true;
+		
 
 		}
 	}

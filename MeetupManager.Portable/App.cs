@@ -11,7 +11,7 @@ namespace MeetupManager.Portable
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 				
-            RegisterAppStart<ViewModels.FirstViewModel>();
+			RegisterAppStart<ViewModels.EventsViewModel>();
         }
     }
 }
