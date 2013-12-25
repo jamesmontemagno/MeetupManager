@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 using MeetupManager.Portable.Interfaces.Database;
 using Cirrious.MvvmCross.Community.Plugins.Sqlite;
+using System.Linq;
 
 namespace MeetupManager.Portable.Models.Database
 {
@@ -22,16 +23,36 @@ namespace MeetupManager.Portable.Models.Database
 			this.m_Connection.CreateTable<EventRSVP>();
         }
 
+		/// <summary>
+		/// Gets all items of type T
+		/// </summary>
+		/// <typeparam name="T">Type of item to get</typeparam>
+		/// <returns></returns>
+		public IEnumerable<T> GetItems<T>() where T : IBusinessEntity, new()
+		{
+			lock (Locker)
+			{
+				return (from i in this.m_Connection.Table<T>() select i);
+			}
+		}
+
         /// <summary>
         /// Gets all items of type T
         /// </summary>
         /// <typeparam name="T">Type of item to get</typeparam>
         /// <returns></returns>
-        public IEnumerable<T> GetItems<T>() where T : IBusinessEntity, new()
+		public EventRSVP GetEventRSVP(string eventId, string userId)
         {
             lock (Locker)
             {
-                return (from i in this.m_Connection.Table<T>() select i);
+				var items = (from i in this.m_Connection.Table<EventRSVP> ()
+				        where i.UserId == userId && i.EventId == eventId
+				        select i);
+
+				if (items.Any())
+					return items.ElementAt(0);
+
+				return null;
             }
         }
 
@@ -63,7 +84,7 @@ namespace MeetupManager.Portable.Models.Database
             {
                 if (item.Id != 0)
                 {
-                    this.m_Connection.Update(item);
+					this.m_Connection.Update(item);
                     return item.Id;
                 }
                 

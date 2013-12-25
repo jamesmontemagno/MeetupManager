@@ -47,6 +47,7 @@ namespace MeetupManager.Portable.ViewModels
 		private async Task ExecuteLoadMoreCommand()
 		{
 			//Go to database and check this user in.
+			//CheckedIn = Mvx.Resolve<IDataService> ().IsCheckedIn (eventId, this.Member.MemberId.ToString());
 
 		}
 	}

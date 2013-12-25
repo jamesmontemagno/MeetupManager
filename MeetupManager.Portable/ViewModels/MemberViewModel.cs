@@ -2,6 +2,9 @@ using System;
 using Cirrious.MvvmCross.ViewModels;
 using MeetupManager.Portable.Models;
 using System.Threading.Tasks;
+using Cirrious.CrossCore;
+using MeetupManager.Portable.Interfaces.Database;
+using MeetupManager.Portable.Models.Database;
 
 namespace MeetupManager.Portable.ViewModels
 {
@@ -19,13 +22,12 @@ namespace MeetupManager.Portable.ViewModels
 			}
 		}
 		public MemberPhoto Photo{get;set;}
-		private string eventId;
+		private readonly string eventId;
 		public MemberViewModel(Member member, MemberPhoto photo, string eventId)
 		{
 			this.Member = member;
 			this.eventId = eventId;
 			this.Photo = photo;
-			//go to database and check if user is checked in based on event name and id.
 		}
 
 		private IMvxCommand checkInCommand;
@@ -36,7 +38,10 @@ namespace MeetupManager.Portable.ViewModels
 
 		private async Task ExecuteCheckInCommand()
 		{
-			//Go to database and check this user in.
+
+			await Mvx.Resolve<IDataService> ().CheckInMember (new EventRSVP (eventId, this.Member.MemberId.ToString()));
+
+			CheckedIn = true;
 
 		}
 	}

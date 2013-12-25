@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 
 using MeetupManager.Portable.Models.Database;
+using System.Threading.Tasks;
 
 namespace MeetupManager.Portable.Interfaces.Database
 {
@@ -9,6 +10,7 @@ namespace MeetupManager.Portable.Interfaces.Database
     /// </summary>
     public interface IDataService
     {
-       
+		Task CheckInMember (EventRSVP rsvp);
+		Task<bool> IsCheckedIn(string eventId, string userId);
     }
 }

@@ -9,6 +9,12 @@ namespace MeetupManager.Portable.Models.Database
 		{
 		}
 
+		public EventRSVP (string eventId, string userId)
+		{
+			EventId = eventId;
+			UserId = userId;  
+		}
+
 		public string UserId { get; set; }
 
 		[Indexed]
