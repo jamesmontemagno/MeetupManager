@@ -1,6 +1,7 @@
 using System;
 using Cirrious.MvvmCross.ViewModels;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace MeetupManager.Portable.Models
 {
@@ -9,8 +10,11 @@ namespace MeetupManager.Portable.Models
 		public Member ()
 		{
 		}
-		public string name { get; set; }
-		public int member_id { get; set; }
+		[JsonProperty("name")]
+		public string Name { get; set; }
+
+		[JsonProperty("member_id")]
+		public int MemberId { get; set; }
 	}
 }
 

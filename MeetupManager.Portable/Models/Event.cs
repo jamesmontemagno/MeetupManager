@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 namespace MeetupManager.Portable.Models
 {
@@ -8,25 +9,62 @@ namespace MeetupManager.Portable.Models
 		{
 		}
 
-		public string status { get; set; }
-		public string visibility { get; set; }
-		public int maybe_rsvp_count { get; set; }
-		public Venue venue { get; set; }
-		public string id { get; set; }
-		public int utc_offset { get; set; }
-		public int duration { get; set; }
-		public long time { get; set; }
-		public int waitlist_count { get; set; }
-		public bool announced { get; set; }
-		public long updated { get; set; }
-		public int yes_rsvp_count { get; set; }
-		public long created { get; set; }
-		public string event_url { get; set; }
-		public string description { get; set; }
-		public string how_to_find_us { get; set; }
-		public string name { get; set; }
-		public int headcount { get; set; }
-		public Group group { get; set; }
+		[JsonProperty("status")]
+		public string Status { get; set; }
+
+		[JsonProperty("visibility")]
+		public string Visibility { get; set; }
+
+		[JsonProperty("maybe_rsvp_count")]
+		public int MaybeRSVPCount { get; set; }
+
+		[JsonProperty("venue")]
+		public Venue Venue { get; set; }
+
+		[JsonProperty("id")]
+		public string Id { get; set; }
+
+		[JsonProperty("utc_offset")]
+		public int UTCOffset { get; set; }
+
+		[JsonProperty("duration")]
+		public int Duration { get; set; }
+
+		[JsonProperty("time")]
+		public long Time { get; set; }
+
+		[JsonProperty("waitlist_count")]
+		public int WaitlistCount { get; set; }
+
+		[JsonProperty("announced")]
+		public bool Announced { get; set; }
+
+		[JsonProperty("updated")]
+		public long Updated { get; set; }
+
+		[JsonProperty("yes_rsvp_count")]
+		public int YesRSVPCount { get; set; }
+
+		[JsonProperty("created")]
+		public long Created { get; set; }
+
+		[JsonProperty("event_url")]
+		public string EventUrl { get; set; }
+
+		[JsonProperty("description")]
+		public string Description { get; set; }
+
+		[JsonProperty("how_to_find_us")]
+		public string HowToFindUs { get; set; }
+
+		[JsonProperty("name")]
+		public string Name { get; set; }
+
+		[JsonProperty("headcount")]
+		public int HeadCount { get; set; }
+
+		[JsonProperty("group")]
+		public Group Group { get; set; }
 	}
 }
 

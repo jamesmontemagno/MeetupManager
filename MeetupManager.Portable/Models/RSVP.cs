@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace MeetupManager.Portable.Models
 {
@@ -8,17 +9,38 @@ namespace MeetupManager.Portable.Models
 		public RSVP ()
 		{
 		}
-		public string response { get; set; }
-		public Member member { get; set; }
-		public MemberPhoto member_photo { get; set; }
-		public object created { get; set; }
-		public Event @event { get; set; }
-		public object mtime { get; set; }
-		public List<string> answers { get; set; }
-		public int guests { get; set; }
-		public int rsvp_id { get; set; }
-		public Venue venue { get; set; }
-		public Group group { get; set; }
+		[JsonProperty("response")]
+		public string Response { get; set; }
+
+		[JsonProperty("member")]
+		public Member Member { get; set; }
+
+		[JsonProperty("member_photo")]
+		public MemberPhoto MemberPhoto { get; set; }
+
+		[JsonProperty("created")]
+		public object Created { get; set; }
+
+		[JsonProperty("event")]
+		public Event Event { get; set; }
+
+		[JsonProperty("mtime")]
+		public object MTime { get; set; }
+
+		[JsonProperty("answers")]
+		public List<string> Answers { get; set; }
+
+		[JsonProperty("guests")]
+		public int Guests { get; set; }
+
+		[JsonProperty("rsvp_id")]
+		public int RSVPId { get; set; }
+
+		[JsonProperty("venue")]
+		public Venue Venue { get; set; }
+
+		[JsonProperty("group")]
+		public Group Group { get; set; }
 	}
 }
 

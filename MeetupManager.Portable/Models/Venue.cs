@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 namespace MeetupManager.Portable.Models
 {
@@ -8,16 +9,35 @@ namespace MeetupManager.Portable.Models
 		{
 		}
 
-		public int id { get; set; }
-		public string zip { get; set; }
-		public double lon { get; set; }
-		public bool repinned { get; set; }
-		public string name { get; set; }
-		public string state { get; set; }
-		public string address_1 { get; set; }
-		public double lat { get; set; }
-		public string city { get; set; }
-		public string country { get; set; }
+		[JsonProperty("id")]
+		public int Id { get; set; }
+
+		[JsonProperty("zip")]
+		public string Zip { get; set; }
+
+		[JsonProperty("lon")]
+		public double Longitude { get; set; }
+
+		[JsonProperty("repinned")]
+		public bool RePinned { get; set; }
+
+		[JsonProperty("name")]
+		public string Name { get; set; }
+
+		[JsonProperty("state")]
+		public string State { get; set; }
+
+		[JsonProperty("address_1")]
+		public string Address1 { get; set; }
+
+		[JsonProperty("lat")]
+		public double Latitude { get; set; }
+
+		[JsonProperty("city")]
+		public string City { get; set; }
+
+		[JsonProperty("country")]
+		public string Country { get; set; }
 
 	}
 }

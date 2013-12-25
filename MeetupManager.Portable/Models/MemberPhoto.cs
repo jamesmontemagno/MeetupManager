@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 namespace MeetupManager.Portable.Models
 {
@@ -8,10 +9,17 @@ namespace MeetupManager.Portable.Models
 		{
 		}
 
-		public string photo_link { get; set; }
-		public string highres_link { get; set; }
-		public string thumb_link { get; set; }
-		public int photo_id { get; set; }
+		[JsonProperty("photo_link")]
+		public string PhotoLink { get; set; }
+
+		[JsonProperty("highres_link")]
+		public string HighResLink { get; set; }
+
+		[JsonProperty("thumb_link")]
+		public string ThumbLink { get; set; }
+
+		[JsonProperty("photo_id")]
+		public int PhotoId { get; set; }
 	}
 }
 

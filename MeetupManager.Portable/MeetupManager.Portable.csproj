@@ -42,13 +42,19 @@
     <Compile Include="Models\Venue.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Meta.cs" />
-    <Compile Include="Services\Responses\GroupsRootObject.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\MemberPhoto.cs" />
     <Compile Include="Models\RSVP.cs" />
     <Compile Include="Services\Responses\RSVPsRootObject.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="Interfaces\Database\IDataService.cs" />
+    <Compile Include="Models\Database\BusinessEntityBase.cs" />
+    <Compile Include="Services\Database\DataService.cs" />
+    <Compile Include="Interfaces\Database\IBusinessEntity.cs" />
+    <Compile Include="Models\Database\MeetupManagerDatabase.cs" />
+    <Compile Include="Models\Database\EventRSVP.cs" />
+    <Compile Include="Services\Responses\EventsRootObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -80,6 +86,9 @@
     <Folder Include="Services\" />
     <Folder Include="Models\" />
     <Folder Include="Services\Responses\" />
+    <Folder Include="Interfaces\Database\" />
+    <Folder Include="Models\Database\" />
+    <Folder Include="Services\Database\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

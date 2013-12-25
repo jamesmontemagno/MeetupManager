@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
 using MeetupManager.Portable.Models;
+using Newtonsoft.Json;
 
 namespace MeetupManager.Portable.Services.Responses
 {
 	public class EventsRootObject
 	{
+		[JsonProperty("results")]
+		public List<Event> Events { get; set; }
 
-		public List<Group> results { get; set; }
-		public Meta meta { get; set; }
+		[JsonProperty("meta")]
+		public Meta Metadata { get; set; }
 	}
 }
 

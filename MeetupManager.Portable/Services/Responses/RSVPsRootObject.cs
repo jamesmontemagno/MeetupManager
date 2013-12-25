@@ -1,6 +1,7 @@
 using System;
 using MeetupManager.Portable.Models;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace MeetupManager.Portable.Services.Responses
 {
@@ -9,9 +10,11 @@ namespace MeetupManager.Portable.Services.Responses
 		public RSVPsRootObject ()
 		{
 		}
+		[JsonProperty("results")]
+		public List<RSVP> RSVPs { get; set; }
 
-		public List<RSVP> results { get; set; }
-		public Meta meta { get; set; }
+		[JsonProperty("meta")]
+		public Meta Metadata { get; set; }
 	}
 }
 

@@ -31,13 +31,13 @@ namespace MeetupManager.Portable.ViewModels
 		private IMvxCommand checkInCommand;
 		public IMvxCommand CheckInCommand
 		{
-			get { return checkInCommand ?? (checkInCommand = new MvxCommand (async ()=>ExecuteCheckInCommand)); }
+			get { return checkInCommand ?? (checkInCommand = new MvxCommand (async ()=>ExecuteCheckInCommand())); }
 		}
 
 		private async Task ExecuteCheckInCommand()
 		{
 			//Go to database and check this user in.
-			return null;
+
 		}
 	}
 }
