@@ -5,11 +5,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/background">
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateOnly="true"
+        local:MvxBind="Visibility IsBusy" />
     <Mvx.MvxGridView
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:padding="@dimen/standard_padding"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         local:MvxBind="ItemsSource Events; ItemClick GoToEventCommand"
         local:MvxItemTemplate="@layout/item_event"
         android:numColumns="@integer/event_columns"
@@ -17,8 +24,8 @@
         android:drawSelectorOnTop="true"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:horizontalSpacing="8dp"
-        android:verticalSpacing="8dp"
+        android:horizontalSpacing="@dimen/standard_padding"
+        android:verticalSpacing="@dimen/standard_padding"
         android:gravity="center"
         android:fastScrollEnabled="true"
         android:scrollbars="vertical"

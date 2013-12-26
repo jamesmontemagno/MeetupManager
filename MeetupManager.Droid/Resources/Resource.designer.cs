@@ -521,8 +521,8 @@ namespace MeetupManager.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f070004
-			public const int abc_search_url_text_holo = 2131165188;
+			// aapt resource value: 0x7f070005
+			public const int abc_search_url_text_holo = 2131165189;
 			
 			// aapt resource value: 0x7f070000
 			public const int abc_search_url_text_normal = 2131165184;
@@ -535,6 +535,9 @@ namespace MeetupManager.Droid
 			
 			// aapt resource value: 0x7f070003
 			public const int background = 2131165187;
+			
+			// aapt resource value: 0x7f070004
+			public const int pop = 2131165188;
 			
 			static Color()
 			{
@@ -596,6 +599,9 @@ namespace MeetupManager.Droid
 			
 			// aapt resource value: 0x7f08000b
 			public const int abc_search_view_text_min_width = 2131230731;
+			
+			// aapt resource value: 0x7f080010
+			public const int standard_padding = 2131230736;
 			
 			static Dimension()
 			{
@@ -884,13 +890,16 @@ namespace MeetupManager.Droid
 			public const int Icon = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int roundedbg = 2130837595;
+			public const int no_photo = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int roundedbgdark = 2130837596;
+			public const int roundedbg = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int splash = 2130837597;
+			public const int roundedbgdark = 2130837597;
+			
+			// aapt resource value: 0x7f02005e
+			public const int splash = 2130837598;
 			
 			static Drawable()
 			{
@@ -1018,6 +1027,9 @@ namespace MeetupManager.Droid
 			
 			// aapt resource value: 0x7f050046
 			public const int loadingProgressWheel = 2131034182;
+			
+			// aapt resource value: 0x7f050047
+			public const int main_frame = 2131034183;
 			
 			// aapt resource value: 0x7f050012
 			public const int middle = 2131034130;
@@ -1251,6 +1263,9 @@ namespace MeetupManager.Droid
 			
 			// aapt resource value: 0x7f030020
 			public const int view_events = 2130903072;
+			
+			// aapt resource value: 0x7f030021
+			public const int view_home = 2130903073;
 			
 			static Layout()
 			{

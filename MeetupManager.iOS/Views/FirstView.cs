@@ -24,10 +24,10 @@ namespace MeetupManager.iOS.Views
             var textField = new UITextField(new RectangleF(10, 50, 300, 40));
             Add(textField);
 
-            var set = this.CreateBindingSet<FirstView, Core.ViewModels.FirstViewModel>();
+			/*var set = this.CreateBindingSet<FirstView, Por.ViewModels.FirstViewModel>();
             set.Bind(label).To(vm => vm.Hello);
             set.Bind(textField).To(vm => vm.Hello);
-            set.Apply();
+            set.Apply();*/
         }
     }
 }

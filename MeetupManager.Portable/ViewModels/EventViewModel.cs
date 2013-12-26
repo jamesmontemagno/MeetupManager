@@ -54,7 +54,6 @@ namespace MeetupManager.Portable.ViewModels
 		private async Task ExecuteLoadMoreCommand()
 		{
 			//Go to database and check this user in.
-			//CheckedIn = Mvx.Resolve<IDataService> ().IsCheckedIn (eventId, this.Member.MemberId.ToString());
 			IsBusy = true;
 
 
@@ -62,7 +61,10 @@ namespace MeetupManager.Portable.ViewModels
 				var eventResults = await this.meetupService.GetRSVPs(eventId, members.Count);
 				foreach(var e in eventResults.RSVPs)
 				{
-					members.Add(new MemberViewModel(e.Member, e.MemberPhoto, eventId));
+					var member = new MemberViewModel(e.Member, e.MemberPhoto, eventId);
+					member.CheckedIn = await Mvx.Resolve<IDataService> ().IsCheckedIn (eventId, member.Member.MemberId.ToString());
+
+					members.Add(member);
 				}
 			}
 			catch(Exception ex) {

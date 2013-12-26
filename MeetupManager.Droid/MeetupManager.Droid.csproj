@@ -54,9 +54,6 @@
     <Reference Include="AndHUD">
       <HintPath>..\Components\AndHUD-1.2\lib\android\AndHUD.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net">
-      <HintPath>..\packages\MvvmCross.PortableSupport.3.0.14\lib\MonoAndroid\System.Net.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows">
       <HintPath>..\packages\MvvmCross.PortableSupport.3.0.14\lib\MonoAndroid\System.Windows.dll</HintPath>
     </Reference>
@@ -90,6 +87,7 @@
     <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite.Droid">
       <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.0.13\lib\MonoAndroid16\Cirrious.MvvmCross.Community.Plugins.Sqlite.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -126,6 +124,11 @@
     <AndroidResource Include="Resources\layout\view_events.axml" />
     <AndroidResource Include="Resources\layout\view_event.axml" />
     <AndroidResource Include="Resources\layout\item_event.axml" />
+    <AndroidResource Include="Resources\values-sw600dp\integers.xml" />
+    <AndroidResource Include="Resources\values-sw600dp-land\integers.xml" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
+    <AndroidResource Include="Resources\layout\view_home.axml" />
+    <AndroidResource Include="Resources\drawable\no_photo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -141,6 +144,8 @@
   <ItemGroup>
     <Folder Include="DataLayer\" />
     <Folder Include="Resources\values-land\" />
+    <Folder Include="Resources\values-sw600dp\" />
+    <Folder Include="Resources\values-sw600dp-land\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MeetupManager.Portable\MeetupManager.Portable.csproj">

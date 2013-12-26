@@ -33,6 +33,32 @@ namespace MeetupManager.Portable.Models
 		[JsonProperty("time")]
 		public long Time { get; set; }
 
+		[JsonIgnore]
+		public string Month 
+		{
+			get 
+			{ 
+				return new TimeSpan (0, 0, 0, (int)Time).ToString("mm"); 
+			} 
+		}
+
+		[JsonIgnore]
+		public string Year 
+		{
+			get 
+			{
+				//var span = new DateTime (Time);
+				//var year = span.ToString("yyyy");
+				return "2013";
+			} 
+		}
+
+		[JsonIgnore]
+		public string Day { get { return new TimeSpan (0, 0, 0, (int)Time).ToString ("dd"); } }
+
+		[JsonIgnore]
+		public string MonthDay { get { return "12/25";/*new TimeSpan (0, 0, 0, (int)Time).ToString("mm/dd");*/ } }
+
 		[JsonProperty("waitlist_count")]
 		public int WaitlistCount { get; set; }
 

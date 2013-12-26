@@ -55,6 +55,7 @@
     <Compile Include="Models\Database\EventRSVP.cs" />
     <Compile Include="Services\Responses\EventsRootObject.cs" />
     <Compile Include="ViewModels\EventsViewModel.cs" />
+    <Compile Include="Mock\MeetupServiceMock.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -86,6 +87,7 @@
     <Folder Include="Interfaces\Database\" />
     <Folder Include="Models\Database\" />
     <Folder Include="Services\Database\" />
+    <Folder Include="Mock\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

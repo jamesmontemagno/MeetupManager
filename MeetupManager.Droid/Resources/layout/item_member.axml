@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_card">
+    <FrameLayout
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        local:MvxBind="Text Member.Name" />
+        android:layout_gravity="left"
+        android:clipChildren="true">
+        <Mvx.MvxImageView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            local:MvxSource="Image Photo.ThumbLink"
+            android:scaleType="fitStart"
+            android:src="@drawable/no_photo"
+            android:layout_gravity="left"
+            android:adjustViewBounds="true" />
+        <Mvx.MvxImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:MvxBind="Visibility CheckedIn"
+            android:src="@android:drawable/star_big_on"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:adjustViewBounds="true" />
+    </FrameLayout>
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="@dimen/standard_padding"
+        android:paddingRight="@dimen/standard_padding"
+        android:gravity="center_vertical"
+        local:MvxBind="Text Member.Name"
+        android:lines="2"
+        android:text="Name goes here" />
 </LinearLayout>
