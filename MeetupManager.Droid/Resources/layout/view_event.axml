@@ -11,7 +11,9 @@
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:indeterminateOnly="true"
-        local:MvxBind="Visibility IsBusy,Converter=Visibility" />
+        local:MvxBind="Visibility IsBusy,Converter=Visibility"
+        android:layout_marginBottom="-8dp"
+        android:layout_marginTop="-4dp" />
     <Mvx.MvxGridView
         android:padding="@dimen/standard_padding"
         android:layout_width="fill_parent"
