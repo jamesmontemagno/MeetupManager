@@ -122,6 +122,8 @@
     <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
     <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
     <Compile Include="PlatformSpecific\MessageDialog.cs" />
+    <Compile Include="Helpers\MvxActionBarActivity.cs" />
+    <Compile Include="Helpers\MvxActionBarEventSourceActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -189,6 +191,7 @@
     <Folder Include="Resources\drawable-hdpi\" />
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MeetupManager.Portable\MeetupManager.Portable.csproj">
