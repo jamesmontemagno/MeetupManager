@@ -1,4 +1,4 @@
-#define MOCK
+//#define MOCK
 using Cirrious.CrossCore.IoC;
 using Cirrious.CrossCore;
 using MeetupManager.Portable.Interfaces.Database;

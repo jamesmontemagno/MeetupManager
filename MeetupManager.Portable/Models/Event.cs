@@ -49,6 +49,7 @@ namespace MeetupManager.Portable.Models
 			{
 				//var span = new DateTime (Time);
 				//var year = span.ToString("yyyy");
+				//string.Format("{0:hh\\:mm\\:ss}", current);
 				return "2013";
 			} 
 		}

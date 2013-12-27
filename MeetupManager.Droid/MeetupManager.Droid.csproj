@@ -88,6 +88,24 @@
       <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.0.13\lib\MonoAndroid16\Cirrious.MvvmCross.Community.Plugins.Sqlite.Droid.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.0.14\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Droid">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.0.14\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Visibility.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.File">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.0.14\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.File.Droid">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.0.14\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.File.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.0.14\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.DownloadCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache.Droid">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.0.14\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.DownloadCache.Droid.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -99,6 +117,11 @@
     <Compile Include="Bootstrap\CommunitySqlitePluginBootstrap.cs" />
     <Compile Include="Views\EventsView.cs" />
     <Compile Include="Views\EventView.cs" />
+    <Compile Include="Controls\MvxHeightAdjustableImageView.cs" />
+    <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
+    <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
+    <Compile Include="PlatformSpecific\MessageDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -129,6 +152,20 @@
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\layout\view_home.axml" />
     <AndroidResource Include="Resources\drawable\no_photo.png" />
+    <AndroidResource Include="Resources\values\attrs.xml" />
+    <AndroidResource Include="Resources\menu\menu_event.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_select_winner.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_checkedin.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_refresh.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_select_winner.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_checkedin.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_refresh.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_select_winner.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_checkedin.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_refresh.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_select_winner.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_checkedin.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -142,10 +179,16 @@
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DataLayer\" />
     <Folder Include="Resources\values-land\" />
     <Folder Include="Resources\values-sw600dp\" />
     <Folder Include="Resources\values-sw600dp-land\" />
+    <Folder Include="Controls\" />
+    <Folder Include="PlatformSpecific\" />
+    <Folder Include="Resources\menu\" />
+    <Folder Include="Resources\drawable-mdpi\" />
+    <Folder Include="Resources\drawable-hdpi\" />
+    <Folder Include="Resources\drawable-xhdpi\" />
+    <Folder Include="Resources\drawable-xxhdpi\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MeetupManager.Portable\MeetupManager.Portable.csproj">

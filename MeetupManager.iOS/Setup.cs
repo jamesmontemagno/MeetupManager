@@ -2,6 +2,9 @@ using MonoTouch.UIKit;
 using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Touch.Platform;
+using Cirrious.CrossCore;
+using MeetupManager.Portable.Interfaces;
+using MeetupManager.iOS.PlatformSpecific;
 
 namespace MeetupManager.iOS
 {
@@ -15,6 +18,12 @@ namespace MeetupManager.iOS
 		protected override IMvxApplication CreateApp ()
 		{
 			return new Portable.App();
+		}
+
+		protected override void InitializeLastChance ()
+		{
+			base.InitializeLastChance ();
+			Mvx.RegisterSingleton<IMessageDialog>(()=>new MessageDialog());
 		}
 		
         protected override IMvxTrace CreateDebugTrace()

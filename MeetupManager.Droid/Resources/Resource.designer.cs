@@ -99,23 +99,23 @@ namespace MeetupManager.Droid
 		public partial class Attribute
 		{
 			
-			// aapt resource value: 0x7f010076
-			public const int MvxBind = 2130772086;
+			// aapt resource value: 0x7f010079
+			public const int MvxBind = 2130772089;
+			
+			// aapt resource value: 0x7f01007d
+			public const int MvxDropDownItemTemplate = 2130772093;
+			
+			// aapt resource value: 0x7f01007c
+			public const int MvxItemTemplate = 2130772092;
 			
 			// aapt resource value: 0x7f01007a
-			public const int MvxDropDownItemTemplate = 2130772090;
+			public const int MvxLang = 2130772090;
 			
-			// aapt resource value: 0x7f010079
-			public const int MvxItemTemplate = 2130772089;
-			
-			// aapt resource value: 0x7f010077
-			public const int MvxLang = 2130772087;
+			// aapt resource value: 0x7f01007e
+			public const int MvxSource = 2130772094;
 			
 			// aapt resource value: 0x7f01007b
-			public const int MvxSource = 2130772091;
-			
-			// aapt resource value: 0x7f010078
-			public const int MvxTemplate = 2130772088;
+			public const int MvxTemplate = 2130772091;
 			
 			// aapt resource value: 0x7f01000b
 			public const int actionBarDivider = 2130771979;
@@ -227,6 +227,12 @@ namespace MeetupManager.Droid
 			
 			// aapt resource value: 0x7f010074
 			public const int barWidth = 2130772084;
+			
+			// aapt resource value: 0x7f010077
+			public const int blur = 2130772087;
+			
+			// aapt resource value: 0x7f010078
+			public const int blur_radius = 2130772088;
 			
 			// aapt resource value: 0x7f010014
 			public const int buttonBarButtonStyle = 2130771988;
@@ -356,6 +362,9 @@ namespace MeetupManager.Droid
 			
 			// aapt resource value: 0x7f010073
 			public const int radius = 2130772083;
+			
+			// aapt resource value: 0x7f010076
+			public const int ratio = 2130772086;
 			
 			// aapt resource value: 0x7f01006e
 			public const int rimColor = 2130772078;
@@ -881,25 +890,34 @@ namespace MeetupManager.Droid
 			public const int background_card = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int ic_errorstatus = 2130837592;
+			public const int ic_action_refresh = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int ic_successstatus = 2130837593;
+			public const int ic_action_select_winner = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int Icon = 2130837594;
+			public const int ic_checkedin = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int no_photo = 2130837595;
+			public const int ic_errorstatus = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int roundedbg = 2130837596;
+			public const int ic_successstatus = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int roundedbgdark = 2130837597;
+			public const int Icon = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int splash = 2130837598;
+			public const int no_photo = 2130837598;
+			
+			// aapt resource value: 0x7f02005f
+			public const int roundedbg = 2130837599;
+			
+			// aapt resource value: 0x7f020060
+			public const int roundedbgdark = 2130837600;
+			
+			// aapt resource value: 0x7f020061
+			public const int splash = 2130837601;
 			
 			static Drawable()
 			{
@@ -1030,6 +1048,12 @@ namespace MeetupManager.Droid
 			
 			// aapt resource value: 0x7f050047
 			public const int main_frame = 2131034183;
+			
+			// aapt resource value: 0x7f050048
+			public const int menu_refresh = 2131034184;
+			
+			// aapt resource value: 0x7f050049
+			public const int menu_select_winner = 2131034185;
 			
 			// aapt resource value: 0x7f050012
 			public const int middle = 2131034130;
@@ -1277,6 +1301,22 @@ namespace MeetupManager.Droid
 			}
 		}
 		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0c0000
+			public const int menu_event = 2131492864;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
@@ -1330,6 +1370,12 @@ namespace MeetupManager.Droid
 			
 			// aapt resource value: 0x7f0a000d
 			public const int library_name = 2131361805;
+			
+			// aapt resource value: 0x7f0a0012
+			public const int menu_refresh = 2131361810;
+			
+			// aapt resource value: 0x7f0a0011
+			public const int menu_select_winner = 2131361809;
 			
 			static String()
 			{
@@ -2048,8 +2094,8 @@ namespace MeetupManager.Droid
 			
 			public static int[] MvxBinding = new int[]
 			{
-					2130772086,
-					2130772087};
+					2130772089,
+					2130772090};
 			
 			// aapt resource value: 0
 			public const int MvxBinding_MvxBind = 0;
@@ -2059,22 +2105,37 @@ namespace MeetupManager.Droid
 			
 			public static int[] MvxControl = new int[]
 			{
-					2130772088};
+					2130772091};
 			
 			// aapt resource value: 0
 			public const int MvxControl_MvxTemplate = 0;
 			
+			public static int[] MvxHeightAdjustableImageView = new int[]
+			{
+					2130772086,
+					2130772087,
+					2130772088};
+			
+			// aapt resource value: 1
+			public const int MvxHeightAdjustableImageView_blur = 1;
+			
+			// aapt resource value: 2
+			public const int MvxHeightAdjustableImageView_blur_radius = 2;
+			
+			// aapt resource value: 0
+			public const int MvxHeightAdjustableImageView_ratio = 0;
+			
 			public static int[] MvxImageView = new int[]
 			{
-					2130772091};
+					2130772094};
 			
 			// aapt resource value: 0
 			public const int MvxImageView_MvxSource = 0;
 			
 			public static int[] MvxListView = new int[]
 			{
-					2130772089,
-					2130772090};
+					2130772092,
+					2130772093};
 			
 			// aapt resource value: 1
 			public const int MvxListView_MvxDropDownItemTemplate = 1;

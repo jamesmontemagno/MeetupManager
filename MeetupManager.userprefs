@@ -1,27 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.iOS/Views/FirstView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.Droid/Controls/MvxHeightAdjustableImageView.cs">
     <Files>
       <File FileName="MeetupManager.Portable/Mock/MeetupServiceMock.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Portable/App.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/App.cs" Line="13" Column="14" />
       <File FileName="MeetupManager.Portable/ViewModels/EventsViewModel.cs" Line="1" Column="1" />
       <File FileName="MeetupManager.Portable/Services/MeetupService.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Portable/Models/Event.cs" Line="51" Column="4" />
+      <File FileName="MeetupManager.Portable/Models/Event.cs" Line="52" Column="50" />
       <File FileName="MeetupManager.Portable/Models/Member.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Portable/ViewModels/EventViewModel.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Portable/MeetupManager.Portable.csproj" Line="17" Column="35" />
+      <File FileName="MeetupManager.Portable/MeetupManager.Portable.csproj" Line="1" Column="1" />
       <File FileName="MeetupManager.Droid/MeetupManager.Droid.csproj" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/Views/FirstView.cs" Line="30" Column="27" />
+      <File FileName="MeetupManager.iOS/Views/FirstView.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/ViewModels/MemberViewModel.cs" Line="26" Column="3" />
+      <File FileName="MeetupManager.Droid/Controls/MvxHeightAdjustableImageView.cs" Line="55" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Droid/Views/EventsView.cs" line="22" column="43" />
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Droid/Views/EventsView.cs" line="21" column="1" />
-      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/Models/Event.cs" line="58" column="1" />
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/ViewModels/EventViewModel.cs" line="71" column="1" />
-      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/Models/Event.cs" line="55" column="1" />
-      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/Models/Event.cs" line="50" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

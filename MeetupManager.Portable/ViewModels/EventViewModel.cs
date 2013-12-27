@@ -7,15 +7,20 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
 using MeetupManager.Portable.Interfaces.Database;
 using MeetupManager.Portable.Models.Database;
+using System.Linq;
 
 namespace MeetupManager.Portable.ViewModels
 {
 	public class EventViewModel : BaseViewModel
 	{
 		private string eventId;
-		public EventViewModel(IMeetupService meetupService) : base(meetupService)
+		private IMessageDialog messageDialog;
+		private Random random;
+		public EventViewModel(IMeetupService meetupService, IMessageDialog messageDialog) : base(meetupService)
 		{
 			members = new ObservableCollection<MemberViewModel> ();
+			this.messageDialog = messageDialog;
+			random = new Random ();
 		}
 
 		public void Init(string eventId)
@@ -88,6 +93,28 @@ namespace MeetupManager.Portable.ViewModels
 			member.CheckedIn = true;
 		
 
+		}
+
+		private IMvxCommand selectWinner;
+		public IMvxCommand SelectWinnerCommand
+		{
+			get { return selectWinner ?? (selectWinner = new MvxCommand (async ()=>ExecuteSelectWinnerCommand())); }
+		}
+
+		private async Task ExecuteSelectWinnerCommand()
+		{
+			var potential = members.Where (m => m.CheckedIn).ToList();
+			var count = potential.Count;
+			var message = string.Empty;
+			if (count == 0) {
+				message = "No one has checked in.";
+			} else if (count == 1) {
+				message = potential[0].Name;
+			} else {
+				message = potential[random.Next (0, count - 1)].Name;
+			}
+
+			messageDialog.SendMessage (message, "Winner!!!");
 		}
 	}
 }

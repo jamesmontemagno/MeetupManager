@@ -139,6 +139,7 @@
     <Compile Include="Views\FirstView.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
+    <Compile Include="PlatformSpecific\MessageDialog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -146,5 +147,8 @@
       <Project>{9189A7F8-9C9C-427D-9777-AA6B8CD7DF20}</Project>
       <Name>MeetupManager.Portable</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PlatformSpecific\" />
   </ItemGroup>
 </Project>
