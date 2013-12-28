@@ -57,6 +57,8 @@
     <Compile Include="ViewModels\EventsViewModel.cs" />
     <Compile Include="Mock\MeetupServiceMock.cs" />
     <Compile Include="Interfaces\IMessage.cs" />
+    <Compile Include="Interfaces\ILogin.cs" />
+    <Compile Include="Helpers\Settings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -79,6 +81,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Refractored.MvxPlugins.Settings">
+      <HintPath>..\Common\Refractored.MvxPlugins.Settings.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -89,6 +94,7 @@
     <Folder Include="Models\Database\" />
     <Folder Include="Services\Database\" />
     <Folder Include="Mock\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

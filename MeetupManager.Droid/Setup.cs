@@ -23,6 +23,7 @@ namespace MeetupManager.Droid
 		{
 			base.InitializeLastChance ();
 			Mvx.RegisterSingleton<IMessageDialog>(()=>new MessageDialog());
+			Mvx.RegisterSingleton<ILogin>(()=>new MeetupLogin());
 		}
 		
         protected override IMvxTrace CreateDebugTrace()

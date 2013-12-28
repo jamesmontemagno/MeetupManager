@@ -63,6 +63,8 @@ namespace MeetupManager.Droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_text = global::MeetupManager.Droid.Resource.Styleable.ProgressWheel_text;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_textColor = global::MeetupManager.Droid.Resource.Styleable.ProgressWheel_textColor;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_textSize = global::MeetupManager.Droid.Resource.Styleable.ProgressWheel_textSize;
+			global::Refractored.MvxPlugins.Settings.Droid.Resource.String.ApplicationName = global::MeetupManager.Droid.Resource.String.ApplicationName;
+			global::Refractored.MvxPlugins.Settings.Droid.Resource.String.Hello = global::MeetupManager.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Animation
@@ -1320,6 +1322,12 @@ namespace MeetupManager.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f0a000e
+			public const int ApplicationName = 2131361806;
+			
+			// aapt resource value: 0x7f0a000d
+			public const int Hello = 2131361805;
+			
 			// aapt resource value: 0x7f0a0001
 			public const int abc_action_bar_home_description = 2131361793;
 			
@@ -1359,23 +1367,23 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0a000b
 			public const int abc_shareactionprovider_share_with_application = 2131361803;
 			
-			// aapt resource value: 0x7f0a0010
-			public const int app_name = 2131361808;
-			
-			// aapt resource value: 0x7f0a000e
-			public const int ga_trackingId = 2131361806;
-			
-			// aapt resource value: 0x7f0a000f
-			public const int hello = 2131361807;
-			
-			// aapt resource value: 0x7f0a000d
-			public const int library_name = 2131361805;
-			
 			// aapt resource value: 0x7f0a0012
-			public const int menu_refresh = 2131361810;
+			public const int app_name = 2131361810;
+			
+			// aapt resource value: 0x7f0a0010
+			public const int ga_trackingId = 2131361808;
 			
 			// aapt resource value: 0x7f0a0011
-			public const int menu_select_winner = 2131361809;
+			public const int hello = 2131361809;
+			
+			// aapt resource value: 0x7f0a000f
+			public const int library_name = 2131361807;
+			
+			// aapt resource value: 0x7f0a0014
+			public const int menu_refresh = 2131361812;
+			
+			// aapt resource value: 0x7f0a0013
+			public const int menu_select_winner = 2131361811;
 			
 			static String()
 			{

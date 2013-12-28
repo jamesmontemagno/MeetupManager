@@ -120,6 +120,12 @@
     <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache.Touch">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.0.14\lib\MonoTouch\Cirrious.MvvmCross.Plugins.DownloadCache.Touch.dll</HintPath>
     </Reference>
+    <Reference Include="Refractored.MvxPlugins.Settings.Touch">
+      <HintPath>..\Common\Refractored.MvxPlugins.Settings.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.MvxPlugins.Settings">
+      <HintPath>..\Common\Refractored.MvxPlugins.Settings.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />

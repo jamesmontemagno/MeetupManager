@@ -106,6 +106,15 @@
     <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache.Droid">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.0.14\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.DownloadCache.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Auth.Android">
+      <HintPath>..\Components\xamarin.auth-1.2.2\lib\android\Xamarin.Auth.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.MvxPlugins.Settings.Droid">
+      <HintPath>..\Common\Refractored.MvxPlugins.Settings.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.MvxPlugins.Settings">
+      <HintPath>..\Common\Refractored.MvxPlugins.Settings.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -124,6 +133,8 @@
     <Compile Include="PlatformSpecific\MessageDialog.cs" />
     <Compile Include="Helpers\MvxActionBarActivity.cs" />
     <Compile Include="Helpers\MvxActionBarEventSourceActivity.cs" />
+    <Compile Include="PlatformSpecific\Login.cs" />
+    <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -177,6 +188,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="AndHUD">
       <Version>1.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="xamarin.auth">
+      <Version>1.2.2</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

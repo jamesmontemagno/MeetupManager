@@ -31,10 +31,13 @@ namespace MeetupManager.Portable.ViewModels
 	public class EventsViewModel 
 		: BaseViewModel
     {
-		public EventsViewModel(IMeetupService meetupService) : base(meetupService)
+		private ILogin login;
+		public EventsViewModel(IMeetupService meetupService, ILogin login) : base(meetupService)
 		{
 			events = new ObservableCollection<Event> ();
-			ExecuteRefreshCommand ();
+			this.login = login;
+			this.login.LoginAsync ((test)=>{});
+			//ExecuteRefreshCommand ();
 		}
 
 		private ObservableCollection<Event> events;
