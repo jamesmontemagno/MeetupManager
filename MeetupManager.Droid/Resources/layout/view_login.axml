@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background"
+    android:gravity="center_vertical">
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="@dimen/standard_padding"
+        android:paddingRight="@dimen/standard_padding"
+        android:gravity="center"
+        android:text="@string/logging_in"
+        local:MvxBind="Visibility IsBusy,Converter=Visibility" />
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateOnly="true"
+        local:MvxBind="Visibility IsBusy,Converter=Visibility" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="@dimen/standard_padding"
+        android:paddingRight="@dimen/standard_padding"
+        android:gravity="center"
+        android:text="@string/login_details" />
+    <Button
+        android:padding="@dimen/standard_padding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/login"
+        local:MvxBind="Enabled IsBusy,Converter=InverseVisibility; Click LoginCommand" />
+</LinearLayout>

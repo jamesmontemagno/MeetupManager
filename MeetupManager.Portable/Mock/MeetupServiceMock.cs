@@ -68,6 +68,11 @@ namespace MeetupManager.Portable.Mock
 			return rsvps;
 		}
 
+
+		public Task<bool> RenewAccessToken ()
+		{
+			throw new NotImplementedException ();
+		}
 		#endregion
 
 

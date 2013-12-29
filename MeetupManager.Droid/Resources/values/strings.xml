@@ -4,4 +4,7 @@
 	<string name="app_name">MeetupManager.Droid</string>
 	<string name="menu_select_winner">Select Winner</string>
 	<string name="menu_refresh">Refresh</string>
+	<string name="login">Login</string>
+	<string name="login_details">Tap Login to proceed to the Meetup.com login page.</string>
+	<string name="logging_in">Logging in to Meetup.com</string>
 </resources>

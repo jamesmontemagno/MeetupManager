@@ -59,6 +59,8 @@
     <Compile Include="Interfaces\IMessage.cs" />
     <Compile Include="Interfaces\ILogin.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="Services\Responses\RefreshRootObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

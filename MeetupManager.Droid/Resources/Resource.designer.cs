@@ -1293,6 +1293,9 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f030021
 			public const int view_home = 2130903073;
 			
+			// aapt resource value: 0x7f030022
+			public const int view_login = 2130903074;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -1378,6 +1381,15 @@ namespace MeetupManager.Droid
 			
 			// aapt resource value: 0x7f0a000f
 			public const int library_name = 2131361807;
+			
+			// aapt resource value: 0x7f0a0017
+			public const int logging_in = 2131361815;
+			
+			// aapt resource value: 0x7f0a0015
+			public const int login = 2131361813;
+			
+			// aapt resource value: 0x7f0a0016
+			public const int login_details = 2131361814;
 			
 			// aapt resource value: 0x7f0a0014
 			public const int menu_refresh = 2131361812;

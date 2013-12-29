@@ -23,11 +23,13 @@ namespace MeetupManager.Droid.PlatformSpecific
 
 		OAuth2Authenticator auth = new OAuth2Authenticator (
 			clientId: "kgqtisiigj7mpbpbfs1ei7s2h0",
+			clientSecret: "g4k3oiourvnos0nf9varqt5eaf",
 			scope: "",
 			authorizeUrl: new Uri ("https://secure.meetup.com/oauth2/authorize"),
-			redirectUrl: new Uri ("http://www.refractored.com/login_success.html"));
+			redirectUrl: new Uri ("http://www.refractored.com/login_success.html"),
+			accessTokenUrl: new Uri("https://secure.meetup.com/oauth2/access"));
 
-		public void LoginAsync (Action<bool> success)
+		public void LoginAsync ()
 		{
 			var activity = Mvx.Resolve<IMvxAndroidCurrentTopActivity> ().Activity;
 
@@ -39,6 +41,8 @@ namespace MeetupManager.Droid.PlatformSpecific
 
 				//callback(ee.IsAuthenticated);
 				Settings.AccessToken = ee.Account.Properties["access_token"];
+				Settings.RefreshToken = ee.Account.Properties["refresh_token"];
+
 				long time = 0;
 				long.TryParse(ee.Account.Properties["expires_in"], out time);
 				Settings.KeyValidUntil = DateTime.UtcNow.Ticks + time;

@@ -28,6 +28,9 @@ namespace MeetupManager.Portable.Helpers
 		private const string AccessTokenKey = "access_token";
 		private static string AccessTokenDefault = string.Empty;
 
+		private const string RefreshTokenKey = "refresh_token";
+		private static string RefreshTokenDefault = string.Empty;
+
 		private const string KeyValidUntilKey = "key_valid";
 		private const long KeyValidUntilDefault = 0;
 
@@ -47,6 +50,20 @@ namespace MeetupManager.Portable.Helpers
                     AppSettings.Save();
             }
         }
+
+		public static string RefreshToken
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault(RefreshTokenKey, RefreshTokenDefault);
+			}
+			set
+			{
+				//if value has changed then save it!
+				if (AppSettings.AddOrUpdateValue(RefreshTokenKey, value))
+					AppSettings.Save();
+			}
+		}
 
 		public static long KeyValidUntil
 		{

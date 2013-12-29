@@ -45,7 +45,7 @@ namespace MeetupManager.Portable
 			Mvx.RegisterSingleton<IDataService>(()=>new DataService(Mvx.Resolve<ISQLiteConnectionFactory>()));
 			#endif
 				
-			RegisterAppStart<ViewModels.EventsViewModel>();
+			RegisterAppStart<ViewModels.LoginViewModel>();
         }
     }
 }

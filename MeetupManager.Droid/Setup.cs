@@ -5,6 +5,8 @@ using Cirrious.MvvmCross.ViewModels;
 using Cirrious.CrossCore;
 using MeetupManager.Portable.Interfaces;
 using MeetupManager.Droid.PlatformSpecific;
+using Refractored.MvxPlugins.Settings;
+using Refractored.MvxPlugins.Settings.Droid;
 
 namespace MeetupManager.Droid
 {
@@ -24,6 +26,7 @@ namespace MeetupManager.Droid
 			base.InitializeLastChance ();
 			Mvx.RegisterSingleton<IMessageDialog>(()=>new MessageDialog());
 			Mvx.RegisterSingleton<ILogin>(()=>new MeetupLogin());
+			Mvx.RegisterSingleton<ISettings> (() => new MvxAndroidSettings ());
 		}
 		
         protected override IMvxTrace CreateDebugTrace()

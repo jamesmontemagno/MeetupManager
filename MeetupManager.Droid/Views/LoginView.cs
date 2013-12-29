@@ -17,16 +17,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System.Threading.Tasks;
-using MeetupManager.Portable.Services.Responses;
+using System;
+using Android.App;
+using MeetupManager.Droid.Helpers;
+using MeetupManager.Portable.ViewModels;
+using Android.OS;
 
-namespace MeetupManager.Portable.Interfaces
+namespace MeetupManager.Droid.Views
 {
-	public interface IMeetupService
+	[Activity (Label = "Login", NoHistory = true)]			
+	public class LoginView : MvxActionBarActivity
 	{
-		Task<EventsRootObject> GetEvents(int skip);
-		Task<RSVPsRootObject> GetRSVPs (string eventId, int skip);
-		Task<bool> RenewAccessToken ();
+		private LoginViewModel viewModel;
+		private new LoginViewModel ViewModel 
+		{
+			get { return viewModel ?? (viewModel = base.ViewModel as LoginViewModel); }
+		}
+
+		protected override void OnCreate(Bundle bundle)
+		{
+			base.OnCreate(bundle);
+			SetContentView(Resource.Layout.view_login);
+		}
 	}
 }
 

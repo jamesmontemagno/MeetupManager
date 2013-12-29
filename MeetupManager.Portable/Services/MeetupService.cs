@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using MeetupManager.Portable.Services.Responses;
 using System.Net.Http;
 using Newtonsoft.Json;
+using MeetupManager.Portable.Helpers;
 
 namespace MeetupManager.Portable.Services
 {
@@ -33,23 +34,63 @@ namespace MeetupManager.Portable.Services
 		//private const string GroupUrlName = "<YOUR GROUP NAME HERE>";
 		private const string GroupUrlName = "SeattleMobileDevelopers";
 		//private const string ApiKey = "&key=<YOUR API KEY HERE>";
-		private const string ApiKey = "&key=365b4c1a4567207641623f61775c6";
-		private const string GetEventsUrl = @"http://api.meetup.com/2/events?group_urlname=" + GroupUrlName + "&status=upcoming,past" + ApiKey;
-		private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?event_id={0}" + ApiKey;
+
+		private const string ClientId = "";
+		private const string ClientSecrete = "";
+
+		private const string GetEventsUrl = @"https://api.meetup.com/2/events?group_urlname=" + GroupUrlName + "&offset={0}&status=upcoming,past&desc=true&access_token={1}";
+		private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?offset={0}&event_id={1}&order=name&rsvp=yes&access_token={2}";
+
+
+		private const string RefreshUrl = "https://secure.meetup.com/oauth2/access?client_id={0}&client_secret={1}&grant_type=refresh_token&refresh_token={2}";
 
 		public async Task<EventsRootObject> GetEvents (int skip)
 		{
+			RenewAccessToken ();
+
 			var httpClient = new HttpClient ();
-			var response = await httpClient.GetStringAsync (GetEventsUrl);
+			var request = string.Format (GetEventsUrl, "0", Settings.AccessToken);
+			var response = await httpClient.GetStringAsync (request);
 			return await JsonConvert.DeserializeObjectAsync<EventsRootObject> (response);
 		}
 
 		public async Task<RSVPsRootObject> GetRSVPs(string eventId, int skip)
 		{
+			RenewAccessToken ();
+
 			var httpClient = new HttpClient ();
-			var response = await httpClient.GetStringAsync (string.Format (GetRSVPsUrl, eventId));
+			var request = string.Format (GetRSVPsUrl, "0", eventId, Settings.AccessToken);
+			var response = await httpClient.GetStringAsync (request);
 			return await JsonConvert.DeserializeObjectAsync<RSVPsRootObject> (response);
 
+		}
+
+		private const string clientId = "kgqtisiigj7mpbpbfs1ei7s2h0";
+		private const string clientSecret = "g4k3oiourvnos0nf9varqt5eaf";
+		public async Task<bool> RenewAccessToken()
+		{
+			if (string.IsNullOrWhiteSpace (Settings.AccessToken))
+				return false;
+
+			if (DateTime.UtcNow.Ticks > Settings.KeyValidUntil)
+				return true;
+
+			var httpClient = new HttpClient ();
+			var request = string.Format (RefreshUrl, clientId, clientSecret, Settings.RefreshToken);
+
+			try
+			{
+				var response = await httpClient.GetStringAsync (request);
+				var refreshResponse = await JsonConvert.DeserializeObjectAsync<RefreshRootObject> (response);
+				Settings.AccessToken = refreshResponse.AccessToken;
+				Settings.KeyValidUntil = DateTime.UtcNow.Ticks + refreshResponse.ExpiresIn;
+				Settings.RefreshToken = refreshResponse.RefreshToken;
+			}
+			catch(Exception ex) {
+				return false;
+			}
+
+			return true;
 		}
 
 		#endregion

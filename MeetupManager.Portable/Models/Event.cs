@@ -57,8 +57,14 @@ namespace MeetupManager.Portable.Models
 		{
 			get 
 			{ 
-				return new TimeSpan (0, 0, 0, (int)Time).ToString("mm"); 
+				return FromUnixTime(Time).ToString("MM"); 
 			} 
+		}
+
+		public DateTime FromUnixTime(long unixTime)
+		{
+			var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+			return epoch.AddMilliseconds(unixTime);
 		}
 
 		[JsonIgnore]
@@ -66,18 +72,15 @@ namespace MeetupManager.Portable.Models
 		{
 			get 
 			{
-				//var span = new DateTime (Time);
-				//var year = span.ToString("yyyy");
-				//string.Format("{0:hh\\:mm\\:ss}", current);
-				return "2013";
+				return FromUnixTime(Time).ToString("yyyy"); 
 			} 
 		}
 
 		[JsonIgnore]
-		public string Day { get { return new TimeSpan (0, 0, 0, (int)Time).ToString ("dd"); } }
+		public string Day { get { return FromUnixTime(Time).ToString("dd"); } }
 
 		[JsonIgnore]
-		public string MonthDay { get { return "12/25";/*new TimeSpan (0, 0, 0, (int)Time).ToString("mm/dd");*/ } }
+		public string MonthDay { get { return FromUnixTime(Time).ToString("MM/dd");  } }
 
 		[JsonProperty("waitlist_count")]
 		public int WaitlistCount { get; set; }
