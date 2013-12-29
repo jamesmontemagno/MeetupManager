@@ -13,6 +13,7 @@ using Xamarin.Auth;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid.Platform;
 using MeetupManager.Portable.Helpers;
+using System.Threading.Tasks;
 
 namespace MeetupManager.Droid.PlatformSpecific
 {
@@ -29,8 +30,9 @@ namespace MeetupManager.Droid.PlatformSpecific
 			redirectUrl: new Uri ("http://www.refractored.com/login_success.html"),
 			accessTokenUrl: new Uri("https://secure.meetup.com/oauth2/access"));
 
-		public void LoginAsync ()
+		public void LoginAsync (Action test)
 		{
+
 			var activity = Mvx.Resolve<IMvxAndroidCurrentTopActivity> ().Activity;
 
 			auth.AllowCancel = true;

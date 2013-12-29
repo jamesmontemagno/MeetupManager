@@ -19,6 +19,7 @@
  */
 using System.Threading.Tasks;
 using MeetupManager.Portable.Services.Responses;
+using MeetupManager.Portable.Models;
 
 namespace MeetupManager.Portable.Interfaces
 {
@@ -27,6 +28,8 @@ namespace MeetupManager.Portable.Interfaces
 		Task<EventsRootObject> GetEvents(int skip);
 		Task<RSVPsRootObject> GetRSVPs (string eventId, int skip);
 		Task<bool> RenewAccessToken ();
+
+		Task<LoggedInUser> GetCurrentMember ();
 	}
 }
 

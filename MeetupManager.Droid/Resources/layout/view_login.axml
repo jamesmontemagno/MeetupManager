@@ -31,12 +31,13 @@
         android:paddingLeft="@dimen/standard_padding"
         android:paddingRight="@dimen/standard_padding"
         android:gravity="center"
-        android:text="@string/login_details" />
+        android:text="@string/login_details"
+        local:MvxBind="Visibility IsBusy,Converter=InvertedVisibility" />
     <Button
         android:padding="@dimen/standard_padding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/login"
-        local:MvxBind="Enabled IsBusy,Converter=InverseVisibility; Click LoginCommand" />
+        local:MvxBind="Visibility IsBusy,Converter=InvertedVisibility; Click LoginCommand" />
 </LinearLayout>

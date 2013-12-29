@@ -1,30 +1,40 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.Droid/Bootstrap/SettingsPluginBootstrap.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.Droid/PlatformSpecific/MeetupLogin.cs">
     <Files>
-      <File FileName="MeetupManager.Droid/PlatformSpecific/MeetupLogin.cs" Line="26" Column="47" />
-      <File FileName="MeetupManager.Portable/Helpers/Settings.cs" Line="63" Column="38" />
-      <File FileName="MeetupManager.Portable/ViewModels/EventsViewModel.cs" Line="39" Column="37" />
-      <File FileName="MeetupManager.Portable/ViewModels/LoginViewModel.cs" Line="3" Column="37" />
-      <File FileName="MeetupManager.Portable/ViewModels/EventViewModel.cs" Line="112" Column="10" />
-      <File FileName="MeetupManager.Portable/Interfaces/IMeetupService.cs" Line="29" Column="30" />
-      <File FileName="MeetupManager.Portable/Services/MeetupService.cs" Line="40" Column="3" />
-      <File FileName="MeetupManager.Portable/Mock/MeetupServiceMock.cs" Line="29" Column="39" />
-      <File FileName="MeetupManager.Droid/Bootstrap/SettingsPluginBootstrap.cs" Line="9" Column="36" />
-      <File FileName="MeetupManager.Droid/Bootstrap/VisibilityPluginBootstrap.cs" Line="6" Column="46" />
-      <File FileName="MeetupManager.Droid/Bootstrap/FilePluginBootstrap.cs" Line="6" Column="35" />
+      <File FileName="MeetupManager.Droid/PlatformSpecific/MeetupLogin.cs" Line="35" Column="15" />
+      <File FileName="MeetupManager.Portable/Helpers/Settings.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/ViewModels/EventsViewModel.cs" Line="82" Column="1" />
+      <File FileName="MeetupManager.Portable/ViewModels/LoginViewModel.cs" Line="16" Column="3" />
+      <File FileName="MeetupManager.Portable/ViewModels/EventViewModel.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/Interfaces/IMeetupService.cs" Line="32" Column="17" />
+      <File FileName="MeetupManager.Portable/Services/MeetupService.cs" Line="102" Column="45" />
+      <File FileName="MeetupManager.Portable/Mock/MeetupServiceMock.cs" Line="29" Column="38" />
+      <File FileName="MeetupManager.Droid/Bootstrap/SettingsPluginBootstrap.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Droid/Bootstrap/VisibilityPluginBootstrap.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Droid/Bootstrap/FilePluginBootstrap.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Droid/Setup.cs" Line="21" Column="25" />
+      <File FileName="MeetupManager.Droid/Views/LoginView.cs" Line="28" Column="27" />
+      <File FileName="MeetupManager.Droid/Views/EventView.cs" Line="29" Column="2" />
+      <File FileName="MeetupManager.Droid/SplashScreen.cs" Line="10" Column="8" />
+      <File FileName="MeetupManager.Portable/App.cs" Line="43" Column="4" />
+      <File FileName="MeetupManager.Portable/Models/Event.cs" Line="60" Column="43" />
+      <File FileName="MeetupManager.Portable/Services/Responses/RefreshRootObject.cs" Line="15" Column="29" />
+      <File FileName="MeetupManager.Portable/Services/Responses/RSVPsRootObject.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/ViewModels/MemberViewModel.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="MeetupManager.Droid" expanded="True">
-            <Node name="References" expanded="True">
-              <Node name="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/Common/Refractored.MvxPlugins.Settings.Droid.dll" selected="True" />
-            </Node>
+          <Node name="MeetupManager.Droid" expanded="True" selected="True">
+            <Node name="PlatformSpecific" expanded="True" />
+            <Node name="Resources" expanded="True" />
+            <Node name="Views" expanded="True" />
           </Node>
           <Node name="MeetupManager.Portable" expanded="True">
-            <Node name="Helpers" expanded="True" />
+            <Node name="Interfaces" expanded="True" />
             <Node name="Mock" expanded="True" />
+            <Node name="Models" expanded="True" />
             <Node name="Services" expanded="True" />
             <Node name="ViewModels" expanded="True" />
           </Node>
@@ -38,6 +48,8 @@
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Droid/Views/EventsView.cs" line="41" column="1" />
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/ViewModels/EventViewModel.cs" line="95" column="1" />
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Droid/PlatformSpecific/Login.cs" line="45" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/ViewModels/EventsViewModel.cs" line="82" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/ViewModels/LoginViewModel.cs" line="37" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

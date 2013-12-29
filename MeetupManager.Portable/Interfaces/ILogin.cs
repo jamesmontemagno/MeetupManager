@@ -5,7 +5,7 @@ namespace MeetupManager.Portable.Interfaces
 {
 	public interface ILogin
 	{
-		void LoginAsync();
+		void LoginAsync(Action test);
 		string AccountId { get; }
 	}
 }

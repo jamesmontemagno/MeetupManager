@@ -13,6 +13,8 @@ namespace MeetupManager.Portable.ViewModels
 		{
 			this.login = login;
 
+		
+			return;
 			if (DateTime.UtcNow.Ticks < Settings.KeyValidUntil) {
 				RenewAccessToken ();
 			}
@@ -41,7 +43,7 @@ namespace MeetupManager.Portable.ViewModels
 
 		private void ExecuteLoginCommand()
 		{
-			login.LoginAsync (/*(success) => {
+			login.LoginAsync (()=>{}/*(success) => {
 				if(success)
 					ShowViewModel<EventsViewModel>();
 			}*/);

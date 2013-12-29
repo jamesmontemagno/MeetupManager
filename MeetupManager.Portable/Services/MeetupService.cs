@@ -24,6 +24,7 @@ using MeetupManager.Portable.Services.Responses;
 using System.Net.Http;
 using Newtonsoft.Json;
 using MeetupManager.Portable.Helpers;
+using MeetupManager.Portable.Models;
 
 namespace MeetupManager.Portable.Services
 {
@@ -40,13 +41,13 @@ namespace MeetupManager.Portable.Services
 
 		private const string GetEventsUrl = @"https://api.meetup.com/2/events?group_urlname=" + GroupUrlName + "&offset={0}&status=upcoming,past&desc=true&access_token={1}";
 		private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?offset={0}&event_id={1}&order=name&rsvp=yes&access_token={2}";
-
+		private const string GetUserUrl = @"https://api.meetup.com/2/member/self?access_token={0}";
 
 		private const string RefreshUrl = "https://secure.meetup.com/oauth2/access?client_id={0}&client_secret={1}&grant_type=refresh_token&refresh_token={2}";
 
 		public async Task<EventsRootObject> GetEvents (int skip)
 		{
-			RenewAccessToken ();
+			await RenewAccessToken ();
 
 			var httpClient = new HttpClient ();
 			var request = string.Format (GetEventsUrl, "0", Settings.AccessToken);
@@ -56,7 +57,7 @@ namespace MeetupManager.Portable.Services
 
 		public async Task<RSVPsRootObject> GetRSVPs(string eventId, int skip)
 		{
-			RenewAccessToken ();
+			await RenewAccessToken ();
 
 			var httpClient = new HttpClient ();
 			var request = string.Format (GetRSVPsUrl, "0", eventId, Settings.AccessToken);
@@ -93,6 +94,15 @@ namespace MeetupManager.Portable.Services
 			return true;
 		}
 
+
+		public async Task<LoggedInUser> GetCurrentMember ()
+		{
+			await RenewAccessToken();
+			var httpClient = new HttpClient ();
+			var request = string.Format (GetUserUrl, Settings.AccessToken);
+			var response = await httpClient.GetStringAsync (request);
+			return await JsonConvert.DeserializeObjectAsync<LoggedInUser> (response);
+		}
 		#endregion
 
 

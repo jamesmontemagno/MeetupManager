@@ -73,6 +73,11 @@ namespace MeetupManager.Portable.Mock
 		{
 			throw new NotImplementedException ();
 		}
+
+		public Task<LoggedInUser> GetCurrentMember ()
+		{
+			throw new NotImplementedException ();
+		}
 		#endregion
 
 
