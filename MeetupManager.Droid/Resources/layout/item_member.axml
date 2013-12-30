@@ -5,39 +5,39 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/background_card">
-    <FrameLayout
+    <MeetupManager.Droid.Controls.MvxHeightAdjustableImageView
         android:layout_width="0dp"
         android:layout_weight="2"
+        android:layout_height="wrap_content"
+        local:MvxBind="ImageUrl Photo.ThumbLink"
+        android:scaleType="centerCrop"
+        android:src="@drawable/no_photo"
+        android:layout_gravity="left"
+        android:adjustViewBounds="true" />
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_weight="8"
         android:layout_height="fill_parent"
         android:layout_gravity="left"
         android:clipChildren="true">
-        <MeetupManager.Droid.Controls.MvxHeightAdjustableImageView
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            local:MvxBind="ImageUrl Photo.ThumbLink"
-            android:scaleType="centerCrop"
-            android:src="@drawable/no_photo"
-            android:layout_gravity="left"
-            android:adjustViewBounds="true" />
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="@dimen/standard_padding"
+            android:paddingRight="@dimen/standard_padding"
+            android:gravity="center_vertical"
+            local:MvxBind="Text Member.Name"
+            android:lines="2"
+            android:text="Name goes here" />
         <Mvx.MvxImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             local:MvxBind="Visibility CheckedIn,Converter=Visibility"
             android:src="@drawable/ic_checkedin"
             android:scaleType="fitXY"
-            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_gravity="center_vertical|right"
             android:adjustViewBounds="true" />
     </FrameLayout>
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="0dp"
-        android:layout_weight="8"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:paddingLeft="@dimen/standard_padding"
-        android:paddingRight="@dimen/standard_padding"
-        android:gravity="center_vertical"
-        local:MvxBind="Text Member.Name"
-        android:lines="2"
-        android:text="Name goes here" />
 </LinearLayout>

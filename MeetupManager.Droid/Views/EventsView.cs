@@ -42,7 +42,7 @@ namespace MeetupManager.Droid.Views
 
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.menu_event, menu);
+            MenuInflater.Inflate(Resource.Menu.menu_events, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
