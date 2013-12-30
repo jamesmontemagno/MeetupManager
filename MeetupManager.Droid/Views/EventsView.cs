@@ -33,14 +33,31 @@ namespace MeetupManager.Droid.Views
 		{
 			get { return viewModel ?? (viewModel = base.ViewModel as EventsViewModel); }
 		}
-		protected async override void OnCreate(Bundle bundle)
+		protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 			SetContentView(Resource.Layout.view_events);
 
-			//AndroidHUD.AndHUD.Shared.Show (this, "Loading...");
-			//await ViewModel.ExecuteRefreshCommand();
-			//AndroidHUD.AndHUD.Shared.Dismiss (this);
+		    SupportActionBar.Title = ViewModel.GroupName;
+        }
+
+        public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_event, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
+        {
+            if (ViewModel.IsBusy)
+                return base.OnOptionsItemSelected(item);
+            switch (item.ItemId)
+            {
+                case Resource.Id.menu_refresh:
+                    ViewModel.RefreshCommand.Execute(null);
+                    return true;
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

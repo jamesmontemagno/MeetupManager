@@ -39,6 +39,8 @@ namespace MeetupManager.Droid.Views
 		{
 			base.OnCreate(bundle);
 			SetContentView(Resource.Layout.view_event);
+
+		    SupportActionBar.Title = ViewModel.EventName;
 		}
 
 		public override bool OnCreateOptionsMenu (Android.Views.IMenu menu)
@@ -49,10 +51,15 @@ namespace MeetupManager.Droid.Views
 
 		public override bool OnOptionsItemSelected (Android.Views.IMenuItem item)
 		{
+            if(ViewModel.IsBusy)
+                return base.OnOptionsItemSelected(item);
 			switch (item.ItemId) {
 			case Resource.Id.menu_select_winner:
 				ViewModel.SelectWinnerCommand.Execute (null);
 				return true;
+            case Resource.Id.menu_refresh:
+                ViewModel.RefreshCommand.Execute(null);
+			    return true;
 			}
 			return base.OnOptionsItemSelected (item);
 		}

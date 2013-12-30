@@ -28,11 +28,39 @@ namespace MeetupManager.Droid.Views
     [Activity(Label = "Groups", Icon = "@drawable/ic_launcher")]
 	public class GroupsView : MvxActionBarActivity
 	{
-		
-		protected async override void OnCreate(Bundle bundle)
+
+        private GroupsViewModel viewModel;
+        private new GroupsViewModel ViewModel
+        {
+            get { return viewModel ?? (viewModel = base.ViewModel as GroupsViewModel); }
+        }
+
+
+		protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 			SetContentView(Resource.Layout.view_groups);
+
+
+        }
+
+        public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_event, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
+        {
+            if (ViewModel.IsBusy)
+                return base.OnOptionsItemSelected(item);
+            switch (item.ItemId)
+            {
+                case Resource.Id.menu_refresh:
+                    ViewModel.RefreshCommand.Execute(null);
+                    return true;
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

@@ -238,4 +238,10 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_madewithxamarin.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_meetup.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_events.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_groups.xml" />
+  </ItemGroup>
 </Project>
