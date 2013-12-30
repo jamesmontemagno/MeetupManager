@@ -136,9 +136,11 @@ namespace MeetupManager.Portable.ViewModels
 			if (count == 0) {
 				message = "No one has checked in.";
 			} else if (count == 1) {
-				message = potential[0].Name;
-			} else {
-				message = potential[random.Next (0, count - 1)].Name;
+				message = potential[0].Name + " | " + potential[0].Member.MemberId;
+			} else
+			{
+			    var member = potential[random.Next(0, count - 1)];
+				message = member.Name + " | " + member.Member.MemberId;
 			}
 
 			messageDialog.SendMessage (message, "Winner!!!");
