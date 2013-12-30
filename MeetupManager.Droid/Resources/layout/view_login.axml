@@ -59,5 +59,6 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_madewithxamarin"
         android:layout_gravity="right"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"
+        android:layout_margin="@dimen/standard_padding" />
 </LinearLayout>

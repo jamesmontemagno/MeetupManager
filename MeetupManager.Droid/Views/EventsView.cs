@@ -19,7 +19,6 @@
  */
 using Android.App;
 using Android.OS;
-using Cirrious.MvvmCross.Droid.Views;
 using MeetupManager.Portable.ViewModels;
 using MeetupManager.Droid.Helpers;
 

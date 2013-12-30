@@ -39,8 +39,7 @@ namespace MeetupManager.Portable.Services
         private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?offset={0}&event_id={1}&page=100&order=name&rsvp=yes&access_token={2}";
 		private const string GetUserUrl = @"https://api.meetup.com/2/member/self?access_token={0}";
 
-		private const string RefreshUrl = "https://secure.meetup.com/oauth2/access?client_id={0}&client_secret={1}&grant_type=refresh_token&refresh_token={2}";
-
+		
 		public async Task<EventsRootObject> GetEvents (string groupId, int skip)
 		{
 		    var offset = skip/100;
@@ -75,7 +74,8 @@ namespace MeetupManager.Portable.Services
 
 		private const string clientId = "kgqtisiigj7mpbpbfs1ei7s2h0";
 		private const string clientSecret = "g4k3oiourvnos0nf9varqt5eaf";
-		public async Task<bool> RenewAccessToken()
+
+        public async Task<bool> RenewAccessToken()
 		{
 			if (string.IsNullOrWhiteSpace (Settings.AccessToken))
 				return false;
@@ -83,20 +83,32 @@ namespace MeetupManager.Portable.Services
 			if (DateTime.UtcNow.Ticks > Settings.KeyValidUntil)
 				return true;
 
-			var httpClient = new HttpClient ();
-			var request = string.Format (RefreshUrl, clientId, clientSecret, Settings.RefreshToken);
+            using (var client = new HttpClient())
+            {
+                try
+                {
+          
+                    var content = new FormUrlEncodedContent(new[] 
+                    {
+                        new KeyValuePair<string, string>("client_id", clientId),
+                        new KeyValuePair<string, string>("client_secret", clientSecret),
+                        new KeyValuePair<string, string>("grant_type", "refresh_token"),
+                        new KeyValuePair<string, string>("refresh_token", Settings.RefreshToken), 
+                    });
 
-			try
-			{
-				var response = await httpClient.GetStringAsync (request);
-				var refreshResponse = await JsonConvert.DeserializeObjectAsync<RefreshRootObject> (response);
-				Settings.AccessToken = refreshResponse.AccessToken;
-				Settings.KeyValidUntil = DateTime.UtcNow.Ticks + refreshResponse.ExpiresIn;
-				Settings.RefreshToken = refreshResponse.RefreshToken;
-			}
-			catch(Exception ex) {
-				return false;
-			}
+                    var result = client.PostAsync("https://secure.meetup.com/oauth2/access", content).Result;
+                    var response = result.Content.ReadAsStringAsync().Result;
+                    var refreshResponse = await JsonConvert.DeserializeObjectAsync<RefreshRootObject>(response);
+                    Settings.AccessToken = refreshResponse.AccessToken;
+                    Settings.KeyValidUntil = DateTime.UtcNow.Ticks + refreshResponse.ExpiresIn;
+                    Settings.RefreshToken = refreshResponse.RefreshToken;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                
+            }
 
 			return true;
 		}

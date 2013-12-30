@@ -7,4 +7,5 @@
 	<string name="login">Login</string>
 	<string name="login_details">Tap Login to proceed to the Meetup.com login page.</string>
 	<string name="logging_in">Logging in to Meetup.com</string>
+  <string name="tap_to_login">Tap to login:</string>
 </resources>

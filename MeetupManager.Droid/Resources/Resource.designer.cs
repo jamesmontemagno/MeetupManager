@@ -1418,6 +1418,9 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0a0013
 			public const int menu_select_winner = 2131361811;
 			
+			// aapt resource value: 0x7f0a0018
+			public const int tap_to_login = 2131361816;
+			
 			static String()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

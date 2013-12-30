@@ -14,6 +14,14 @@
         local:MvxBind="Visibility IsBusy,Converter=Visibility"
         android:layout_marginBottom="-8dp"
         android:layout_marginTop="-4dp" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/standard_padding"
+        android:paddingRight="@dimen/standard_padding"
+        android:text="@string/tap_to_login"
+        local:MvxBind="Visibility IsBusy,Converter=InvertedVisibility" />
     <Mvx.MvxGridView
         android:padding="@dimen/standard_padding"
         android:layout_width="fill_parent"

@@ -3,7 +3,6 @@ using Cirrious.CrossCore;
 using MeetupManager.Portable.Interfaces;
 using Cirrious.MvvmCross.ViewModels;
 using MeetupManager.Portable.Helpers;
-using System.Threading.Tasks;
 
 namespace MeetupManager.Portable.ViewModels
 {
