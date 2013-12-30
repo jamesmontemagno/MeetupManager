@@ -5,9 +5,9 @@ using Android.App;
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 [assembly: AssemblyTitle ("MeetupManager.Droid")]
-[assembly: AssemblyDescription ("")]
+[assembly: AssemblyDescription ("Android app for meetup.com management")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("")]
+[assembly: AssemblyCompany ("Refractored LCC")]
 [assembly: AssemblyProduct ("")]
 [assembly: AssemblyCopyright ("James Montemagno, Refractored LLC")]
 [assembly: AssemblyTrademark ("")]
