@@ -1327,6 +1327,12 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0c0000
 			public const int menu_event = 2131492864;
 			
+			// aapt resource value: 0x7f0c0001
+			public const int menu_events = 2131492865;
+			
+			// aapt resource value: 0x7f0c0002
+			public const int menu_groups = 2131492866;
+			
 			static Menu()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

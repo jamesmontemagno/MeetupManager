@@ -18,6 +18,8 @@
  * limitations under the License.
  */
 using System;
+using System.Collections.Generic;
+using Cirrious.CrossCore;
 using MeetupManager.Portable.Interfaces;
 using System.Threading.Tasks;
 using MeetupManager.Portable.Services.Responses;
@@ -42,7 +44,11 @@ namespace MeetupManager.Portable.Services
 		public async Task<EventsRootObject> GetEvents (string groupId, int skip)
 		{
 		    var offset = skip/100;
-			await RenewAccessToken ();
+            if (!await RenewAccessToken())
+            {
+                Mvx.Resolve<IMessageDialog>().SendToast("Unable to get events, please re-login.");
+                return new EventsRootObject() { Events = new List<Event>() };
+            }
 
 			var httpClient = new HttpClient ();
             var request = string.Format(GetEventsUrl, offset, groupId, Settings.AccessToken);
@@ -53,7 +59,12 @@ namespace MeetupManager.Portable.Services
 		public async Task<RSVPsRootObject> GetRSVPs(string eventId, int skip)
 		{
             var offset = skip / 100;
-			await RenewAccessToken ();
+            if (!await RenewAccessToken())
+            {
+                Mvx.Resolve<IMessageDialog>().SendToast("Unable to get RSVPs, please re-login.");
+                return new RSVPsRootObject() { RSVPs = new List<RSVP>() };
+            }
+
 
 			var httpClient = new HttpClient ();
 			var request = string.Format (GetRSVPsUrl, offset, eventId, Settings.AccessToken);
@@ -110,10 +121,15 @@ namespace MeetupManager.Portable.Services
         public async Task<GroupsRootObject> GetGroups(string memberId, int skip)
         {
             var offset = skip / 100;
-            await RenewAccessToken();
+            if(!await RenewAccessToken())
+            {
+                Mvx.Resolve<IMessageDialog>().SendToast("Unable to get groups, please re-login.");
+                return new GroupsRootObject{Groups = new List<Group>()};
+            }
 
             var httpClient = new HttpClient();
             var request = string.Format(GetGroupsUrl, offset, memberId, Settings.AccessToken);
+
             var response = await httpClient.GetStringAsync(request);
             return await JsonConvert.DeserializeObjectAsync<GroupsRootObject>(response);
         }
