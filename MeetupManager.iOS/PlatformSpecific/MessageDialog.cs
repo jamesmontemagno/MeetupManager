@@ -12,5 +12,11 @@ namespace MeetupManager.iOS.PlatformSpecific
 		var alertView = new UIAlertView (title ?? string.Empty, message, null, "OK");
 		alertView.Show ();
     }
+
+
+    public void SendToast(string message)
+    {
+        throw new System.NotImplementedException();
+    }
   }
 }

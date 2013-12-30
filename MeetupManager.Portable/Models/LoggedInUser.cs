@@ -19,7 +19,7 @@ namespace MeetupManager.Portable.Models
 		[JsonProperty("self")]
 		public Self Self { get; set; }
 		[JsonProperty("photo")]
-		public MemberPhoto Photo { get; set; }
+		public Photo Photo { get; set; }
 		[JsonProperty("lang")]
 		public string Langitude { get; set; }
 		[JsonProperty("country")]
@@ -42,47 +42,6 @@ namespace MeetupManager.Portable.Models
 		public OtherServices OtherServices { get; set; }
 		[JsonProperty("lat")]
 		public double Lat { get; set; }
-	}
-
-	public class OtherServices
-	{
-		[JsonProperty("twitter")]
-		public Twitter Twitter { get; set; }
-		[JsonProperty("tumblr")]
-		public Tumblr Tumblr { get; set; }
-	}
-
-	public class Common
-	{
-	}
-
-	public class Self
-	{
-		[JsonProperty("common")]
-		public Common Common { get; set; }
-	}
-	
-
-	public class Topic
-	{	
-		[JsonProperty("id")]
-		public int Id { get; set; }
-		[JsonProperty("urlkey")]
-		public string UrlKey { get; set; }
-		[JsonProperty("name")]
-		public string Name { get; set; }
-	}
-
-	public class Twitter
-	{
-		[JsonProperty("identifier")]
-		public string Identifier { get; set; }
-	}
-
-	public class Tumblr
-	{
-		[JsonProperty("identifier")]
-		public string Identifier { get; set; }
 	}
 }
 

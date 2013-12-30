@@ -30,12 +30,20 @@ namespace MeetupManager.Portable.ViewModels
 {
 	public class EventsViewModel 
 		: BaseViewModel
-    {
+	{
+	    private string groupId;
+
 		public EventsViewModel(IMeetupService meetupService) : base(meetupService)
 		{
 			events = new ObservableCollection<Event> ();
-			ExecuteRefreshCommand ();
 		}
+
+
+        public void Init(string id)
+        {
+            this.groupId = id;
+            ExecuteRefreshCommand();
+        }
 
 		private ObservableCollection<Event> events;
 		public ObservableCollection<Event> Events
@@ -72,7 +80,7 @@ namespace MeetupManager.Portable.ViewModels
 
 
 			try{
-				var eventResults = await this.meetupService.GetEvents(events.Count);
+				var eventResults = await this.meetupService.GetEvents(groupId, events.Count);
 				foreach(var e in eventResults.Events)
 				{
 					events.Add(e);
@@ -89,10 +97,10 @@ namespace MeetupManager.Portable.ViewModels
 		private MvxCommand<Event> goToEventCommand;
 		public IMvxCommand GoToEventCommand
 		{
-			get { return goToEventCommand ?? (goToEventCommand = new MvxCommand<Event> (async (ev)=>ExecuteGoToEventCommand(ev))); }
+			get { return goToEventCommand ?? (goToEventCommand = new MvxCommand<Event> (ExecuteGoToEventCommand)); }
 		}
 
-		private async Task ExecuteGoToEventCommand(Event e)
+		private void ExecuteGoToEventCommand(Event e)
 		{
 			ShowViewModel<EventViewModel>(new { eventId = e.Id});
 		}

@@ -74,13 +74,39 @@ namespace MeetupManager.Portable.Mock
 			throw new NotImplementedException ();
 		}
 
-		public Task<LoggedInUser> GetCurrentMember ()
+		public async Task<LoggedInUser> GetCurrentMember ()
 		{
-			throw new NotImplementedException ();
+			return new LoggedInUser
+			{
+			    Name = "James Montemagno",
+                Id = 1
+			};
 		}
 		#endregion
 
 
-	}
+
+        public async Task<EventsRootObject> GetEvents(string groupId, int skip)
+        {
+            var events = new EventsRootObject();
+            events.Metadata = new Meta();
+            events.Events = new List<Event>();
+            for (int i = 0; i < 10; i++)
+            {
+                events.Events.Add(new Event
+                {
+                   Name = "Event name : " + i,
+                   Id = i.ToString()
+                });
+            }
+
+            return events;
+        }
+
+        public Task<GroupsRootObject> GetGroups(string memberId, int skip)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
 

@@ -124,6 +124,7 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Bootstrap\CommunitySqlitePluginBootstrap.cs" />
+    <Compile Include="Views\GroupsView.cs" />
     <Compile Include="Views\EventsView.cs" />
     <Compile Include="Views\EventView.cs" />
     <Compile Include="Controls\MvxHeightAdjustableImageView.cs" />
@@ -142,6 +143,8 @@
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="packages.config" />
+    <AndroidResource Include="Resources\layout\view_groups.axml" />
+    <AndroidResource Include="Resources\layout\item_group.axml" />
     <None Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 using Android.App;
+using Android.Widget;
 using MeetupManager.Portable.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid.Platform;
@@ -38,6 +39,12 @@ namespace MeetupManager.Droid.PlatformSpecific
 			       
 			AlertDialog alert = builder.Create();
 			alert.Show();
+    }
+
+
+    public void SendToast(string message)
+    {
+        Toast.MakeText(Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity, message, ToastLength.Long).Show();
     }
   }
 }

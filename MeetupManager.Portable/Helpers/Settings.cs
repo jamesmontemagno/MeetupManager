@@ -34,6 +34,12 @@ namespace MeetupManager.Portable.Helpers
 		private const string KeyValidUntilKey = "key_valid";
 		private const long KeyValidUntilDefault = 0;
 
+        private const string UserIdKey = "user_id";
+        private static string UserIdDefault = string.Empty;
+
+        private const string UserNameKey = "user_name";
+        private static string UserNameDefault = string.Empty;
+
 #endregion
 
  
@@ -64,6 +70,35 @@ namespace MeetupManager.Portable.Helpers
 					AppSettings.Save();
 			}
 		}
+
+        public static string UserId
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(UserIdKey, UserIdDefault);
+            }
+            set
+            {
+                //if value has changed then save it!
+                if (AppSettings.AddOrUpdateValue(UserIdKey, value))
+                    AppSettings.Save();
+            }
+        }
+
+
+        public static string UserName
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(UserNameKey, UserNameDefault);
+            }
+            set
+            {
+                //if value has changed then save it!
+                if (AppSettings.AddOrUpdateValue(UserNameKey, value))
+                    AppSettings.Save();
+            }
+        }
 
 		public static long KeyValidUntil
 		{

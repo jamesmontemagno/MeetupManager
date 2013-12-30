@@ -25,8 +25,9 @@ namespace MeetupManager.Portable.Interfaces
 {
 	public interface IMeetupService
 	{
-		Task<EventsRootObject> GetEvents(int skip);
+		Task<EventsRootObject> GetEvents(string groupId, int skip);
 		Task<RSVPsRootObject> GetRSVPs (string eventId, int skip);
+	    Task<GroupsRootObject> GetGroups(string memberId, int skip);
 		Task<bool> RenewAccessToken ();
 
 		Task<LoggedInUser> GetCurrentMember ();

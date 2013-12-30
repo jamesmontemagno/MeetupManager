@@ -1,4 +1,4 @@
-﻿/*
+/*
  * MeetupManager:
  * Copyright (C) 2013 Refractored LLC: 
  * http://github.com/JamesMontemagno
@@ -17,12 +17,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace MeetupManager.Portable.Interfaces
+using Android.App;
+using Android.OS;
+using Cirrious.MvvmCross.Droid.Views;
+using MeetupManager.Portable.ViewModels;
+using MeetupManager.Droid.Helpers;
+
+namespace MeetupManager.Droid.Views
 {
-    public interface IMessageDialog
-  {
-	    
-    void SendMessage(string message, string title = null);
-        void SendToast(string message);
-  }
+	[Activity(Label = "Groups")]
+	public class GroupsView : MvxActionBarActivity
+	{
+		
+		protected async override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+			SetContentView(Resource.Layout.view_groups);
+        }
+    }
 }

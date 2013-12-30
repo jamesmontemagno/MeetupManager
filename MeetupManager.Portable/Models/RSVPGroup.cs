@@ -17,48 +17,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System.Collections.Generic;
+using System;
 using Newtonsoft.Json;
 
 namespace MeetupManager.Portable.Models
 {
-	public class RSVP
+	public class RSVPGroup
 	{
-		public RSVP ()
+        public RSVPGroup()
 		{
 		}
-		[JsonProperty("response")]
-		public string Response { get; set; }
 
-		[JsonProperty("member")]
-		public Member Member { get; set; }
+		[JsonProperty("id")]
+		public int Id { get; set; }
 
-		[JsonProperty("member_photo")]
-		public MemberPhoto MemberPhoto { get; set; }
+		[JsonProperty("group_lat")]
+		public double GroupLatitude { get; set; }
 
-		[JsonProperty("created")]
-		public object Created { get; set; }
+		[JsonProperty("name")]
+		public string Name { get; set; }
 
-		[JsonProperty("event")]
-		public Event Event { get; set; }
+		[JsonProperty("group_lon")]
+		public double GroupLongitude { get; set; }
 
-		[JsonProperty("mtime")]
-		public object MTime { get; set; }
+		[JsonProperty("join_mode")]
+		public string JoinMode { get; set; }
 
-		[JsonProperty("answers")]
-		public List<string> Answers { get; set; }
+		[JsonProperty("urlname")]
+		public string UrlName { get; set; }
 
-		[JsonProperty("guests")]
-		public int Guests { get; set; }
-
-		[JsonProperty("rsvp_id")]
-		public int RSVPId { get; set; }
-
-		[JsonProperty("venue")]
-		public Venue Venue { get; set; }
-
-		[JsonProperty("group")]
-		public RSVPGroup Group { get; set; }
+		[JsonProperty("who")]
+		public string Who { get; set; }
 	}
 }
 

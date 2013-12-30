@@ -32,35 +32,31 @@ namespace MeetupManager.Portable.Services
 	{
 		#region IMeetupService implementation
 
-		//private const string GroupUrlName = "<YOUR GROUP NAME HERE>";
-		private const string GroupUrlName = "SeattleMobileDevelopers";
-		//private const string ApiKey = "&key=<YOUR API KEY HERE>";
-
-		private const string ClientId = "";
-		private const string ClientSecrete = "";
-
-		private const string GetEventsUrl = @"https://api.meetup.com/2/events?group_urlname=" + GroupUrlName + "&offset={0}&status=upcoming,past&desc=true&access_token={1}";
-		private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?offset={0}&event_id={1}&order=name&rsvp=yes&access_token={2}";
+        private const string GetGroupsUrl = @"https://api.meetup.com/2/groups?offset={0}&member_id={1}&page=100&order=name&access_token={2}";
+        private const string GetEventsUrl = @"https://api.meetup.com/2/events?offset={0}&group_id={1}&page=100&status=upcoming,past&desc=true&access_token={2}";
+        private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?offset={0}&event_id={1}&page=100&order=name&rsvp=yes&access_token={2}";
 		private const string GetUserUrl = @"https://api.meetup.com/2/member/self?access_token={0}";
 
 		private const string RefreshUrl = "https://secure.meetup.com/oauth2/access?client_id={0}&client_secret={1}&grant_type=refresh_token&refresh_token={2}";
 
-		public async Task<EventsRootObject> GetEvents (int skip)
+		public async Task<EventsRootObject> GetEvents (string groupId, int skip)
 		{
+		    var offset = skip/100;
 			await RenewAccessToken ();
 
 			var httpClient = new HttpClient ();
-			var request = string.Format (GetEventsUrl, "0", Settings.AccessToken);
+            var request = string.Format(GetEventsUrl, offset, groupId, Settings.AccessToken);
 			var response = await httpClient.GetStringAsync (request);
 			return await JsonConvert.DeserializeObjectAsync<EventsRootObject> (response);
 		}
 
 		public async Task<RSVPsRootObject> GetRSVPs(string eventId, int skip)
 		{
+            var offset = skip / 100;
 			await RenewAccessToken ();
 
 			var httpClient = new HttpClient ();
-			var request = string.Format (GetRSVPsUrl, "0", eventId, Settings.AccessToken);
+			var request = string.Format (GetRSVPsUrl, offset, eventId, Settings.AccessToken);
 			var response = await httpClient.GetStringAsync (request);
 			return await JsonConvert.DeserializeObjectAsync<RSVPsRootObject> (response);
 
@@ -101,11 +97,26 @@ namespace MeetupManager.Portable.Services
 			var httpClient = new HttpClient ();
 			var request = string.Format (GetUserUrl, Settings.AccessToken);
 			var response = await httpClient.GetStringAsync (request);
-			return await JsonConvert.DeserializeObjectAsync<LoggedInUser> (response);
+		  
+            //should use async, but has issue for some reason and throws exception
+		    return JsonConvert.DeserializeObject<LoggedInUser>(response);
+		        
 		}
 		#endregion
 
 
-	}
+
+
+        public async Task<GroupsRootObject> GetGroups(string memberId, int skip)
+        {
+            var offset = skip / 100;
+            await RenewAccessToken();
+
+            var httpClient = new HttpClient();
+            var request = string.Format(GetGroupsUrl, offset, memberId, Settings.AccessToken);
+            var response = await httpClient.GetStringAsync(request);
+            return await JsonConvert.DeserializeObjectAsync<GroupsRootObject>(response);
+        }
+    }
 }
 

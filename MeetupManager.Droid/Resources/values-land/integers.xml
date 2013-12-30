@@ -2,4 +2,5 @@
 <resources>
   <integer name="event_columns">2</integer>
   <integer name="member_columns">2</integer>
+  <integer name="group_columns">2</integer>
 </resources>

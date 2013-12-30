@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background">
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateOnly="true"
+        local:MvxBind="Visibility IsBusy,Converter=Visibility"
+        android:layout_marginBottom="-8dp"
+        android:layout_marginTop="-4dp" />
+    <Mvx.MvxGridView
+        android:padding="@dimen/standard_padding"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        local:MvxBind="ItemsSource Groups; ItemClick GoToGroupCommand"
+        local:MvxItemTemplate="@layout/item_group"
+        android:numColumns="@integer/group_columns"
+        android:stretchMode="columnWidth"
+        android:drawSelectorOnTop="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:horizontalSpacing="@dimen/standard_padding"
+        android:verticalSpacing="@dimen/standard_padding"
+        android:gravity="center"
+        android:fastScrollEnabled="true"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:smoothScrollbar="true" />
+</LinearLayout>
