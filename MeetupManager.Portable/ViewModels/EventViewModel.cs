@@ -103,6 +103,7 @@ namespace MeetupManager.Portable.ViewModels
 		}
 
 		private MvxCommand<MemberViewModel> checkInCommand;
+	    private IDataService dataService;
 		public IMvxCommand CheckInCommand
 		{
 			get { return checkInCommand ?? (checkInCommand = new MvxCommand<MemberViewModel> (async (ev)=>ExecuteCheckInCommand(ev))); }
@@ -110,9 +111,13 @@ namespace MeetupManager.Portable.ViewModels
 
 		private async Task ExecuteCheckInCommand(MemberViewModel member)
 		{
-
-			await Mvx.Resolve<IDataService> ().CheckInMember (new EventRSVP (eventId, member.Member.MemberId.ToString()));
-			member.CheckedIn = true;
+		    if (dataService == null)
+		        dataService = Mvx.Resolve<IDataService>();
+            if (member.CheckedIn)
+                await dataService.CheckOutMember(eventId, member.Member.MemberId.ToString());
+            else
+			    await dataService.CheckInMember (new EventRSVP (eventId, member.Member.MemberId.ToString()));
+            member.CheckedIn = !member.CheckedIn;
 		
 
 		}

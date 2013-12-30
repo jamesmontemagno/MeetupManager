@@ -51,6 +51,18 @@ namespace MeetupManager.Portable.Services.Database
 			});
 		}
 
+        public Task CheckOutMember(string eventId, string userId)
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                var item = database.GetEventRSVP(eventId, userId);
+                if(item!= null)
+                    database.DeleteItem<EventRSVP>(item);
+            });
+        }
 		#endregion
+
+
+        
     }
 }

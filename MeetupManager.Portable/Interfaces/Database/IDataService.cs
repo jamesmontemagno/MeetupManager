@@ -28,6 +28,7 @@ namespace MeetupManager.Portable.Interfaces.Database
     public interface IDataService
     {
 		Task CheckInMember (EventRSVP rsvp);
+        Task CheckOutMember(string eventId, string userId);
 		Task<bool> IsCheckedIn(string eventId, string userId);
     }
 }
