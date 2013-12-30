@@ -7,7 +7,7 @@ namespace MeetupManager.Droid
     [Activity(
 		Label = "MeetupManager.Droid"
 		, MainLauncher = true
-		, Icon = "@drawable/icon"
+		, Icon = "@drawable/ic_launcher"
 		, Theme = "@style/Theme.Splash"
 		, NoHistory = true
 		, ScreenOrientation = ScreenOrientation.Portrait)]
