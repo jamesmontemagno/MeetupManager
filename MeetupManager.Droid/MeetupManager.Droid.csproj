@@ -137,7 +137,6 @@
     <Compile Include="PlatformSpecific\MessageDialog.cs" />
     <Compile Include="Helpers\MvxActionBarActivity.cs" />
     <Compile Include="Helpers\MvxActionBarEventSourceActivity.cs" />
-    <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="PlatformSpecific\MeetupLogin.cs" />
     <Compile Include="Views\LoginView.cs" />
   </ItemGroup>
