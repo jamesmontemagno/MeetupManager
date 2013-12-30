@@ -25,7 +25,7 @@ using MeetupManager.Droid.Helpers;
 
 namespace MeetupManager.Droid.Views
 {
-	[Activity(Label = "Events")]
+	[Activity(Label = "Events", Icon = "@drawable/ic_launcher")]
 	public class EventsView : MvxActionBarActivity
 	{
 		private EventsViewModel viewModel;

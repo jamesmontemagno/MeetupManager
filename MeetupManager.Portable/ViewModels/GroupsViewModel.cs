@@ -93,7 +93,7 @@ namespace MeetupManager.Portable.ViewModels
 
         private void ExecuteGoToGroupCommand(Group e)
         {
-            ShowViewModel<EventsViewModel>(new {id = e.Id});
+            ShowViewModel<EventsViewModel>(new {id = e.Id, groupName = e.Name});
         }
     }
 }

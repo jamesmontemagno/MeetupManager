@@ -19,7 +19,7 @@ namespace MeetupManager.Portable.ViewModels
 			}
 			else if (!string.IsNullOrWhiteSpace (Settings.AccessToken) &&
 				!string.IsNullOrWhiteSpace(Settings.RefreshToken)) {
-                    ShowViewModel<GroupsViewModel>(new { });
+                    ShowViewModel<GroupsViewModel>();
 			}
 		}
 
@@ -37,7 +37,7 @@ namespace MeetupManager.Portable.ViewModels
 			IsBusy = false;
 
 			if(success)
-                ShowViewModel<GroupsViewModel>(new { });
+                ShowViewModel<GroupsViewModel>();
             else
                 Mvx.Resolve<IMessageDialog>().SendToast("Please login againt to re-validate credentials.");
 

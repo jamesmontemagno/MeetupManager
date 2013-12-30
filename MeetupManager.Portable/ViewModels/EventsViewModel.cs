@@ -39,11 +39,14 @@ namespace MeetupManager.Portable.ViewModels
 		}
 
 
-        public void Init(string id)
+        public void Init(string id, string groupName)
         {
             this.groupId = id;
+            this.GroupName = groupName;
             ExecuteRefreshCommand();
         }
+
+        public string GroupName { get; set; }
 
 		private ObservableCollection<Event> events;
 		public ObservableCollection<Event> Events
@@ -102,7 +105,7 @@ namespace MeetupManager.Portable.ViewModels
 
 		private void ExecuteGoToEventCommand(Event e)
 		{
-			ShowViewModel<EventViewModel>(new { eventId = e.Id});
+			ShowViewModel<EventViewModel>(new { eventId = e.Id, eventName = e.Name});
 		}
     }
 }

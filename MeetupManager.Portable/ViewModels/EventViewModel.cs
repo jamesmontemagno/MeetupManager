@@ -42,11 +42,14 @@ namespace MeetupManager.Portable.ViewModels
 			random = new Random ();
 		}
 
-		public void Init(string eventId)
+		public void Init(string eventId, string eventName)
 		{
 			this.eventId = eventId;
+		    this.EventName = eventName;
 			ExecuteRefreshCommand ();
 		}
+
+        public string EventName { get; set; }
 
 		private ObservableCollection<MemberViewModel> members;
 		public ObservableCollection<MemberViewModel>  Members

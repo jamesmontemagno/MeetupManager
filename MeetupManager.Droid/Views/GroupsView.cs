@@ -25,7 +25,7 @@ using MeetupManager.Droid.Helpers;
 
 namespace MeetupManager.Droid.Views
 {
-	[Activity(Label = "Groups")]
+    [Activity(Label = "Groups", Icon = "@drawable/ic_launcher")]
 	public class GroupsView : MvxActionBarActivity
 	{
 		

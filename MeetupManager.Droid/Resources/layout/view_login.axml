@@ -6,6 +6,16 @@
     android:layout_height="fill_parent"
     android:background="@color/background"
     android:gravity="center_vertical">
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_meetup"
+        android:scaleType="fitXY"
+        android:layout_gravity="center_horizontal" />
     <TextView
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="fill_parent"
@@ -40,4 +50,14 @@
         android:layout_gravity="center"
         android:text="@string/login"
         local:MvxBind="Visibility IsBusy,Converter=InvertedVisibility; Click LoginCommand" />
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_madewithxamarin"
+        android:layout_gravity="right"
+        android:scaleType="fitXY" />
 </LinearLayout>

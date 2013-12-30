@@ -25,7 +25,7 @@ using Android.OS;
 
 namespace MeetupManager.Droid.Views
 {
-	[Activity (Label = "Login")]			
+    [Activity(Label = "Login", Icon = "@drawable/ic_launcher")]			
 	public class LoginView : MvxActionBarActivity
 	{
 		private LoginViewModel viewModel;

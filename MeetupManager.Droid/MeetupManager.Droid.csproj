@@ -41,6 +41,9 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GoogleAnalytics.Android">
+      <HintPath>..\Components\googleanalytics-3.0.2\lib\android\GoogleAnalytics.Android.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -148,7 +151,6 @@
     <None Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\drawable\background_card.9.png" />
     <AndroidResource Include="Resources\values\analytics.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
@@ -157,7 +159,6 @@
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
     <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
     <AndroidResource Include="Resources\values\SplashStyle.xml" />
-    <AndroidResource Include="Resources\drawable\splash.png" />
     <AndroidResource Include="Resources\values\integers.xml" />
     <AndroidResource Include="Resources\values-land\integers.xml" />
     <AndroidResource Include="Resources\layout\item_member.axml" />
@@ -187,6 +188,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
+    <XamarinComponentReference Include="googleanalytics">
+      <Visible>False</Visible>
+      <Version>3.0.2</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="xamandroidsupportv7appcompat">
       <Version>7.18.0</Version>
       <Visible>False</Visible>
@@ -200,11 +205,37 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MeetupManager.Portable\MeetupManager.Portable.csproj">
       <Project>{9189A7F8-9C9C-427D-9777-AA6B8CD7DF20}</Project>
       <Name>MeetupManager.Portable</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_meetup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_meetup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_madewithxamarin.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_madewithxamarin.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_meetup.png" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_madewithxamarin.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_madewithxamarin.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_meetup.png" />
   </ItemGroup>
 </Project>

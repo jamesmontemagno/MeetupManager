@@ -904,22 +904,28 @@ namespace MeetupManager.Droid
 			public const int ic_errorstatus = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_successstatus = 2130837596;
+			public const int ic_launcher = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int Icon = 2130837597;
+			public const int ic_madewithxamarin = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int no_photo = 2130837598;
+			public const int ic_meetup = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int roundedbg = 2130837599;
+			public const int ic_successstatus = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int roundedbgdark = 2130837600;
+			public const int no_photo = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int splash = 2130837601;
+			public const int roundedbg = 2130837601;
+			
+			// aapt resource value: 0x7f020062
+			public const int roundedbgdark = 2130837602;
+			
+			// aapt resource value: 0x7f020063
+			public const int splash = 2130837603;
 			
 			static Drawable()
 			{
