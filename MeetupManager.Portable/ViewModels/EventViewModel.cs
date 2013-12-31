@@ -158,7 +158,7 @@ namespace MeetupManager.Portable.ViewModels
 				message = potential[0].Name + " | " + potential[0].Member.MemberId;
 			} else
 			{
-			    var member = potential[random.Next(0, count - 1)];
+			    var member = potential[random.Next(count)];
 				message = member.Name + " | " + member.Member.MemberId;
 			}
 
