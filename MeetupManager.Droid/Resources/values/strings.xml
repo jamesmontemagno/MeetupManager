@@ -4,8 +4,12 @@
 	<string name="app_name">Meetup Manager</string>
 	<string name="menu_select_winner">Select Winner</string>
 	<string name="menu_refresh">Refresh</string>
+  <string name="menu_refresh_login">Refresh Login</string>
+  <string name="menu_about">About</string>
+  <string name="about">Created by @JamesMontemagno Copyright 2014 Refractored LLC. Open source and created completely in C# with Xamarin!</string>
 	<string name="login">Login</string>
 	<string name="login_details">Tap Login to proceed to the Meetup.com login page.</string>
 	<string name="logging_in">Logging in to Meetup.com</string>
   <string name="tap_to_login">Tap to checkin:</string>
+  <string name="ok">OK</string>
 </resources>

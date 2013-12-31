@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 using System;
+using System.Threading.Tasks;
 using Cirrious.CrossCore;
 using MeetupManager.Portable.Interfaces;
 using Cirrious.MvvmCross.ViewModels;
@@ -41,6 +42,24 @@ namespace MeetupManager.Portable.ViewModels
 			}
 		}
 
+        private IMvxCommand refreshLoginCommand;
+        public IMvxCommand RefreshLoginCommand
+        {
+            get { return refreshLoginCommand ?? (refreshLoginCommand = new MvxCommand(async () => ExecuteRefreshLoginCommand())); }
+        }
+
+        private async Task ExecuteRefreshLoginCommand()
+	    {
+            if (DateTime.UtcNow.Ticks < Settings.KeyValidUntil)
+            {
+                RenewAccessToken();
+            }
+            else if (!string.IsNullOrWhiteSpace(Settings.AccessToken) &&
+                !string.IsNullOrWhiteSpace(Settings.RefreshToken))
+            {
+                ShowViewModel<GroupsViewModel>();
+            }
+	    }
 
 	    private IMvxCommand loginCommand;
 		public IMvxCommand LoginCommand
@@ -57,7 +76,7 @@ namespace MeetupManager.Portable.ViewModels
 			if(success)
                 ShowViewModel<GroupsViewModel>();
             else
-                Mvx.Resolve<IMessageDialog>().SendToast("Please login againt to re-validate credentials.");
+                Mvx.Resolve<IMessageDialog>().SendToast("Please login again to re-validate credentials.");
 
 		}
 

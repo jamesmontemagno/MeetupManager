@@ -51,6 +51,14 @@ namespace MeetupManager.Portable.ViewModels
 
         public string EventName { get; set; }
 
+        private string rsvpCount;
+        public string RSVPCount
+        {
+            get { return rsvpCount; }
+            set { rsvpCount = value; RaisePropertyChanged(() => RSVPCount); }
+        }
+       
+
 		private ObservableCollection<MemberViewModel> members;
 		public ObservableCollection<MemberViewModel>  Members
 		{ 
@@ -68,6 +76,7 @@ namespace MeetupManager.Portable.ViewModels
 		{
 			members.Clear ();
 			RaisePropertyChanged (() => Members);
+		    CanLoadMore = true;
 			await ExecuteLoadMoreCommand ();
 
 		}
@@ -80,6 +89,9 @@ namespace MeetupManager.Portable.ViewModels
 
 		private async Task ExecuteLoadMoreCommand()
 		{
+		    if (!CanLoadMore)
+		        return;
+
 			//Go to database and check this user in.
 			IsBusy = true;
 
@@ -93,6 +105,11 @@ namespace MeetupManager.Portable.ViewModels
 
 					members.Add(member);
 				}
+
+			    CanLoadMore = eventResults.RSVPs.Count == 100;
+
+                RSVPCount = members.Where(m => m.CheckedIn).ToList().Count +  "/" + members.Count;
+
 			}
 			catch(Exception ex) {
 				Mvx.Resolve<IMvxTrace> ().Trace (MvxTraceLevel.Error, "EventViewModel", ex.ToString ());
@@ -118,6 +135,8 @@ namespace MeetupManager.Portable.ViewModels
             else
 			    await dataService.CheckInMember (new EventRSVP (eventId, member.Member.MemberId.ToString()));
             member.CheckedIn = !member.CheckedIn;
+
+            RSVPCount = members.Where(m => m.CheckedIn).ToList().Count + "/" + members.Count;
 		
 
 		}

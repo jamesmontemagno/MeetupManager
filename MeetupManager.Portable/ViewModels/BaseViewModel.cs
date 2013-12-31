@@ -37,6 +37,13 @@ namespace MeetupManager.Portable.ViewModels
 			get { return isBusy; }
 			set { isBusy = value; RaisePropertyChanged(() => IsBusy); }
 		}
+
+        private bool canLoadMore = false;
+        public bool CanLoadMore
+        {
+            get { return canLoadMore; }
+            set { canLoadMore = value; RaisePropertyChanged(() => CanLoadMore); }
+        }
 	}
 }
 

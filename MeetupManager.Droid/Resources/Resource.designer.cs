@@ -892,40 +892,43 @@ namespace MeetupManager.Droid
 			public const int background_card = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int ic_action_refresh = 2130837592;
+			public const int ic_action_action_about = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int ic_action_select_winner = 2130837593;
+			public const int ic_action_refresh = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int ic_checkedin = 2130837594;
+			public const int ic_action_select_winner = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int ic_errorstatus = 2130837595;
+			public const int ic_checkedin = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_launcher = 2130837596;
+			public const int ic_errorstatus = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_madewithxamarin = 2130837597;
+			public const int ic_launcher = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_meetup = 2130837598;
+			public const int ic_madewithxamarin = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int ic_successstatus = 2130837599;
+			public const int ic_meetup = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int no_photo = 2130837600;
+			public const int ic_successstatus = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int roundedbg = 2130837601;
+			public const int no_photo = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int roundedbgdark = 2130837602;
+			public const int roundedbg = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int splash = 2130837603;
+			public const int roundedbgdark = 2130837603;
+			
+			// aapt resource value: 0x7f020064
+			public const int splash = 2130837604;
 			
 			static Drawable()
 			{
@@ -1021,6 +1024,9 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f05002b
 			public const int expanded_menu = 2131034155;
 			
+			// aapt resource value: 0x7f050047
+			public const int grid = 2131034183;
+			
 			// aapt resource value: 0x7f050014
 			public const int home = 2131034132;
 			
@@ -1054,14 +1060,17 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f050046
 			public const int loadingProgressWheel = 2131034182;
 			
-			// aapt resource value: 0x7f050047
-			public const int main_frame = 2131034183;
-			
 			// aapt resource value: 0x7f050048
-			public const int menu_refresh = 2131034184;
+			public const int main_frame = 2131034184;
+			
+			// aapt resource value: 0x7f05004b
+			public const int menu_about = 2131034187;
 			
 			// aapt resource value: 0x7f050049
-			public const int menu_select_winner = 2131034185;
+			public const int menu_refresh = 2131034185;
+			
+			// aapt resource value: 0x7f05004a
+			public const int menu_select_winner = 2131034186;
 			
 			// aapt resource value: 0x7f050012
 			public const int middle = 2131034130;
@@ -1333,6 +1342,9 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0c0002
 			public const int menu_groups = 2131492866;
 			
+			// aapt resource value: 0x7f0c0003
+			public const int menu_login = 2131492867;
+			
 			static Menu()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -1391,6 +1403,9 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0a000b
 			public const int abc_shareactionprovider_share_with_application = 2131361803;
 			
+			// aapt resource value: 0x7f0a0017
+			public const int about = 2131361815;
+			
 			// aapt resource value: 0x7f0a0012
 			public const int app_name = 2131361810;
 			
@@ -1403,23 +1418,32 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0a000f
 			public const int library_name = 2131361807;
 			
-			// aapt resource value: 0x7f0a0017
-			public const int logging_in = 2131361815;
+			// aapt resource value: 0x7f0a001a
+			public const int logging_in = 2131361818;
 			
-			// aapt resource value: 0x7f0a0015
-			public const int login = 2131361813;
+			// aapt resource value: 0x7f0a0018
+			public const int login = 2131361816;
+			
+			// aapt resource value: 0x7f0a0019
+			public const int login_details = 2131361817;
 			
 			// aapt resource value: 0x7f0a0016
-			public const int login_details = 2131361814;
+			public const int menu_about = 2131361814;
 			
 			// aapt resource value: 0x7f0a0014
 			public const int menu_refresh = 2131361812;
 			
+			// aapt resource value: 0x7f0a0015
+			public const int menu_refresh_login = 2131361813;
+			
 			// aapt resource value: 0x7f0a0013
 			public const int menu_select_winner = 2131361811;
 			
-			// aapt resource value: 0x7f0a0018
-			public const int tap_to_login = 2131361816;
+			// aapt resource value: 0x7f0a001c
+			public const int ok = 2131361820;
+			
+			// aapt resource value: 0x7f0a001b
+			public const int tap_to_login = 2131361819;
 			
 			static String()
 			{

@@ -14,16 +14,27 @@
         local:MvxBind="Visibility IsBusy,Converter=Visibility"
         android:layout_marginBottom="-8dp"
         android:layout_marginTop="-4dp" />
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceMedium"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/standard_padding"
-        android:paddingRight="@dimen/standard_padding"
-        android:paddingTop="@dimen/standard_padding"
-        android:text="@string/tap_to_login"
-        local:MvxBind="Visibility IsBusy,Converter=InvertedVisibility" />
+        android:padding="@dimen/standard_padding">
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/tap_to_login" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10/40"
+            android:layout_marginLeft="@dimen/standard_padding"
+            local:MvxBind="Text RSVPCount" />
+    </LinearLayout>
     <Mvx.MvxGridView
+        android:id="@+id/grid"
         android:padding="@dimen/standard_padding"
         android:layout_width="fill_parent"
         android:layout_height="0dp"

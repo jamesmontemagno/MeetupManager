@@ -19,6 +19,7 @@
  */
 using System;
 using MeetupManager.Portable.Interfaces;
+using MeetupManager.Portable.Services;
 using Xamarin.Auth;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid.Platform;
@@ -32,8 +33,8 @@ namespace MeetupManager.Droid.PlatformSpecific
 		#region ILogin implementation
 
 		OAuth2Authenticator auth = new OAuth2Authenticator (
-			clientId: "kgqtisiigj7mpbpbfs1ei7s2h0",
-			clientSecret: "g4k3oiourvnos0nf9varqt5eaf",
+			clientId: MeetupService.ClientId,
+			clientSecret: MeetupService.ClientSecret,
 			scope: "",
 			authorizeUrl: new Uri ("https://secure.meetup.com/oauth2/authorize"),
 			redirectUrl: new Uri ("http://www.refractored.com/login_success.html"),

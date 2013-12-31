@@ -19,24 +19,25 @@
  */
 using Android.App;
 using Android.OS;
+using Android.Widget;
 using MeetupManager.Portable.ViewModels;
-using MeetupManager.Droid.Helpers;
-
 namespace MeetupManager.Droid.Views
 {
 	[Activity(Label = "Events", Icon = "@drawable/ic_launcher")]
-	public class EventsView : MvxActionBarActivity
+    public class EventsView : BaseView, AbsListView.IOnScrollListener
 	{
 		private EventsViewModel viewModel;
 		private new EventsViewModel ViewModel 
 		{
 			get { return viewModel ?? (viewModel = base.ViewModel as EventsViewModel); }
 		}
+
 		protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 			SetContentView(Resource.Layout.view_events);
 
+            FindViewById<GridView>(Resource.Id.grid).SetOnScrollListener(this);
 		    SupportActionBar.Title = ViewModel.GroupName;
         }
 
@@ -58,5 +59,26 @@ namespace MeetupManager.Droid.Views
             }
             return base.OnOptionsItemSelected(item);
         }
+
+        #region Scroll change to trigger load more.
+        private readonly object Lock = new object();
+        public void OnScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
+        {
+            lock (this.Lock)
+            {
+                var loadMore = firstVisibleItem + visibleItemCount >= (totalItemCount - 3);
+
+                if (loadMore && this.ViewModel.CanLoadMore && !this.ViewModel.IsBusy)
+                {
+                    this.ViewModel.LoadMoreCommand.Execute(null);
+                }
+            }
+        }
+
+        public void OnScrollStateChanged(AbsListView view, ScrollState scrollState)
+        {
+
+        }
+        #endregion
     }
 }

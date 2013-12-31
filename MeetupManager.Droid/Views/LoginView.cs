@@ -19,14 +19,13 @@
  */
 using System;
 using Android.App;
-using MeetupManager.Droid.Helpers;
 using MeetupManager.Portable.ViewModels;
 using Android.OS;
 
 namespace MeetupManager.Droid.Views
 {
-    [Activity(Label = "Login", Icon = "@drawable/ic_launcher")]			
-	public class LoginView : MvxActionBarActivity
+    [Activity(Label = "Login", Icon = "@drawable/ic_launcher")]
+    public class LoginView : BaseView
 	{
 		private LoginViewModel viewModel;
 		private new LoginViewModel ViewModel 
@@ -39,6 +38,38 @@ namespace MeetupManager.Droid.Views
 			base.OnCreate(bundle);
 			SetContentView(Resource.Layout.view_login);
 		}
+
+        public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_login, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
+        {
+            if (ViewModel.IsBusy)
+                return base.OnOptionsItemSelected(item);
+
+            switch (item.ItemId)
+            {
+                case Resource.Id.menu_about:
+                    var builder = new AlertDialog.Builder(this);
+			            builder
+				        .SetTitle(Resource.String.menu_about)
+				        .SetMessage(Resource.String.about)
+				        .SetPositiveButton(Resource.String.ok, delegate {
+				
+			        });             
+			       
+			        AlertDialog alert = builder.Create();
+			        alert.Show();
+                    return true;
+                case Resource.Id.menu_refresh:
+                    ViewModel.RefreshLoginCommand.Execute(null);
+                    return true;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
 	}
 }
 

@@ -62,6 +62,7 @@ namespace MeetupManager.Portable.ViewModels
         {
             groups.Clear();
             RaisePropertyChanged(() => Groups);
+            CanLoadMore = true;
             await ExecuteLoadMoreCommand();
         }
 
@@ -74,6 +75,9 @@ namespace MeetupManager.Portable.ViewModels
 
         private async Task ExecuteLoadMoreCommand()
         {
+            if (!CanLoadMore)
+                return;
+
             IsBusy = true;
 
 
@@ -84,7 +88,7 @@ namespace MeetupManager.Portable.ViewModels
                     Groups.Add(group);
 
                 RaisePropertyChanged(() => Groups);
-
+                CanLoadMore = groupResults.Groups.Count == 100;
             }
             catch (Exception ex)
             {

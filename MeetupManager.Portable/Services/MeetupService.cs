@@ -34,15 +34,15 @@ namespace MeetupManager.Portable.Services
 	{
 		#region IMeetupService implementation
 
-        private const string GetGroupsUrl = @"https://api.meetup.com/2/groups?offset={0}&member_id={1}&page=100&order=name&access_token={2}";
-        private const string GetEventsUrl = @"https://api.meetup.com/2/events?offset={0}&group_id={1}&page=100&status=upcoming,past&desc=true&access_token={2}";
-        private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?offset={0}&event_id={1}&page=100&order=name&rsvp=yes&access_token={2}";
-		private const string GetUserUrl = @"https://api.meetup.com/2/member/self?access_token={0}";
+        private const string GetGroupsUrl = @"https://api.meetup.com/2/groups?offset={0}&member_id={1}&page=100&order=name&access_token={2}&only=name,id,group_photo";
+        private const string GetEventsUrl = @"https://api.meetup.com/2/events?offset={0}&group_id={1}&page=20&status=upcoming,past&desc=true&access_token={2}&only=name,id,time";
+        private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?offset={0}&event_id={1}&page=100&order=name&rsvp=yes&access_token={2}&only=member,member_photo";
+        private const string GetUserUrl = @"https://api.meetup.com/2/member/self?access_token={0}&only=name,id,photo";
 
 		
 		public async Task<EventsRootObject> GetEvents (string groupId, int skip)
 		{
-		    var offset = skip/100;
+		    var offset = skip/20;
             if (!await RenewAccessToken())
             {
                 Mvx.Resolve<IMessageDialog>().SendToast("Unable to get events, please re-login.");
@@ -72,8 +72,8 @@ namespace MeetupManager.Portable.Services
 
 		}
 
-		private const string clientId = "kgqtisiigj7mpbpbfs1ei7s2h0";
-		private const string clientSecret = "g4k3oiourvnos0nf9varqt5eaf";
+		public static string ClientId = "<YOUR CLIENT ID>";
+        public static string ClientSecret = "<YOUR CLIENT SECRET>";
 
         public async Task<bool> RenewAccessToken()
 		{
@@ -90,8 +90,8 @@ namespace MeetupManager.Portable.Services
           
                     var content = new FormUrlEncodedContent(new[] 
                     {
-                        new KeyValuePair<string, string>("client_id", clientId),
-                        new KeyValuePair<string, string>("client_secret", clientSecret),
+                        new KeyValuePair<string, string>("client_id", ClientId),
+                        new KeyValuePair<string, string>("client_secret", ClientSecret),
                         new KeyValuePair<string, string>("grant_type", "refresh_token"),
                         new KeyValuePair<string, string>("refresh_token", Settings.RefreshToken), 
                     });

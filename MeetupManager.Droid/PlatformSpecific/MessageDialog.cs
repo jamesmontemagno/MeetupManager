@@ -33,7 +33,7 @@ namespace MeetupManager.Droid.PlatformSpecific
 			builder
 				.SetTitle(title ?? string.Empty)
 				.SetMessage(message)
-				.SetPositiveButton("Yes", delegate {
+				.SetPositiveButton(Resource.String.ok, delegate {
 				
 			});             
 			       
