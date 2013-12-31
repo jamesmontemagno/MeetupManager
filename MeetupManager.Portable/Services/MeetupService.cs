@@ -19,6 +19,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using Cirrious.CrossCore;
 using MeetupManager.Portable.Interfaces;
 using System.Threading.Tasks;
@@ -49,9 +50,16 @@ namespace MeetupManager.Portable.Services
                 return new EventsRootObject() { Events = new List<Event>() };
             }
 
-			var httpClient = new HttpClient ();
+            var client = new HttpClient();
+            if (client.DefaultRequestHeaders.CacheControl == null)
+                client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
+
+            client.DefaultRequestHeaders.CacheControl.NoCache = true;
+            client.DefaultRequestHeaders.IfModifiedSince = DateTime.UtcNow;
+            client.DefaultRequestHeaders.CacheControl.NoStore = true;
+            client.Timeout = new TimeSpan(0, 0, 30);
             var request = string.Format(GetEventsUrl, offset, groupId, Settings.AccessToken);
-			var response = await httpClient.GetStringAsync (request);
+            var response = await client.GetStringAsync(request);
 			return await JsonConvert.DeserializeObjectAsync<EventsRootObject> (response);
 		}
 
@@ -65,9 +73,16 @@ namespace MeetupManager.Portable.Services
             }
 
 
-			var httpClient = new HttpClient ();
+			var client = new HttpClient ();
+            if (client.DefaultRequestHeaders.CacheControl == null)
+                client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
+
+            client.DefaultRequestHeaders.CacheControl.NoCache = true;
+            client.DefaultRequestHeaders.IfModifiedSince = DateTime.UtcNow;
+            client.DefaultRequestHeaders.CacheControl.NoStore = true;
+            client.Timeout = new TimeSpan(0, 0, 30);
 			var request = string.Format (GetRSVPsUrl, offset, eventId, Settings.AccessToken);
-			var response = await httpClient.GetStringAsync (request);
+            var response = await client.GetStringAsync(request);
 			return await JsonConvert.DeserializeObjectAsync<RSVPsRootObject> (response);
 
 		}
@@ -87,6 +102,13 @@ namespace MeetupManager.Portable.Services
             {
                 try
                 {
+                    if (client.DefaultRequestHeaders.CacheControl == null)
+                        client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
+
+                    client.DefaultRequestHeaders.CacheControl.NoCache = true;
+                    client.DefaultRequestHeaders.IfModifiedSince = DateTime.UtcNow;
+                    client.DefaultRequestHeaders.CacheControl.NoStore = true;
+                    client.Timeout = new TimeSpan(0, 0, 30);
           
                     var content = new FormUrlEncodedContent(new[] 
                     {
@@ -117,9 +139,16 @@ namespace MeetupManager.Portable.Services
 		public async Task<LoggedInUser> GetCurrentMember ()
 		{
 			await RenewAccessToken();
-			var httpClient = new HttpClient ();
+            var client = new HttpClient();
+            if (client.DefaultRequestHeaders.CacheControl == null)
+                client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
+
+            client.DefaultRequestHeaders.CacheControl.NoCache = true;
+            client.DefaultRequestHeaders.IfModifiedSince = DateTime.UtcNow;
+            client.DefaultRequestHeaders.CacheControl.NoStore = true;
+            client.Timeout = new TimeSpan(0, 0, 30);
 			var request = string.Format (GetUserUrl, Settings.AccessToken);
-			var response = await httpClient.GetStringAsync (request);
+			var response = await client.GetStringAsync (request);
 		  
             //should use async, but has issue for some reason and throws exception
 		    return JsonConvert.DeserializeObject<LoggedInUser>(response);
@@ -139,10 +168,17 @@ namespace MeetupManager.Portable.Services
                 return new GroupsRootObject{Groups = new List<Group>()};
             }
 
-            var httpClient = new HttpClient();
+            var client = new HttpClient();
+            if (client.DefaultRequestHeaders.CacheControl == null)
+                client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
+
+            client.DefaultRequestHeaders.CacheControl.NoCache = true;
+            client.DefaultRequestHeaders.IfModifiedSince = DateTime.UtcNow;
+            client.DefaultRequestHeaders.CacheControl.NoStore = true;
+            client.Timeout = new TimeSpan(0, 0, 30);
             var request = string.Format(GetGroupsUrl, offset, memberId, Settings.AccessToken);
 
-            var response = await httpClient.GetStringAsync(request);
+            var response = await client.GetStringAsync(request);
             return await JsonConvert.DeserializeObjectAsync<GroupsRootObject>(response);
         }
     }
