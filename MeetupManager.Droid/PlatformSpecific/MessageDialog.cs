@@ -44,7 +44,11 @@ namespace MeetupManager.Droid.PlatformSpecific
 
     public void SendToast(string message)
     {
-        Toast.MakeText(Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity, message, ToastLength.Long).Show();
+        Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity.RunOnUiThread(() =>
+        {
+            Toast.MakeText(Application.Context, message, ToastLength.Long).Show();
+        });
+       
     }
   }
 }

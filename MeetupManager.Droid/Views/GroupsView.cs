@@ -35,12 +35,14 @@ namespace MeetupManager.Droid.Views
         }
 
 
-		protected override void OnCreate(Bundle bundle)
+		protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 			SetContentView(Resource.Layout.view_groups);
 
             FindViewById<GridView>(Resource.Id.grid).SetOnScrollListener(this);
+
+            await ViewModel.ExecuteRefreshCommand();
         }
 
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)

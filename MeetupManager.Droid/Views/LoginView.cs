@@ -39,6 +39,7 @@ namespace MeetupManager.Droid.Views
 			SetContentView(Resource.Layout.view_login);
 		}
 
+
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_login, menu);

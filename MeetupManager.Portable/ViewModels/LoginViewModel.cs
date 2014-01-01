@@ -98,16 +98,46 @@ namespace MeetupManager.Portable.ViewModels
 			        {
 			        }
 
+			        IsBusy = false;
+                    Mvx.Resolve<IMessageDialog>().SendToast("Hello there, " + Settings.UserName);
+                    ShowViewModel<GroupsViewModel>();
+			    }
+			    else
+			    {
                     InvokeOnMainThread(() =>
                     {
-                        Mvx.Resolve<IMessageDialog>().SendToast("Hello there, " + Settings.UserName);
+                        Mvx.Resolve<IMessageDialog>().SendToast("Unable to login, please try again.");
+                        
                         IsBusy = false;
-                        ShowViewModel<GroupsViewModel>();
                     });
-                    
 			    }
 			});
 		}
+
+
+        /*public Action LoggedInAction { get; set; }
+
+        private IMvxCommand goToGroupsCommand;
+
+        public IMvxCommand GoToGroupsCommand
+        {
+            get { return goToGroupsCommand ?? (goToGroupsCommand = new MvxCommand(ExecuteGoToGroupsCommand)); }
+        }
+
+	    public void ExecuteGoToGroupsCommand()
+	    {
+            Mvx.Resolve<IMessageDialog>().SendToast("Hello there, " + Settings.UserName);
+
+	        try
+	        {
+
+                ShowViewModel<GroupsViewModel>();
+	        }
+	        catch (Exception ex)
+	        {
+	        }
+	    }*/
+
 	}
 }
 

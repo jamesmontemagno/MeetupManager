@@ -34,7 +34,7 @@ namespace MeetupManager.Portable.ViewModels
         public GroupsViewModel(IMeetupService meetupService) : base(meetupService)
         {
             groups = new ObservableCollection<Group>();
-            ExecuteRefreshCommand();
+            
         }
 
 
