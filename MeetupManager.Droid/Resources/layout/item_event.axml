@@ -42,6 +42,5 @@
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         android:lines="3"
-        android:paddingLeft="@dimen/standard_padding"
-        android:paddingRight="@dimen/standard_padding" />
+        android:padding="@dimen/standard_padding" />
 </LinearLayout>

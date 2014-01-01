@@ -86,19 +86,25 @@ namespace MeetupManager.Portable.ViewModels
 			    if (success)
 			    {
 			        IsBusy = true;
+			        var userName = string.Empty;
 			        try
 			        {
                         var user = await meetupService.GetCurrentMember();
                         Settings.UserId = user.Id.ToString();
-                        Settings.UserName = user.Name;
-                        Mvx.Resolve<IMessageDialog>().SendToast("Hello there, " + user.Name);
+                        Settings.UserName = user.Name??string.Empty;
+			            
 			        }
 			        catch (Exception ex)
 			        {
 			        }
-			       
-			        IsBusy = false;
-			        ShowViewModel<GroupsViewModel>();
+
+                    InvokeOnMainThread(() =>
+                    {
+                        Mvx.Resolve<IMessageDialog>().SendToast("Hello there, " + Settings.UserName);
+                        IsBusy = false;
+                        ShowViewModel<GroupsViewModel>();
+                    });
+                    
 			    }
 			});
 		}
