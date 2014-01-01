@@ -24,7 +24,7 @@ using Cirrious.MvvmCross.Droid.Views;
 namespace MeetupManager.Droid
 {
     [Activity(
-		Label = "MeetupManager.Droid"
+		Label = "@string/app_name"
 		, MainLauncher = true
 		, Icon = "@drawable/ic_launcher"
 		, Theme = "@style/Theme.Splash"
