@@ -35,6 +35,10 @@ namespace MeetupManager.Portable.Services
 	{
 		#region IMeetupService implementation
 
+
+        public static string ClientId = "<YOUR CLIENT ID>";
+        public static string ClientSecret = "<YOUR CLIENT SECRET>";
+
         private const string GetGroupsUrl = @"https://api.meetup.com/2/groups?offset={0}&member_id={1}&page=100&order=name&access_token={2}&only=name,id,group_photo";
         private const string GetEventsUrl = @"https://api.meetup.com/2/events?offset={0}&group_id={1}&page=20&status=upcoming,past&desc=true&access_token={2}&only=name,id,time";
         private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?offset={0}&event_id={1}&page=100&order=name&rsvp=yes&access_token={2}&only=member,member_photo";
@@ -87,15 +91,15 @@ namespace MeetupManager.Portable.Services
 
 		}
 
-		public static string ClientId = "<YOUR CLIENT ID>";
-        public static string ClientSecret = "<YOUR CLIENT SECRET>";
+      
+
 
         public async Task<bool> RenewAccessToken()
 		{
 			if (string.IsNullOrWhiteSpace (Settings.AccessToken))
 				return false;
 
-			if (DateTime.UtcNow.Ticks > Settings.KeyValidUntil)
+			if (DateTime.UtcNow.Ticks < Settings.KeyValidUntil)
 				return true;
 
             using (var client = new HttpClient())
