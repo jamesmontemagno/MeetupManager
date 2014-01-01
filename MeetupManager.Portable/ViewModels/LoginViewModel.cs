@@ -114,30 +114,6 @@ namespace MeetupManager.Portable.ViewModels
 			});
 		}
 
-
-        /*public Action LoggedInAction { get; set; }
-
-        private IMvxCommand goToGroupsCommand;
-
-        public IMvxCommand GoToGroupsCommand
-        {
-            get { return goToGroupsCommand ?? (goToGroupsCommand = new MvxCommand(ExecuteGoToGroupsCommand)); }
-        }
-
-	    public void ExecuteGoToGroupsCommand()
-	    {
-            Mvx.Resolve<IMessageDialog>().SendToast("Hello there, " + Settings.UserName);
-
-	        try
-	        {
-
-                ShowViewModel<GroupsViewModel>();
-	        }
-	        catch (Exception ex)
-	        {
-	        }
-	    }*/
-
 	}
 }
 
