@@ -7,9 +7,15 @@ using MonoTouch.Foundation;
 
 namespace MeetupManager.iOS.Views
 {
-    [Register("FirstView")]
-    public class FirstView : MvxViewController
+	[Register("LoginView")]
+	public class LoginView : MvxViewController
     {
+
+		public LoginView() : base()
+		{
+
+		}
+
         public override void ViewDidLoad()
         {
             View = new UIView(){ BackgroundColor = UIColor.White};
@@ -23,6 +29,9 @@ namespace MeetupManager.iOS.Views
             Add(label);
             var textField = new UITextField(new RectangleF(10, 50, 300, 40));
             Add(textField);
+			var loginButton = new UIButton ();
+			loginButton.SetTitle ("Login", UIControlState.Normal);
+			Add(loginButton)
 
 			/*var set = this.CreateBindingSet<FirstView, Por.ViewModels.FirstViewModel>();
             set.Bind(label).To(vm => vm.Hello);
