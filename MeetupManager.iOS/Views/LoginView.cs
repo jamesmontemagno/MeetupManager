@@ -31,7 +31,7 @@ namespace MeetupManager.iOS.Views
             Add(textField);
 			var loginButton = new UIButton ();
 			loginButton.SetTitle ("Login", UIControlState.Normal);
-			Add(loginButton)
+			Add (loginButton);
 
 			/*var set = this.CreateBindingSet<FirstView, Por.ViewModels.FirstViewModel>();
             set.Bind(label).To(vm => vm.Hello);

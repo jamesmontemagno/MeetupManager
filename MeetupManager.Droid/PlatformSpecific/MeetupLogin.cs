@@ -69,11 +69,6 @@ namespace MeetupManager.Droid.PlatformSpecific
 			activity.StartActivity (intent);
 		}
 
-		public string AccountId {
-			get {
-				return string.Empty;
-			}
-		}
 
 		#endregion
 
