@@ -17,12 +17,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+using System;
+
 namespace MeetupManager.Portable.Interfaces
 {
     public interface IMessageDialog
   {
 	    
     void SendMessage(string message, string title = null);
-        void SendToast(string message);
+    void SendToast(string message);
+        void SendConfirmation(string message, string title, Action<bool> confirmationAction);
   }
 }

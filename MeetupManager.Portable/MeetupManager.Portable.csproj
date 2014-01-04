@@ -34,6 +34,7 @@
   <ItemGroup>
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\Database\NewMember.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\GroupPhoto.cs" />
     <Compile Include="Models\Organizer.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Services\Responses\RefreshRootObject.cs" />
     <Compile Include="Models\LoggedInUser.cs" />
+    <Compile Include="ViewModels\NewUserViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

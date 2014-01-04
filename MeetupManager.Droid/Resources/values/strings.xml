@@ -12,4 +12,8 @@
 	<string name="logging_in">Logging in to Meetup.com</string>
   <string name="tap_to_login">Tap to checkin:</string>
   <string name="ok">OK</string>
+  <string name="cancel">Cancel</string>
+  <string name="new_member">New Member</string>
+  <string name="popup_name">Name:</string>
+  <string name="menu_add_new_member">Add New Member</string>
 </resources>

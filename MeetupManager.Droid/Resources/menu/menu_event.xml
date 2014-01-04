@@ -4,16 +4,21 @@
     
 
   <item
-          android:id="@+id/menu_refresh"
-          android:icon="@drawable/ic_action_refresh"
+          android:id="@+id/menu_add_new_member"
+          android:icon="@drawable/ic_action_social_add_person"
           local:showAsAction="always"
-          android:title="@string/menu_refresh" />
+          android:title="@string/menu_add_new_member" />
 
    <item
           android:id="@+id/menu_select_winner"
           android:icon="@drawable/ic_action_select_winner"
-          local:showAsAction="always"
+          local:showAsAction="never"
           android:title="@string/menu_select_winner" />
-
+  
+  <item
+          android:id="@+id/menu_refresh"
+          android:icon="@drawable/ic_action_refresh"
+          local:showAsAction="never"
+          android:title="@string/menu_refresh" />
 
 </menu>

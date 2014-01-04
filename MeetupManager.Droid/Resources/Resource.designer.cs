@@ -901,34 +901,37 @@ namespace MeetupManager.Droid
 			public const int ic_action_select_winner = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int ic_checkedin = 2130837595;
+			public const int ic_action_social_add_person = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_errorstatus = 2130837596;
+			public const int ic_checkedin = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_launcher = 2130837597;
+			public const int ic_errorstatus = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_madewithxamarin = 2130837598;
+			public const int ic_launcher = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int ic_meetup = 2130837599;
+			public const int ic_madewithxamarin = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int ic_successstatus = 2130837600;
+			public const int ic_meetup = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int no_photo = 2130837601;
+			public const int ic_successstatus = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int roundedbg = 2130837602;
+			public const int no_photo = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int roundedbgdark = 2130837603;
+			public const int roundedbg = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int splash = 2130837604;
+			public const int roundedbgdark = 2130837604;
+			
+			// aapt resource value: 0x7f020065
+			public const int splash = 2130837605;
 			
 			static Drawable()
 			{
@@ -1024,8 +1027,8 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f05002b
 			public const int expanded_menu = 2131034155;
 			
-			// aapt resource value: 0x7f050047
-			public const int grid = 2131034183;
+			// aapt resource value: 0x7f050048
+			public const int grid = 2131034184;
 			
 			// aapt resource value: 0x7f050014
 			public const int home = 2131034132;
@@ -1051,29 +1054,35 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f050028
 			public const int list_item = 2131034152;
 			
-			// aapt resource value: 0x7f050045
-			public const int loadingImage = 2131034181;
-			
-			// aapt resource value: 0x7f050043
-			public const int loadingProgressBar = 2131034179;
-			
 			// aapt resource value: 0x7f050046
-			public const int loadingProgressWheel = 2131034182;
+			public const int loadingImage = 2131034182;
 			
-			// aapt resource value: 0x7f050048
-			public const int main_frame = 2131034184;
+			// aapt resource value: 0x7f050044
+			public const int loadingProgressBar = 2131034180;
 			
-			// aapt resource value: 0x7f05004b
-			public const int menu_about = 2131034187;
+			// aapt resource value: 0x7f050047
+			public const int loadingProgressWheel = 2131034183;
 			
 			// aapt resource value: 0x7f050049
-			public const int menu_refresh = 2131034185;
+			public const int main_frame = 2131034185;
+			
+			// aapt resource value: 0x7f05004d
+			public const int menu_about = 2131034189;
 			
 			// aapt resource value: 0x7f05004a
-			public const int menu_select_winner = 2131034186;
+			public const int menu_add_new_member = 2131034186;
+			
+			// aapt resource value: 0x7f05004c
+			public const int menu_refresh = 2131034188;
+			
+			// aapt resource value: 0x7f05004b
+			public const int menu_select_winner = 2131034187;
 			
 			// aapt resource value: 0x7f050012
 			public const int middle = 2131034130;
+			
+			// aapt resource value: 0x7f050043
+			public const int name = 2131034179;
 			
 			// aapt resource value: 0x7f050009
 			public const int never = 2131034121;
@@ -1150,8 +1159,8 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f050002
 			public const int tabMode = 2131034114;
 			
-			// aapt resource value: 0x7f050044
-			public const int textViewStatus = 2131034180;
+			// aapt resource value: 0x7f050045
+			public const int textViewStatus = 2131034181;
 			
 			// aapt resource value: 0x7f05002a
 			public const int title = 2131034154;
@@ -1282,43 +1291,46 @@ namespace MeetupManager.Droid
 			public const int abc_search_view = 2130903063;
 			
 			// aapt resource value: 0x7f030018
-			public const int item_event = 2130903064;
+			public const int dialog_add_member = 2130903064;
 			
 			// aapt resource value: 0x7f030019
-			public const int item_group = 2130903065;
+			public const int item_event = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int item_member = 2130903066;
+			public const int item_group = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int loading = 2130903067;
+			public const int item_member = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int loadingimage = 2130903068;
+			public const int loading = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int loadingprogress = 2130903069;
+			public const int loadingimage = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int SplashScreen = 2130903070;
+			public const int loadingprogress = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int support_simple_spinner_dropdown_item = 2130903071;
+			public const int SplashScreen = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int view_event = 2130903072;
+			public const int support_simple_spinner_dropdown_item = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int view_events = 2130903073;
+			public const int view_event = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int view_groups = 2130903074;
+			public const int view_events = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int view_home = 2130903075;
+			public const int view_groups = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int view_login = 2130903076;
+			public const int view_home = 2130903076;
+			
+			// aapt resource value: 0x7f030025
+			public const int view_login = 2130903077;
 			
 			static Layout()
 			{
@@ -1409,6 +1421,9 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0a0012
 			public const int app_name = 2131361810;
 			
+			// aapt resource value: 0x7f0a001d
+			public const int cancel = 2131361821;
+			
 			// aapt resource value: 0x7f0a0010
 			public const int ga_trackingId = 2131361808;
 			
@@ -1430,6 +1445,9 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0a0016
 			public const int menu_about = 2131361814;
 			
+			// aapt resource value: 0x7f0a0020
+			public const int menu_add_new_member = 2131361824;
+			
 			// aapt resource value: 0x7f0a0014
 			public const int menu_refresh = 2131361812;
 			
@@ -1439,8 +1457,14 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0a0013
 			public const int menu_select_winner = 2131361811;
 			
+			// aapt resource value: 0x7f0a001e
+			public const int new_member = 2131361822;
+			
 			// aapt resource value: 0x7f0a001c
 			public const int ok = 2131361820;
+			
+			// aapt resource value: 0x7f0a001f
+			public const int popup_name = 2131361823;
 			
 			// aapt resource value: 0x7f0a001b
 			public const int tap_to_login = 2131361819;

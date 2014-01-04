@@ -20,6 +20,7 @@
 using Android.App;
 using Android.OS;
 using Android.Widget;
+using MeetupManager.Droid.Helpers;
 using MeetupManager.Portable.ViewModels;
 
 namespace MeetupManager.Droid.Views
@@ -58,6 +59,12 @@ namespace MeetupManager.Droid.Views
             case Resource.Id.menu_refresh:
                 ViewModel.RefreshCommand.Execute(null);
 			    return true;
+                case Resource.Id.menu_add_new_member:
+                    PopupHelpers.ShowNewUserPopup(this, (name) =>
+                    {
+                        ViewModel.SaveUserCommand.Execute(name);
+                    });
+			        return true;
 			}
 			return base.OnOptionsItemSelected (item);
 		}

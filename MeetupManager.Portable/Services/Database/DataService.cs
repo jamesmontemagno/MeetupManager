@@ -17,6 +17,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+using System.Collections.Generic;
 using Cirrious.MvvmCross.Community.Plugins.Sqlite;
 using MeetupManager.Portable.Interfaces.Database;
 using MeetupManager.Portable.Models.Database;
@@ -63,6 +65,26 @@ namespace MeetupManager.Portable.Services.Database
 		#endregion
 
 
-        
+
+
+
+        public Task AddNewMember(NewMember member)
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                database.SaveItem<NewMember>(member);
+            });
+        }
+
+        public  Task<IEnumerable<NewMember>> GetNewMembers(string eventId)
+        {
+            return Task.Factory.StartNew(() => database.GetNewMembers(eventId));
+        }
+
+
+        public Task RemoveNewMember(int id)
+        {
+            return Task.Factory.StartNew(() => database.DeleteItem<NewMember>(id));
+        }
     }
 }

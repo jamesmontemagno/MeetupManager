@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
 using MeetupManager.Portable.Interfaces.Database;
+using MeetupManager.Portable.Models;
 using MeetupManager.Portable.Models.Database;
 using System.Linq;
 
@@ -35,10 +36,12 @@ namespace MeetupManager.Portable.ViewModels
 		private string eventId;
 		private IMessageDialog messageDialog;
 		private Random random;
-		public EventViewModel(IMeetupService meetupService, IMessageDialog messageDialog) : base(meetupService)
+        private IDataService dataService;
+		public EventViewModel(IMeetupService meetupService, IMessageDialog messageDialog, IDataService dataService) : base(meetupService)
 		{
 			members = new ObservableCollection<MemberViewModel> ();
 			this.messageDialog = messageDialog;
+		    this.dataService = dataService;
 			random = new Random ();
 		}
 
@@ -96,23 +99,49 @@ namespace MeetupManager.Portable.ViewModels
 			IsBusy = true;
 
 
-			try{
+			try
+			{
+			    var addNewMembers = Members.Count == 0;
 				var eventResults = await this.meetupService.GetRSVPs(eventId, members.Count);
 				foreach(var e in eventResults.RSVPs)
 				{
 					var member = new MemberViewModel(e.Member, e.MemberPhoto, eventId);
+
 					member.CheckedIn = await Mvx.Resolve<IDataService> ().IsCheckedIn (eventId, member.Member.MemberId.ToString());
 
 					members.Add(member);
 				}
 
-			    CanLoadMore = eventResults.RSVPs.Count == 100;
+                CanLoadMore = eventResults.RSVPs.Count == 100;
 
-                RSVPCount = members.Where(m => m.CheckedIn).ToList().Count +  "/" + members.Count;
+			    if (addNewMembers)
+			    {
+			        var newMembers = await dataService.GetNewMembers(eventId);
+			        foreach (var e in newMembers)
+			        {
+			            var member = new MemberViewModel(new Member {MemberId = -1, Name = e.Name},
+			                new MemberPhoto
+			                {
+			                    HighResLink = null,
+			                    PhotoId = -1,
+			                    PhotoLink = null,
+			                    ThumbLink = null
+                            }, eventId);
+			            member.NewUserId = e.Id;
+			            member.CheckedIn = true;
+			            members.Add(member);
+			        }
+			    }
+
+
+
+                RefreshCount();
 
 			}
 			catch(Exception ex) {
 				Mvx.Resolve<IMvxTrace> ().Trace (MvxTraceLevel.Error, "EventViewModel", ex.ToString ());
+			    CanLoadMore = false;
+                messageDialog.SendToast("Unable to get RSVPs please refresh or log in again.");
 			}
 			finally{
 				IsBusy = false;
@@ -120,7 +149,7 @@ namespace MeetupManager.Portable.ViewModels
 		}
 
 		private MvxCommand<MemberViewModel> checkInCommand;
-	    private IDataService dataService;
+	    
 		public IMvxCommand CheckInCommand
 		{
 			get { return checkInCommand ?? (checkInCommand = new MvxCommand<MemberViewModel> (async (ev)=>ExecuteCheckInCommand(ev))); }
@@ -128,17 +157,14 @@ namespace MeetupManager.Portable.ViewModels
 
 		private async Task ExecuteCheckInCommand(MemberViewModel member)
 		{
-		    if (dataService == null)
-		        dataService = Mvx.Resolve<IDataService>();
+		    
             if (member.CheckedIn)
                 await dataService.CheckOutMember(eventId, member.Member.MemberId.ToString());
             else
 			    await dataService.CheckInMember (new EventRSVP (eventId, member.Member.MemberId.ToString()));
             member.CheckedIn = !member.CheckedIn;
 
-            RSVPCount = members.Where(m => m.CheckedIn).ToList().Count + "/" + members.Count;
-		
-
+            RefreshCount();
 		}
 
 		private IMvxCommand selectWinner;
@@ -164,6 +190,73 @@ namespace MeetupManager.Portable.ViewModels
 
 			messageDialog.SendMessage (message, "Winner!!!");
 		}
+
+
+        private MvxCommand<string> saveUserCommand;
+        public IMvxCommand SaveUserCommand
+        {
+            get { return saveUserCommand ?? (saveUserCommand = new MvxCommand<string>(async (name) => ExecuteSaveUserCommand(name))); }
+        }
+
+        private async Task ExecuteSaveUserCommand(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                messageDialog.SendToast("Please enter a valid name to check in.");
+            }
+            else
+            {
+                var newMember = new NewMember(eventId, name);
+                await dataService.AddNewMember(newMember);
+                var member = new MemberViewModel(new Member { MemberId = -1, Name = name },
+                       new MemberPhoto
+                       {
+                           HighResLink = null,
+                           PhotoId = -1,
+                           PhotoLink = null,
+                           ThumbLink = null
+                       }, eventId);
+
+                member.CheckedIn = true;
+                member.NewUserId = newMember.Id;
+                Members.Add(member);
+                RaisePropertyChanged(() => Members);
+                RefreshCount();
+                messageDialog.SendMessage(name + " you are all set!");
+            }
+        }
+
+        private MvxCommand<MemberViewModel> deleteUserCommand;
+
+        public IMvxCommand DeleteUserCommand
+        {
+            get { return deleteUserCommand ?? (deleteUserCommand = new MvxCommand<MemberViewModel>(async (ev) => ExecutedeleteUserCommand(ev))); }
+        }
+
+        private async Task ExecutedeleteUserCommand(MemberViewModel member)
+        {
+            if (member.NewUserId == 0)
+                return;
+            var id = member.NewUserId;
+            var index = Members.FirstOrDefault(m => m.NewUserId == id);
+            if (index == null)
+                return;
+            messageDialog.SendConfirmation("Are you sure you want to remove: " + member.Name, "Remove?",
+                (confirmation) =>
+                {
+                    if (!confirmation)
+                        return;
+                    Members.Remove(member);
+                    dataService.RemoveNewMember(id);
+                    RefreshCount();
+                });
+            
+        }
+
+	    private void RefreshCount()
+	    {
+            RSVPCount = members.Where(m => m.CheckedIn).ToList().Count + "/" + members.Count;
+	    }
 	}
 }
 

@@ -40,6 +40,8 @@ namespace MeetupManager.Portable.ViewModels
 				RaisePropertyChanged (() => CheckedIn);
 			}
 		}
+
+        public int NewUserId { get; set; }
 		public MemberPhoto Photo{get;set;}
 		private readonly string eventId;
 		public MemberViewModel(Member member, MemberPhoto photo, string eventId)

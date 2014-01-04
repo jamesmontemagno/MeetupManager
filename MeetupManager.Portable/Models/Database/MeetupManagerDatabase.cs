@@ -40,6 +40,7 @@ namespace MeetupManager.Portable.Models.Database
             this.m_Connection = factory.Create(SQLiteDataBaseLocation);
             //create taables
 			this.m_Connection.CreateTable<EventRSVP>();
+		    this.m_Connection.CreateTable<NewMember>();
         }
 
 		/// <summary>
@@ -72,6 +73,23 @@ namespace MeetupManager.Portable.Models.Database
 					return items.ElementAt(0);
 
 				return null;
+            }
+        }
+
+        /// <summary>
+        /// Gets all items of type T
+        /// </summary>
+        /// <typeparam name="T">Type of item to get</typeparam>
+        /// <returns></returns>
+        public IEnumerable<NewMember> GetNewMembers(string eventId)
+        {
+            lock (Locker)
+            {
+                var items = (from i in this.m_Connection.Table<NewMember>()
+                             where i.EventId == eventId
+                             select i);
+
+                return items;
             }
         }
 

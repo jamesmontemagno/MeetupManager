@@ -50,5 +50,21 @@ namespace MeetupManager.Droid.PlatformSpecific
         });
        
     }
+
+
+    public void SendConfirmation(string message, string title, System.Action<bool> confirmationAction)
+    {
+        var builder = new AlertDialog.Builder(Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
+        builder
+            .SetTitle(title ?? string.Empty)
+            .SetMessage(message)
+            .SetPositiveButton(Resource.String.ok, delegate
+            {
+                confirmationAction(true);
+            }).SetNegativeButton(Resource.String.cancel, delegate { confirmationAction(false); });
+
+        AlertDialog alert = builder.Create();
+        alert.Show();
+    }
   }
 }
