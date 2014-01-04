@@ -61,7 +61,7 @@ namespace MeetupManager.Portable.ViewModels
             }
 	    }
 
-	    private IMvxCommand loginCommand;
+		private MvxCommand loginCommand;
 		public IMvxCommand LoginCommand
 		{
 			get { return loginCommand ?? (loginCommand = new MvxCommand (ExecuteLoginCommand)); }
