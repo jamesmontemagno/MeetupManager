@@ -157,8 +157,12 @@ namespace MeetupManager.Portable.ViewModels
 
 		private async Task ExecuteCheckInCommand(MemberViewModel member)
 		{
-		    
-            if (member.CheckedIn)
+		    if (member.Member.MemberId == -1)
+		    {
+                messageDialog.SendToast("New members can only be removed.");
+		        return;
+		    }
+		    if (member.CheckedIn)
                 await dataService.CheckOutMember(eventId, member.Member.MemberId.ToString());
             else
 			    await dataService.CheckInMember (new EventRSVP (eventId, member.Member.MemberId.ToString()));
