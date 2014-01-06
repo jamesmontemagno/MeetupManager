@@ -178,7 +178,6 @@
     <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
     <Compile Include="PlatformSpecific\MessageDialog.cs" />
     <Compile Include="Views\EventsView.cs" />
-    <Compile Include="Views\EventsViewCell.cs" />
     <Compile Include="Views\EventView.cs" />
     <Compile Include="Views\EventViewCell.cs" />
     <Compile Include="Views\LoginView.cs" />

@@ -15,6 +15,7 @@ namespace MeetupManager.iOS.Views
 	{
 		public GroupsView() : base (UITableViewStyle.Plain)
 		{
+			this.Title = "Groups";
 		}
 
 		public override void ViewDidLoad()
@@ -36,7 +37,7 @@ namespace MeetupManager.iOS.Views
 			set.Bind(source).To(vm => vm.Groups);
 			set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsBusy);
 			set.Bind(refreshControl).For(r => r.RefreshCommand).To("RefreshCommand");
-			set.Bind (source).For ("SelectedItemChanged").To ("GoToGroupCommand");
+			set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.GoToGroupCommand);
 			set.Apply();
 
 			TableView.ReloadData();
