@@ -36,8 +36,8 @@ namespace MeetupManager.Portable.Services
 		#region IMeetupService implementation
 
 
-        public static string ClientId = "<YOUR CLIENT ID>";
-        public static string ClientSecret = "<YOUR CLIENT SECRET>";
+		public static string ClientId = "kgqtisiigj7mpbpbfs1ei7s2h0";
+		public static string ClientSecret = "rujr7c9vf8m7hlc6ous2390ni5";
 
         private const string GetGroupsUrl = @"https://api.meetup.com/2/groups?offset={0}&member_id={1}&page=100&order=name&access_token={2}&only=name,id,group_photo";
         private const string GetEventsUrl = @"https://api.meetup.com/2/events?offset={0}&group_id={1}&page=20&status=upcoming,past&desc=true&access_token={2}&only=name,id,time";
@@ -64,7 +64,7 @@ namespace MeetupManager.Portable.Services
             client.Timeout = new TimeSpan(0, 0, 30);
             var request = string.Format(GetEventsUrl, offset, groupId, Settings.AccessToken);
             var response = await client.GetStringAsync(request);
-			return await JsonConvert.DeserializeObjectAsync<EventsRootObject> (response);
+			return await DeserializeObjectAsync<EventsRootObject> (response);
 		}
 
 		public async Task<RSVPsRootObject> GetRSVPs(string eventId, int skip)
@@ -87,7 +87,7 @@ namespace MeetupManager.Portable.Services
             client.Timeout = new TimeSpan(0, 0, 30);
 			var request = string.Format (GetRSVPsUrl, offset, eventId, Settings.AccessToken);
             var response = await client.GetStringAsync(request);
-			return await JsonConvert.DeserializeObjectAsync<RSVPsRootObject> (response);
+			return await DeserializeObjectAsync<RSVPsRootObject> (response);
 
 		}
 
@@ -124,7 +124,7 @@ namespace MeetupManager.Portable.Services
 
                     var result = client.PostAsync("https://secure.meetup.com/oauth2/access", content).Result;
                     var response = result.Content.ReadAsStringAsync().Result;
-                    var refreshResponse = await JsonConvert.DeserializeObjectAsync<RefreshRootObject>(response);
+                    var refreshResponse = await DeserializeObjectAsync<RefreshRootObject>(response);
                     Settings.AccessToken = refreshResponse.AccessToken;
                     Settings.KeyValidUntil = DateTime.UtcNow.Ticks + refreshResponse.ExpiresIn;
                     Settings.RefreshToken = refreshResponse.RefreshToken;
@@ -155,7 +155,7 @@ namespace MeetupManager.Portable.Services
 			var response = await client.GetStringAsync (request);
 		  
             //should use async, but has issue for some reason and throws exception
-		    return JsonConvert.DeserializeObject<LoggedInUser>(response);
+		    return DeserializeObject<LoggedInUser>(response);
 		        
 		}
 		#endregion
@@ -183,8 +183,24 @@ namespace MeetupManager.Portable.Services
             var request = string.Format(GetGroupsUrl, offset, memberId, Settings.AccessToken);
 
             var response = await client.GetStringAsync(request);
-            return await JsonConvert.DeserializeObjectAsync<GroupsRootObject>(response);
+            return await DeserializeObjectAsync<GroupsRootObject>(response);
         }
+
+		public  Task<T> DeserializeObjectAsync<T>(string value)
+		{
+			if (Mvx.CanResolve<IDeserialize> ())
+				return Mvx.Resolve<IDeserialize> ().DeserializeObjectAsync<T> (value);
+
+			return Task.Factory.StartNew(() => JsonConvert.DeserializeObject<T>(value));
+		}
+
+		public T DeserializeObject<T>(string value)
+		{
+			if (Mvx.CanResolve<IDeserialize> ())
+				return Mvx.Resolve<IDeserialize> ().DeserializeObject<T> (value);
+
+			return JsonConvert.DeserializeObject<T>(value);
+		}
     }
 }
 

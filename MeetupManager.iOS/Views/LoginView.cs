@@ -10,24 +10,43 @@ using MeetupManager.Portable.ViewModels;
 namespace MeetupManager.iOS.Views
 {
 	[Register("LoginView")]
-	public class LoginView : MvxViewController
+	public partial class LoginView : MvxViewController
     {
 
-		public LoginView() : base()
+		public LoginView() : base("LoginView", null)
 		{
 			this.Title = "Meetup Manager";
 		}
 
         public override void ViewDidLoad()
         {
-            View = new UIView(){ BackgroundColor = UIColor.White};
+       
             base.ViewDidLoad();
 
 			// ios7 layout
             if (RespondsToSelector(new Selector("edgesForExtendedLayout")))
                EdgesForExtendedLayout = UIRectEdge.None;
+
+
+			var set = this.CreateBindingSet<LoginView, LoginViewModel>();
+
+			set.Bind (LabelLoginInfo).For("Visibility").To (v => v.IsBusy).WithConversion ("InvertedVisibility");
+			set.Bind (ButtonLogin).For("Visibility").To (v => v.IsBusy).WithConversion ("InvertedVisibility");
+			set.Bind (ActivityLoggingIn).For("Visibility").To (v => v.IsBusy).WithConversion ("Visibility");
+			set.Bind (LabelLoggingIn).For("Visibility").To (v => v.IsBusy).WithConversion ("Visibility");
+			set.Bind (ButtonLogin).To ("LoginCommand");
+			set.Apply();
+
+
+			((BaseViewModel)ViewModel).IsBusyChanged = (busy) => {
+				if(busy)
+					ActivityLoggingIn.StartAnimating();
+				else
+					ActivityLoggingIn.StopAnimating();
+			};
+
 			   
-			var meetupIcon = new UIImageView(UIImage.FromBundle ("ic_meetup"));
+			/*var meetupIcon = new UIImageView(UIImage.FromBundle ("ic_meetup"));
 			meetupIcon.ContentMode = UIViewContentMode.ScaleAspectFit;
 			Add (meetupIcon);
 
@@ -84,7 +103,7 @@ namespace MeetupManager.iOS.Views
 				labelLoggingIn.Below(progressBar, paddingSmall),
 				labelLoggingIn.WithSameLeft(labelLogin),
 				labelLoggingIn.WithSameRight(labelLogin)
-			);
+			);*/
 		
         }
     }

@@ -86,7 +86,6 @@ namespace MeetupManager.Portable.ViewModels
 			    if (success)
 			    {
 			        IsBusy = true;
-			        var userName = string.Empty;
 			        try
 			        {
                         var user = await meetupService.GetCurrentMember();
