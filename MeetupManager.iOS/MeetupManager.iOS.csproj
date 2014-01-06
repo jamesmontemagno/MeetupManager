@@ -191,7 +191,6 @@
     </Compile>
     <Compile Include="PlatformSpecific\MvxUIRefreshControl.cs" />
     <Compile Include="Views\GroupsView.cs" />
-    <Compile Include="PlatformSpecific\Deserialize.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>

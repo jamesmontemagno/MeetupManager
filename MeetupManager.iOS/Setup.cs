@@ -25,7 +25,6 @@ namespace MeetupManager.iOS
 			base.InitializeLastChance ();
 			Mvx.RegisterSingleton<IMessageDialog>(()=>new MessageDialog());
 			Mvx.RegisterSingleton<ILogin> (() => new MeetupLogin ());
-			Mvx.RegisterSingleton<IDeserialize> (() => new Deserialize ());
 		}
 		
         protected override IMvxTrace CreateDebugTrace()

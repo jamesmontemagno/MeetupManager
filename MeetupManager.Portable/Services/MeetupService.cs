@@ -35,9 +35,9 @@ namespace MeetupManager.Portable.Services
 	{
 		#region IMeetupService implementation
 
-
 		public static string ClientId = "<YOUR ID>";
 		public static string ClientSecret = "<Your secret>";
+
 
         private const string GetGroupsUrl = @"https://api.meetup.com/2/groups?offset={0}&member_id={1}&page=100&order=name&access_token={2}&only=name,id,group_photo";
         private const string GetEventsUrl = @"https://api.meetup.com/2/events?offset={0}&group_id={1}&page=20&status=upcoming,past&desc=true&access_token={2}&only=name,id,time";
@@ -99,7 +99,7 @@ namespace MeetupManager.Portable.Services
 			if (string.IsNullOrWhiteSpace (Settings.AccessToken))
 				return false;
 
-			if (DateTime.UtcNow.Ticks < Settings.KeyValidUntil)
+			if (DateTime.UtcNow < new DateTime(Settings.KeyValidUntil))
 				return true;
 
             using (var client = new HttpClient())
@@ -126,7 +126,8 @@ namespace MeetupManager.Portable.Services
                     var response = result.Content.ReadAsStringAsync().Result;
                     var refreshResponse = await DeserializeObjectAsync<RefreshRootObject>(response);
                     Settings.AccessToken = refreshResponse.AccessToken;
-                    Settings.KeyValidUntil = DateTime.UtcNow.Ticks + refreshResponse.ExpiresIn;
+					var nextTime = DateTime.UtcNow.AddSeconds(refreshResponse.ExpiresIn).Ticks;
+					Settings.KeyValidUntil = nextTime;
                     Settings.RefreshToken = refreshResponse.RefreshToken;
                 }
                 catch (Exception ex)
@@ -188,17 +189,11 @@ namespace MeetupManager.Portable.Services
 
 		public  Task<T> DeserializeObjectAsync<T>(string value)
 		{
-			if (Mvx.CanResolve<IDeserialize> ())
-				return Mvx.Resolve<IDeserialize> ().DeserializeObjectAsync<T> (value);
-
-			return JsonConvert.DeserializeObjectAsync<T>(value);
+			return Task.Factory.StartNew (() => JsonConvert.DeserializeObject<T> (value));
 		}
 
 		public T DeserializeObject<T>(string value)
 		{
-			if (Mvx.CanResolve<IDeserialize> ())
-				return Mvx.Resolve<IDeserialize> ().DeserializeObject<T> (value);
-
 			return JsonConvert.DeserializeObject<T>(value);
 		}
     }
