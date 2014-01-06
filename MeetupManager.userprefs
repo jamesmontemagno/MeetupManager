@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina.7.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.Portable/ViewModels/LoginViewModel.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.Droid/PlatformSpecific/MeetupLogin.cs">
     <Files>
-      <File FileName="MeetupManager.Droid/PlatformSpecific/MeetupLogin.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Droid/PlatformSpecific/MeetupLogin.cs" Line="35" Column="15" />
+      <File FileName="MeetupManager.Portable/Helpers/Settings.cs" Line="1" Column="1" />
       <File FileName="MeetupManager.Portable/ViewModels/EventsViewModel.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/ViewModels/LoginViewModel.cs" Line="1" Column="1" />
       <File FileName="MeetupManager.Portable/ViewModels/EventViewModel.cs" Line="1" Column="1" />
       <File FileName="MeetupManager.Portable/Interfaces/IMeetupService.cs" Line="1" Column="1" />
       <File FileName="MeetupManager.Portable/Services/MeetupService.cs" Line="1" Column="1" />
@@ -19,34 +21,7 @@
       <File FileName="MeetupManager.Portable/Services/Responses/RefreshRootObject.cs" Line="1" Column="1" />
       <File FileName="MeetupManager.Portable/Services/Responses/RSVPsRootObject.cs" Line="1" Column="1" />
       <File FileName="MeetupManager.Portable/ViewModels/MemberViewModel.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/AppDelegate.cs.txt" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/PlatformSpecific/MeetupLogin.cs" Line="35" Column="5" />
-      <File FileName="MeetupManager.iOS/Views/LoginView.cs" Line="21" Column="43" />
-      <File FileName="MeetupManager.iOS/Views/EventViewCell.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/Views/EventView.cs" Line="17" Column="37" />
-      <File FileName="MeetupManager.iOS/Views/GroupsView.cs" Line="23" Column="13" />
-      <File FileName="MeetupManager.Portable/ViewModels/GroupsViewModel.cs" Line="42" Column="45" />
-      <File FileName="MeetupManager.Portable/ViewModels/LoginViewModel.cs" Line="33" Column="4" />
-      <File FileName="MeetupManager.iOS/Main.cs" Line="16" Column="1" />
-      <File FileName="MeetupManager.iOS/PlatformSpecific/Helpers.cs" Line="23" Column="46" />
-      <File FileName="MeetupManager.iOS/PlatformSpecific/MessageDialog.cs" Line="29" Column="42" />
-      <File FileName="MeetupManager.iOS/PlatformSpecific/MvxUIRefreshControl.cs" Line="66" Column="16" />
-      <File FileName="MeetupManager.Portable/Helpers/Settings.cs" Line="126" Column="12" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="MeetupManager.Droid" expanded="True" />
-          <Node name="MeetupManager.Portable" expanded="True">
-            <Node name="Helpers" expanded="True" />
-            <Node name="ViewModels" expanded="True">
-              <Node name="LoginViewModel.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -55,10 +30,7 @@
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/ViewModels/EventViewModel.cs" line="95" column="1" />
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Droid/PlatformSpecific/Login.cs" line="45" column="1" />
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/ViewModels/EventsViewModel.cs" line="82" column="1" />
-      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/ViewModels/LoginViewModel.cs" line="92" column="1" />
-      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/ViewModels/LoginViewModel.cs" line="93" column="1" />
-      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.iOS/PlatformSpecific/MeetupLogin.cs" line="47" column="1" />
-      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/ViewModels/LoginViewModel.cs" line="36" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/ViewModels/LoginViewModel.cs" line="37" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

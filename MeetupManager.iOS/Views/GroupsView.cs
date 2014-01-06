@@ -4,38 +4,60 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using Cirrious.MvvmCross.Touch.Views;
 using Cirrious.MvvmCross.Binding.BindingContext;
-using Cirrious.MvvmCross.Binding.Touch.Views;
-using MeetupManager.Portable.ViewModels;
-using MeetupManager.iOS.PlatformSpecific;
 
 namespace MeetupManager.iOS.Views
 {
-	public partial class GroupsView : MvxTableViewController
+	public class GroupsView : MvxCollectionViewController
 	{
-		public GroupsView() : base (UITableViewStyle.Plain)
+		public GroupsView(UICollectionViewLayout layout) : base (layout)
 		{
 		}
 
-		public override void ViewDidLoad()
+		public override void DidReceiveMemoryWarning ()
 		{
-			base.ViewDidLoad();
+			// Releases the view if it doesn't have a superview.
+			base.DidReceiveMemoryWarning ();
+			
+			// Release any cached data, images, etc that aren't in use.
+		}
 
-			var source = new MvxStandardTableViewSource(TableView, "TitleText Name;ImageUrl GroupPhoto.ThumbLink");
-			TableView.Source = source;
+		public override void ViewDidLoad ()
+		{
+			base.ViewDidLoad ();
+			
+			// Register any custom UICollectionViewCell classes
+			CollectionView.RegisterClassForCell (typeof(GroupsViewCell), GroupsViewCell.Key);
+			
+			// Note: If you use one of the Collection View Cell templates to create a new cell type,
+			// you can register it using the RegisterNibForCell() method like this:
+			//
+			// CollectionView.RegisterNibForCell (MyCollectionViewCell.Nib, MyCollectionViewCell.Key);
+			/*var set = this.CreateBindingSet<GroupsView, GroupsViewModel>();
+			set.Bind(label).To(vm => vm.Hello);
+			set.Bind(textField).To(vm => vm.Hello);
+			set.Apply();*/
 
-			var refreshControl = new MvxUIRefreshControl{Message = "Loading..."};
-			this.RefreshControl = refreshControl;
+		}
 
+		public override int NumberOfSections (UICollectionView collectionView)
+		{
+			// TODO: return the actual number of sections
+			return 1;
+		}
 
+		public override int GetItemsCount (UICollectionView collectionView, int section)
+		{
+			// TODO: return the actual number of items in the section
+			return 1;
+		}
 
-
-			var set = this.CreateBindingSet<GroupsView, GroupsViewModel>();
-			set.Bind(source).To(vm => vm.Groups);
-			set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsBusy);
-			set.Bind(refreshControl).For(r => r.RefreshCommand).To("RefreshCommand");
-			set.Apply();
-
-			TableView.ReloadData();
+		public override UICollectionViewCell GetCell (UICollectionView collectionView, NSIndexPath indexPath)
+		{
+			var cell = collectionView.DequeueReusableCell (GroupsViewCell.Key, indexPath) as GroupsViewCell;
+			
+			// TODO: populate the cell with the appropriate data based on the indexPath
+			
+			return cell;
 		}
 	}
 }

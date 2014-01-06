@@ -150,9 +150,6 @@
     <Reference Include="Cirrious.MvvmCross.Plugins.File.Touch">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.0.14\lib\MonoTouch\Cirrious.MvvmCross.Plugins.File.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Components\json.net-4.5.11\lib\ios\Newtonsoft.Json.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -180,18 +177,14 @@
     <Compile Include="Views\EventsViewCell.cs" />
     <Compile Include="Views\EventView.cs" />
     <Compile Include="Views\EventViewCell.cs" />
+    <Compile Include="Views\GroupsView.cs" />
+    <Compile Include="Views\GroupsViewCell.cs" />
     <Compile Include="Views\LoginView.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
     <Compile Include="PlatformSpecific\MeetupLogin.cs" />
     <Compile Include="PlatformSpecific\Helpers.cs" />
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
-    <Compile Include="Views\LoginView.designer.cs">
-      <DependentUpon>LoginView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PlatformSpecific\MvxUIRefreshControl.cs" />
-    <Compile Include="Views\GroupsView.cs" />
-    <Compile Include="PlatformSpecific\Deserialize.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
@@ -214,16 +207,8 @@
       <Version>1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
-    <XamarinComponentReference Include="json.net">
-      <InstallationInProgress>True</InstallationInProgress>
-      <Version>4.5.11</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="en.lproj\" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="Views\LoginView.xib" />
   </ItemGroup>
 </Project>

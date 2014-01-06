@@ -19,7 +19,6 @@
  */
 using Cirrious.CrossCore;
 using Refractored.MvxPlugins.Settings;
-using System;
 
 namespace MeetupManager.Portable.Helpers
 {
