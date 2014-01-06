@@ -61,7 +61,7 @@ namespace MeetupManager.Portable.ViewModels
             }
 	    }
 
-	    private IMvxCommand loginCommand;
+		private MvxCommand loginCommand;
 		public IMvxCommand LoginCommand
 		{
 			get { return loginCommand ?? (loginCommand = new MvxCommand (ExecuteLoginCommand)); }
@@ -86,7 +86,6 @@ namespace MeetupManager.Portable.ViewModels
 			    if (success)
 			    {
 			        IsBusy = true;
-			        var userName = string.Empty;
 			        try
 			        {
                         var user = await meetupService.GetCurrentMember();
