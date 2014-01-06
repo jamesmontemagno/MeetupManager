@@ -22,29 +22,31 @@ namespace MeetupManager.iOS.PlatformSpecific
 			authorizeUrl: new Uri ("https://secure.meetup.com/oauth2/authorize"),
 			redirectUrl: new Uri ("http://www.refractored.com/login_success.html"),
 			accessTokenUrl: new Uri("https://secure.meetup.com/oauth2/access"));
-		UIViewController vc = null;
+
 		public void LoginAsync (Action<bool> loginCallback)
 		{
 
 			var presenter = Mvx.Resolve<IMvxTouchViewPresenter> ();
-
+			UIViewController vc = null;
 			auth.AllowCancel = true;
 
 			// If authorization succeeds or is canceled, .Completed will be fired.
+			var vc1 = vc;
 			auth.Completed += (s, ee) => {
 
-				vc.DismissViewController (true, null);
-				if (ee.IsAuthenticated) {
-					Settings.AccessToken = ee.Account.Properties ["access_token"];
-					Settings.RefreshToken = ee.Account.Properties ["refresh_token"];
+				vc1.DismissViewController(true, null);
+				if (ee.IsAuthenticated)
+				{
+					Settings.AccessToken = ee.Account.Properties["access_token"];
+					Settings.RefreshToken = ee.Account.Properties["refresh_token"];
 
 					long time = 0;
-					long.TryParse (ee.Account.Properties ["expires_in"], out time);
+					long.TryParse(ee.Account.Properties["expires_in"], out time);
 					Settings.KeyValidUntil = DateTime.UtcNow.Ticks + time;
 				}
 
 				if (loginCallback != null)
-					loginCallback (ee.IsAuthenticated);
+					loginCallback(ee.IsAuthenticated);
 			};
 
 

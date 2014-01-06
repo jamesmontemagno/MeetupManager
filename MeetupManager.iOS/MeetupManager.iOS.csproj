@@ -153,10 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="en.lproj\Localizable.strings" />
-    <BundleResource Include="Resources\ic_meetup.png" />
-    <BundleResource Include="Resources\ic_checkedin.png" />
-    <BundleResource Include="Resources\ic_madewithxamarin.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -183,8 +179,6 @@
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
     <Compile Include="PlatformSpecific\MeetupLogin.cs" />
-    <Compile Include="PlatformSpecific\Helpers.cs" />
-    <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
@@ -207,8 +201,5 @@
       <Version>1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="en.lproj\" />
   </ItemGroup>
 </Project>
