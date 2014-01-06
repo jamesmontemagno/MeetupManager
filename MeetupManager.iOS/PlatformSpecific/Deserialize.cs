@@ -12,11 +12,15 @@ namespace MeetupManager.iOS.PlatformSpecific
 			return JsonConvert.DeserializeObject<T> (value);
 		}
 
+		#region IDeserialize implementation
 
 		public Task<T> DeserializeObjectAsync<T> (string value)
 		{
 			return Task.Factory.StartNew (() => JsonConvert.DeserializeObject<T> (value));
 		}
+
+		#endregion
+
 
 	}
 }
