@@ -1,4 +1,4 @@
-﻿/*
+/*
  * MeetupManager:
  * Copyright (C) 2013 Refractored LLC: 
  * http://github.com/JamesMontemagno
@@ -17,17 +17,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+using Cirrious.CrossCore.Plugins;
 
-using System;
-
-namespace MeetupManager.Portable.Interfaces
+namespace MeetupManager.iOs.Bootstrap
 {
-  public interface IMessageDialog
-  {
-	    
-    void SendMessage(string message, string title = null);
-    void SendToast(string message);
-	void SendConfirmation(string message, string title, Action<bool> confirmationAction);
-	void AskForString(string message, string title, Action<string> returnString);
-  }
+    public class SqlitePluginBootstrap
+		: MvxLoaderPluginBootstrapAction<Cirrious.MvvmCross.Community.Plugins.Sqlite.PluginLoader, Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch.Plugin>
+    {
+    }
 }

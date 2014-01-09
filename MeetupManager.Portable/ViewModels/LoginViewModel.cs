@@ -29,27 +29,26 @@ namespace MeetupManager.Portable.ViewModels
 	public class LoginViewModel : BaseViewModel
 	{
 		private ILogin login;
-		public LoginViewModel (IMeetupService meetupService, ILogin login) : base(meetupService) 
+		private IMessageDialog dialog;
+		public LoginViewModel (IMeetupService meetupService, ILogin login, IMessageDialog dialog) : base(meetupService) 
 		{
 			this.login = login;
+			this.dialog = dialog;
 
-			if (DateTime.UtcNow.Ticks < Settings.KeyValidUntil) {
-				RenewAccessToken ();
-			}
-			else if (!string.IsNullOrWhiteSpace (Settings.AccessToken) &&
-				!string.IsNullOrWhiteSpace(Settings.RefreshToken)) {
-                    ShowViewModel<GroupsViewModel>();
-			}
+			ExecuteRefreshLoginCommand ();
 		}
 
         private IMvxCommand refreshLoginCommand;
         public IMvxCommand RefreshLoginCommand
         {
-            get { return refreshLoginCommand ?? (refreshLoginCommand = new MvxCommand(async () => ExecuteRefreshLoginCommand())); }
+            get { return refreshLoginCommand ?? (refreshLoginCommand = new MvxCommand(ExecuteRefreshLoginCommand)); }
         }
 
-        private async Task ExecuteRefreshLoginCommand()
+		private void ExecuteRefreshLoginCommand()
 	    {
+			if (IsBusy)
+				return;
+
             if (DateTime.UtcNow.Ticks < Settings.KeyValidUntil)
             {
                 RenewAccessToken();
@@ -76,8 +75,19 @@ namespace MeetupManager.Portable.ViewModels
 			if(success)
                 ShowViewModel<GroupsViewModel>();
             else
-                Mvx.Resolve<IMessageDialog>().SendToast("Please login again to re-validate credentials.");
+				dialog.SendToast("Please login again to re-validate credentials.");
 
+		}
+
+		private MvxCommand showInfoCommand;
+		public IMvxCommand ShowInfoCommand
+		{
+			get  { return showInfoCommand ?? (showInfoCommand ?? new MvxCommand (ExecuteShowInfoCommand)); }
+		}
+
+		private void ExecuteShowInfoCommand()
+		{
+			dialog.SendMessage ("Created by @JamesMontemagno Copyright 2014 Refractored LLC. Open source and created completely in C# with Xamarin!", "About");
 		}
 
 		private void ExecuteLoginCommand()
@@ -98,14 +108,14 @@ namespace MeetupManager.Portable.ViewModels
 			        }
 
 			        IsBusy = false;
-                    Mvx.Resolve<IMessageDialog>().SendToast("Hello there, " + Settings.UserName);
+					dialog.SendToast("Hello there, " + Settings.UserName);
                     ShowViewModel<GroupsViewModel>();
 			    }
 			    else
 			    {
                     InvokeOnMainThread(() =>
                     {
-                        Mvx.Resolve<IMessageDialog>().SendToast("Unable to login, please try again.");
+						dialog.SendToast("Unable to login, please try again.");
                         
                         IsBusy = false;
                     });

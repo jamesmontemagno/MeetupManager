@@ -11,10 +11,11 @@ using System.Windows.Input;
 
 namespace MeetupManager.iOS.Views
 {
-	public partial class GroupsView : MvxTableViewController
+	public partial class GroupsView : BaseTableViewController
 	{
 		public GroupsView() : base (UITableViewStyle.Plain)
 		{
+			this.Tag = "GroupsView";
 			this.Title = "Groups";
 		}
 
@@ -36,7 +37,7 @@ namespace MeetupManager.iOS.Views
 			var set = this.CreateBindingSet<GroupsView, GroupsViewModel>();
 			set.Bind(source).To(vm => vm.Groups);
 			set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsBusy);
-			set.Bind(refreshControl).For(r => r.RefreshCommand).To("RefreshCommand");
+			set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.RefreshCommand);
 			set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.GoToGroupCommand);
 			set.Apply();
 

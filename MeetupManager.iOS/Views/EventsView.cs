@@ -10,10 +10,11 @@ using Cirrious.MvvmCross.Binding.Touch.Views;
 
 namespace MeetupManager.iOS.Views
 {
-	public class EventsView : MvxTableViewController
+	public class EventsView : BaseTableViewController
 	{
 		public EventsView() : base(UITableViewStyle.Plain)
 		{
+			this.Tag = "EventsView";
 			this.Title = "Events";
 		}
 
@@ -23,7 +24,7 @@ namespace MeetupManager.iOS.Views
 
 			var source = new MvxStandardTableViewSource(TableView,
 				UITableViewCellStyle.Subtitle,
-				new NSString("event_id"),
+				new NSString("group_id"),
 				"TitleText Name;DetailText MonthDayYear",
 				UITableViewCellAccessory.DisclosureIndicator);
 
@@ -35,11 +36,12 @@ namespace MeetupManager.iOS.Views
 			var set = this.CreateBindingSet<EventsView, EventsViewModel>();
 			set.Bind(source).To(vm => vm.Events);
 			set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsBusy);
-			set.Bind(refreshControl).For(r => r.RefreshCommand).To("RefreshCommand");
+			set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.RefreshCommand);
 			set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.GoToEventCommand);
 			set.Apply();
 
 			TableView.ReloadData();
+
 
 		}
 	}

@@ -31,7 +31,7 @@ using System.Linq;
 
 namespace MeetupManager.Portable.ViewModels
 {
-	public class EventViewModel : BaseViewModel
+	public class EventViewModel : BaseViewModel, IRemove
 	{
 		private string eventId;
 		private IMessageDialog messageDialog;
@@ -52,7 +52,14 @@ namespace MeetupManager.Portable.ViewModels
 			ExecuteRefreshCommand ();
 		}
 
-        public string EventName { get; set; }
+		private string eventName = string.Empty;
+		public string EventName { 
+			get { return eventName; }
+			set{
+				eventName = value;
+				RaisePropertyChanged (() => EventName);
+			} 
+		}
 
         private string rsvpCount;
         public string RSVPCount
@@ -120,13 +127,7 @@ namespace MeetupManager.Portable.ViewModels
 			        foreach (var e in newMembers)
 			        {
 			            var member = new MemberViewModel(new Member {MemberId = -1, Name = e.Name},
-			                new MemberPhoto
-			                {
-			                    HighResLink = null,
-			                    PhotoId = -1,
-			                    PhotoLink = null,
-			                    ThumbLink = null
-                            }, eventId);
+							null, eventId);
 			            member.NewUserId = e.Id;
 			            member.CheckedIn = true;
 			            members.Add(member);
@@ -174,10 +175,10 @@ namespace MeetupManager.Portable.ViewModels
 		private IMvxCommand selectWinner;
 		public IMvxCommand SelectWinnerCommand
 		{
-			get { return selectWinner ?? (selectWinner = new MvxCommand (async ()=>ExecuteSelectWinnerCommand())); }
+			get { return selectWinner ?? (selectWinner = new MvxCommand (ExecuteSelectWinnerCommand)); }
 		}
 
-		private async Task ExecuteSelectWinnerCommand()
+		private void ExecuteSelectWinnerCommand()
 		{
 			var potential = members.Where (m => m.CheckedIn).ToList();
 			var count = potential.Count;
@@ -196,13 +197,24 @@ namespace MeetupManager.Portable.ViewModels
 		}
 
 
+		private IMvxCommand addNewUserCommand;
+		public IMvxCommand AddNewUserCommand
+		{
+			get { return addNewUserCommand ?? (addNewUserCommand = new MvxCommand(ExecuteAddNewUserCommand)); }
+		}
+
+		private void ExecuteAddNewUserCommand()
+		{
+			messageDialog.AskForString ("Please enter name:", "New Member", async name => await ExecuteSaveUserCommand (name));
+		}
+
         private MvxCommand<string> saveUserCommand;
         public IMvxCommand SaveUserCommand
         {
-            get { return saveUserCommand ?? (saveUserCommand = new MvxCommand<string>(async (name) => ExecuteSaveUserCommand(name))); }
+			get { return saveUserCommand ?? (saveUserCommand = new MvxCommand<string>(async (name) => await ExecuteSaveUserCommand(name))); }
         }
 
-        private async Task ExecuteSaveUserCommand(string name)
+		private async Task ExecuteSaveUserCommand(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -213,13 +225,7 @@ namespace MeetupManager.Portable.ViewModels
                 var newMember = new NewMember(eventId, name);
                 await dataService.AddNewMember(newMember);
                 var member = new MemberViewModel(new Member { MemberId = -1, Name = name },
-                       new MemberPhoto
-                       {
-                           HighResLink = null,
-                           PhotoId = -1,
-                           PhotoLink = null,
-                           ThumbLink = null
-                       }, eventId);
+					null, eventId);
 
                 member.CheckedIn = true;
                 member.NewUserId = newMember.Id;
@@ -234,10 +240,10 @@ namespace MeetupManager.Portable.ViewModels
 
         public IMvxCommand DeleteUserCommand
         {
-            get { return deleteUserCommand ?? (deleteUserCommand = new MvxCommand<MemberViewModel>(async (ev) => ExecutedeleteUserCommand(ev))); }
+			get { return deleteUserCommand ?? (deleteUserCommand = new MvxCommand<MemberViewModel>(async (ev) => ExecuteDeleteUserCommand(ev))); }
         }
 
-        private async Task ExecutedeleteUserCommand(MemberViewModel member)
+		private async Task ExecuteDeleteUserCommand(MemberViewModel member)
         {
             if (member.NewUserId == 0)
                 return;
@@ -250,9 +256,14 @@ namespace MeetupManager.Portable.ViewModels
                 {
                     if (!confirmation)
                         return;
-                    Members.Remove(member);
+                    
                     dataService.RemoveNewMember(id);
+					InvokeOnMainThread(()=>{
+					Members.Remove(member);
                     RefreshCount();
+						RaisePropertyChanged(()=>Members);
+						Members = members;
+					});
                 });
             
         }
@@ -261,6 +272,34 @@ namespace MeetupManager.Portable.ViewModels
 	    {
             RSVPCount = members.Where(m => m.CheckedIn).ToList().Count + "/" + members.Count;
 	    }
+
+		#region IRemove implementation
+
+		public bool CanRemove (int index)
+		{
+			return Members [index].NewUserId != 0;
+		}
+
+
+		public System.Windows.Input.ICommand RemoveCommand {
+			get {
+				return DeleteUserIndexCommand;
+			}
+		}
+
+		private MvxCommand<int> deleteUserIndexCommand;
+
+		public IMvxCommand DeleteUserIndexCommand
+		{
+			get { return deleteUserIndexCommand ?? (deleteUserIndexCommand = new MvxCommand<int>(async (ev) => ExecuteDeleteUserIndexCommand(ev))); }
+		}
+
+		private async Task ExecuteDeleteUserIndexCommand(int index)
+		{
+			await ExecuteDeleteUserCommand (Members [index]);
+		}
+
+		#endregion
 	}
 }
 

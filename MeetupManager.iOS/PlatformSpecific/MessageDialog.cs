@@ -39,5 +39,19 @@ namespace MeetupManager.iOS.PlatformSpecific
 				alertView.Show ();
 			});
 	}
+
+	public void AskForString (string message, string title, System.Action<string> returnString)
+	{
+		Helpers.EnsureInvokedOnMainThread (() => {
+			var alertView = new UIAlertView (title ?? string.Empty, message, null, "OK", "Cancel");
+			alertView.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+			alertView.Clicked += (sender, e) => {
+				var text = alertView.GetTextField(0).Text.Trim();
+				if(e.ButtonIndex == 0 && !string.IsNullOrWhiteSpace(text))
+					returnString (text);
+			};
+			alertView.Show ();
+		});
+	}
   }
 }

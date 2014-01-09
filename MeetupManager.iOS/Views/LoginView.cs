@@ -10,11 +10,12 @@ using MeetupManager.Portable.ViewModels;
 namespace MeetupManager.iOS.Views
 {
 	[Register("LoginView")]
-	public partial class LoginView : MvxViewController
+	public partial class LoginView : BaseViewController
     {
 
 		public LoginView() : base("LoginView", null)
 		{
+			this.Tag = "LoginView";
 			this.Title = "Meetup Manager";
 		}
 
@@ -27,6 +28,8 @@ namespace MeetupManager.iOS.Views
             if (RespondsToSelector(new Selector("edgesForExtendedLayout")))
                EdgesForExtendedLayout = UIRectEdge.None;
 
+			var refresh = new UIBarButtonItem (UIBarButtonSystemItem.Refresh);
+			var info = new UIBarButtonItem ("About", UIBarButtonItemStyle.Plain, null);
 
 			var set = this.CreateBindingSet<LoginView, LoginViewModel>();
 
@@ -34,7 +37,9 @@ namespace MeetupManager.iOS.Views
 			set.Bind (ButtonLogin).For("Visibility").To (v => v.IsBusy).WithConversion ("InvertedVisibility");
 			set.Bind (ActivityLoggingIn).For("Visibility").To (v => v.IsBusy).WithConversion ("Visibility");
 			set.Bind (LabelLoggingIn).For("Visibility").To (v => v.IsBusy).WithConversion ("Visibility");
-			set.Bind (ButtonLogin).To ("LoginCommand");
+			set.Bind (ButtonLogin).To (vm => vm.LoginCommand);
+			set.Bind (refresh).To (vm => vm.RefreshLoginCommand);
+			set.Bind (info).To (vm => vm.ShowInfoCommand);
 			set.Apply();
 
 
@@ -46,64 +51,9 @@ namespace MeetupManager.iOS.Views
 			};
 
 			   
-			/*var meetupIcon = new UIImageView(UIImage.FromBundle ("ic_meetup"));
-			meetupIcon.ContentMode = UIViewContentMode.ScaleAspectFit;
-			Add (meetupIcon);
 
-			var labelLogin = new UILabel();
-			labelLogin.Text = NSBundle.MainBundle.LocalizedString ("LoginMessage", "Message to login");
-			labelLogin.Lines = 2;
-			Add(labelLogin);
-           
-			var loginButton = new UIButton ();
-			loginButton.SetTitleColor (UIColor.Black, UIControlState.Normal);
-			loginButton.SetTitle (NSBundle.MainBundle.LocalizedString ("Login", "Login"), UIControlState.Normal);
-			Add (loginButton);
-
-			var progressBar = new UIActivityIndicatorView (UIActivityIndicatorViewStyle.Gray);
-			Add (progressBar);
-
-			var labelLoggingIn = new UILabel();
-			labelLoggingIn.Text = NSBundle.MainBundle.LocalizedString ("LoggingIn", "Logging in to meetup.com");
-			Add(labelLoggingIn);
-
-			this.View.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
-
-			var set = this.CreateBindingSet<LoginView, LoginViewModel>();
-            
-			set.Bind (labelLogin).For("Visibility").To (v => v.IsBusy).WithConversion ("InvertedVisibility");
-			set.Bind (loginButton).For("Visibility").To (v => v.IsBusy).WithConversion ("InvertedVisibility");
-			set.Bind (progressBar).For("Visibility").To (v => v.IsBusy).WithConversion ("Visibility");
-			set.Bind (labelLoggingIn).For("Visibility").To (v => v.IsBusy).WithConversion ("Visibility");
-			set.Bind (loginButton).To ("LoginCommand");
-            set.Apply();
-		
-
-			const int padding = 20;
-			const int paddingSmall = 10;
-			this.View.AddConstraints(
-				meetupIcon.AtLeftOf(this.View, padding),
-				meetupIcon.AtRightOf(this.View, padding),
-				meetupIcon.AtTopOf(this.View, padding),
-				meetupIcon.WithRelativeWidth(this.View, .8f),
-				meetupIcon.WithRelativeHeight(this.View, .25f),
-
-				labelLogin.Below(meetupIcon, paddingSmall),
-				labelLogin.AtRightOf(this.View, padding),
-				labelLogin.AtLeftOf(this.View, padding),
-
-				loginButton.Below(labelLogin, paddingSmall),
-				loginButton.AtRightOf(this.View, padding),
-				loginButton.AtLeftOf(this.View, padding),
-
-				progressBar.Below(loginButton, paddingSmall),
-				progressBar.AtRightOf(this.View, padding),
-				progressBar.AtLeftOf(this.View, padding),
-
-				labelLoggingIn.Below(progressBar, paddingSmall),
-				labelLoggingIn.WithSameLeft(labelLogin),
-				labelLoggingIn.WithSameRight(labelLogin)
-			);*/
+			NavigationItem.RightBarButtonItem = refresh;
+			NavigationItem.LeftBarButtonItem = info;
 		
         }
     }
