@@ -31,6 +31,7 @@ namespace MeetupManager.Portable.Models
 
 		[JsonProperty("member_id")]
 		public int MemberId { get; set; }
+
 	}
 }
 

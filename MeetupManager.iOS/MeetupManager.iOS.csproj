@@ -196,16 +196,24 @@
     <Compile Include="PlatformSpecific\MvxUIRefreshControl.cs" />
     <Compile Include="Views\GroupsView.cs" />
     <Compile Include="Views\BaseView.cs" />
-    <Compile Include="Views\MemberCell.cs" />
-    <Compile Include="Views\MemberCell.designer.cs">
-      <DependentUpon>MemberCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Bootstrap\CommunitySqlitePluginBootstrap.cs" />
     <Compile Include="Views\EventView.cs" />
     <Compile Include="Views\EventView.designer.cs">
       <DependentUpon>EventView.cs</DependentUpon>
     </Compile>
     <Compile Include="PlatformSpecific\MvxDeleteSimpleTableViewSource.cs" />
+    <Compile Include="Views\Cells\EventCell.cs" />
+    <Compile Include="Views\Cells\EventCell.designer.cs">
+      <DependentUpon>EventCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cells\GroupCell.cs" />
+    <Compile Include="Views\Cells\GroupCell.designer.cs">
+      <DependentUpon>GroupCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cells\MemberCell.cs" />
+    <Compile Include="Views\Cells\MemberCell.designer.cs">
+      <DependentUpon>MemberCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
@@ -235,10 +243,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="en.lproj\" />
+    <Folder Include="Views\Cells\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Views\LoginView.xib" />
-    <InterfaceDefinition Include="Views\MemberCell.xib" />
     <InterfaceDefinition Include="Views\EventView.xib" />
+    <InterfaceDefinition Include="Views\Cells\EventCell.xib" />
+    <InterfaceDefinition Include="Views\Cells\GroupCell.xib" />
+    <InterfaceDefinition Include="Views\Cells\MemberCell.xib" />
   </ItemGroup>
 </Project>

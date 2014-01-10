@@ -22,12 +22,9 @@ namespace MeetupManager.iOS.Views
 		{
 			base.ViewDidLoad();
 
-			var source = new MvxStandardTableViewSource(TableView,
-				UITableViewCellStyle.Subtitle,
-				new NSString("group_id"),
-				"TitleText Name;DetailText MonthDayYear",
-				UITableViewCellAccessory.DisclosureIndicator);
-
+			var source = new MvxSimpleTableViewSource(TableView,
+				EventCell.Key, EventCell.Key);
+			TableView.RowHeight = 66;
 			TableView.Source = source;
 
 			var refreshControl = new MvxUIRefreshControl{Message = "Loading..."};
