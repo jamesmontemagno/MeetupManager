@@ -26,7 +26,7 @@ namespace MeetupManager.iOS.PlatformSpecific
 				view: UIApplication.SharedApplication.KeyWindow
 			);
 
-			notificationView.ShowAndDismissAfter(5);
+			notificationView.ShowAndDismissAfter(4);
     }
 
 	public void SendConfirmation (string message, string title, System.Action<bool> confirmationAction)

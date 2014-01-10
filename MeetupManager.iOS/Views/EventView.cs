@@ -25,9 +25,9 @@ namespace MeetupManager.iOS.Views
 		{
 			base.ViewDidLoad ();
 
-		
+			var addNewMemberButton = new UIBarButtonItem (UIBarButtonSystemItem.Add);
 
-			var source = new MvxSimpleTableViewSource(MainTableView, MemberCell.Key, MemberCell.Key);
+			var source = new MvxDeleteSimpleTableViewSource((IRemove)ViewModel, MainTableView, MemberCell.Key, MemberCell.Key);
 			MainTableView.RowHeight = 66;
 			MainTableView.Source = source;
 
@@ -40,10 +40,14 @@ namespace MeetupManager.iOS.Views
 			set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsBusy);
 			set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.RefreshCommand);
 			set.Bind (this).For("Title").To (vm => vm.EventName);
-
+			set.Bind (ButtonPickWinner).To (vm => vm.SelectWinnerCommand);
+			set.Bind (ButtonRSVPNumber).For ("Title").To (vm => vm.RSVPCount);
+			set.Bind (addNewMemberButton).To (vm => vm.AddNewUserCommand);
 			set.Apply();
 
 			MainTableView.ReloadData();
+
+			NavigationItem.RightBarButtonItem = addNewMemberButton;
 		}
 	}
 }

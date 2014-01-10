@@ -240,10 +240,10 @@ namespace MeetupManager.Portable.ViewModels
 
         public IMvxCommand DeleteUserCommand
         {
-			get { return deleteUserCommand ?? (deleteUserCommand = new MvxCommand<MemberViewModel>(async (ev) => ExecuteDeleteUserCommand(ev))); }
+			get { return deleteUserCommand ?? (deleteUserCommand = new MvxCommand<MemberViewModel>(ExecuteDeleteUserCommand)); }
         }
 
-		private async Task ExecuteDeleteUserCommand(MemberViewModel member)
+		private void ExecuteDeleteUserCommand(MemberViewModel member)
         {
             if (member.NewUserId == 0)
                 return;
@@ -251,6 +251,7 @@ namespace MeetupManager.Portable.ViewModels
             var index = Members.FirstOrDefault(m => m.NewUserId == id);
             if (index == null)
                 return;
+
             messageDialog.SendConfirmation("Are you sure you want to remove: " + member.Name, "Remove?",
                 (confirmation) =>
                 {
@@ -277,6 +278,9 @@ namespace MeetupManager.Portable.ViewModels
 
 		public bool CanRemove (int index)
 		{
+			if(index < 0 || index > Members.Count - 1)
+				return false;
+
 			return Members [index].NewUserId != 0;
 		}
 
@@ -291,13 +295,16 @@ namespace MeetupManager.Portable.ViewModels
 
 		public IMvxCommand DeleteUserIndexCommand
 		{
-			get { return deleteUserIndexCommand ?? (deleteUserIndexCommand = new MvxCommand<int>(async (ev) => ExecuteDeleteUserIndexCommand(ev))); }
+			get 
+			{ 
+				return deleteUserIndexCommand ??
+					 (deleteUserIndexCommand = new MvxCommand<int>(index =>
+				{
+							ExecuteDeleteUserCommand (Members [index]);
+				})); 
+			}
 		}
 
-		private async Task ExecuteDeleteUserIndexCommand(int index)
-		{
-			await ExecuteDeleteUserCommand (Members [index]);
-		}
 
 		#endregion
 	}
