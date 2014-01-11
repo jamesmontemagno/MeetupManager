@@ -36,6 +36,8 @@ namespace MeetupManager.Droid.Views
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
+
+            Tag = "Login";
 			SetContentView(Resource.Layout.view_login);
 		}
 

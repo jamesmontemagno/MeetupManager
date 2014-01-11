@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.1" package="com.refractored.meetupmanager" android:installLocation="auto" android:versionCode="2">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.2" package="com.refractored.meetupmanager" android:installLocation="auto" android:versionCode="3">
 	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="18" />
 	<application android:icon="@drawable/ic_launcher" android:theme="@style/BaseTheme" android:hardwareAccelerated="true" android:label="Meetup Manager"></application>
 </manifest>

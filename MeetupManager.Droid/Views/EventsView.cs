@@ -35,10 +35,14 @@ namespace MeetupManager.Droid.Views
 		protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+		    Tag = "Events";
 			SetContentView(Resource.Layout.view_events);
 
             FindViewById<GridView>(Resource.Id.grid).SetOnScrollListener(this);
 		    SupportActionBar.Title = ViewModel.GroupName;
+
+
+            LogEvent("Events", "Selected", ViewModel.GroupName);
         }
 
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)

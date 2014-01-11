@@ -37,6 +37,7 @@ namespace MeetupManager.Droid.Views
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
+            Tag = "Event";
 			SetContentView(Resource.Layout.view_event);
             FindViewById<GridView>(Resource.Id.grid).SetOnScrollListener(this);
 		    SupportActionBar.Title = ViewModel.EventName;

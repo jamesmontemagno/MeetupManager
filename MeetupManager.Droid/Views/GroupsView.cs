@@ -38,6 +38,8 @@ namespace MeetupManager.Droid.Views
 		protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            Tag = "Groups";
 			SetContentView(Resource.Layout.view_groups);
 
             FindViewById<GridView>(Resource.Id.grid).SetOnScrollListener(this);
