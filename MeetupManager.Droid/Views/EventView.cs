@@ -60,12 +60,9 @@ namespace MeetupManager.Droid.Views
             case Resource.Id.menu_refresh:
                 ViewModel.RefreshCommand.Execute(null);
 			    return true;
-                case Resource.Id.menu_add_new_member:
-                    PopupHelpers.ShowNewUserPopup(this, (name) =>
-                    {
-                        ViewModel.SaveUserCommand.Execute(name);
-                    });
-			        return true;
+            case Resource.Id.menu_add_new_member:
+                ViewModel.AddNewUserCommand.Execute(null);
+                return true;
 			}
 			return base.OnOptionsItemSelected (item);
 		}

@@ -4,15 +4,11 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="@dimen/standard_padding">
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/popup_name"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    android:paddingLeft="@dimen/standard_padding"
+    android:paddingRight="@dimen/standard_padding"
+    android:paddingBottom="@dimen/standard_padding">
     <EditText
         android:id="@+id/name"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/standard_padding" />
+        android:layout_height="wrap_content" />
 </LinearLayout>
