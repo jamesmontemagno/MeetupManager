@@ -131,7 +131,8 @@ namespace MeetupManager.Analysis
 						    inc.Contains ("DebugTrace.cs") ||
 						    inc.Contains ("LinkerPleaseInclude.cs") ||
 						    inc.Contains ("AssemblyInfo.cs") ||
-						    inc.Contains ("Bootstrap.cs")) {
+							inc.Contains ("Bootstrap.cs") ||
+							inc.Contains(".designer.cs")) {
 							continue;
 						}
 
