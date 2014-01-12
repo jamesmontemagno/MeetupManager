@@ -11,7 +11,9 @@ Copyright 2014 ([Refractored LLC](http://www.refractored.com))
 
 ## Available for free on:
 * ([Android](https://play.google.com/store/apps/details?id=com.refractored.meetupmanager))
-* iPhone (Soon)
+* iPhone (Next, getting ready for submission!)
+* Windows Phone (Soon, feel free to fork and start, PCL needs updated and HttpClient NuGet needs added)
+* Windows 8 (Soon, feel free to fork and start)
 
 
 ## Why did I create this?
