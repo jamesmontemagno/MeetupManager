@@ -20,9 +20,7 @@ Copyright 2014 ([Refractored LLC](http://www.refractored.com))
 As a user group organizer of ([Seattle Mobile .NET Developers Group](http://www.meetup.com/SeattleMobileDevelopers/)) I found our right away that there was an issue with finding out not only how many people attended the event but also who was there. I thought that there had to be a better way of checking people in at the door and the using this data to do giveaways as well. After realizing that Meetup.com had a great restful API that I could tap into I spent my holiday break between Dec 24th and Dec 30th to create Meetup Manager v1.
 
 ## How much code is shared?
-To be honest 73%+ of the code will be shared between all platforms. While currently only the Android version is complete all of the Models, Services, View Models, and tons of helper classes are all found in one single PCL library. I should be able to pull in the iOS UI in another week. (I am more comfortable with Android which is why I started there).
-
-Using 
+I have included an "Analysis Project", which will count the shared lines of code. 70%+ of the code is shared between projects. All of the Models, Services, View Models, and tons of helper classes are all found in one single PCL library. The major difference is in both iOS and Android I have some custom views which act as the platform specific code. I am not counting any plugins that handle platform specific code for me since I did not have to write it.  You can find a full breakdown of shared code on ([Google Drive](https://docs.google.com/spreadsheet/ccc?key=0Aj1h7Abl0UIAdExNdHdSb093RDBnSkZ0SWZLSld1MEE&usp=sharing))
 
 ## What technology is used?
 Everything is written in C# with Xamarin with a base PCL library. This project couldn't have been done without the following:
