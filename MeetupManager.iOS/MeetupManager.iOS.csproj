@@ -21,7 +21,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchLink>None</MtouchLink>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>
     <MtouchI18n>
@@ -51,6 +50,8 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -62,6 +63,11 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7, ARMv7s</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>full</DebugType>
@@ -87,6 +93,11 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
     <CodesignKey>iPhone Distribution</CodesignKey>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7, ARMv7s</MtouchArch>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GCDiscreetNotification">
@@ -167,6 +178,14 @@
     <BundleResource Include="Resources\ic_meetup.png" />
     <BundleResource Include="Resources\ic_checkedin.png" />
     <BundleResource Include="Resources\ic_madewithxamarin.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -251,5 +270,9 @@
     <InterfaceDefinition Include="Views\Cells\EventCell.xib" />
     <InterfaceDefinition Include="Views\Cells\GroupCell.xib" />
     <InterfaceDefinition Include="Views\Cells\MemberCell.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
 </Project>
