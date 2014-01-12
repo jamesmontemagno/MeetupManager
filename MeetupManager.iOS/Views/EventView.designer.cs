@@ -51,7 +51,7 @@ namespace MeetupManager.iOS.Views
 
 			return MainTableView.Source.GetCell (tableView, indexPath);
 		}
-
+		#if !DEBUG
 		[MonoTouch.Foundation.Export ("tableView:canEditRowAtIndexPath:")]
 		public bool CanEditRow (MonoTouch.UIKit.UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
 		{
@@ -63,6 +63,7 @@ namespace MeetupManager.iOS.Views
 		{
 			MainTableView.Source.CommitEditingStyle (tableView, editingStyle, indexPath);
 		}
+		#endif
 	
 	}
 }
