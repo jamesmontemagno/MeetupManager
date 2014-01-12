@@ -122,8 +122,8 @@ namespace MeetupManager.Portable.Services
                         new KeyValuePair<string, string>("refresh_token", Settings.RefreshToken), 
                     });
 
-                    var result = client.PostAsync("https://secure.meetup.com/oauth2/access", content).Result;
-                    var response = result.Content.ReadAsStringAsync().Result;
+					var result = await client.PostAsync("https://secure.meetup.com/oauth2/access", content);
+					var response = await result.Content.ReadAsStringAsync();
                     var refreshResponse = await DeserializeObjectAsync<RefreshRootObject>(response);
                     Settings.AccessToken = refreshResponse.AccessToken;
 					var nextTime = DateTime.UtcNow.AddSeconds(refreshResponse.ExpiresIn).Ticks;
