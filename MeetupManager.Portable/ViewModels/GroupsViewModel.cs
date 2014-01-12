@@ -60,6 +60,9 @@ namespace MeetupManager.Portable.ViewModels
 
         public async Task ExecuteRefreshCommand()
         {
+			if (IsBusy)
+				return;
+
             groups.Clear();
             RaisePropertyChanged(() => Groups);
             CanLoadMore = true;
@@ -75,7 +78,7 @@ namespace MeetupManager.Portable.ViewModels
 
         private async Task ExecuteLoadMoreCommand()
         {
-            if (!CanLoadMore)
+			if (!CanLoadMore || IsBusy)
                 return;
 
             IsBusy = true;
@@ -99,7 +102,7 @@ namespace MeetupManager.Portable.ViewModels
 				}
 
                 RaisePropertyChanged(() => Groups);
-                CanLoadMore = groupResults.Groups.Count == 100;
+				CanLoadMore = groupResults.Groups.Count == 100;
             }
             catch (Exception ex)
             {

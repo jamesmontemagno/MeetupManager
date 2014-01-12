@@ -31,6 +31,9 @@ namespace MeetupManager.iOS.Views
 			var refresh = new UIBarButtonItem (UIBarButtonSystemItem.Refresh);
 			var info = new UIBarButtonItem ("About", UIBarButtonItemStyle.Plain, null);
 
+
+			ButtonLogin.BackgroundColor = UIColor.Red;
+
 			var set = this.CreateBindingSet<LoginView, LoginViewModel>();
 
 			set.Bind (LabelLoginInfo).For("Visibility").To (v => v.IsBusy).WithConversion ("InvertedVisibility");

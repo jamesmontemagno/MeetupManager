@@ -66,6 +66,9 @@ namespace MeetupManager.Portable.ViewModels
 
 		public async Task ExecuteRefreshCommand()
 		{
+			if (IsBusy)
+				return;
+
 			events.Clear ();
 			RaisePropertyChanged (() => Events);
 		    CanLoadMore = true;
@@ -80,7 +83,7 @@ namespace MeetupManager.Portable.ViewModels
 
 		private async Task ExecuteLoadMoreCommand()
 		{
-		    if (!CanLoadMore)
+			if (!CanLoadMore || IsBusy)
 		        return;
 
 			IsBusy = true;
@@ -94,7 +97,7 @@ namespace MeetupManager.Portable.ViewModels
 					events.Add(e);
 				}
 
-			    CanLoadMore = events.Count == 20;
+				CanLoadMore = events.Count == 20;
 			}
 			catch(Exception ex) {
 				Mvx.Resolve<IMvxTrace> ().Trace (MvxTraceLevel.Error, "FirstViewModel", ex.ToString ());

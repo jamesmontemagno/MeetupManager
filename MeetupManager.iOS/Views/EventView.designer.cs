@@ -37,5 +37,32 @@ namespace MeetupManager.iOS.Views
 				ButtonRSVPNumber = null;
 			}
 		}
+
+		public int RowsInSection (MonoTouch.UIKit.UITableView tableView, int section)
+		{
+			return MainTableView.Source.RowsInSection(tableView, section);
+		}
+
+		public MonoTouch.UIKit.UITableViewCell GetCell (MonoTouch.UIKit.UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+		{
+
+			if (VM.CanLoadMore && !VM.IsBusy && (indexPath.Row == VM.Members.Count - 1))
+				VM.LoadMoreCommand.Execute (null);
+
+			return MainTableView.Source.GetCell (tableView, indexPath);
+		}
+
+		[MonoTouch.Foundation.Export ("tableView:canEditRowAtIndexPath:")]
+		public bool CanEditRow (MonoTouch.UIKit.UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+		{
+			return MainTableView.Source.CanEditRow (tableView, indexPath);
+		}
+
+		[Export ("tableView:commitEditingStyle:forRowAtIndexPath:")]
+		public void CommitEditingStyle (MonoTouch.UIKit.UITableView tableView, MonoTouch.UIKit.UITableViewCellEditingStyle editingStyle, NSIndexPath indexPath)
+		{
+			MainTableView.Source.CommitEditingStyle (tableView, editingStyle, indexPath);
+		}
+	
 	}
 }

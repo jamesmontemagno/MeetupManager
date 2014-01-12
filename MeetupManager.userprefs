@@ -1,9 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina.7.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.iOS/Views/Cells/GroupCell.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.iOS/Views/LoginView.cs">
     <Files>
-      <File FileName="MeetupManager.iOS/Views/Cells/MemberCell.cs" Line="16" Column="3" />
+      <File FileName="MeetupManager.iOS/Views/Cells/MemberCell.cs" Line="1" Column="1" />
       <File FileName="MeetupManager.iOS/Views/Cells/GroupCell.cs" Line="13" Column="30" />
+      <File FileName="MeetupManager.Portable/Services/MeetupService.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.iOS/Views/LoginView.cs" Line="29" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -18,8 +20,11 @@
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/Services/MeetupService.cs" line="160" column="1" />
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/ViewModels/LoginViewModel.cs" line="97" column="1" />
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.iOS/PlatformSpecific/MeetupLogin.cs" line="38" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/Services/MeetupService.cs" line="125" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/Services/MeetupService.cs" line="126" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/Services/MeetupService.cs" line="127" column="24" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Portable/Services/MeetupService.cs" line="128" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.MeetupManager.Droid MonoForAntroid.PreferredDevice="3.7in WVGA (Nexus One)" MonoForAntroid.PreferredTheme="Theme.Holo.Light" AndroidDeviceId-Debug="emulator-5554" />
 </Properties>

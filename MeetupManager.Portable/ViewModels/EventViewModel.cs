@@ -84,6 +84,9 @@ namespace MeetupManager.Portable.ViewModels
 
 		private async Task ExecuteRefreshCommand()
 		{
+			if (IsBusy)
+				return;
+
 			members.Clear ();
 			RaisePropertyChanged (() => Members);
 		    CanLoadMore = true;
@@ -99,7 +102,7 @@ namespace MeetupManager.Portable.ViewModels
 
 		private async Task ExecuteLoadMoreCommand()
 		{
-		    if (!CanLoadMore)
+			if (!CanLoadMore || IsBusy)
 		        return;
 
 			//Go to database and check this user in.
@@ -119,7 +122,7 @@ namespace MeetupManager.Portable.ViewModels
 					members.Add(member);
 				}
 
-                CanLoadMore = eventResults.RSVPs.Count == 100;
+				CanLoadMore = eventResults.RSVPs.Count == 100;
 
 			    if (addNewMembers)
 			    {

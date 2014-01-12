@@ -12,7 +12,7 @@ using MeetupManager.Portable.Interfaces;
 namespace MeetupManager.iOS.Views
 {
 	[Register("EventView")]
-	public partial class EventView : BaseViewController
+	public partial class EventView : BaseViewController, IUITableViewDataSource
 	{
 		public EventView () : base ("EventView", null)
 		{
@@ -20,6 +20,8 @@ namespace MeetupManager.iOS.Views
 			this.Tag = "EventView";
 		}
 
+		private EventViewModel viewModel;
+		public EventViewModel VM {get { return viewModel ?? (viewModel = base.ViewModel as EventViewModel);}}
 
 		public override void ViewDidLoad ()
 		{
@@ -30,6 +32,7 @@ namespace MeetupManager.iOS.Views
 			var source = new MvxDeleteSimpleTableViewSource((IRemove)ViewModel, MainTableView, MemberCell.Key, MemberCell.Key);
 			MainTableView.RowHeight = 66;
 			MainTableView.Source = source;
+			MainTableView.WeakDataSource = this;
 
 			var refreshControl = new MvxUIRefreshControl{Message = "Loading..."};
 			MainTableView.AddSubview (refreshControl);
@@ -46,9 +49,22 @@ namespace MeetupManager.iOS.Views
 			set.Apply();
 
 			MainTableView.ReloadData();
+			var spinner = new UIActivityIndicatorView (UIActivityIndicatorViewStyle.Gray);
+			spinner.Frame = new RectangleF (0, 0, 320, 66);
 
+			MainTableView.TableFooterView = spinner;
+			VM.IsBusyChanged = (busy) => {
+				if(busy && VM.Members.Count > 0)
+					spinner.StartAnimating();
+				else
+					spinner.StopAnimating();
+			};
 			NavigationItem.RightBarButtonItem = addNewMemberButton;
+
+			//MainTableView.Source.
 		}
+
+
 	}
 }
 

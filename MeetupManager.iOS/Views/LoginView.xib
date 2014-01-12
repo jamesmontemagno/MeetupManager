@@ -27,31 +27,50 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LDc-gW-iFy">
-                    <rect key="frame" x="20" y="318" width="37" height="37"/>
+                    <rect key="frame" x="20" y="297" width="37" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </activityIndicatorView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_meetup.png" translatesAutoresizingMaskIntoConstraints="NO" id="eSU-bz-UD4">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ic_meetup.png" translatesAutoresizingMaskIntoConstraints="NO" id="eSU-bz-UD4">
                     <rect key="frame" x="50" y="20" width="220" height="154"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="220" id="1p5-aC-kq8"/>
+                        <constraint firstAttribute="height" constant="154" id="OsP-gX-LKW"/>
+                    </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3I-00-gwq">
-                    <rect key="frame" x="137" y="250" width="46" height="30"/>
+                    <rect key="frame" x="120" y="245" width="80" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Login"/>
+                    <state key="normal" title="Login">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logging into Meetup.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wk-n1-uL7">
-                    <rect key="frame" x="65" y="326" width="235" height="21"/>
+                    <rect key="frame" x="65" y="305" width="235" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_madewithxamarin.png" translatesAutoresizingMaskIntoConstraints="NO" id="yqP-Ot-7j5">
+                    <rect key="frame" x="225" y="385" width="75" height="75"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="75" id="5MQ-Jq-ayx"/>
+                        <constraint firstAttribute="width" constant="75" id="YC9-15-FoL"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="yqP-Ot-7j5" secondAttribute="trailing" constant="20" id="39Q-hQ-Gzp"/>
+                <constraint firstAttribute="bottom" secondItem="yqP-Ot-7j5" secondAttribute="bottom" constant="20" id="rHG-6x-zKx"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
         </view>
     </objects>
     <resources>
+        <image name="ic_madewithxamarin.png" width="120" height="120"/>
         <image name="ic_meetup.png" width="498" height="498"/>
     </resources>
 </document>
