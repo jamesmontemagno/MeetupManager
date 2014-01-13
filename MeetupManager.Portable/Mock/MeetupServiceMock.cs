@@ -103,9 +103,23 @@ namespace MeetupManager.Portable.Mock
             return events;
         }
 
-        public Task<GroupsRootObject> GetGroups(string memberId, int skip)
+        public async Task<GroupsRootObject> GetGroups(string memberId, int skip)
         {
-            throw new NotImplementedException();
+            var groups = new GroupsRootObject();
+            groups.Meta = new Meta();
+            groups.Groups = new List<Group>();
+
+            for (int i = 0; i < 14; i++)
+            {
+                groups.Groups.Add(new Group
+                    {
+                        Id = i,
+                        Name = "Mock group " + i,
+                        GroupPhoto = new GroupPhoto { PhotoLink = "http://photos1.meetupstatic.com/photos/event/3/b/6/2/global_318975202.jpeg", PhotoId = 1 }
+                    });
+            }
+
+            return groups;
         }
     }
 }
