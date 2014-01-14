@@ -4,39 +4,60 @@ using Cirrious.MvvmCross.Touch.Views;
 using MonoTouch.ObjCRuntime;
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
+using Cirrious.FluentLayouts.Touch;
+using MeetupManager.Portable.ViewModels;
 
 namespace MeetupManager.iOS.Views
 {
 	[Register("LoginView")]
-	public class LoginView : MvxViewController
+	public partial class LoginView : BaseViewController
     {
 
-		public LoginView() : base()
+		public LoginView() : base("LoginView", null)
 		{
-
+			this.Tag = "LoginView";
+			this.Title = "Meetup Manager";
 		}
 
         public override void ViewDidLoad()
         {
-            View = new UIView(){ BackgroundColor = UIColor.White};
+       
             base.ViewDidLoad();
 
 			// ios7 layout
             if (RespondsToSelector(new Selector("edgesForExtendedLayout")))
                EdgesForExtendedLayout = UIRectEdge.None;
-			   
-            var label = new UILabel(new RectangleF(10, 10, 300, 40));
-            Add(label);
-            var textField = new UITextField(new RectangleF(10, 50, 300, 40));
-            Add(textField);
-			var loginButton = new UIButton ();
-			loginButton.SetTitle ("Login", UIControlState.Normal);
-			Add (loginButton);
 
-			/*var set = this.CreateBindingSet<FirstView, Por.ViewModels.FirstViewModel>();
-            set.Bind(label).To(vm => vm.Hello);
-            set.Bind(textField).To(vm => vm.Hello);
-            set.Apply();*/
+			var refresh = new UIBarButtonItem (UIBarButtonSystemItem.Refresh);
+			var info = new UIBarButtonItem ("About", UIBarButtonItemStyle.Plain, null);
+
+
+			ButtonLogin.BackgroundColor = UIColor.Red;
+
+			var set = this.CreateBindingSet<LoginView, LoginViewModel>();
+
+			set.Bind (LabelLoginInfo).For("Visibility").To (v => v.IsBusy).WithConversion ("InvertedVisibility");
+			set.Bind (ButtonLogin).For("Visibility").To (v => v.IsBusy).WithConversion ("InvertedVisibility");
+			set.Bind (ActivityLoggingIn).For("Visibility").To (v => v.IsBusy).WithConversion ("Visibility");
+			set.Bind (LabelLoggingIn).For("Visibility").To (v => v.IsBusy).WithConversion ("Visibility");
+			set.Bind (ButtonLogin).To (vm => vm.LoginCommand);
+			set.Bind (refresh).To (vm => vm.RefreshLoginCommand);
+			set.Bind (info).To (vm => vm.ShowInfoCommand);
+			set.Apply();
+
+
+			((BaseViewModel)ViewModel).IsBusyChanged = (busy) => {
+				if(busy)
+					ActivityLoggingIn.StartAnimating();
+				else
+					ActivityLoggingIn.StopAnimating();
+			};
+
+			   
+
+			NavigationItem.RightBarButtonItem = refresh;
+			NavigationItem.LeftBarButtonItem = info;
+		
         }
     }
 }

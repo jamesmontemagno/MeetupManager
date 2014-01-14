@@ -21,9 +21,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchLink>None</MtouchLink>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -48,6 +50,8 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -59,6 +63,11 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7, ARMv7s</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>full</DebugType>
@@ -84,6 +93,11 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
     <CodesignKey>iPhone Distribution</CodesignKey>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7, ARMv7s</MtouchArch>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GCDiscreetNotification">
@@ -113,9 +127,6 @@
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
       <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.0.14\lib\MonoTouch\Cirrious.MvvmCross.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite">
-      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.0.13\lib\portable-win+net45+MonoAndroid16+MonoTouch40+sl40+wp71\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.0.14\lib\MonoTouch\Cirrious.MvvmCross.Plugins.DownloadCache.dll</HintPath>
@@ -150,9 +161,31 @@
     <Reference Include="Cirrious.MvvmCross.Plugins.File.Touch">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.0.14\lib\MonoTouch\Cirrious.MvvmCross.Plugins.File.Touch.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Components\json.net-4.5.11\lib\ios\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite">
+      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.0.13\lib\portable-win+net45+MonoAndroid16+MonoTouch40+sl40+wp71\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch">
+      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.0.13\lib\MonoTouch40\Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="en.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\ic_meetup.png" />
+    <BundleResource Include="Resources\ic_checkedin.png" />
+    <BundleResource Include="Resources\ic_madewithxamarin.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -170,15 +203,36 @@
     <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
     <Compile Include="PlatformSpecific\MessageDialog.cs" />
     <Compile Include="Views\EventsView.cs" />
-    <Compile Include="Views\EventsViewCell.cs" />
-    <Compile Include="Views\EventView.cs" />
-    <Compile Include="Views\EventViewCell.cs" />
-    <Compile Include="Views\GroupsView.cs" />
-    <Compile Include="Views\GroupsViewCell.cs" />
     <Compile Include="Views\LoginView.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
     <Compile Include="PlatformSpecific\MeetupLogin.cs" />
+    <Compile Include="PlatformSpecific\Helpers.cs" />
+    <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
+    <Compile Include="Views\LoginView.designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlatformSpecific\MvxUIRefreshControl.cs" />
+    <Compile Include="Views\GroupsView.cs" />
+    <Compile Include="Views\BaseView.cs" />
+    <Compile Include="Bootstrap\CommunitySqlitePluginBootstrap.cs" />
+    <Compile Include="Views\EventView.cs" />
+    <Compile Include="Views\EventView.designer.cs">
+      <DependentUpon>EventView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlatformSpecific\MvxDeleteSimpleTableViewSource.cs" />
+    <Compile Include="Views\Cells\EventCell.cs" />
+    <Compile Include="Views\Cells\EventCell.designer.cs">
+      <DependentUpon>EventCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cells\GroupCell.cs" />
+    <Compile Include="Views\Cells\GroupCell.designer.cs">
+      <DependentUpon>GroupCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cells\MemberCell.cs" />
+    <Compile Include="Views\Cells\MemberCell.designer.cs">
+      <DependentUpon>MemberCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
@@ -201,5 +255,24 @@
       <Version>1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="json.net">
+      <Version>4.5.11</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="en.lproj\" />
+    <Folder Include="Views\Cells\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Views\LoginView.xib" />
+    <InterfaceDefinition Include="Views\EventView.xib" />
+    <InterfaceDefinition Include="Views\Cells\EventCell.xib" />
+    <InterfaceDefinition Include="Views\Cells\GroupCell.xib" />
+    <InterfaceDefinition Include="Views\Cells\MemberCell.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
 </Project>

@@ -48,7 +48,12 @@ namespace MeetupManager.Portable.ViewModels
 		{
 			this.Member = member;
 			this.eventId = eventId;
-			this.Photo = photo;
+			this.Photo = photo ?? new MemberPhoto {
+				HighResLink = @"https://secure.gravatar.com/avatar/70148d964bb389d42547834e1062c886?s=200&r=x&d=http%3a%2f%2fd1iqk4d73cu9hh.cloudfront.net%2fcomponents%2fimg%2fuser-icon.png",
+				PhotoId = 0,
+				ThumbLink =  @"https://secure.gravatar.com/avatar/70148d964bb389d42547834e1062c886?s=200&r=x&d=http%3a%2f%2fd1iqk4d73cu9hh.cloudfront.net%2fcomponents%2fimg%2fuser-icon.png",
+				PhotoLink = @"https://secure.gravatar.com/avatar/70148d964bb389d42547834e1062c886?s=200&r=x&d=http%3a%2f%2fd1iqk4d73cu9hh.cloudfront.net%2fcomponents%2fimg%2fuser-icon.png"
+			};
 		}
 
 		public string Name { get { return this.Member.Name; } }

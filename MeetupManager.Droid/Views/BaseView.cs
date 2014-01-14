@@ -40,6 +40,24 @@ namespace MeetupManager.Droid.Views
 #endif
         }
 
+        protected void LogEvent(string category, string action, string label)
+        {
+#if !DEBUG
+            var tracker = EasyTracker.GetInstance(this);
+            if (tracker == null)
+                return;
+
+            tracker.Send(MapBuilder
+                .CreateEvent(category, // Event category (required)
+                    action, // Event action (required)
+                    label, // Event label
+                    null) // Event value
+                .Build());
+#endif
+        }
+
+
+
         protected override void OnStop()
         {
             base.OnStop();

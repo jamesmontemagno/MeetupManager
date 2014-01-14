@@ -60,6 +60,9 @@ namespace MeetupManager.Portable.ViewModels
 
         public async Task ExecuteRefreshCommand()
         {
+			if (IsBusy)
+				return;
+
             groups.Clear();
             RaisePropertyChanged(() => Groups);
             CanLoadMore = true;
@@ -75,7 +78,7 @@ namespace MeetupManager.Portable.ViewModels
 
         private async Task ExecuteLoadMoreCommand()
         {
-            if (!CanLoadMore)
+			if (!CanLoadMore || IsBusy)
                 return;
 
             IsBusy = true;
@@ -85,10 +88,21 @@ namespace MeetupManager.Portable.ViewModels
             {
                 var groupResults = await this.meetupService.GetGroups(Settings.UserId, groups.Count);
                 foreach (var group in groupResults.Groups)
+				{
+					if(group.GroupPhoto == null)
+					{
+						group.GroupPhoto = new GroupPhoto{
+							PhotoId = 0,
+							HighResLink = "http://img2.meetupstatic.com/9602342981488429316/img/header/logo.png",
+							PhotoLink = "http://img2.meetupstatic.com/9602342981488429316/img/header/logo.png",
+							ThumbLink = "http://img2.meetupstatic.com/9602342981488429316/img/header/logo.png"
+						};
+					}
                     Groups.Add(group);
+				}
 
                 RaisePropertyChanged(() => Groups);
-                CanLoadMore = groupResults.Groups.Count == 100;
+				CanLoadMore = groupResults.Groups.Count == 100;
             }
             catch (Exception ex)
             {

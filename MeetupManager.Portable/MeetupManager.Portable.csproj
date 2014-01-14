@@ -77,6 +77,7 @@
     <Compile Include="Services\Responses\RefreshRootObject.cs" />
     <Compile Include="Models\LoggedInUser.cs" />
     <Compile Include="ViewModels\NewUserViewModel.cs" />
+    <Compile Include="Interfaces\IRemove.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -96,9 +97,6 @@
     <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite">
       <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.0.13\lib\portable-win+net45+MonoAndroid16+MonoTouch40+sl40+wp71\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Refractored.MvxPlugins.Settings">
       <HintPath>..\Common\Refractored.MvxPlugins.Settings.dll</HintPath>
     </Reference>
@@ -110,6 +108,8 @@
     </Reference>
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\portable-net40+sl4+win8+wp71\System.Net.Http.Primitives.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup />

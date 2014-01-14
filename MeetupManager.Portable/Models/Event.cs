@@ -82,6 +82,9 @@ namespace MeetupManager.Portable.Models
 		[JsonIgnore]
 		public string MonthDay { get { return FromUnixTime(Time).ToString("MM/dd");  } }
 
+		[JsonIgnore]
+		public string MonthDayYear { get { return FromUnixTime(Time).ToString("MMM dd yyyy");  } }
+
 		[JsonProperty("waitlist_count")]
 		public int WaitlistCount { get; set; }
 

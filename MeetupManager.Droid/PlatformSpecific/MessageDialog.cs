@@ -22,6 +22,7 @@ using Android.Widget;
 using MeetupManager.Portable.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid.Platform;
+using Android.Views;
 
 namespace MeetupManager.Droid.PlatformSpecific
 {
@@ -66,5 +67,40 @@ namespace MeetupManager.Droid.PlatformSpecific
         AlertDialog alert = builder.Create();
         alert.Show();
     }
+
+		public void AskForString (string message, string title, System.Action<string> returnString)
+		{
+			var activity = Mvx.Resolve<IMvxAndroidCurrentTopActivity> ().Activity;
+		    var builder = new AlertDialog.Builder(activity);
+		    builder.SetIcon(Resource.Drawable.ic_launcher);
+		    builder.SetTitle(title ?? string.Empty);
+		    builder.SetMessage(message);
+		    var view = View.Inflate(activity, Resource.Layout.dialog_add_member, null);
+		    builder.SetView(view);
+
+		    var textBoxName = view.FindViewById<EditText>(Resource.Id.name);
+
+
+		    builder.SetCancelable(true);
+		    builder.SetNegativeButton(Resource.String.cancel, delegate { });//do nothign on cancel
+
+
+
+
+		    builder.SetPositiveButton(Resource.String.ok, delegate
+			    {
+
+				    if (string.IsNullOrWhiteSpace(textBoxName.Text))
+					    return;
+
+			    returnString(textBoxName.Text.Trim());
+			    });
+
+
+		    var alertDialog = builder.Create();
+		    alertDialog.Show();
+				
+
+	}
   }
 }

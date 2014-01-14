@@ -57,7 +57,8 @@ namespace MeetupManager.Droid.PlatformSpecific
 
 			        long time = 0;
 			        long.TryParse(ee.Account.Properties["expires_in"], out time);
-			        Settings.KeyValidUntil = DateTime.UtcNow.Ticks + time;
+					var nextTime = DateTime.UtcNow.AddSeconds(time).Ticks;
+					Settings.KeyValidUntil = nextTime;
 			    }
 
 			    if (loginCallback != null)
