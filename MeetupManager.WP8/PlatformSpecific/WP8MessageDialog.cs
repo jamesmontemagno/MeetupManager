@@ -26,5 +26,10 @@ namespace MeetupManager.WP8.PlatformSpecific
         {
             throw new NotImplementedException();
         }
+
+        public void AskForString(string message, string title, Action<string> returnString)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

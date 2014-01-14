@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -14,6 +15,34 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
+    <phone:PhoneApplicationPage.Resources>
+        <ContentControl x:Key="Context" Content="{Binding}" />
+        <DataTemplate x:Key="LongListSelectorItemTemplate">
+            <ListBoxItem Background="White" Margin="0,0,0,20" BorderBrush="#CFCFCF" BorderThickness="1">
+                <Grid x:Name="grid_classItem" Margin="0,0,0,0" Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Background="#CFCFCF" Margin="0,0,0,0" Opacity="1" Height="100" Width="100" Orientation="Vertical">
+                        <TextBlock Text="{Binding MonthDay, Mode=OneWay}" />
+                        <TextBlock Text="{Binding Year, Mode=OneWay}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Margin="20,0,0,0" Height="100">
+                        <TextBlock Text="{Binding Name}" Margin="0,6,12,0" TextWrapping="Wrap" Foreground="#3D3D3D" FontWeight="SemiBold" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                    </StackPanel>
+                </Grid>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Tap">
+                        <i:InvokeCommandAction Command="{Binding DataContext.GoToEventCommand, Source={StaticResource Context}, Mode=OneWay}"
+                                               CommandParameter="{Binding Mode=OneWay}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBoxItem>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+    
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="WhiteSmoke">
         <Grid.RowDefinitions>
@@ -29,6 +58,13 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 
+            <phone:LongListSelector x:Name="lls_events"
+                                    Grid.Row="2"
+                                    Margin="11,0,0,0" 
+                                    ItemsSource="{Binding Events, Mode=TwoWay}"
+                                    ItemTemplate="{StaticResource LongListSelectorItemTemplate}">
+            </phone:LongListSelector>
+            
         </Grid>
     </Grid>
 
