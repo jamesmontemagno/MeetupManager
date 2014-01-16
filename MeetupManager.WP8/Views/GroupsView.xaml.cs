@@ -31,5 +31,10 @@ namespace MeetupManager.WP8.Views
 
             this.ViewModel.RefreshCommand.Execute();
         }
+
+        private void appBar_refresh_Click(object sender, EventArgs e)
+        {
+            this.ViewModel.RefreshCommand.Execute();
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace MeetupManager.WP8.PlatformSpecific
     {
         public void SendMessage(string message, string title = null)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(message, title, MessageBoxButton.OK);
         }
 
         public void SendToast(string message)

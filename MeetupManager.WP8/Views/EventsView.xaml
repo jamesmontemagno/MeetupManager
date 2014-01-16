@@ -8,29 +8,34 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
+    xmlns:c="clr-namespace:MeetupManager.WP8.Converters"
+    xmlns:local="clr-namespace:MeetupManager.WP8.Views"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    local:TiltEffect.IsTiltEnabled="True">
 
     <phone:PhoneApplicationPage.Resources>
+        <c:UppercaseConverter x:Key="UpperConverter" />
+        
         <ContentControl x:Key="Context" Content="{Binding}" />
         <DataTemplate x:Key="LongListSelectorItemTemplate">
-            <ListBoxItem Background="White" Margin="0,0,0,20" BorderBrush="#CFCFCF" BorderThickness="1">
-                <Grid x:Name="grid_classItem" Margin="0,0,0,0" Background="White">
+            <ListBoxItem Background="Transparent" Margin="0,0,0,20" BorderBrush="#CFCFCF" BorderThickness="0">
+                <Grid x:Name="grid_classItem" Margin="0,0,0,0" Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <StackPanel Background="#CFCFCF" Margin="0,0,0,0" Opacity="1" Height="100" Width="100" Orientation="Vertical">
-                        <TextBlock Text="{Binding MonthDay, Mode=OneWay}" />
-                        <TextBlock Text="{Binding Year, Mode=OneWay}" />
+                    <StackPanel Background="#363636" Margin="0,0,0,0" Opacity="1" Height="100" Width="100" Orientation="Vertical">
+                        <TextBlock Text="{Binding MonthDay, Mode=OneWay}" Margin="12,12,0,12" FontWeight="Bold" />
+                        <TextBlock Text="{Binding Year, Mode=OneWay}" Margin="12,0,0,12" FontWeight="Bold" />
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" Margin="20,0,0,0" Height="100">
-                        <TextBlock Text="{Binding Name}" Margin="0,6,12,0" TextWrapping="Wrap" Foreground="#3D3D3D" FontWeight="SemiBold" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                        <TextBlock Text="{Binding Name}" Margin="0,6,12,0" TextWrapping="Wrap" Foreground="#363636" Style="{StaticResource PhoneTextSubtleStyle}"/>
                     </StackPanel>
                 </Grid>
                 <i:Interaction.Triggers>
@@ -52,14 +57,14 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="{Binding GroupName}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#363636"/>
+            <TextBlock Text="{Binding GroupName, Converter={StaticResource UpperConverter}}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#363636" FontWeight="SemiBold" />
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 
             <phone:LongListSelector x:Name="lls_events"
-                                    Grid.Row="2"
+                                    Grid.Row="0"
                                     Margin="11,0,0,0" 
                                     ItemsSource="{Binding Events, Mode=TwoWay}"
                                     ItemTemplate="{StaticResource LongListSelectorItemTemplate}">
@@ -68,4 +73,11 @@
         </Grid>
     </Grid>
 
+    <!-- TODO: Replace click event with Command using the Bindable app bar and remove this code behind craziness -->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Default" BackgroundColor="#363636" IsVisible="True">
+            <shell:ApplicationBarIconButton x:Name="appBar_refresh" IconUri="/Assets/Icons/refresh.png" Text="refresh" Click="appBar_refresh_Click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
 </views:MvxPhonePage>

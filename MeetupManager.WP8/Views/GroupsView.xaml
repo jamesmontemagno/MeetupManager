@@ -9,18 +9,20 @@
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
     xmlns:bar="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
+    xmlns:local="clr-namespace:MeetupManager.WP8.Views"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    local:TiltEffect.IsTiltEnabled="True">
 
     <phone:PhoneApplicationPage.Resources>
         <ContentControl x:Key="Context" Content="{Binding}" />
         <DataTemplate x:Key="LongListSelectorItemTemplate">
-            <ListBoxItem Background="White" Margin="0,0,0,20" BorderBrush="#CFCFCF" BorderThickness="1">
-                <Grid x:Name="grid_classItem" Margin="0,0,0,0" Background="White">
+            <ListBoxItem Background="Transparent" Margin="0,0,0,20" BorderBrush="#CFCFCF" BorderThickness="0">
+                <Grid x:Name="grid_classItem" Margin="0,0,0,0" Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100" />
                         <ColumnDefinition Width="Auto" />
@@ -30,7 +32,7 @@
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" Margin="20,0,0,0" Height="100">
-                        <TextBlock Text="{Binding Name}" Margin="0,6,12,0" TextWrapping="Wrap" Foreground="#3D3D3D" FontWeight="SemiBold" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                        <TextBlock Text="{Binding Name}" Margin="0,6,12,0" TextWrapping="Wrap" Foreground="#363636" Style="{StaticResource PhoneTextSubtleStyle}"/>
                     </StackPanel>
                 </Grid>
                 <i:Interaction.Triggers>
@@ -54,7 +56,8 @@
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="MY GROUPS" 
                        Style="{StaticResource PhoneTextNormalStyle}" 
-                       Foreground="#363636" />
+                       Foreground="#363636"
+                       FontWeight="SemiBold"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -70,29 +73,12 @@
         </Grid>
     </Grid>
 
-    <bar:Bindable.ApplicationBar>
-        <bar:BindableApplicationBar Mode="Minimized"
-                                    BackgroundColor="#363636"
-                                    Opacity="1"
-                                    IsMenuEnabled="True"
-                                    IsVisible="True">
-            <bar:BindableApplicationBar.MenuItems>
-                <bar:BindableApplicationBarMenuItem Text="refresh" 
-                                                    Command="{Binding RefreshCommand}" />
-            </bar:BindableApplicationBar.MenuItems>
-        </bar:BindableApplicationBar>
-    </bar:Bindable.ApplicationBar>
-    
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Mode="Default" BackgroundColor="#363636" Opacity="1" IsMenuEnabled="True" IsVisible="True">
-            <shell:ApplicationBarIconButton x:Name="appBar_refresh" IconUri="/Assets/Icons/refresh.png" Text="refresh">
-            </shell:ApplicationBarIconButton>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="appBar_about" Text="about" />
-                <shell:ApplicationBarMenuItem x:Name="appBar_feedback" Text="feedback" />
-                <shell:ApplicationBarMenuItem x:Name="appBar_signout" Text="sign out" />
-            </shell:ApplicationBar.MenuItems>
+
+    <!-- TODO: Replace click event with Command using the Bindable app bar and remove this code behind craziness -->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Default" BackgroundColor="#363636" IsVisible="True">
+            <shell:ApplicationBarIconButton x:Name="appBar_refresh" IconUri="/Assets/Icons/refresh.png" Text="refresh" Click="appBar_refresh_Click" />
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
-    
+    </phone:PhoneApplicationPage.ApplicationBar>
+
 </views:MvxPhonePage>
