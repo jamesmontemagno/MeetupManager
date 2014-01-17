@@ -61,7 +61,7 @@ namespace MeetupManager.Portable.Mock
 						MemberId = i
 					},
 					MemberPhoto =  new MemberPhoto{
-						ThumbLink =  string.Empty
+						ThumbLink =  "http://photos1.meetupstatic.com/photos/member/4/3/8/2/member_165857282.jpeg"
 					}
 				});
 			}
