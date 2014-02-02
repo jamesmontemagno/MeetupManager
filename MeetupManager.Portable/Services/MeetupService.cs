@@ -35,8 +35,8 @@ namespace MeetupManager.Portable.Services
 	{
 		#region IMeetupService implementation
 
-		public static string ClientId = "<YOUR ID>";
-		public static string ClientSecret = "<Your secret>";
+        public static string ClientId = "<Client ID>";
+        public static string ClientSecret = "<Secret>";
 	    public static string AuthorizeUrl = "https://secure.meetup.com/oauth2/authorize";
 	    public static string RedirectUrl = "http://www.refractored.com/login_success.html";
 	    public static string AccessTokenUrl = "https://secure.meetup.com/oauth2/access";
@@ -94,8 +94,56 @@ namespace MeetupManager.Portable.Services
 
 		}
 
-      
 
+
+        public async Task<RequestTokenObject> GetToken(string code)
+        {
+            if (string.IsNullOrWhiteSpace(code))
+                return null;
+
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    if (client.DefaultRequestHeaders.CacheControl == null)
+                        client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
+
+                    client.DefaultRequestHeaders.CacheControl.NoCache = true;
+                    client.DefaultRequestHeaders.IfModifiedSince = DateTime.UtcNow;
+                    client.DefaultRequestHeaders.CacheControl.NoStore = true;
+                    client.Timeout = new TimeSpan(0, 0, 30);
+
+                    var content = new FormUrlEncodedContent(new[] 
+                    {
+                        new KeyValuePair<string, string>("client_id", ClientId),
+                        new KeyValuePair<string, string>("client_secret", ClientSecret),
+                        new KeyValuePair<string, string>("grant_type", "authorization_code"),
+                        new KeyValuePair<string, string>("redirect_uri", RedirectUrl), 
+                        new KeyValuePair<string, string>("code", code), 
+                    });
+
+                    var result = await client.PostAsync("https://secure.meetup.com/oauth2/access", content);
+                    var response = await result.Content.ReadAsStringAsync();
+                    var refreshResponse = await DeserializeObjectAsync<RequestTokenObject>(response);
+                    return refreshResponse;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
+            }
+
+            return null;
+        }
+
+        public class RequestTokenObject
+        {
+            public string access_token { get; set; }
+            public string token_type { get; set; }
+            public int expires_in { get; set; }
+            public string refresh_token { get; set; }
+        }
 
         public async Task<bool> RenewAccessToken()
 		{

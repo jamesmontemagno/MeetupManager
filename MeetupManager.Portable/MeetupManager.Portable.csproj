@@ -47,7 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Services\Responses\GroupsRootObject.cs" />
-    <Compile Include="swp8\Bootstrap\CommunitySqlitePluginBootstrap.cs" />
     <Compile Include="ViewModels\EventViewModel.cs" />
     <Compile Include="Interfaces\IMeetupService.cs" />
     <Compile Include="Services\MeetupService.cs" />

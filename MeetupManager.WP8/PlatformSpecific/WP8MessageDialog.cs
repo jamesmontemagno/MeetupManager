@@ -1,5 +1,7 @@
-﻿using Cirrious.CrossCore;
+﻿using System.Windows.Controls;
+using Cirrious.CrossCore;
 using Cirrious.CrossCore.Core;
+using Coding4Fun.Toolkit.Controls;
 using MeetupManager.Portable.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -14,22 +16,41 @@ namespace MeetupManager.WP8.PlatformSpecific
     {
         public void SendMessage(string message, string title = null)
         {
-            MessageBox.Show(message, title, MessageBoxButton.OK);
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                MessageBox.Show(message, title?? string.Empty, MessageBoxButton.OK);
+            });
         }
 
         public void SendToast(string message)
         {
-            MessageBox.Show(message);
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                var toast = new ToastPrompt();
+                toast.Message = message;
+                toast.Show();
+            });
         }
 
         public void SendConfirmation(string message, string title, Action<bool> confirmationAction)
         {
-            throw new NotImplementedException();
+            var result = MessageBox.Show(message, title??string.Empty, MessageBoxButton.OKCancel);
+            confirmationAction(result == MessageBoxResult.OK);
         }
 
         public void AskForString(string message, string title, Action<string> returnString)
         {
-            throw new NotImplementedException();
+            var input = new InputPrompt();
+            input.Completed += (sender, args) =>
+            {
+                if(args.PopUpResult == PopUpResult.Ok)
+                    returnString(args.Result);
+            };
+            input.Title = title??string.Empty;
+            input.Message = message;
+            input.IsCancelVisible = true;
+            input.Show();
+
         }
     }
 }

@@ -25,19 +25,21 @@
 
         <ContentControl x:Key="Context" Content="{Binding}" />
         <DataTemplate x:Key="LongListSelectorItemTemplate">
-            <ListBoxItem Background="Transparent" Margin="0,0,0,20" BorderBrush="#CFCFCF" BorderThickness="0">
+            <ListBoxItem Background="Transparent" Margin="0,0,0,20" BorderThickness="0">
                 <Grid x:Name="grid_classItem" Margin="0,0,0,0" Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <StackPanel Background="#363636" Margin="0,0,0,0" Opacity="1" Height="100" Width="100" Orientation="Vertical">
-                        <TextBlock Text="{Binding MonthDay, Mode=OneWay}" Margin="12,12,0,12" FontWeight="Bold" />
-                        <TextBlock Text="{Binding Year, Mode=OneWay}" Margin="12,0,0,12" FontWeight="Bold" />
+                    <StackPanel Margin="0,0,0,0" Opacity="1" Background="{StaticResource PhoneAccentBrush}" Height="100" Width="100" Orientation="Vertical">
+        
+                            <TextBlock Text="{Binding MonthDay, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Style="{StaticResource PhoneTextNormalStyle}" />
+                            <TextBlock Text="{Binding Year, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"  Style="{StaticResource PhoneTextNormalStyle}" />
+       
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" Margin="20,0,0,0" Height="100">
-                        <TextBlock Text="{Binding Name}" Margin="0,6,12,0" TextWrapping="Wrap" Foreground="#363636" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                    <StackPanel Grid.Column="2" Margin="20,0,0,0" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Name}" Margin="0,6,12,0" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                     </StackPanel>
                 </Grid>
                 <i:Interaction.Triggers>
@@ -51,21 +53,22 @@
     </phone:PhoneApplicationPage.Resources>
     
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="WhiteSmoke">
+    <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <ProgressBar VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding IsBusy, Converter={StaticResource VisibilityConverter}}"></ProgressBar>
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="{Binding GroupName, Converter={StaticResource UpperConverter}}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#363636" FontWeight="SemiBold" />
+            <TextBlock Text="{Binding GroupName, Converter={StaticResource UpperConverter}}" Style="{StaticResource PhoneTextNormalStyle}" FontWeight="SemiBold" />
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 
-            <phone:LongListSelector x:Name="lls_events"
+            <phone:LongListSelector x:Name="EventsListSelector"
                                     Grid.Row="0"
                                     Margin="11,0,0,0" 
                                     ItemsSource="{Binding Events, Mode=TwoWay}"
@@ -77,8 +80,8 @@
 
     <!-- TODO: Replace click event with Command using the Bindable app bar and remove this code behind craziness -->
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Mode="Default" BackgroundColor="#363636" IsVisible="True">
-            <shell:ApplicationBarIconButton x:Name="appBar_refresh" IconUri="/Assets/Icons/refresh.png" Text="refresh" Click="appBar_refresh_Click" />
+        <shell:ApplicationBar Mode="Minimized" IsVisible="True">
+            <shell:ApplicationBarIconButton x:Name="AppBarRefresh" IconUri="/Assets/Icons/refresh.png" Text="refresh" Click="AppBarRefreshClick" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
     

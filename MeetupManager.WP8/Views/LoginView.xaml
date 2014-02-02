@@ -26,18 +26,17 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height=".25*"></RowDefinition>
+                <RowDefinition Height=".3*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Image Source="/Assets/meetupmanagerlogo.png" Margin="40"></Image>
-            <ProgressBar IsIndeterminate="True" Visibility="{Binding IsBusy, Converter={StaticResource VisibilityConverter}}"></ProgressBar>
+            <Image Source="/Assets/meetupmanagerlogo.png"></Image>
+            <ProgressBar Grid.Row="1" IsIndeterminate="True" Visibility="{Binding IsBusy, Converter={StaticResource VisibilityConverter}}"></ProgressBar>
             <Button x:Name="btn_login" Grid.Row="2"
                     Content="Login to Meetup.com"
-                    Margin="20"
                     Command="{Binding LoginCommand}" />
-            <phone:WebBrowser x:Name="Browser"  Grid.Row="3"/>
+            <phone:WebBrowser x:Name="Browser"  Visibility="Collapsed" Grid.Row="3"/>
         </Grid>
     </Grid>
 

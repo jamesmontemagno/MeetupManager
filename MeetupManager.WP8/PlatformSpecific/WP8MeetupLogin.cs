@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Net;
+﻿using System.Globalization;
 using System.Windows.Navigation;
+using Cirrious.CrossCore;
 using Cirrious.MvvmCross.WindowsPhone.Platform;
 using MeetupManager.Portable.Interfaces;
 using System;
@@ -14,131 +13,69 @@ namespace MeetupManager.WP8.PlatformSpecific
 {
     public class WP8MeetupLogin : ILogin
     {
-        public WP8MeetupLogin()
+        private WebBrowser browser;
+        public WebBrowser Browser
         {
+            get { return browser; }
+            set
+            {
+                browser = value;
+                browser.Navigated += BrowserNavigated;
+            }
         }
-
-     
-        public WebBrowser Browser { get; set; }
-        private Action<bool, Dictionary<string, string>> LoginCallback;
+        private Action<bool, Dictionary<string, string>> LoginCallback { get; set; }
         public void LoginAsync(Action<bool, Dictionary<string, string>> loginCallback)
         {
             LoginCallback = loginCallback;
             var url = "https://secure.meetup.com/oauth2/authorize" +
                       "?client_id=" + MeetupService.ClientId
-                      +"&response_type=code&redirect_uri=" + redirect;
+                      +"&response_type=code&redirect_uri=" + MeetupService.RedirectUrl;
 
-
-            Browser.Navigated += BrowserNavigated;
+            
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
                 // change UI here
-                Browser.Visibility = System.Windows.Visibility.Visible;
+                Browser.Visibility = Visibility.Visible;
                 Browser.Navigate(new Uri(url));
             });
             
         }
 
-        private string url;
-
-        private int AUTH = 0;
-        private int TOKEN = 1;
-        private int TOKEN2 = 2;
-        private int count = 0;
-        private int state;
-        private string code;
-        private string redirect = "http://www.refractored.com/login_success.html";
-
-        void GetResponseStreamCallback(IAsyncResult callbackResult)
+        /// <summary>
+        /// We need to check the navigation if we have a success or not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void BrowserNavigated(object sender, NavigationEventArgs e)
         {
-            if (state == TOKEN)
+            if (e.Uri.AbsoluteUri.StartsWith("http://www.refractored."))
             {
-                HttpWebRequest request = (HttpWebRequest)callbackResult.AsyncState;
-                HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(callbackResult);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    Debug.WriteLine("Ok1");
-                }
-                else
-                {
-                    Debug.WriteLine(response.StatusCode);
-                }
-                using (StreamReader httpWebStreamReader = new StreamReader(response.GetResponseStream()))
-                {
-                    string result = httpWebStreamReader.ReadToEnd();
-                    //For debug: show results
-                    Debug.WriteLine(result);
-                    var stuff = new Dictionary<string, string>();
-
-                    var theStuff = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(result);
-
-                    stuff.Add("access_token", theStuff.access_token);
-                    stuff.Add("token_type", theStuff.token_type);
-                    stuff.Add("expires_in", theStuff.expires_in.ToString());
-                    stuff.Add("refresh_token", theStuff.refresh_token);
-                    LoginCallback(true, stuff);
-
-                }
-            }
-
-        }
-
-
-        public class RootObject
-        {
-            public string access_token { get; set; }
-            public string token_type { get; set; }
-            public int expires_in { get; set; }
-            public string refresh_token { get; set; }
-        }
-
-
-        private void BrowserNavigated(object sender, NavigationEventArgs e)
-        {
-
-            if (strCmp(e.Uri.AbsoluteUri, "http://www.refractored.") == true)
-            {
+                var code = string.Empty;
                 if (e.Uri.Query.Contains("code"))
                 {
                     var items = e.Uri.ParseQueryString();
                     code = items["code"];
                 }
-                var post = "https://secure.meetup.com/oauth2/access" +
-                           "client_id=" + MeetupService.ClientId +
-                           "&client_secret=" + MeetupService.ClientSecret +
-                           "&grant_type=authorization_code" +
-                           "&redirect_uri=" + redirect +
-                           "&code=" + code;
-
-                Browser.Visibility = System.Windows.Visibility.Collapsed;
-                HttpWebRequest myRequest = (HttpWebRequest)HttpWebRequest.Create(post);
-                myRequest.Method = "POST";
-                myRequest.ContentType = "application/x-www-form-urlencoded";
-                state = TOKEN;
-                myRequest.BeginGetResponse(new AsyncCallback(GetResponseStreamCallback), myRequest);
-                
-            }
-
-        }
-        private bool strCmp(string a, string b)
-        {
-            if (a.Length < b.Length)
-                return false;
-            bool equal = false;
-            for (int i = 0; i < b.Length; i++)
-            {
-
-                if (a[i] == b[i])
-                    equal = true;
                 else
                 {
-                    equal = false;
-                    break;
+                    LoginCallback(false, null);
                 }
 
+                Browser.Visibility = Visibility.Collapsed;
+                var service = Mvx.Resolve<IMeetupService>();
+                var result = await service.GetToken(code);
+                if (result == null)
+                {
+                    LoginCallback(false, null);
+                    return;
+                }
+                var stuff = new Dictionary<string, string>();
+                stuff.Add("access_token", result.access_token);
+                stuff.Add("token_type", result.token_type);
+                stuff.Add("expires_in", result.expires_in.ToString(CultureInfo.InvariantCulture));
+                stuff.Add("refresh_token", result.refresh_token);
+                LoginCallback(true, stuff);
             }
-
-            return equal;
         }
     }
 }

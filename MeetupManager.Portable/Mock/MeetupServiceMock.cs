@@ -121,6 +121,12 @@ namespace MeetupManager.Portable.Mock
 
             return groups;
         }
+
+
+        public Task<Services.MeetupService.RequestTokenObject> GetToken(string code)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

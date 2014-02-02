@@ -98,7 +98,6 @@
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\UppercaseConverter.cs" />
     <Compile Include="DebugTrace.cs" />
-    <Compile Include="Helpers\WP8OAuth2Helper.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="PlatformSpecific\WP8MeetupLogin.cs" />
     <Compile Include="PlatformSpecific\WP8MessageDialog.cs" />
@@ -109,7 +108,7 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Setup.cs" />
-    <Compile Include="swp8\Bootstrap\CommunitySqlitePluginBootstrap.cs" />
+    <Compile Include="Bootstrap\CommunitySqlitePluginBootstrap.cs" />
     <Compile Include="Views\EventsView.xaml.cs">
       <DependentUpon>EventsView.xaml</DependentUpon>
     </Compile>
@@ -182,6 +181,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ToDo-MvvmCross\_ Windows Phone UI.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -224,6 +225,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1-beta5\lib\wp8\Cirrious.MvvmCross.WindowsPhone.dll</HintPath>
     </Reference>
+    <Reference Include="Coding4Fun.Toolkit.Controls">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Controls.2.0.7\lib\windowsphone8\Coding4Fun.Toolkit.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="Community.CsharpSqlite.WP7, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1-beta4\lib\wp8\Community.CsharpSqlite.WP7.dll</HintPath>
@@ -246,6 +250,9 @@
       <Project>{9189A7F8-9C9C-427D-9777-AA6B8CD7DF20}</Project>
       <Name>MeetupManager.Portable</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

@@ -17,7 +17,7 @@ namespace MeetupManager.WP8.Views
             InitializeComponent();
         }
 
-        private void appBar_refresh_Click(object sender, EventArgs e)
+        private void AppBarRefreshClick(object sender, EventArgs e)
         {
             this.ViewModel.RefreshCommand.Execute();
         }
