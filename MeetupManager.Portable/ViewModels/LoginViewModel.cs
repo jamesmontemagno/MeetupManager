@@ -92,9 +92,17 @@ namespace MeetupManager.Portable.ViewModels
 
 		private void ExecuteLoginCommand()
 		{
-			login.LoginAsync (async (success) => {
+			login.LoginAsync (async (success, properties) => {
 			    if (success)
 			    {
+                    Settings.AccessToken = properties["access_token"];
+                    Settings.RefreshToken = properties["refresh_token"];
+
+                    long time = 0;
+                    long.TryParse(properties["expires_in"], out time);
+                    var nextTime = DateTime.UtcNow.AddSeconds(time).Ticks;
+                    Settings.KeyValidUntil = nextTime;
+
 			        IsBusy = true;
 			        try
 			        {

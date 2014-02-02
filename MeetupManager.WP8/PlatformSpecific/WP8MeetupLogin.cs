@@ -15,9 +15,9 @@ namespace MeetupManager.WP8.PlatformSpecific
         {
         }
 
-        public void LoginAsync(Action<bool> loginCallback)
+        public void LoginAsync(Action<bool, Dictionary<string, string>> loginCallback)
         {
-            loginCallback(true);
+            loginCallback(true, new Dictionary<string, string>());
         }
 
     }

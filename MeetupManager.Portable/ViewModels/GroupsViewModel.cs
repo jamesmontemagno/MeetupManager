@@ -37,6 +37,11 @@ namespace MeetupManager.Portable.ViewModels
             
         }
 
+        public void Init()
+        {
+            ExecuteRefreshCommand();
+        }
+
 
 
         private ObservableCollection<Group> groups;
@@ -69,14 +74,9 @@ namespace MeetupManager.Portable.ViewModels
             await ExecuteLoadMoreCommand();
         }
 
-        private MvxCommand loadMoreCommand;
+        
 
-        public IMvxCommand LoadMoreCommand
-        {
-            get { return loadMoreCommand ?? (loadMoreCommand = new MvxCommand(async () => ExecuteLoadMoreCommand())); }
-        }
-
-        private async Task ExecuteLoadMoreCommand()
+        protected override async Task ExecuteLoadMoreCommand()
         {
 			if (!CanLoadMore || IsBusy)
                 return;

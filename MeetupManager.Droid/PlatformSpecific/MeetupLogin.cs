@@ -18,6 +18,8 @@
  * limitations under the License.
  */
 using System;
+using System.Collections.Generic;
+using Java.Util;
 using MeetupManager.Portable.Interfaces;
 using MeetupManager.Portable.Services;
 using Xamarin.Auth;
@@ -40,7 +42,7 @@ namespace MeetupManager.Droid.PlatformSpecific
 			redirectUrl: new Uri ("http://www.refractored.com/login_success.html"),
 			accessTokenUrl: new Uri("https://secure.meetup.com/oauth2/access"));
 
-		public void LoginAsync (Action<bool> loginCallback)
+		public void LoginAsync (Action<bool, Dictionary<string, string>> loginCallback)
 		{
 
 			var activity = Mvx.Resolve<IMvxAndroidCurrentTopActivity> ().Activity;
@@ -49,20 +51,8 @@ namespace MeetupManager.Droid.PlatformSpecific
 
 			// If authorization succeeds or is canceled, .Completed will be fired.
 			auth.Completed += (s, ee) => {
-
-			    if (ee.IsAuthenticated)
-			    {
-			        Settings.AccessToken = ee.Account.Properties["access_token"];
-			        Settings.RefreshToken = ee.Account.Properties["refresh_token"];
-
-			        long time = 0;
-			        long.TryParse(ee.Account.Properties["expires_in"], out time);
-					var nextTime = DateTime.UtcNow.AddSeconds(time).Ticks;
-					Settings.KeyValidUntil = nextTime;
-			    }
-
 			    if (loginCallback != null)
-                    loginCallback(ee.IsAuthenticated);
+                    loginCallback(ee.IsAuthenticated, ee.Account.Properties);
 			};
             
 

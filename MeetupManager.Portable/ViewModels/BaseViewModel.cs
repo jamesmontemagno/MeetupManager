@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 using System;
+using System.Threading.Tasks;
 using MeetupManager.Portable.Interfaces;
 using Cirrious.MvvmCross.ViewModels;
 
@@ -51,6 +52,17 @@ namespace MeetupManager.Portable.ViewModels
         }
 
 		public Action<bool> IsBusyChanged { get; set; }
+
+        private MvxCommand loadMoreCommand;
+
+        public IMvxCommand LoadMoreCommand
+        {
+            get { return loadMoreCommand ?? (loadMoreCommand = new MvxCommand(async () => ExecuteLoadMoreCommand())); }
+        }
+
+	    protected virtual async Task ExecuteLoadMoreCommand()
+	    {
+	    }
 	}
 }
 

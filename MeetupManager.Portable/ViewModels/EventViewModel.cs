@@ -94,13 +94,7 @@ namespace MeetupManager.Portable.ViewModels
 
 		}
 
-		private IMvxCommand loadMoreCommand;
-		public IMvxCommand LoadMoreCommand
-		{
-			get { return loadMoreCommand ?? (loadMoreCommand = new MvxCommand (async ()=>ExecuteLoadMoreCommand())); }
-		}
-
-		private async Task ExecuteLoadMoreCommand()
+        protected override async Task ExecuteLoadMoreCommand()
 		{
 			if (!CanLoadMore || IsBusy)
 		        return;

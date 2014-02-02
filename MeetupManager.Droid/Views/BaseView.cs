@@ -11,11 +11,20 @@ using Android.Views;
 using Android.Widget;
 using Google.Analytics.Tracking;
 using MeetupManager.Droid.Helpers;
+using MeetupManager.Portable.ViewModels;
 
 namespace MeetupManager.Droid.Views
 {
-    public class BaseView : MvxActionBarActivity
+    public class BaseView : MvxActionBarActivity, AbsListView.IOnScrollListener
     {
+
+
+        private BaseViewModel viewModel;
+        private  BaseViewModel TheViewModel
+        {
+            get { return viewModel ?? (viewModel = base.ViewModel as EventsViewModel); }
+        }
+
         public string Tag = string.Empty;
         protected override void OnCreate(Bundle bundle)
         {
@@ -73,5 +82,27 @@ namespace MeetupManager.Droid.Views
             easyTracker.ActivityStop(this);
 #endif
         }
+
+
+        #region Scroll change to trigger load more.
+        private readonly object Lock = new object();
+        public void OnScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
+        {
+            lock (this.Lock)
+            {
+                var loadMore = firstVisibleItem + visibleItemCount >= (totalItemCount - 4);
+
+                if (loadMore && this.TheViewModel.CanLoadMore && !this.TheViewModel.IsBusy)
+                {
+                    this.TheViewModel.LoadMoreCommand.Execute(null);
+                }
+            }
+        }
+
+        public void OnScrollStateChanged(AbsListView view, ScrollState scrollState)
+        {
+
+        }
+        #endregion
     }
 }

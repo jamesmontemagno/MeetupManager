@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xamarin.Auth;
 using MeetupManager.Portable.Services;
 using MeetupManager.Portable.Helpers;
@@ -17,7 +18,7 @@ namespace MeetupManager.iOS.PlatformSpecific
 
 
 		UIViewController vc = null;
-		public void LoginAsync (Action<bool> loginCallback)
+        public void LoginAsync(Action<bool, Dictionary<string, string>> loginCallback)
 		{
 			OAuth2Authenticator auth = new OAuth2Authenticator (
 				clientId: MeetupService.ClientId,
@@ -34,18 +35,8 @@ namespace MeetupManager.iOS.PlatformSpecific
 			auth.Completed += (s, ee) => {
 
 				vc.DismissViewController (true, null);
-				if (ee.IsAuthenticated) {
-					Settings.AccessToken = ee.Account.Properties ["access_token"];
-					Settings.RefreshToken = ee.Account.Properties ["refresh_token"];
-
-					long time = 0;
-					long.TryParse (ee.Account.Properties ["expires_in"], out time);
-					var nextTime = DateTime.UtcNow.AddSeconds(time).Ticks;
-					Settings.KeyValidUntil = nextTime;
-				}
-
 				if (loginCallback != null)
-					loginCallback (ee.IsAuthenticated);
+					loginCallback (ee.IsAuthenticated, ee.Account.Properties);
 			};
 
 			auth.BrowsingCompleted += (object sender, EventArgs e) => 
