@@ -10,9 +10,9 @@ Open Source Project by ([@JamesMontemagno](http://www.twitter.com/jamesmontemagn
 Copyright 2014 ([Refractored LLC](http://www.refractored.com))
 
 ## Available for free on:
-* ([Android](https://play.google.com/store/apps/details?id=com.refractored.meetupmanager))
-* iPhone (Finished! Awaiting Approval, if you would like to test please join my [TestFlight Team](http://tflig.ht/Ln3R6J))
-* Windows Phone (Soon, feel free to fork and start, PCL needs updated and HttpClient NuGet needs added)
+* Android: Available on [Google Play](https://play.google.com/store/apps/details?id=com.refractored.meetupmanager)
+* iPhone (Finished! Awaiting Approval, if you would like to test please join my [TestFlight Team](http://tflig.ht/Ln3R6J)
+* Windows Phone (Under Development!)
 * Windows 8 (Soon, feel free to fork and start)
 
 
