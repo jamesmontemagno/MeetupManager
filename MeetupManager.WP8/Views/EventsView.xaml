@@ -20,7 +20,9 @@
 
     <phone:PhoneApplicationPage.Resources>
         <c:UppercaseConverter x:Key="UpperConverter" />
-        
+        <c:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+
+
         <ContentControl x:Key="Context" Content="{Binding}" />
         <DataTemplate x:Key="LongListSelectorItemTemplate">
             <ListBoxItem Background="Transparent" Margin="0,0,0,20" BorderBrush="#CFCFCF" BorderThickness="0">

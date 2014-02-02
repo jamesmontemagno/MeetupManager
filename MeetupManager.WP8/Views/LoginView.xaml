@@ -7,28 +7,37 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
+    xmlns:converters="clr-namespace:MeetupManager.WP8.Converters"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="False">
+    shell:SystemTray.IsVisible="True">
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="WhiteSmoke">
+    <phone:PhoneApplicationPage.Resources>
+        <converters:UppercaseConverter x:Key="UpperConverter" />
+        <converters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+    </phone:PhoneApplicationPage.Resources>
+
+        <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
         
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Margin="0">
-            <StackPanel>
-                <Image Source="/Assets/meetupmanagerlogo.png" Margin="40"></Image>
-                <Button x:Name="btn_login"
-                        Content="Login" BorderBrush="#666666" BorderThickness="0"
-                        Margin="20"
-                        Foreground="White"
-                        Background="#666666"
-                        Height="80"
-                        Command="{Binding LoginCommand}" />
-            </StackPanel>
+        <Grid x:Name="ContentPanel" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".25*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Source="/Assets/meetupmanagerlogo.png" Margin="40"></Image>
+            <ProgressBar IsIndeterminate="True" Visibility="{Binding IsBusy, Converter={StaticResource VisibilityConverter}}"></ProgressBar>
+            <Button x:Name="btn_login" Grid.Row="2"
+                    Content="Login to Meetup.com"
+                    Margin="20"
+                    Command="{Binding LoginCommand}" />
+            <phone:WebBrowser x:Name="Browser"  Grid.Row="3"/>
         </Grid>
     </Grid>
 
