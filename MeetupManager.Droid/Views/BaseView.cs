@@ -90,6 +90,9 @@ namespace MeetupManager.Droid.Views
         {
             lock (this.Lock)
             {
+                if (this.TheViewModel == null)
+                    return;
+
                 var loadMore = firstVisibleItem + visibleItemCount >= (totalItemCount - 4);
 
                 if (loadMore && this.TheViewModel.CanLoadMore && !this.TheViewModel.IsBusy)
