@@ -53,7 +53,6 @@ namespace MeetupManager.iOS.Views
 				else
 					spinner.StopAnimating();
 			};
-			VM.RefreshCommand.Execute (null);
 		}
 
 		//custom source so we can load more when bottom is hit

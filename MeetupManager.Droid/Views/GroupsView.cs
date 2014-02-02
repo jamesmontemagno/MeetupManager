@@ -43,8 +43,6 @@ namespace MeetupManager.Droid.Views
 			SetContentView(Resource.Layout.view_groups);
 
             FindViewById<GridView>(Resource.Id.grid).SetOnScrollListener(this);
-
-            await ViewModel.ExecuteRefreshCommand();
         }
 
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
