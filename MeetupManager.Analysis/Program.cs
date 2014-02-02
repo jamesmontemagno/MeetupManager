@@ -140,7 +140,10 @@ namespace MeetupManager.Analysis
 						    inc.Contains ("LinkerPleaseInclude.cs") ||
 						    inc.Contains ("AssemblyInfo.cs") ||
 							inc.Contains ("Bootstrap.cs") ||
-							inc.Contains(".designer.cs")) {
+							inc.Contains(".designer.cs") ||
+                            inc.EndsWith(".xaml") ||
+                            inc.EndsWith(".xml") ||
+                            inc.EndsWith(".axml")) {
 							continue;
 						}
 
