@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Refractored.MvxPlugins.Settings.Droid</name>
+    </assembly>
+    <members>
+        <member name="M:Refractored.MvxPlugins.Settings.Droid.MvxAndroidSettings.GetValueOrDefault``1(System.String,``0)">
+            <summary>
+            Gets the current value or the default that you specify.
+            </summary>
+            <typeparam name="T">Vaue of t (bool, int, float, long, string)</typeparam>
+            <param name="key">Key for settings</param>
+            <param name="defaultValue">default value if not set</param>
+            <returns>Value or default</returns>
+        </member>
+        <member name="M:Refractored.MvxPlugins.Settings.Droid.MvxAndroidSettings.AddOrUpdateValue(System.String,System.Object)">
+            <summary>
+            Adds or updates a value
+            </summary>
+            <param name="key">key to update</param>
+            <param name="value">value to set</param>
+            <returns>True if added or update and you need to save</returns>
+        </member>
+        <member name="M:Refractored.MvxPlugins.Settings.Droid.MvxAndroidSettings.Save">
+            <summary>
+            Saves out all current settings
+            </summary>
+        </member>
+    </members>
+</doc>

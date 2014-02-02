@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="2.7.2">
+    <id>Mvx.Plugins.Settings</id>
+    <version>1.2.0</version>
+    <title>MvvmCross - Settings Plugin</title>
+    <authors>James Montemagno</authors>
+    <owners>James Montemagno</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+    <projectUrl>https://github.com/jamesmontemagno/Mvx.Plugins.Settings</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Mvx Plugins Setings provides a consistent, cross platform settings plugin for Windows Phone, Windows Store, Xamarin.iOS, and Xamarin.Android when using MvvmCross.  This makes it easier to create cross-platform .NET apps and have cross platform settings. Manage and use all settings from one PCL and save natively on each platform. *This plugin stores settings natively on each platform and does NOT save them to Json. This allows you to use native functionality such as PreferenceActivity on Android.</description>
+    <summary>Cross platform settings for WP, Win Store, Xamarin.Android and Xamarin.iOS with MvvmCross.</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>mvvmcross mvvm settings windows phone winphone wp8 winrt android ios xamarin monoandroid monodroid monotouch</tags>
+    <dependencies>
+      <dependency id="MvvmCross.HotTuna.CrossCore" version="3.0.14" />
+    </dependencies>
+  </metadata>
+</package>
