@@ -37,6 +37,9 @@ namespace MeetupManager.Portable.Services
 
 		public static string ClientId = "<YOUR ID>";
 		public static string ClientSecret = "<Your secret>";
+	    public static string AuthorizeUrl = "https://secure.meetup.com/oauth2/authorize";
+	    public static string RedirectUrl = "http://www.refractored.com/login_success.html";
+	    public static string AccessTokenUrl = "https://secure.meetup.com/oauth2/access";
 
 
         private const string GetGroupsUrl = @"https://api.meetup.com/2/groups?offset={0}&member_id={1}&page=100&order=name&access_token={2}&only=name,id,group_photo";

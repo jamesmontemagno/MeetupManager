@@ -35,6 +35,14 @@ namespace MeetupManager.Analysis
 					},
 				},
 
+                new Solution {
+					Name = "WP",
+					ProjectFiles = new List<string> {
+						Path.Combine(path, "MeetupManager.WP8/MeetupManager.WP8.csproj"),
+						Path.Combine(path, "MeetupManager.Portable/MeetupManager.Portable.csproj")
+					},
+				},
+
 			};
 
 
@@ -146,8 +154,11 @@ namespace MeetupManager.Analysis
 			// Get the lines of code
 			//
 			foreach (var f in _files.Values) {
-				try {
-					f.LinesOfCode = File.ReadAllLines(f.Path).Length;
+				try
+				{
+				    var lines = File.ReadAllLines(f.Path).ToList();
+				    
+					f.LinesOfCode = lines.Count;
 				}
 				catch (Exception ex) {
 				}                

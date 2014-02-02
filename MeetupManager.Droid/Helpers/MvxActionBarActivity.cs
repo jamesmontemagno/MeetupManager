@@ -22,7 +22,6 @@ using Android.Content;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.ViewModels;
-using MeetupManager.Droid.Helpers;
 using Cirrious.MvvmCross.Droid.Views;
 
 namespace MeetupManager.Droid.Helpers

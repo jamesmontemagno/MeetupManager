@@ -19,32 +19,22 @@
  */
 using System;
 using System.Collections.Generic;
-using Java.Util;
 using MeetupManager.Portable.Interfaces;
 using MeetupManager.Portable.Services;
 using Xamarin.Auth;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid.Platform;
-using MeetupManager.Portable.Helpers;
 
 namespace MeetupManager.Droid.PlatformSpecific
 {
 	public class MeetupLogin : ILogin
 	{
-
 		#region ILogin implementation
 
-		OAuth2Authenticator auth = new OAuth2Authenticator (
-			clientId: MeetupService.ClientId,
-			clientSecret: MeetupService.ClientSecret,
-			scope: "",
-			authorizeUrl: new Uri ("https://secure.meetup.com/oauth2/authorize"),
-			redirectUrl: new Uri ("http://www.refractored.com/login_success.html"),
-			accessTokenUrl: new Uri("https://secure.meetup.com/oauth2/access"));
+		OAuth2Authenticator auth = new OAuth2Authenticator (MeetupService.ClientId, MeetupService.ClientSecret, string.Empty,  new Uri (MeetupService.AuthorizeUrl), new Uri (MeetupService.RedirectUrl), new Uri(MeetupService.AccessTokenUrl));
 
 		public void LoginAsync (Action<bool, Dictionary<string, string>> loginCallback)
 		{
-
 			var activity = Mvx.Resolve<IMvxAndroidCurrentTopActivity> ().Activity;
 
 			auth.AllowCancel = true;

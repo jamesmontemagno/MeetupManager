@@ -188,12 +188,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MeetupManager.Portable\MeetupManager.Portable.csproj">
-      <Project>{9189A7F8-9C9C-427D-9777-AA6B8CD7DF20}</Project>
-      <Name>MeetupManager.Portable</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="BindableApplicationBar">
       <HintPath>..\packages\BindableApplicationBar.1.1.0.0\lib\wp8\BindableApplicationBar.dll</HintPath>
     </Reference>
@@ -228,8 +222,8 @@
     <Reference Include="Community.CsharpSqlite.WP7">
       <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.0.13\lib\sl4-wp71\Community.CsharpSqlite.WP7.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveOAuth.WP7">
-      <HintPath>..\packages\ReactiveOAuth-WP7.0.4.0.0\lib\ReactiveOAuth.WP7.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Refractored.MvxPlugins.Settings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -239,6 +233,12 @@
       <HintPath>..\Common\Refractored.MvxPlugins.Settings.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Interactivity, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MeetupManager.Portable\MeetupManager.Portable.csproj">
+      <Project>{9189A7F8-9C9C-427D-9777-AA6B8CD7DF20}</Project>
+      <Name>MeetupManager.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

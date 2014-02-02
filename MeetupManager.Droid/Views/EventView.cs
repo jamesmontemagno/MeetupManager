@@ -20,7 +20,6 @@
 using Android.App;
 using Android.OS;
 using Android.Widget;
-using MeetupManager.Droid.Helpers;
 using MeetupManager.Portable.ViewModels;
 
 namespace MeetupManager.Droid.Views

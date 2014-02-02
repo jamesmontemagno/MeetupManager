@@ -20,10 +20,8 @@
 using Android.Content;
 using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.Droid.Platform;
-using Cirrious.MvvmCross.Droid.Views;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.CrossCore;
-using MeetupManager.Droid.Helpers;
 using MeetupManager.Portable.Interfaces;
 using MeetupManager.Droid.PlatformSpecific;
 using Refractored.MvxPlugins.Settings;
