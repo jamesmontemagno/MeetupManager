@@ -70,6 +70,13 @@
                                     Margin="11,0,0,0" 
                                     ItemsSource="{Binding Groups, Mode=TwoWay}"
                                     ItemTemplate="{StaticResource LongListSelectorItemTemplate}">
+                <!-- The group footer template, for groups in the main list -->
+                <phone:LongListSelector.ListFooterTemplate>
+                    <DataTemplate>
+                        <Button Content="Load More"
+                                Command="{Binding DataContext.LoadMoreCommand, ElementName=LayoutRoot}" Visibility="{Binding DataContext.CanLoadMore, ElementName=LayoutRoot, Converter={StaticResource VisibilityConverter}}"/>
+                    </DataTemplate>
+                </phone:LongListSelector.ListFooterTemplate>
             </phone:LongListSelector>
 
         </Grid>
