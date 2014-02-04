@@ -12,7 +12,7 @@ Copyright 2014 ([Refractored LLC](http://www.refractored.com))
 ## Available for free on:
 * Android: Available on [Google Play](https://play.google.com/store/apps/details?id=com.refractored.meetupmanager)
 * iPhone (Finished! Awaiting Approval, if you would like to test please join my [TestFlight Team](http://tflig.ht/Ln3R6J)
-* Windows Phone (Under Development!)
+* Windows Phone (Under Development- 95% finished, getting ready for submission to marketplace)
 * Windows 8 (Soon, feel free to fork and start)
 
 
