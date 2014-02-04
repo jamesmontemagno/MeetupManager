@@ -41,6 +41,11 @@ namespace MeetupManager.Portable.ViewModels
 			}
 		}
 
+	    public bool CanDelete
+	    {
+	        get { return NewUserId != 0; }
+	    }
+
         public int NewUserId { get; set; }
 		public MemberPhoto Photo{get;set;}
 		private readonly string eventId;

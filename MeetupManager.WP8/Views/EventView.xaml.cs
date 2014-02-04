@@ -22,6 +22,8 @@
 using System;
 using Cirrious.MvvmCross.WindowsPhone.Views;
 using MeetupManager.Portable.ViewModels;
+using Microsoft.Phone.Controls;
+using System.Windows;
 
 namespace MeetupManager.WP8.Views
 {
@@ -51,6 +53,12 @@ namespace MeetupManager.WP8.Views
         private void AppBarAddNewUserClick(object sender, EventArgs e)
         {
             this.ViewModel.AddNewUserCommand.Execute();
+        }
+
+        private void Delete_OnClick(object sender, RoutedEventArgs e)
+        {
+            var selected = (sender as MenuItem).DataContext as MemberViewModel;
+            ViewModel.DeleteUserCommand.Execute(selected);
         }
     }
 }

@@ -27,11 +27,13 @@
         <ContentControl x:Key="Context" Content="{Binding}" />
         <DataTemplate x:Key="LongListSelectorItemTemplate">
             <ListBoxItem Background="Transparent" Margin="0,0,0,20" BorderThickness="0">
+                <StackPanel>
                 <Grid x:Name="grid_classItem" Margin="0,0,0,0" Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
+                    
                     <StackPanel Margin="0,0,0,0" Opacity="1" Height="100" Width="100" Orientation="Vertical">
                         <Image Source="{Binding Photo.ThumbLink}" Stretch="Fill"/>
                     </StackPanel>
@@ -55,7 +57,18 @@
                               Fill="White" 
                               Data="F1 M 32.222,33.4875L 39.1886,40.0582L 51.3802,26.1251L 54.7052,29.0542L 39.5845,47.5L 28.897,36.8125L 32.222,33.4875 Z M 24,27L 48.5,27L 45.5,30L 27,30L 27,49L 46,49L 46,42.5L 49,38.75L 49,52L 24,52L 24,27 Z "/>
                     </Canvas>
+                   
                 </Grid>
+                <toolkit:ContextMenuService.ContextMenu >
+
+                        <toolkit:ContextMenu x:Name="ContextMenu" Visibility="{Binding CanDelete, Converter={StaticResource VisibilityConverter}}">
+
+                        <toolkit:MenuItem x:Name="Delete" Header="delete" Click="Delete_OnClick"/>
+
+                    </toolkit:ContextMenu>
+
+                </toolkit:ContextMenuService.ContextMenu>
+                </StackPanel>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Tap">
                         <i:InvokeCommandAction Command="{Binding DataContext.CheckInCommand, Source={StaticResource Context}, Mode=OneWay}"
