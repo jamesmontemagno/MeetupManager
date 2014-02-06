@@ -8,12 +8,10 @@ namespace MeetupManager.Droid.Views
 {
     public class BaseView : MvxActionBarActivity, AbsListView.IOnScrollListener
     {
-
-
         private BaseViewModel viewModel;
         private  BaseViewModel TheViewModel
         {
-            get { return viewModel ?? (viewModel = base.ViewModel as EventsViewModel); }
+            get { return viewModel ?? (viewModel = base.ViewModel as BaseViewModel); }
         }
 
         public string Tag = string.Empty;

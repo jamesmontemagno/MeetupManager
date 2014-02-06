@@ -100,6 +100,9 @@
     <MtouchArch>ARMv7, ARMv7s</MtouchArch>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AFNetworking">
+      <HintPath>..\Components\modernhttpclient-1.1.0\lib\ios\AFNetworking.dll</HintPath>
+    </Reference>
     <Reference Include="Cirrious.CrossCore">
       <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1-beta5\lib\MonoTouch\Cirrious.CrossCore.dll</HintPath>
     </Reference>
@@ -148,6 +151,9 @@
     <Reference Include="GCDiscreetNotification">
       <HintPath>..\Components\gcdiscreetnotification-1.0\lib\ios\GCDiscreetNotification.dll</HintPath>
     </Reference>
+    <Reference Include="ModernHttpClient.iOS">
+      <HintPath>..\Components\modernhttpclient-1.1.0\lib\ios\ModernHttpClient.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Components\json.net-4.5.11\lib\ios\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -158,6 +164,7 @@
       <HintPath>..\packages\Mvx.Plugins.Settings.1.2.0\lib\monotouch\Refractored.MvxPlugins.Settings.Touch.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
@@ -200,6 +207,7 @@
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="PlatformSpecific\HttpClientHelper.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="PlatformSpecific\MessageDialog.cs" />
     <Compile Include="Views\EventsView.cs" />
@@ -247,6 +255,10 @@
     <XamarinComponentReference Include="googleanalytics">
       <Version>3.0.2</Version>
       <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="modernhttpclient">
+      <Visible>False</Visible>
+      <Version>1.1.0</Version>
     </XamarinComponentReference>
     <XamarinComponentReference Include="xamarin.auth">
       <Version>1.2.2</Version>

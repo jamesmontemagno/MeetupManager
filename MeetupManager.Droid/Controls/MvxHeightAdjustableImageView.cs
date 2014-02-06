@@ -29,6 +29,7 @@ using Cirrious.MvvmCross.Binding.Droid.Views;
 
 namespace MeetupManager.Droid.Controls
 {
+
     /// <summary>
     /// This is a magical adjustable Image View that derives from MvxImageView
     /// This allows you to specify specific height ratio vs width

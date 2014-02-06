@@ -19,6 +19,7 @@
  */
 using Android.Content;
 using Cirrious.CrossCore.Platform;
+using Cirrious.CrossCore.Plugins;
 using Cirrious.MvvmCross.Droid.Platform;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.CrossCore;
@@ -42,11 +43,13 @@ namespace MeetupManager.Droid
 
 		protected override void InitializeLastChance ()
 		{
-			base.InitializeLastChance ();
+            base.InitializeLastChance ();
 			Mvx.RegisterSingleton<IMessageDialog>(()=>new MessageDialog());
 			Mvx.RegisterSingleton<ILogin>(()=>new MeetupLogin());
 			Mvx.RegisterSingleton<ISettings> (() => new MvxAndroidSettings ());
-		}
+        }
+
+
 		
         protected override IMvxTrace CreateDebugTrace()
         {

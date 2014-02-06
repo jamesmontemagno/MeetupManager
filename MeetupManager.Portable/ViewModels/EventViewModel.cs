@@ -111,7 +111,7 @@ namespace MeetupManager.Portable.ViewModels
 				{
 					var member = new MemberViewModel(e.Member, e.MemberPhoto, eventId);
 
-					member.CheckedIn = await Mvx.Resolve<IDataService> ().IsCheckedIn (eventId, member.Member.MemberId.ToString());
+					member.CheckedIn = await dataService.IsCheckedIn (eventId, member.Member.MemberId.ToString());
 
 					members.Add(member);
 				}
@@ -134,6 +134,9 @@ namespace MeetupManager.Portable.ViewModels
 
 
                 RefreshCount();
+
+                if(members.Count == 0)
+                    messageDialog.SendToast("No one has checked in yet.");
 
 			}
 			catch(Exception ex) {

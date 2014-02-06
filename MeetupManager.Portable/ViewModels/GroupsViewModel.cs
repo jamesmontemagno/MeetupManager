@@ -103,6 +103,9 @@ namespace MeetupManager.Portable.ViewModels
 
                 RaisePropertyChanged(() => Groups);
 				CanLoadMore = groupResults.Groups.Count == 100;
+
+                if(Groups.Count == 0)
+                    Mvx.Resolve<IMessageDialog>().SendToast("You do not have any groups.");
             }
             catch (Exception ex)
             {

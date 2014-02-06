@@ -27,15 +27,20 @@ using MeetupManager.Portable.Models.Database;
 
 namespace MeetupManager.Portable.ViewModels
 {
-
+    
 	public class MemberViewModel : MvxViewModel
 	{
+        public static string DefaultIcon = @"http://refractored.com/default.png";
 		public Member Member {get;set;}
 		private bool checkedIn;
 		public bool CheckedIn 
 		{
 			get{ return checkedIn; }
-			set{
+			set
+			{
+			    if (checkedIn == value)
+			        return;
+
 				checkedIn = value;
 				RaisePropertyChanged (() => CheckedIn);
 			}
@@ -54,11 +59,21 @@ namespace MeetupManager.Portable.ViewModels
 			this.Member = member;
 			this.eventId = eventId;
 			this.Photo = photo ?? new MemberPhoto {
-				HighResLink = @"https://secure.gravatar.com/avatar/70148d964bb389d42547834e1062c886?s=200&r=x&d=http%3a%2f%2fd1iqk4d73cu9hh.cloudfront.net%2fcomponents%2fimg%2fuser-icon.png",
+                HighResLink = DefaultIcon,
 				PhotoId = 0,
-				ThumbLink =  @"https://secure.gravatar.com/avatar/70148d964bb389d42547834e1062c886?s=200&r=x&d=http%3a%2f%2fd1iqk4d73cu9hh.cloudfront.net%2fcomponents%2fimg%2fuser-icon.png",
-				PhotoLink = @"https://secure.gravatar.com/avatar/70148d964bb389d42547834e1062c886?s=200&r=x&d=http%3a%2f%2fd1iqk4d73cu9hh.cloudfront.net%2fcomponents%2fimg%2fuser-icon.png"
+                ThumbLink = DefaultIcon,
+                PhotoLink = DefaultIcon
 			};
+
+		    if (string.IsNullOrWhiteSpace(this.Photo.HighResLink))
+		        this.Photo.HighResLink = DefaultIcon;
+
+
+            if (string.IsNullOrWhiteSpace(this.Photo.ThumbLink))
+                this.Photo.ThumbLink = DefaultIcon;
+
+            if (string.IsNullOrWhiteSpace(this.Photo.PhotoLink))
+                this.Photo.PhotoLink = DefaultIcon;
 		}
 
 		public string Name { get { return this.Member.Name; } }

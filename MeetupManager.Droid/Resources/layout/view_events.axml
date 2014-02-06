@@ -30,7 +30,7 @@
         android:horizontalSpacing="@dimen/standard_padding"
         android:verticalSpacing="@dimen/standard_padding"
         android:gravity="center"
-        android:fastScrollEnabled="true"
+        android:fastScrollEnabled="false"
         android:scrollbars="vertical"
         android:scrollbarStyle="insideOverlay"
         android:smoothScrollbar="true" />

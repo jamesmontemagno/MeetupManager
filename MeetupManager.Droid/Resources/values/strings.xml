@@ -8,7 +8,7 @@
   <string name="menu_about">About</string>
   <string name="about">Created by @JamesMontemagno Copyright 2014 Refractored LLC. Open source and created completely in C# with Xamarin!</string>
 	<string name="login">Login to Meetup</string>
-	<string name="login_details">Tap Login to proceed to the Meetup.com login page.</string>
+	<string name="login_details">To get started with Meetup Manager please login to your Meetup.com account. After you login you will be taken to a list of your Meetup.com groups.</string>
 	<string name="logging_in">Logging in to Meetup.com</string>
   <string name="tap_to_login">Tap to checkin:</string>
   <string name="ok">OK</string>

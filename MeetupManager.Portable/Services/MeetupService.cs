@@ -33,9 +33,22 @@ namespace MeetupManager.Portable.Services
 {
 	public class MeetupService : IMeetupService
 	{
+	    private IHttpClientHelper httpClientHelper;
+	    public MeetupService(IHttpClientHelper httpClientHelper = null)
+	    {
+	        this.httpClientHelper = httpClientHelper;
+	    }
+
+	    private HttpClient CreateClient()
+	    {
+	        if(httpClientHelper == null)
+                return new HttpClient();
+
+            return new HttpClient(httpClientHelper.MessageHandler);
+	    }
 		#region IMeetupService implementation
 
-        public static string ClientId = "<Client ID>";
+        public static string ClientId = "<Client id>";
         public static string ClientSecret = "<Secret>";
 	    public static string AuthorizeUrl = "https://secure.meetup.com/oauth2/authorize";
 	    public static string RedirectUrl = "http://www.refractored.com/login_success.html";
@@ -43,21 +56,21 @@ namespace MeetupManager.Portable.Services
 
 
         private const string GetGroupsUrl = @"https://api.meetup.com/2/groups?offset={0}&member_id={1}&page=100&order=name&access_token={2}&only=name,id,group_photo";
-        private const string GetEventsUrl = @"https://api.meetup.com/2/events?offset={0}&group_id={1}&page=20&status=upcoming,past&desc=true&access_token={2}&only=name,id,time";
+        private const string GetEventsUrl = @"https://api.meetup.com/2/events?offset={0}&group_id={1}&page=50&status=upcoming,past&desc=true&access_token={2}&only=name,id,time";
         private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?offset={0}&event_id={1}&page=100&order=name&rsvp=yes&access_token={2}&only=member,member_photo";
         private const string GetUserUrl = @"https://api.meetup.com/2/member/self?access_token={0}&only=name,id,photo";
 
 		
 		public async Task<EventsRootObject> GetEvents (string groupId, int skip)
 		{
-		    var offset = skip/20;
+		    var offset = skip/50;
             if (!await RenewAccessToken())
             {
                 Mvx.Resolve<IMessageDialog>().SendToast("Unable to get events, please re-login.");
                 return new EventsRootObject() { Events = new List<Event>() };
             }
 
-            var client = new HttpClient();
+            var client = CreateClient();
             if (client.DefaultRequestHeaders.CacheControl == null)
                 client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
 
@@ -80,7 +93,7 @@ namespace MeetupManager.Portable.Services
             }
 
 
-			var client = new HttpClient ();
+            var client = CreateClient();
             if (client.DefaultRequestHeaders.CacheControl == null)
                 client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
 
@@ -101,7 +114,7 @@ namespace MeetupManager.Portable.Services
             if (string.IsNullOrWhiteSpace(code))
                 return null;
 
-            using (var client = new HttpClient())
+            using (var client = CreateClient())
             {
                 try
                 {
@@ -153,7 +166,7 @@ namespace MeetupManager.Portable.Services
 			if (DateTime.UtcNow < new DateTime(Settings.KeyValidUntil))
 				return true;
 
-            using (var client = new HttpClient())
+            using (var client = CreateClient())
             {
                 try
                 {
@@ -195,7 +208,7 @@ namespace MeetupManager.Portable.Services
 		public async Task<LoggedInUser> GetCurrentMember ()
 		{
 			await RenewAccessToken();
-            var client = new HttpClient();
+            var client = CreateClient();
             if (client.DefaultRequestHeaders.CacheControl == null)
                 client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
 
@@ -224,7 +237,7 @@ namespace MeetupManager.Portable.Services
                 return new GroupsRootObject{Groups = new List<Group>()};
             }
 
-            var client = new HttpClient();
+            var client = CreateClient();
             if (client.DefaultRequestHeaders.CacheControl == null)
                 client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
 
