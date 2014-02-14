@@ -20,6 +20,7 @@
 using Android.App;
 using Android.OS;
 using Android.Widget;
+using MeetupManager.Portable.Helpers;
 using MeetupManager.Portable.ViewModels;
 namespace MeetupManager.Droid.Views
 {
@@ -48,6 +49,8 @@ namespace MeetupManager.Droid.Views
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_events, menu);
+            var item = menu.FindItem(Resource.Id.menu_filter_events);
+            item.SetTitle(Settings.ShowAllEvents ? Resource.String.limit_events : Resource.String.show_all_events);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -59,6 +62,11 @@ namespace MeetupManager.Droid.Views
             {
                 case Resource.Id.menu_refresh:
                     ViewModel.RefreshCommand.Execute(null);
+                    return true;
+                case Resource.Id.menu_filter_events:
+                    Settings.ShowAllEvents = !Settings.ShowAllEvents;
+                    ViewModel.RefreshCommand.Execute(null);
+                    InvalidateOptionsMenu();
                     return true;
             }
             return base.OnOptionsItemSelected(item);

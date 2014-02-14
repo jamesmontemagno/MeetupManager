@@ -48,22 +48,22 @@ namespace MeetupManager.Portable.Services
 	    }
 		#region IMeetupService implementation
 
-        public static string ClientId = "<Client id>";
-        public static string ClientSecret = "<Secret>";
+        public static string ClientId = "<client id>";
+        public static string ClientSecret = "<secret>";
 	    public static string AuthorizeUrl = "https://secure.meetup.com/oauth2/authorize";
 	    public static string RedirectUrl = "http://www.refractored.com/login_success.html";
 	    public static string AccessTokenUrl = "https://secure.meetup.com/oauth2/access";
 
 
         private const string GetGroupsUrl = @"https://api.meetup.com/2/groups?offset={0}&member_id={1}&page=100&order=name&access_token={2}&only=name,id,group_photo";
-        private const string GetEventsUrl = @"https://api.meetup.com/2/events?offset={0}&group_id={1}&page=50&status=upcoming,past&desc=true&access_token={2}&only=name,id,time";
+        private const string GetEventsUrl = @"https://api.meetup.com/2/events?offset={0}&group_id={1}&page=100&status=upcoming,past&desc=true&access_token={2}&only=name,id,time";
         private const string GetRSVPsUrl = @"https://api.meetup.com/2/rsvps?offset={0}&event_id={1}&page=100&order=name&rsvp=yes&access_token={2}&only=member,member_photo";
         private const string GetUserUrl = @"https://api.meetup.com/2/member/self?access_token={0}&only=name,id,photo";
 
 		
 		public async Task<EventsRootObject> GetEvents (string groupId, int skip)
 		{
-		    var offset = skip/50;
+		    var offset = skip/100;
             if (!await RenewAccessToken())
             {
                 Mvx.Resolve<IMessageDialog>().SendToast("Unable to get events, please re-login.");
@@ -79,6 +79,9 @@ namespace MeetupManager.Portable.Services
             client.DefaultRequestHeaders.CacheControl.NoStore = true;
             client.Timeout = new TimeSpan(0, 0, 30);
             var request = string.Format(GetEventsUrl, offset, groupId, Settings.AccessToken);
+		    if (!Settings.ShowAllEvents)
+		        request += "&time=-100m,2m";
+
             var response = await client.GetStringAsync(request);
 			return await DeserializeObjectAsync<EventsRootObject> (response);
 		}

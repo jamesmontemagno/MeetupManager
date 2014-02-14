@@ -10,4 +10,9 @@
           android:title="@string/menu_refresh" />
 
 
+  <item
+          android:id="@+id/menu_filter_events"
+          local:showAsAction="never"
+          android:title="@string/show_all_events" />
+
 </menu>

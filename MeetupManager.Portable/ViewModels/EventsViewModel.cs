@@ -91,7 +91,7 @@ namespace MeetupManager.Portable.ViewModels
 					events.Add(e);
 				}
 
-				CanLoadMore = events.Count == 50;
+                CanLoadMore = eventResults.Events.Count == 100;
 
                 if (Events.Count == 0)
                     Mvx.Resolve<IMessageDialog>().SendToast("There are no events for this group.");

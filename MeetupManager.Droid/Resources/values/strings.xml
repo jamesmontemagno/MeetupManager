@@ -16,4 +16,6 @@
   <string name="new_member">New Member</string>
   <string name="popup_name">Name:</string>
   <string name="menu_add_new_member">Add New Member</string>
+  <string name="show_all_events">Show All Events</string>
+  <string name="limit_events">Show Recent Events</string>
 </resources>

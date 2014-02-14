@@ -972,11 +972,14 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f050045
 			public const int main_frame = 2131034181;
 			
-			// aapt resource value: 0x7f050049
-			public const int menu_about = 2131034185;
+			// aapt resource value: 0x7f05004a
+			public const int menu_about = 2131034186;
 			
 			// aapt resource value: 0x7f050046
 			public const int menu_add_new_member = 2131034182;
+			
+			// aapt resource value: 0x7f050049
+			public const int menu_filter_events = 2131034185;
 			
 			// aapt resource value: 0x7f050048
 			public const int menu_refresh = 2131034184;
@@ -1324,6 +1327,9 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0a0010
 			public const int hello = 2131361808;
 			
+			// aapt resource value: 0x7f0a0021
+			public const int limit_events = 2131361825;
+			
 			// aapt resource value: 0x7f0a0019
 			public const int logging_in = 2131361817;
 			
@@ -1356,6 +1362,9 @@ namespace MeetupManager.Droid
 			
 			// aapt resource value: 0x7f0a001e
 			public const int popup_name = 2131361822;
+			
+			// aapt resource value: 0x7f0a0020
+			public const int show_all_events = 2131361824;
 			
 			// aapt resource value: 0x7f0a001a
 			public const int tap_to_login = 2131361818;

@@ -53,6 +53,9 @@ namespace MeetupManager.Portable.Helpers
 		private const string KeyValidUntilKey = "key_valid";
 		private const long KeyValidUntilDefault = 0;
 
+        private const string ShowAllEventsKey = "show_all_events";
+        private const bool ShowAllEventsDefault = false;
+
         private const string UserIdKey = "user_id";
         private static string UserIdDefault = string.Empty;
 
@@ -89,6 +92,20 @@ namespace MeetupManager.Portable.Helpers
 					AppSettings.Save();
 			}
 		}
+
+        public static bool ShowAllEvents
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(ShowAllEventsKey, ShowAllEventsDefault);
+            }
+            set
+            {
+                //if value has changed then save it!
+                if (AppSettings.AddOrUpdateValue(ShowAllEventsKey, value))
+                    AppSettings.Save();
+            }
+        }
 
         public static string UserId
         {
