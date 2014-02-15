@@ -19,11 +19,16 @@
  * 
  * Help from Ed Snider http://twitter.com/EdSnider
  */
+
+using System;
+using System.Windows;
+using System.Windows.Navigation;
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.WindowsPhone.Views;
 using MeetupManager.Portable.Interfaces;
 using MeetupManager.Portable.ViewModels;
 using MeetupManager.WP8.PlatformSpecific;
+using Microsoft.Phone.Controls;
 
 namespace MeetupManager.WP8.Views
 {
@@ -39,7 +44,22 @@ namespace MeetupManager.WP8.Views
         {
             InitializeComponent();
             var login = Mvx.Resolve<ILogin>() as WP8MeetupLogin;
+          
             login.Browser = Browser;
+          
         }
+
+      protected async override void OnNavigatedTo(NavigationEventArgs e)
+      {
+        base.OnNavigatedTo(e);
+        await Browser.ClearCookiesAsync();
+        await Browser.ClearInternetCacheAsync();
+      }
+
+      private void AppBarAbout_OnClick(object sender, EventArgs e)
+      {
+        MessageBox.Show("Created by @JamesMontemagno Copyright 2014 Refractored LLC. Open source and created completely in C# with Xamarin! V 1.0.0.0", "About",
+          MessageBoxButton.OK);
+      }
     }
 }

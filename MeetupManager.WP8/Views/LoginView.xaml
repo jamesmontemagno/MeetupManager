@@ -26,18 +26,27 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height=".3*"></RowDefinition>
+                <RowDefinition Height=".4*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Image Source="/Assets/meetupmanagerlogo.png"></Image>
-            <ProgressBar Grid.Row="1" IsIndeterminate="True" Visibility="{Binding IsBusy, Converter={StaticResource VisibilityConverter}}"></ProgressBar>
-            <Button x:Name="btn_login" Grid.Row="2"
+            <TextBlock Margin="12" Style="{StaticResource PhoneTextSmallStyle}" Grid.Row="1" TextWrapping="Wrap">To get started with Meetup Manager please login to your Meetup.com account. After you login you will be taken to a list of your Meetup.com groups.</TextBlock>
+            <ProgressBar Grid.Row="2" IsIndeterminate="True" Visibility="{Binding IsBusy, Converter={StaticResource VisibilityConverter}}"></ProgressBar>
+            <Button x:Name="btn_login" Grid.Row="3"
                     Content="Login to Meetup.com"
                     Command="{Binding LoginCommand}" />
-            <phone:WebBrowser x:Name="Browser"  Visibility="Collapsed" Grid.Row="3"/>
+            <phone:WebBrowser x:Name="Browser"  Visibility="Collapsed" Grid.Row="4"/>
         </Grid>
     </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Minimized" IsVisible="True">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="AppBarAbout" Text="about" Click="AppBarAbout_OnClick"></shell:ApplicationBarMenuItem>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </views:MvxPhonePage>

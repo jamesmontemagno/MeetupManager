@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProfilerSession Type="Monitoring" Name="">
+    <TargetApplication Name="" SourceProject="" Type="">
+        <ApplicationBinary Path="" Timestamp="" />
+        <ApplicationIconPath Path="" />
+        <SymbolPaths>
+            <Path Value="" />
+        </SymbolPaths>
+    </TargetApplication>
+    <Settings>
+        <Probe Name="Visual">
+            <CollectElementLevelCosting Enabled="" />
+            <CollectSnapshots Enabled="" Interval="" Resampling="" />
+            <CollectMediaEvents Enabled="" />
+            <CollectCacheDetails Enabled="" />
+        </Probe>
+        <Probe Name="Code">
+            <SampleCallStack Enabled="" Depth="" Interval="" />
+            <CollectPerformanceCounters Enabled="" />
+        </Probe>
+        <Probe Name="Memory">
+            <MemoryCallStack Enabled="" Depth="" />
+            <ObjectTree Enabled="" Interval="" />
+        </Probe>
+    </Settings>
+    <Data>
+        <Logs>
+        </Logs>
+    </Data>
+</ProfilerSession>

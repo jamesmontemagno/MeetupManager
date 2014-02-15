@@ -24,6 +24,7 @@ using System.Windows.Navigation;
 using MeetupManager.Portable.Helpers;
 using MeetupManager.Portable.ViewModels;
 using Cirrious.MvvmCross.WindowsPhone.Views;
+using Microsoft.Phone.Shell;
 
 namespace MeetupManager.WP8.Views
 {
@@ -48,7 +49,7 @@ namespace MeetupManager.WP8.Views
       protected override void OnNavigatedTo(NavigationEventArgs e)
       {
         base.OnNavigatedTo(e);
-        AppBarFilerEvents.Text = Settings.ShowAllEvents ? "show recent events" : "show all events";
+        ((ApplicationBarMenuItem)ApplicationBar.MenuItems[0]).Text = Settings.ShowAllEvents ? "show recent events" : "show all events";
       }
 
       private void AppBarFilerEvents_OnClick(object sender, EventArgs e)
@@ -58,7 +59,7 @@ namespace MeetupManager.WP8.Views
 
         Settings.ShowAllEvents = !Settings.ShowAllEvents;
         this.ViewModel.RefreshCommand.Execute();
-        AppBarFilerEvents.Text = Settings.ShowAllEvents ? "show recent events" : "show all events";
+        ((ApplicationBarMenuItem)ApplicationBar.MenuItems[0]).Text = Settings.ShowAllEvents ? "show recent events" : "show all events";
       }
     }
 }

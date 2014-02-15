@@ -31,7 +31,7 @@ namespace MeetupManager.Portable.ViewModels
 	public class EventsViewModel 
 		: BaseViewModel
 	{
-	    private string groupId;
+	  private string groupId;
 
 		public EventsViewModel(IMeetupService meetupService) : base(meetupService)
 		{
@@ -39,14 +39,14 @@ namespace MeetupManager.Portable.ViewModels
 		}
 
 
-        public void Init(string id, string groupName)
-        {
-            this.groupId = id;
-            this.GroupName = groupName;
-            ExecuteRefreshCommand();
-        }
+    public void Init(string id, string groupName)
+    {
+        this.groupId = id;
+        this.GroupName = groupName;
+        ExecuteRefreshCommand();
+    }
 
-        public string GroupName { get; set; }
+    public string GroupName { get; set; }
 
 		private ObservableCollection<Event> events;
 		public ObservableCollection<Event> Events
@@ -112,7 +112,7 @@ namespace MeetupManager.Portable.ViewModels
 
 		private void ExecuteGoToEventCommand(Event e)
 		{
-			ShowViewModel<EventViewModel>(new { eventId = e.Id, eventName = e.Name});
+			ShowViewModel<EventViewModel>(new { eId = e.Id, eName = e.Name, gId = groupId, gName = GroupName, eDate = e.Time});
 		}
     }
 }

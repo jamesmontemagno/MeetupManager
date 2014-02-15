@@ -31,7 +31,7 @@ namespace MeetupManager.Portable.Interfaces.Database
     {
 		Task CheckInMember (EventRSVP rsvp);
         Task CheckOutMember(string eventId, string userId);
-		Task<bool> IsCheckedIn(string eventId, string userId);
+        Task<bool> IsCheckedIn(string eventId, string userId, string eventName, string groupId, string groupName, long eventDate);
 
         Task AddNewMember(NewMember member);
         Task<IEnumerable<NewMember>> GetNewMembers(string eventId);

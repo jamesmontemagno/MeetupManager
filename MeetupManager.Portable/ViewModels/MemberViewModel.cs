@@ -27,71 +27,77 @@ using MeetupManager.Portable.Models.Database;
 
 namespace MeetupManager.Portable.ViewModels
 {
-    
-	public class MemberViewModel : MvxViewModel
-	{
-        public static string DefaultIcon = @"http://refractored.com/default.png";
-		public Member Member {get;set;}
-		private bool checkedIn;
-		public bool CheckedIn 
-		{
-			get{ return checkedIn; }
-			set
-			{
-			    if (checkedIn == value)
-			        return;
 
-				checkedIn = value;
-				RaisePropertyChanged (() => CheckedIn);
-			}
-		}
+  public class MemberViewModel : MvxViewModel
+  {
+    public static string DefaultIcon = @"http://refractored.com/default.png";
+    public Member Member { get; set; }
+    private bool checkedIn;
+    public bool CheckedIn
+    {
+      get { return checkedIn; }
+      set
+      {
+        if (checkedIn == value)
+          return;
 
-	    public bool CanDelete
-	    {
-	        get { return NewUserId != 0; }
-	    }
+        checkedIn = value;
+        RaisePropertyChanged(() => CheckedIn);
+      }
+    }
 
-        public int NewUserId { get; set; }
-		public MemberPhoto Photo{get;set;}
-		private readonly string eventId;
-		public MemberViewModel(Member member, MemberPhoto photo, string eventId)
-		{
-			this.Member = member;
-			this.eventId = eventId;
-			this.Photo = photo ?? new MemberPhoto {
-                HighResLink = DefaultIcon,
-				PhotoId = 0,
-                ThumbLink = DefaultIcon,
-                PhotoLink = DefaultIcon
-			};
+    public bool CanDelete
+    {
+      get { return NewUserId != 0; }
+    }
 
-		    if (string.IsNullOrWhiteSpace(this.Photo.HighResLink))
-		        this.Photo.HighResLink = DefaultIcon;
+    public int NewUserId { get; set; }
+    public MemberPhoto Photo { get; set; }
+    private readonly string eventId, eventName, groupId, groupName;
+    private long eventDate;
+    public MemberViewModel(Member member, MemberPhoto photo, string eventId, string eName, string gId, string gName, long eDate)
+    {
+      this.Member = member;
+      this.eventId = eventId;
+      this.eventName = eName;
+      this.groupId = gId;
+      this.groupName = gName;
+      this.eventDate = eDate;
+      this.Photo = photo ?? new MemberPhoto
+      {
+        HighResLink = DefaultIcon,
+        PhotoId = 0,
+        ThumbLink = DefaultIcon,
+        PhotoLink = DefaultIcon
+      };
+
+      if (string.IsNullOrWhiteSpace(this.Photo.HighResLink))
+        this.Photo.HighResLink = DefaultIcon;
 
 
-            if (string.IsNullOrWhiteSpace(this.Photo.ThumbLink))
-                this.Photo.ThumbLink = DefaultIcon;
+      if (string.IsNullOrWhiteSpace(this.Photo.ThumbLink))
+        this.Photo.ThumbLink = DefaultIcon;
 
-            if (string.IsNullOrWhiteSpace(this.Photo.PhotoLink))
-                this.Photo.PhotoLink = DefaultIcon;
-		}
+      if (string.IsNullOrWhiteSpace(this.Photo.PhotoLink))
+        this.Photo.PhotoLink = DefaultIcon;
+    }
 
-		public string Name { get { return this.Member.Name; } }
+    public string Name { get { return this.Member.Name; } }
 
-		private IMvxCommand checkInCommand;
-		public IMvxCommand CheckInCommand
-		{
-			get { return checkInCommand ?? (checkInCommand = new MvxCommand (async ()=>ExecuteCheckInCommand())); }
-		}
+    private IMvxCommand checkInCommand;
+    public IMvxCommand CheckInCommand
+    {
+      get { return checkInCommand ?? (checkInCommand = new MvxCommand(async () => ExecuteCheckInCommand())); }
+    }
 
-		private async Task ExecuteCheckInCommand()
-		{
+    private async Task ExecuteCheckInCommand()
+    {
 
-			await Mvx.Resolve<IDataService> ().CheckInMember (new EventRSVP (eventId, this.Member.MemberId.ToString()));
+      await Mvx.Resolve<IDataService>().CheckInMember(new EventRSVP(eventId, this.Member.MemberId.ToString(), eventName, groupId, groupName, eventDate));
 
-			CheckedIn = true;
+      CheckedIn = true;
 
-		}
-	}
+    }
+  }
 }
 

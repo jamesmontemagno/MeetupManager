@@ -23,7 +23,10 @@
     <phone:PhoneApplicationPage.Resources>
         <c:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
         <c:UppercaseConverter x:Key="UpperConverter" />
-        
+        <c:BoolToBrushConverter x:Key="DisabledBrushConv"
+      FalseValue="{StaticResource PhoneForegroundBrush}"
+      TrueValue="{StaticResource PhoneAccentBrush}" />
+
         <ContentControl x:Key="Context" Content="{Binding}" />
         <DataTemplate x:Key="LongListSelectorItemTemplate">
             <ListBoxItem Background="Transparent" Margin="0,0,0,20" BorderThickness="0">
@@ -39,10 +42,10 @@
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Margin="20,0,0,0"  VerticalAlignment="Center">
-                        <TextBlock Text="{Binding Member.Name}" Margin="0,6,12,0" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                            <TextBlock Text="{Binding Member.Name}" Foreground="{Binding CheckedIn, Converter={StaticResource DisabledBrushConv}}" Margin="0,6,12,0" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                     </StackPanel>
 
-                    <Rectangle Fill="Black" Opacity=".33"
+                    <Rectangle Fill="Black" Opacity=".6"
                                Visibility="{Binding CheckedIn, Converter={StaticResource VisibilityConverter}}" />
                     <Canvas 
                             Margin="0,-10,0,0" Width="76" Height="76" 
