@@ -20,6 +20,8 @@
  * Help from Ed Snider http://twitter.com/EdSnider
  */
 using System;
+using System.Windows.Navigation;
+using MeetupManager.Portable.Helpers;
 using MeetupManager.Portable.ViewModels;
 using Cirrious.MvvmCross.WindowsPhone.Views;
 
@@ -27,20 +29,36 @@ namespace MeetupManager.WP8.Views
 {
     public partial class EventsView : MvxPhonePage
     {
-        public new EventsViewModel ViewModel
-        {
-            get { return (EventsViewModel)base.ViewModel; }
-            set { base.ViewModel = value; }
-        }
+      public new EventsViewModel ViewModel
+      {
+          get { return (EventsViewModel)base.ViewModel; }
+          set { base.ViewModel = value; }
+      }
 
-        public EventsView()
-        {
-            InitializeComponent();
-        }
+      public EventsView()
+      {
+          InitializeComponent();
+      }
 
-        private void AppBarRefreshClick(object sender, EventArgs e)
-        {
-            this.ViewModel.RefreshCommand.Execute();
-        }
+      private void AppBarRefreshClick(object sender, EventArgs e)
+      {
+          this.ViewModel.RefreshCommand.Execute();
+      }
+
+      protected override void OnNavigatedTo(NavigationEventArgs e)
+      {
+        base.OnNavigatedTo(e);
+        AppBarFilerEvents.Text = Settings.ShowAllEvents ? "show recent events" : "show all events";
+      }
+
+      private void AppBarFilerEvents_OnClick(object sender, EventArgs e)
+      {
+        if (ViewModel.IsBusy)
+          return;
+
+        Settings.ShowAllEvents = !Settings.ShowAllEvents;
+        this.ViewModel.RefreshCommand.Execute();
+        AppBarFilerEvents.Text = Settings.ShowAllEvents ? "show recent events" : "show all events";
+      }
     }
 }

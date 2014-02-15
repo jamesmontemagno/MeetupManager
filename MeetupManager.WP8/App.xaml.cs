@@ -25,6 +25,7 @@ using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using MarkedUp;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MeetupManager.WP8.Resources;
@@ -85,6 +86,9 @@ namespace MeetupManager.WP8
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+#if !DEBUG
+          AnalyticClient.Initialize("0184f217-d24d-4bef-9149-fdc62041de51");
+#endif
             RootFrame.Navigating += RootFrameOnNavigating;
         }
 

@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{48d04886-a64a-48af-a009-6e6730411748}" Title="Meetup Manager" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="MeetupManager.WP8 author" Description="" Publisher="MeetupManager.WP8" PublisherID="{ce02105d-5176-4d07-871d-3d3662036be8}">
+  <App xmlns="" ProductID="{48d04886-a64a-48af-a009-6e6730411748}" Title="Meetup Manager for Organizers" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Refractored LLC" Description="Browse a list of all your meetup events and browse RSVPs and check in your users. With 1 click you can instantly pick a winner. All data is stored locally so you can reference it later." Publisher="Refractored LLC" PublisherID="{ce02105d-5176-4d07-871d-3d3662036be8}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
-      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
-      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
-      <Capability Name="ID_CAP_SENSORS" />
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+      <Capability Name="ID_CAP_IDENTITY_DEVICE" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
@@ -26,10 +24,13 @@
           </BackBackgroundImageURI>
           <BackTitle>
           </BackTitle>
+          <LargeBackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileLarge.png</LargeBackgroundImageURI>
+          <LargeBackContent />
+          <LargeBackBackgroundImageURI IsRelative="true" IsResource="false">
+          </LargeBackBackgroundImageURI>
           <DeviceLockImageURI>
           </DeviceLockImageURI>
-          <HasLarge>
-          </HasLarge>
+          <HasLarge>True</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>

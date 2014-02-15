@@ -90,6 +90,9 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Minimized" IsVisible="True">
             <shell:ApplicationBarIconButton x:Name="AppBarRefresh" IconUri="/Assets/Icons/refresh.png" Text="refresh" Click="AppBarRefreshClick" />
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="AppBarFilerEvents" Text="show all events" Click="AppBarFilerEvents_OnClick"></shell:ApplicationBarMenuItem>
+            </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
     
