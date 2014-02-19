@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -100,38 +100,14 @@
     <MtouchArch>ARMv7, ARMv7s</MtouchArch>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AFNetworking">
-      <HintPath>..\Components\modernhttpclient-1.1.0\lib\ios\AFNetworking.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1-beta5\lib\MonoTouch\Cirrious.CrossCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.CrossCore.Touch">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1-beta5\lib\MonoTouch\Cirrious.CrossCore.Touch.dll</HintPath>
-    </Reference>
     <Reference Include="Cirrious.MvvmCross">
       <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.Binding.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding.Touch">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite">
       <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1-beta4\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch">
       <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1-beta4\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Localization">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.Localization.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.Plugins.DownloadCache.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache.Touch">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.Plugins.DownloadCache.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.File">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.Plugins.File.dll</HintPath>
@@ -150,12 +126,6 @@
     </Reference>
     <Reference Include="GCDiscreetNotification">
       <HintPath>..\Components\gcdiscreetnotification-1.0\lib\ios\GCDiscreetNotification.dll</HintPath>
-    </Reference>
-    <Reference Include="ModernHttpClient.iOS">
-      <HintPath>..\Components\modernhttpclient-1.1.0\lib\ios\ModernHttpClient.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Components\json.net-4.5.11\lib\ios\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Refractored.MvxPlugins.Settings">
       <HintPath>..\packages\Mvx.Plugins.Settings.1.2.0\lib\monotouch\Refractored.MvxPlugins.Settings.dll</HintPath>
@@ -178,6 +148,45 @@
       <HintPath>..\Components\xamarin.auth-1.2.2\lib\ios\Xamarin.Auth.iOS.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
+    <Reference Include="AFNetworking">
+      <HintPath>..\Components\modernhttpclient-1.1.0\lib\ios\AFNetworking.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient.iOS">
+      <HintPath>..\Components\modernhttpclient-1.1.0\lib\ios\ModernHttpClient.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Controls.BarChart.iOS">
+      <HintPath>..\Components\barchart-1.1\lib\ios\Xamarin.Controls.BarChart.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.CrossCore.Touch">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.CrossCore.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Binding.Touch">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.CrossCore">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.CrossCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Binding">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.ResourceLoader">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.ResourceLoader.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.ResourceLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.ResourceLoader.Touch">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.ResourceLoader.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.ResourceLoader.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.DownloadCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache.Touch">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.DownloadCache.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Components\json.net-4.5.11\lib\ios\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -200,7 +209,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
     <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
@@ -239,6 +247,12 @@
     <Compile Include="Views\Cells\MemberCell.designer.cs">
       <DependentUpon>MemberCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\StatisticsView.cs" />
+    <Compile Include="Views\StatisticsView.designer.cs">
+      <DependentUpon>StatisticsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap\ResourceLoaderPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
@@ -257,8 +271,8 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="modernhttpclient">
-      <Visible>False</Visible>
       <Version>1.1.0</Version>
+      <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="xamarin.auth">
       <Version>1.2.2</Version>
@@ -268,7 +282,12 @@
       <Version>1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="barchart">
+      <Version>1.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="json.net">
+      <InstallationInProgress>True</InstallationInProgress>
       <Version>4.5.11</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
@@ -280,6 +299,7 @@
     <InterfaceDefinition Include="Views\Cells\EventCell.xib" />
     <InterfaceDefinition Include="Views\Cells\GroupCell.xib" />
     <InterfaceDefinition Include="Views\Cells\MemberCell.xib" />
+    <InterfaceDefinition Include="Views\StatisticsView.xib" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

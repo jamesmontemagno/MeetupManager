@@ -27,13 +27,17 @@
                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="217" translatesAutoresizingMaskIntoConstraints="NO" id="oMS-ZZ-jlk">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="217" translatesAutoresizingMaskIntoConstraints="NO" id="oMS-ZZ-jlk">
                         <rect key="frame" x="70" y="9" width="217" height="47"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="oMS-ZZ-jlk" firstAttribute="leading" secondItem="cXa-mp-RYp" secondAttribute="leading" constant="70" id="Thf-Oj-YVu"/>
+                    <constraint firstAttribute="trailing" secondItem="oMS-ZZ-jlk" secondAttribute="trailing" id="h5N-0U-O7a"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="LabelMonthDay" destination="4ou-AF-EjW" id="dZV-MW-Whi"/>

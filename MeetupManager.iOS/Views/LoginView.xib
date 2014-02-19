@@ -20,34 +20,34 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap Login to proceed to the Meetup.com login page." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Tr7-Xi-qjI">
-                    <rect key="frame" x="20" y="182" width="280" height="60"/>
+                    <rect key="frame" x="20" y="159" width="280" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LDc-gW-iFy">
-                    <rect key="frame" x="20" y="297" width="37" height="37"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LDc-gW-iFy">
+                    <rect key="frame" x="20" y="275" width="37" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </activityIndicatorView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ic_meetup.png" translatesAutoresizingMaskIntoConstraints="NO" id="eSU-bz-UD4">
-                    <rect key="frame" x="50" y="20" width="220" height="154"/>
+                    <rect key="frame" x="67" y="20" width="187" height="131"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="220" id="1p5-aC-kq8"/>
-                        <constraint firstAttribute="height" constant="154" id="OsP-gX-LKW"/>
+                        <constraint firstAttribute="width" constant="187" id="GFT-1J-aTm"/>
+                        <constraint firstAttribute="height" constant="131" id="tVV-CF-b6J"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3I-00-gwq">
-                    <rect key="frame" x="120" y="245" width="80" height="45"/>
+                    <rect key="frame" x="120" y="222" width="80" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Login">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Logging into Meetup.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wk-n1-uL7">
-                    <rect key="frame" x="65" y="305" width="235" height="21"/>
+                    <rect key="frame" x="65" y="283" width="235" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>

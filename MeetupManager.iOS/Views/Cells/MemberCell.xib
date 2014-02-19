@@ -17,18 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="James Montemagno" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="226" translatesAutoresizingMaskIntoConstraints="NO" id="Ari-l8-qB4">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="James Montemagno" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="226" translatesAutoresizingMaskIntoConstraints="NO" id="Ari-l8-qB4">
                         <rect key="frame" x="74" y="2" width="226" height="61"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_checkedin.png" translatesAutoresizingMaskIntoConstraints="NO" id="tTR-e1-jOE">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ic_checkedin.png" translatesAutoresizingMaskIntoConstraints="NO" id="tTR-e1-jOE">
                         <rect key="frame" x="254" y="0.0" width="66" height="66"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="66" id="cCw-L0-KUf"/>
+                            <constraint firstAttribute="height" constant="66" id="mhB-Yw-UZl"/>
+                        </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Ari-l8-qB4" firstAttribute="leading" secondItem="bx5-Ln-p8i" secondAttribute="leading" constant="74" id="9Gh-7T-kVU"/>
+                    <constraint firstAttribute="trailing" secondItem="Ari-l8-qB4" secondAttribute="trailing" constant="20" id="T0i-ea-pJe"/>
+                    <constraint firstAttribute="trailing" secondItem="tTR-e1-jOE" secondAttribute="trailing" id="yiM-l5-x15"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="ImageCheckedIn" destination="tTR-e1-jOE" id="xhr-iu-zX6"/>

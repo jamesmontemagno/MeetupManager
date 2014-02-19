@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="287" height="65"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="213" translatesAutoresizingMaskIntoConstraints="NO" id="v33-W0-tX2">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="213" translatesAutoresizingMaskIntoConstraints="NO" id="v33-W0-tX2">
                         <rect key="frame" x="74" y="7" width="213" height="52"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
@@ -24,6 +24,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="v33-W0-tX2" secondAttribute="trailing" id="af4-ai-fpw"/>
+                    <constraint firstItem="v33-W0-tX2" firstAttribute="leading" secondItem="brA-3P-1v7" secondAttribute="leading" constant="74" id="qEr-Mi-UsT"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="ImageGroupPhoto" destination="05t-Af-WuF" id="XUs-5K-Xsv"/>

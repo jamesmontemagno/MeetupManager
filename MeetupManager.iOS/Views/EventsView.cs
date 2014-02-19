@@ -50,6 +50,9 @@ namespace MeetupManager.iOS.Views
 					spinner.StopAnimating();
 			};
 			TableView.ReloadData();
+			NavigationItem.RightBarButtonItem = new UIBarButtonItem ("Stats", UIBarButtonItemStyle.Plain, delegate {
+				((EventsViewModel)ViewModel).ExecuteGoToStatsCommand();
+			});
 
 		}
 		///Custom source so when we scroll to bottom

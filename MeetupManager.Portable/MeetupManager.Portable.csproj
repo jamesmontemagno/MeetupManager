@@ -79,6 +79,7 @@
     <Compile Include="Models\LoggedInUser.cs" />
     <Compile Include="ViewModels\NewUserViewModel.cs" />
     <Compile Include="Interfaces\IRemove.cs" />
+    <Compile Include="ViewModels\StatisticsViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

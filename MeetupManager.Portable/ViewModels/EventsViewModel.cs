@@ -114,5 +114,17 @@ namespace MeetupManager.Portable.ViewModels
 		{
 			ShowViewModel<EventViewModel>(new { eId = e.Id, eName = e.Name, gId = groupId, gName = GroupName, eDate = e.Time});
 		}
+
+		private IMvxCommand goToStatsCommand;
+
+		public IMvxCommand GoToStatsCommand
+		{
+			get { return goToStatsCommand ?? (goToStatsCommand = new MvxCommand(ExecuteGoToStatsCommand)); }
+		}
+
+		public void ExecuteGoToStatsCommand()
+		{
+			ShowViewModel<StatisticsViewModel> (new {gId = this.groupId, gName = this.GroupName});
+		}
     }
 }

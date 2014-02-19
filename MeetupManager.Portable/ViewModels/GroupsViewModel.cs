@@ -56,6 +56,7 @@ namespace MeetupManager.Portable.ViewModels
             }
         }
 
+
         private IMvxCommand refreshCommand;
 
         public IMvxCommand RefreshCommand

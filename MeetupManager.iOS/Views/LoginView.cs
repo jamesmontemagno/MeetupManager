@@ -58,6 +58,10 @@ namespace MeetupManager.iOS.Views
 			NavigationItem.RightBarButtonItem = refresh;
 			NavigationItem.LeftBarButtonItem = info;
 		
-        }
+		}
+		public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations ()
+		{
+			return UIInterfaceOrientationMask.Portrait | UIInterfaceOrientationMask.PortraitUpsideDown;
+		}
     }
 }

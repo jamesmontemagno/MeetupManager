@@ -26,7 +26,7 @@ namespace MeetupManager.iOS.PlatformSpecific
 			auth.Completed += (s, ee) => {
 				vc.DismissViewController (true, null);
 				if (loginCallback != null)
-					loginCallback (ee.IsAuthenticated, ee.Account.Properties);
+					loginCallback (ee.IsAuthenticated, ee.Account == null ? null : ee.Account.Properties);
 			};
 
 			vc = auth.GetUI ();

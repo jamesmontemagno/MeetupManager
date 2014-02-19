@@ -29,7 +29,7 @@ namespace MeetupManager.Portable.Services.Database
   /// <summary>
   /// Is the main data service that can be used in the application for reading/writing to the cameroon database.
   /// </summary>
-  public class DataService : IDataService
+	public class DataService : IDataService
   {
     private readonly MeetupManagerDatabase database;
     public DataService(ISQLiteConnectionFactory factory)
@@ -97,5 +97,15 @@ namespace MeetupManager.Portable.Services.Database
     {
       return Task.Factory.StartNew(() => database.DeleteItem<NewMember>(id));
     }
+
+		public Task<IEnumerable<NewMember>> GetNewMembersForGroup (string groupId)
+		{
+			return Task.Factory.StartNew(() => database.GetNewMembersByDate(groupId));
+		}
+
+		public Task<IEnumerable<EventRSVP>> GetRSVPsForGroup (string groupId)
+		{
+			return Task.Factory.StartNew(() => database.GetRSVPsByDate(groupId));
+		}
   }
 }

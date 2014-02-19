@@ -76,6 +76,20 @@ namespace MeetupManager.Portable.Models.Database
             }
         }
 
+		public IEnumerable<EventRSVP> GetRSVPsByDate(string groupId)
+		{
+			return  (from i in this.m_Connection.Table<EventRSVP> ()
+				where i.GroupId == groupId
+			         select i).OrderBy (n => n.EventDate);
+		}
+
+		public IEnumerable<NewMember> GetNewMembersByDate(string groupId)
+		{
+			return  (from i in this.m_Connection.Table<NewMember> ()
+				where i.GroupId == groupId
+				select i).OrderBy (n => n.EventDate);
+		}
+
         /// <summary>
         /// Gets all items of type T
         /// </summary>
