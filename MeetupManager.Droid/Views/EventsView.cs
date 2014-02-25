@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Widget;
 using MeetupManager.Portable.Helpers;
@@ -62,6 +63,12 @@ namespace MeetupManager.Droid.Views
             {
                 case Resource.Id.menu_refresh:
                     ViewModel.RefreshCommand.Execute(null);
+                    return true;
+                case Resource.Id.menu_stats:
+                    var intent = new Intent(this, typeof (StatisticsView));
+                    intent.PutExtra("name", ViewModel.GroupName);
+                    intent.PutExtra("id", ViewModel.GroupId);
+                    StartActivity(intent);
                     return true;
                 case Resource.Id.menu_filter_events:
                     Settings.ShowAllEvents = !Settings.ShowAllEvents;

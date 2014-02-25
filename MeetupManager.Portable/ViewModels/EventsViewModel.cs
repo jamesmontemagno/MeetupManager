@@ -47,6 +47,7 @@ namespace MeetupManager.Portable.ViewModels
     }
 
     public string GroupName { get; set; }
+    public string GroupId { get { return groupId; } }
 
 		private ObservableCollection<Event> events;
 		public ObservableCollection<Event> Events

@@ -2,4 +2,6 @@
 <resources>
   <color name="background">#ffe4e4e4</color>
   <color name="pop">#ff0099CC</color>
+  <color name="bar_up">#77D065</color>
+  <color name="bar_down">#B455B6</color>
 </resources>

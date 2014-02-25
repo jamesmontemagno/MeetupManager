@@ -18,4 +18,5 @@
   <string name="menu_add_new_member">Add New Member</string>
   <string name="show_all_events">Show All Events</string>
   <string name="limit_events">Show Recent Events</string>
+  <string name="menu_stats">Group Statistics</string>
 </resources>

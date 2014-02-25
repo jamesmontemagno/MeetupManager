@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?> 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
   		xmlns:local="http://schemas.android.com/apk/res-auto" >
-    
 
   <item
-          android:id="@+id/menu_refresh"
-          android:icon="@drawable/ic_action_refresh"
-          local:showAsAction="always"
-          android:title="@string/menu_refresh" />
+         android:id="@+id/menu_stats"
+         android:icon="@drawable/ic_action_stats"
+         local:showAsAction="always"
+         android:title="@string/menu_stats" />
+
 
 
   <item
@@ -15,4 +15,10 @@
           local:showAsAction="never"
           android:title="@string/show_all_events" />
 
+
+  <item
+          android:id="@+id/menu_refresh"
+          android:icon="@drawable/ic_action_refresh"
+          local:showAsAction="never"
+          android:title="@string/menu_refresh" />
 </menu>

@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <AndroidLinkMode>Full</AndroidLinkMode>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkSkip />
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <BundleAssemblies>False</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -138,6 +142,9 @@
     <Reference Include="Refractored.MvxPlugins.Settings.Droid">
       <HintPath>..\packages\Mvx.Plugins.Settings.1.2.0\lib\monoandroid\Refractored.MvxPlugins.Settings.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Controls.BarChart.Android">
+      <HintPath>..\Components\barchart-1.1\lib\android\Xamarin.Controls.BarChart.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
@@ -145,6 +152,7 @@
     <Compile Include="Bootstrap\JsonPluginBootstrap.cs" />
     <Compile Include="Bootstrap\ResourceLoaderPluginBootstrap.cs" />
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
+    <Compile Include="Helpers\BarHelper.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DebugTrace.cs" />
@@ -163,6 +171,7 @@
     <Compile Include="Helpers\MvxActionBarEventSourceActivity.cs" />
     <Compile Include="PlatformSpecific\MeetupLogin.cs" />
     <Compile Include="Views\LoginView.cs" />
+    <Compile Include="Views\StatisticsView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -173,6 +182,9 @@
     <AndroidResource Include="Resources\layout\view_groups.axml" />
     <AndroidResource Include="Resources\layout\item_group.axml" />
     <AndroidResource Include="Resources\layout\dialog_add_member.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\view_stats.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -212,6 +224,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
+    <XamarinComponentReference Include="barchart">
+      <Visible>False</Visible>
+      <Version>1.1</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="googleanalytics">
       <Version>3.0.2</Version>
       <Visible>False</Visible>
@@ -290,6 +306,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\values\SplashStyle.xml" />
     <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_stats.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_stats.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_stats.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_stats.png" />
+    <AndroidResource Include="Resources\menu\menu_stats.xml" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
 </Project>

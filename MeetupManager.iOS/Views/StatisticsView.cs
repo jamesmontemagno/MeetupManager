@@ -37,62 +37,50 @@ namespace MeetupManager.iOS.Views
 			// Release any cached data, images, etc that aren't in use.
 		}
 		BarChartView barChart;
-		public async override void ViewDidLoad ()
-		{
-			base.ViewDidLoad ();
-			this.Title = VM.GroupName;
-			EdgesForExtendedLayout = UIRectEdge.None;
-			notificationView= new GCDiscreetNotificationView (
-				text: "Loading Stats...",
-				activity: true,
-				presentationMode: GCDNPresentationMode.Bottom,
-				view: View
-			);
 
-			VM.IsBusyChanged = (busy) => {
-				if(busy)
-					notificationView.Show (animated: true);
-				else
-					notificationView.HideAnimated();
-			};
+	    public override async void ViewDidLoad()
+	    {
+	        base.ViewDidLoad();
+	        this.Title = VM.GroupName;
+	        EdgesForExtendedLayout = UIRectEdge.None;
+	        notificationView = new GCDiscreetNotificationView(
+	            text: "Loading Stats...",
+	            activity: true,
+	            presentationMode: GCDNPresentationMode.Bottom,
+	            view: View
+	            );
 
-			barChart = new BarChartView ();
-			barChart.BarOffset = 20f;
-			barChart.BarWidth = 45f;
-			barChart.MinimumValue = 0;
-			barChart.BarCaptionInnerColor = UIColor.Black;
-			barChart.BarCaptionInnerShadowColor = UIColor.White;
-			barChart.BarCaptionOuterColor = UIColor.Black;
-			barChart.BarCaptionOuterShadowColor = UIColor.White;
+	        VM.IsBusyChanged = (busy) =>
+	        {
+	            if (busy)
+	                notificationView.Show(animated: true);
+	            else
+	                notificationView.HideAnimated();
+	        };
 
-			barChart.Frame = View.Frame;
+	        barChart = new BarChartView();
+	        barChart.BarOffset = 20f;
+	        barChart.BarWidth = 45f;
+	        barChart.MinimumValue = 0;
+	        barChart.BarCaptionInnerColor = UIColor.Black;
+	        barChart.BarCaptionInnerShadowColor = UIColor.White;
+	        barChart.BarCaptionOuterColor = UIColor.Black;
+	        barChart.BarCaptionOuterShadowColor = UIColor.White;
 
-			View.AddSubview (barChart);
+	        barChart.Frame = View.Frame;
 
-			barChart.ItemsSource = await GenerateData ();
+	        View.AddSubview(barChart);
 
-			// Perform any additional setup after loading the view, typically from a nib.
-		}
+	        var up = UIColor.FromRGB(119, 208, 101);
+	        var down = UIColor.FromRGB(180, 85, 182);
+	        barChart.ItemsSource = await MeetupManager.Core.Helpers.BarHelper.GenerateData(ViewModel, up, down);
 
-		public async Task<List<BarModel>> GenerateData ()
-		{
-			var models = new List<BarModel> ();
 
-			await VM.ExecuteRefreshCommand ();
+	        // Perform any additional setup after loading the view, typically from a nib.
+	    }
 
-			int previous = -1;
-			var up = UIColor.FromRGB (119, 208, 101);
-			var down = UIColor.FromRGB (180, 85, 182);
-			foreach (var eventInGroup in VM.GroupsEventsCount) {
-				var color = previous == -1 || previous < eventInGroup.Value ? up : down;
-				models.Add (new BarModel () { Value = eventInGroup.Value, Color = color, Legend = VM.FromUnixTime (eventInGroup.Key).ToString("MM/dd/yy")});
-				previous = eventInGroup.Value;
-			}
 
-			return models;
-		}
-
-		public override void ViewDidLayoutSubviews ()
+	    public override void ViewDidLayoutSubviews ()
 		{
 			base.ViewDidLayoutSubviews ();
 
