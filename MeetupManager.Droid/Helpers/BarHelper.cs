@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Android.Graphics;
+
 using BarChart;
 using Cirrious.CrossCore;
+
+
+
+#if __ANDROID__
 using Cirrious.MvvmCross.Droid.Views;
+using Android.Graphics;
+#elif __IOS__
+using MonoTouch.UIKit;
+#endif
 using MeetupManager.Portable.Interfaces;
 using MeetupManager.Portable.ViewModels;
 

@@ -73,7 +73,7 @@ namespace MeetupManager.iOS.Views
 
 	        var up = UIColor.FromRGB(119, 208, 101);
 	        var down = UIColor.FromRGB(180, 85, 182);
-	        barChart.ItemsSource = await MeetupManager.Core.Helpers.BarHelper.GenerateData(ViewModel, up, down);
+			barChart.ItemsSource = await MeetupManager.Core.Helpers.BarHelper.GenerateData(VM, up, down);
 
 
 	        // Perform any additional setup after loading the view, typically from a nib.
