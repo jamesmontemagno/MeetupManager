@@ -28,9 +28,24 @@ namespace MeetupManager.Droid.PlatformSpecific
 {
 	public class MessageDialog : IMessageDialog
   {
+
+    public static void SendMessage(Activity activity, string message, string title = null)
+    {
+        var builder = new AlertDialog.Builder(activity);
+        builder
+            .SetTitle(title ?? string.Empty)
+            .SetMessage(message)
+            .SetPositiveButton(Resource.String.ok, delegate
+        {
+
+        });
+
+        AlertDialog alert = builder.Create();
+        alert.Show();
+    }
     public void SendMessage(string message, string title = null)
     {
-			var builder = new AlertDialog.Builder(Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
+        var builder = new AlertDialog.Builder(Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
 			builder
 				.SetTitle(title ?? string.Empty)
 				.SetMessage(message)

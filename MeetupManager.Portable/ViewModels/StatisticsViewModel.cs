@@ -12,13 +12,13 @@ namespace MeetupManager.Portable.ViewModels
 	public class StatisticsViewModel : BaseViewModel
 	{
 		IDataService dataService;
-
+        public bool ShowPopUps { get; set; }
 		private string groupId;
 
 		public StatisticsViewModel (IMeetupService service, IDataService dataService) : base(service)
 		{
 			GroupsEventsCount = new Dictionary<long, int> ();
-
+		    ShowPopUps = true;
 			this.dataService = dataService;
 		}
 
@@ -80,11 +80,18 @@ namespace MeetupManager.Portable.ViewModels
 					GroupsEventsCount [member.EventDate]++;
 				}
 
-                if (GroupsEventsCount.Count == 0)
-                    Mvx.Resolve<IMessageDialog>().SendMessage("There is no data for this group, please check in a few members first to a meetup.", "No Statistics");
-                else if(GroupsEventsCount.ContainsKey(0))
-                    Mvx.Resolve<IMessageDialog>().SendMessage("Data for group needs synced, please re-visit all meetups to synchronize data and return for in depth statistics.", "No Statistics");
-                
+			    if (ShowPopUps)
+			    {
+			        if (GroupsEventsCount.Count == 0)
+			            Mvx.Resolve<IMessageDialog>()
+			                .SendMessage("There is no data for this group, please check in a few members first to a meetup.",
+			                    "No Statistics");
+			        else if (GroupsEventsCount.ContainsKey(0))
+			            Mvx.Resolve<IMessageDialog>()
+			                .SendMessage(
+			                    "Data for group needs synced, please re-visit all meetups to synchronize data and return for in depth statistics.",
+			                    "No Statistics");
+			    }
 
 			}
 			catch(Exception ex) {

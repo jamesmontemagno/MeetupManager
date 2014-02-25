@@ -13,7 +13,9 @@ using Android.Views;
 using Android.Widget;
 using BarChart;
 using Cirrious.CrossCore;
+using Cirrious.CrossCore.Droid.Platform;
 using MeetupManager.Core.Helpers;
+using MeetupManager.Droid.PlatformSpecific;
 using MeetupManager.Portable.Interfaces;
 using MeetupManager.Portable.Interfaces.Database;
 using MeetupManager.Portable.ViewModels;
@@ -40,7 +42,7 @@ namespace MeetupManager.Droid.Views
             barChart = FindViewById<BarChartView>(Resource.Id.barChart);
             barChart.LegendColor = Color.Black;
             progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar);
-
+            viewModel.ShowPopUps = false;
             // Perform any additional setup after loading the view, typically from a nib.
         }
 
@@ -61,15 +63,20 @@ namespace MeetupManager.Droid.Views
             {
 
 
-                var items =
-                    await
-                        BarHelper.GenerateData(viewModel, Resources.GetColor(Resource.Color.bar_up),
+                var items = await BarHelper.GenerateData(viewModel, Resources.GetColor(Resource.Color.bar_up),
                             Resources.GetColor(Resource.Color.bar_down));
-                if (items.Count == 0)
-                    return;
+               
 
                 RunOnUiThread(() =>
                 {
+                    if (items.Count == 0)
+                    {
+                        MessageDialog.SendMessage(this, "There is no data for this group, please check in a few members first to a meetup.", "No Statistics");
+                        return;
+                    }
+                    else if (viewModel.GroupsEventsCount.ContainsKey(0))
+                        MessageDialog.SendMessage(this, "Data for group needs synced, please re-visit all meetups to synchronize data and return for in depth statistics.", "No Statistics");
+                
                     barChart.ItemsSource = items;
                     barChart.Invalidate();
                 });
