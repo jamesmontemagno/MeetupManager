@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 
 using Android.Content;
 using Android.Graphics;
-using Android.Renderscripts;
+//using Android.Renderscripts;
 using Android.Util;
 
 using Cirrious.MvvmCross.Binding.Droid.Views;
@@ -108,7 +108,7 @@ namespace MeetupManager.Droid.Controls
         {
             try
             {
-                var rs = RenderScript.Create(m_Context);
+                /*var rs = RenderScript.Create(m_Context);
                 var theInstrinsic = ScriptIntrinsicBlur.Create(rs, Element.U8_4(rs));
 
                 var outputBitmap = Bitmap.CreateBitmap(inputBitmap.Width, inputBitmap.Height, inputBitmap.GetConfig());
@@ -122,7 +122,7 @@ namespace MeetupManager.Droid.Controls
 
                 tmpOut.CopyTo(outputBitmap);
                 rs.Destroy();
-                return outputBitmap;
+                return outputBitmap;*/
             }
             catch (Exception)
             {

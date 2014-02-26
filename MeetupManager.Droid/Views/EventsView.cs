@@ -73,7 +73,7 @@ namespace MeetupManager.Droid.Views
                 case Resource.Id.menu_filter_events:
                     Settings.ShowAllEvents = !Settings.ShowAllEvents;
                     ViewModel.RefreshCommand.Execute(null);
-                    InvalidateOptionsMenu();
+                    SupportInvalidateOptionsMenu();
                     return true;
             }
             return base.OnOptionsItemSelected(item);
