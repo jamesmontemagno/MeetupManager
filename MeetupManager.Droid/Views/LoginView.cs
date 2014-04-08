@@ -23,7 +23,7 @@ using Android.OS;
 
 namespace MeetupManager.Droid.Views
 {
-    [Activity(Label = "Login", Icon = "@drawable/ic_launcher")]
+    [Activity(Label = "Login", Icon = "@drawable/ic_launcher", Theme="@style/Theme")]
     public class LoginView : BaseView
 	{
 		private LoginViewModel viewModel;

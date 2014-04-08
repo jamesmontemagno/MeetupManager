@@ -100,29 +100,37 @@
     <MtouchArch>ARMv7, ARMv7s</MtouchArch>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.dll</HintPath>
+    <Reference Include="Cirrious.MvvmCross, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite">
-      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1-beta4\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
+    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch">
-      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1-beta4\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch.dll</HintPath>
+    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.File">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.Plugins.File.dll</HintPath>
+    <Reference Include="Cirrious.MvvmCross.Plugins.File, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.File.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.File.Touch">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.Plugins.File.Touch.dll</HintPath>
+    <Reference Include="Cirrious.MvvmCross.Plugins.File.Touch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.File.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Touch">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.Touch.dll</HintPath>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Touch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Touch">
-      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1-beta5\lib\MonoTouch\Cirrious.MvvmCross.Touch.dll</HintPath>
+    <Reference Include="Cirrious.MvvmCross.Touch, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Touch.dll</HintPath>
     </Reference>
     <Reference Include="GCDiscreetNotification">
       <HintPath>..\Components\gcdiscreetnotification-1.0\lib\ios\GCDiscreetNotification.dll</HintPath>
@@ -204,6 +212,7 @@
     <BundleResource Include="Resources\Default%402x.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
@@ -265,10 +274,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AppDelegate.cs.txt" />
-    <Content Include="ToDo-MvvmCross\_ Touch UI.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <XamarinComponentReference Include="googleanalytics">
       <Version>3.0.2</Version>
       <Visible>False</Visible>
@@ -294,7 +299,10 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="AppDelegate.cs.txt" />
+    <Content Include="ToDo-MvvmCross\_ Touch UI.txt" />
+  </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Views\LoginView.xib" />
     <InterfaceDefinition Include="Views\EventView.xib" />
