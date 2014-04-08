@@ -2,11 +2,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
   		xmlns:local="http://schemas.android.com/apk/res-auto" >
     
-
-  <item
-          android:id="@+id/menu_refresh"
-          android:icon="@drawable/ic_action_refresh"
-          local:showAsAction="always"
-          android:title="@string/menu_refresh" />
-
 </menu>
