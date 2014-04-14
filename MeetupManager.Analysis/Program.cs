@@ -136,11 +136,13 @@ namespace MeetupManager.Analysis
 					foreach (var inc in q) {
 						//skip over some things that are added automatically
 						if (inc.Contains ("Resource.designer.cs") ||
+              inc.Contains("Resource.Designer.cs") ||
 						    inc.Contains ("DebugTrace.cs") ||
 						    inc.Contains ("LinkerPleaseInclude.cs") ||
 						    inc.Contains ("AssemblyInfo.cs") ||
 							inc.Contains ("Bootstrap.cs") ||
 							inc.Contains(".designer.cs") ||
+              inc.Contains("App.xaml.cs") ||
                             inc.EndsWith(".xaml") ||
                             inc.EndsWith(".xml") ||
                             inc.EndsWith(".axml")) {

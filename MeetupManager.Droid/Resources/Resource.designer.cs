@@ -502,6 +502,9 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f080003
 			public const int abc_action_bar_icon_vertical_padding = 2131230723;
 			
+			// aapt resource value: 0x7f08000a
+			public const int abc_action_bar_progress_bar_size = 2131230730;
+			
 			// aapt resource value: 0x7f080009
 			public const int abc_action_bar_stacked_max_height = 2131230729;
 			
@@ -526,26 +529,26 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f080000
 			public const int abc_config_prefDialogWidth = 2131230720;
 			
-			// aapt resource value: 0x7f08000f
-			public const int abc_dropdownitem_icon_width = 2131230735;
-			
-			// aapt resource value: 0x7f08000d
-			public const int abc_dropdownitem_text_padding_left = 2131230733;
+			// aapt resource value: 0x7f080010
+			public const int abc_dropdownitem_icon_width = 2131230736;
 			
 			// aapt resource value: 0x7f08000e
-			public const int abc_dropdownitem_text_padding_right = 2131230734;
+			public const int abc_dropdownitem_text_padding_left = 2131230734;
 			
-			// aapt resource value: 0x7f08000a
-			public const int abc_panel_menu_list_width = 2131230730;
-			
-			// aapt resource value: 0x7f08000c
-			public const int abc_search_view_preferred_width = 2131230732;
+			// aapt resource value: 0x7f08000f
+			public const int abc_dropdownitem_text_padding_right = 2131230735;
 			
 			// aapt resource value: 0x7f08000b
-			public const int abc_search_view_text_min_width = 2131230731;
+			public const int abc_panel_menu_list_width = 2131230731;
 			
-			// aapt resource value: 0x7f080010
-			public const int standard_padding = 2131230736;
+			// aapt resource value: 0x7f08000d
+			public const int abc_search_view_preferred_width = 2131230733;
+			
+			// aapt resource value: 0x7f08000c
+			public const int abc_search_view_text_min_width = 2131230732;
+			
+			// aapt resource value: 0x7f080011
+			public const int standard_padding = 2131230737;
 			
 			static Dimension()
 			{
@@ -870,32 +873,32 @@ namespace MeetupManager.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050018
-			public const int MvxBindingTagUnique = 2131034136;
+			// aapt resource value: 0x7f05001a
+			public const int MvxBindingTagUnique = 2131034138;
 			
-			// aapt resource value: 0x7f05001b
-			public const int action_bar = 2131034139;
+			// aapt resource value: 0x7f05001d
+			public const int action_bar = 2131034141;
 			
 			// aapt resource value: 0x7f050015
 			public const int action_bar_activity_content = 2131034133;
 			
-			// aapt resource value: 0x7f05001a
-			public const int action_bar_container = 2131034138;
+			// aapt resource value: 0x7f05001c
+			public const int action_bar_container = 2131034140;
+			
+			// aapt resource value: 0x7f050020
+			public const int action_bar_overlay_layout = 2131034144;
+			
+			// aapt resource value: 0x7f05001b
+			public const int action_bar_root = 2131034139;
+			
+			// aapt resource value: 0x7f050024
+			public const int action_bar_subtitle = 2131034148;
+			
+			// aapt resource value: 0x7f050023
+			public const int action_bar_title = 2131034147;
 			
 			// aapt resource value: 0x7f05001e
-			public const int action_bar_overlay_layout = 2131034142;
-			
-			// aapt resource value: 0x7f050019
-			public const int action_bar_root = 2131034137;
-			
-			// aapt resource value: 0x7f050022
-			public const int action_bar_subtitle = 2131034146;
-			
-			// aapt resource value: 0x7f050021
-			public const int action_bar_title = 2131034145;
-			
-			// aapt resource value: 0x7f05001c
-			public const int action_context_bar = 2131034140;
+			public const int action_context_bar = 2131034142;
 			
 			// aapt resource value: 0x7f050016
 			public const int action_menu_divider = 2131034134;
@@ -903,35 +906,29 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f050017
 			public const int action_menu_presenter = 2131034135;
 			
-			// aapt resource value: 0x7f050030
-			public const int action_mode_bar = 2131034160;
+			// aapt resource value: 0x7f050025
+			public const int action_mode_close_button = 2131034149;
 			
-			// aapt resource value: 0x7f05002f
-			public const int action_mode_bar_stub = 2131034159;
-			
-			// aapt resource value: 0x7f050023
-			public const int action_mode_close_button = 2131034147;
-			
-			// aapt resource value: 0x7f050024
-			public const int activity_chooser_view_content = 2131034148;
+			// aapt resource value: 0x7f050026
+			public const int activity_chooser_view_content = 2131034150;
 			
 			// aapt resource value: 0x7f05000b
 			public const int always = 2131034123;
 			
-			// aapt resource value: 0x7f050047
-			public const int barChart = 2131034183;
+			// aapt resource value: 0x7f050041
+			public const int barChart = 2131034177;
 			
 			// aapt resource value: 0x7f050011
 			public const int beginning = 2131034129;
 			
-			// aapt resource value: 0x7f05002c
-			public const int checkbox = 2131034156;
+			// aapt resource value: 0x7f05002e
+			public const int checkbox = 2131034158;
 			
 			// aapt resource value: 0x7f05000d
 			public const int collapseActionView = 2131034125;
 			
-			// aapt resource value: 0x7f050027
-			public const int default_activity_button = 2131034151;
+			// aapt resource value: 0x7f050029
+			public const int default_activity_button = 2131034153;
 			
 			// aapt resource value: 0x7f05000e
 			public const int dialog = 2131034126;
@@ -942,20 +939,20 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f05000f
 			public const int dropdown = 2131034127;
 			
-			// aapt resource value: 0x7f050037
-			public const int edit_query = 2131034167;
+			// aapt resource value: 0x7f050031
+			public const int edit_query = 2131034161;
 			
 			// aapt resource value: 0x7f050013
 			public const int end = 2131034131;
 			
-			// aapt resource value: 0x7f050025
-			public const int expand_activities_button = 2131034149;
+			// aapt resource value: 0x7f050027
+			public const int expand_activities_button = 2131034151;
 			
-			// aapt resource value: 0x7f05002b
-			public const int expanded_menu = 2131034155;
+			// aapt resource value: 0x7f05002d
+			public const int expanded_menu = 2131034157;
 			
-			// aapt resource value: 0x7f050044
-			public const int grid = 2131034180;
+			// aapt resource value: 0x7f05003e
+			public const int grid = 2131034174;
 			
 			// aapt resource value: 0x7f050014
 			public const int home = 2131034132;
@@ -963,50 +960,47 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f050005
 			public const int homeAsUp = 2131034117;
 			
-			// aapt resource value: 0x7f050029
-			public const int icon = 2131034153;
+			// aapt resource value: 0x7f05002b
+			public const int icon = 2131034155;
 			
 			// aapt resource value: 0x7f05000a
 			public const int ifRoom = 2131034122;
 			
-			// aapt resource value: 0x7f050026
-			public const int image = 2131034150;
-			
-			// aapt resource value: 0x7f050032
-			public const int left_icon = 2131034162;
+			// aapt resource value: 0x7f050028
+			public const int image = 2131034152;
 			
 			// aapt resource value: 0x7f050001
 			public const int listMode = 2131034113;
 			
-			// aapt resource value: 0x7f050028
-			public const int list_item = 2131034152;
+			// aapt resource value: 0x7f05002a
+			public const int list_item = 2131034154;
+			
+			// aapt resource value: 0x7f05003f
+			public const int main_frame = 2131034175;
+			
+			// aapt resource value: 0x7f050047
+			public const int menu_about = 2131034183;
+			
+			// aapt resource value: 0x7f050042
+			public const int menu_add_new_member = 2131034178;
+			
+			// aapt resource value: 0x7f050046
+			public const int menu_filter_events = 2131034182;
+			
+			// aapt resource value: 0x7f050044
+			public const int menu_refresh = 2131034180;
+			
+			// aapt resource value: 0x7f050043
+			public const int menu_select_winner = 2131034179;
 			
 			// aapt resource value: 0x7f050045
-			public const int main_frame = 2131034181;
-			
-			// aapt resource value: 0x7f05004d
-			public const int menu_about = 2131034189;
-			
-			// aapt resource value: 0x7f050048
-			public const int menu_add_new_member = 2131034184;
-			
-			// aapt resource value: 0x7f05004c
-			public const int menu_filter_events = 2131034188;
-			
-			// aapt resource value: 0x7f05004a
-			public const int menu_refresh = 2131034186;
-			
-			// aapt resource value: 0x7f050049
-			public const int menu_select_winner = 2131034185;
-			
-			// aapt resource value: 0x7f05004b
-			public const int menu_stats = 2131034187;
+			public const int menu_stats = 2131034181;
 			
 			// aapt resource value: 0x7f050012
 			public const int middle = 2131034130;
 			
-			// aapt resource value: 0x7f050043
-			public const int name = 2131034179;
+			// aapt resource value: 0x7f05003d
+			public const int name = 2131034173;
 			
 			// aapt resource value: 0x7f050009
 			public const int never = 2131034121;
@@ -1017,56 +1011,50 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f050000
 			public const int normal = 2131034112;
 			
-			// aapt resource value: 0x7f050046
-			public const int progressBar = 2131034182;
+			// aapt resource value: 0x7f050040
+			public const int progressBar = 2131034176;
 			
-			// aapt resource value: 0x7f050035
-			public const int progress_circular = 2131034165;
+			// aapt resource value: 0x7f050018
+			public const int progress_circular = 2131034136;
 			
-			// aapt resource value: 0x7f050036
-			public const int progress_horizontal = 2131034166;
+			// aapt resource value: 0x7f050019
+			public const int progress_horizontal = 2131034137;
 			
-			// aapt resource value: 0x7f05002e
-			public const int radio = 2131034158;
+			// aapt resource value: 0x7f050030
+			public const int radio = 2131034160;
 			
 			// aapt resource value: 0x7f050033
-			public const int right_container = 2131034163;
+			public const int search_badge = 2131034163;
+			
+			// aapt resource value: 0x7f050032
+			public const int search_bar = 2131034162;
 			
 			// aapt resource value: 0x7f050034
-			public const int right_icon = 2131034164;
+			public const int search_button = 2131034164;
 			
 			// aapt resource value: 0x7f050039
-			public const int search_badge = 2131034169;
+			public const int search_close_btn = 2131034169;
 			
-			// aapt resource value: 0x7f050038
-			public const int search_bar = 2131034168;
-			
-			// aapt resource value: 0x7f05003a
-			public const int search_button = 2131034170;
-			
-			// aapt resource value: 0x7f05003f
-			public const int search_close_btn = 2131034175;
+			// aapt resource value: 0x7f050035
+			public const int search_edit_frame = 2131034165;
 			
 			// aapt resource value: 0x7f05003b
-			public const int search_edit_frame = 2131034171;
+			public const int search_go_btn = 2131034171;
 			
-			// aapt resource value: 0x7f050041
-			public const int search_go_btn = 2131034177;
+			// aapt resource value: 0x7f050036
+			public const int search_mag_icon = 2131034166;
+			
+			// aapt resource value: 0x7f050037
+			public const int search_plate = 2131034167;
+			
+			// aapt resource value: 0x7f050038
+			public const int search_src_text = 2131034168;
 			
 			// aapt resource value: 0x7f05003c
-			public const int search_mag_icon = 2131034172;
+			public const int search_voice_btn = 2131034172;
 			
-			// aapt resource value: 0x7f05003d
-			public const int search_plate = 2131034173;
-			
-			// aapt resource value: 0x7f05003e
-			public const int search_src_text = 2131034174;
-			
-			// aapt resource value: 0x7f050042
-			public const int search_voice_btn = 2131034178;
-			
-			// aapt resource value: 0x7f05002d
-			public const int shortcut = 2131034157;
+			// aapt resource value: 0x7f05002f
+			public const int shortcut = 2131034159;
 			
 			// aapt resource value: 0x7f050007
 			public const int showCustom = 2131034119;
@@ -1077,26 +1065,23 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f050006
 			public const int showTitle = 2131034118;
 			
-			// aapt resource value: 0x7f05001d
-			public const int split_action_bar = 2131034141;
+			// aapt resource value: 0x7f05001f
+			public const int split_action_bar = 2131034143;
 			
-			// aapt resource value: 0x7f050040
-			public const int submit_area = 2131034176;
+			// aapt resource value: 0x7f05003a
+			public const int submit_area = 2131034170;
 			
 			// aapt resource value: 0x7f050002
 			public const int tabMode = 2131034114;
 			
-			// aapt resource value: 0x7f05002a
-			public const int title = 2131034154;
+			// aapt resource value: 0x7f05002c
+			public const int title = 2131034156;
 			
-			// aapt resource value: 0x7f050031
-			public const int title_container = 2131034161;
+			// aapt resource value: 0x7f050021
+			public const int top_action_bar = 2131034145;
 			
-			// aapt resource value: 0x7f05001f
-			public const int top_action_bar = 2131034143;
-			
-			// aapt resource value: 0x7f050020
-			public const int up = 2131034144;
+			// aapt resource value: 0x7f050022
+			public const int up = 2131034146;
 			
 			// aapt resource value: 0x7f050003
 			public const int useLogo = 2131034115;
@@ -1206,52 +1191,49 @@ namespace MeetupManager.Droid
 			public const int abc_popup_menu_item_layout = 2130903060;
 			
 			// aapt resource value: 0x7f030015
-			public const int abc_screen = 2130903061;
+			public const int abc_search_dropdown_item_icons_2line = 2130903061;
 			
 			// aapt resource value: 0x7f030016
-			public const int abc_search_dropdown_item_icons_2line = 2130903062;
+			public const int abc_search_view = 2130903062;
 			
 			// aapt resource value: 0x7f030017
-			public const int abc_search_view = 2130903063;
+			public const int dialog_add_member = 2130903063;
 			
 			// aapt resource value: 0x7f030018
-			public const int dialog_add_member = 2130903064;
+			public const int FirstView = 2130903064;
 			
 			// aapt resource value: 0x7f030019
-			public const int FirstView = 2130903065;
+			public const int item_event = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int item_event = 2130903066;
+			public const int item_group = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int item_group = 2130903067;
+			public const int item_member = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int item_member = 2130903068;
+			public const int SplashScreen = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int SplashScreen = 2130903069;
+			public const int support_simple_spinner_dropdown_item = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int support_simple_spinner_dropdown_item = 2130903070;
+			public const int view_event = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int view_event = 2130903071;
+			public const int view_events = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int view_events = 2130903072;
+			public const int view_groups = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int view_groups = 2130903073;
+			public const int view_home = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int view_home = 2130903074;
+			public const int view_login = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int view_login = 2130903075;
-			
-			// aapt resource value: 0x7f030024
-			public const int view_stats = 2130903076;
+			public const int view_stats = 2130903075;
 			
 			static Layout()
 			{
@@ -1412,59 +1394,59 @@ namespace MeetupManager.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f0b0080
-			public const int BaseTheme = 2131427456;
+			// aapt resource value: 0x7f0b0084
+			public const int BaseTheme = 2131427460;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int TextAppearance_AppCompat_Base_CompactMenu_Dialog = 2131427425;
-			
-			// aapt resource value: 0x7f0b0069
-			public const int TextAppearance_AppCompat_Base_SearchResult = 2131427433;
-			
-			// aapt resource value: 0x7f0b006b
-			public const int TextAppearance_AppCompat_Base_SearchResult_Subtitle = 2131427435;
-			
-			// aapt resource value: 0x7f0b006a
-			public const int TextAppearance_AppCompat_Base_SearchResult_Title = 2131427434;
-			
-			// aapt resource value: 0x7f0b0065
-			public const int TextAppearance_AppCompat_Base_Widget_PopupMenu_Large = 2131427429;
-			
-			// aapt resource value: 0x7f0b0066
-			public const int TextAppearance_AppCompat_Base_Widget_PopupMenu_Small = 2131427430;
-			
-			// aapt resource value: 0x7f0b006c
-			public const int TextAppearance_AppCompat_Light_Base_SearchResult = 2131427436;
-			
-			// aapt resource value: 0x7f0b006e
-			public const int TextAppearance_AppCompat_Light_Base_SearchResult_Subtitle = 2131427438;
+			// aapt resource value: 0x7f0b0063
+			public const int TextAppearance_AppCompat_Base_CompactMenu_Dialog = 2131427427;
 			
 			// aapt resource value: 0x7f0b006d
-			public const int TextAppearance_AppCompat_Light_Base_SearchResult_Title = 2131427437;
+			public const int TextAppearance_AppCompat_Base_SearchResult = 2131427437;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int TextAppearance_AppCompat_Light_Base_Widget_PopupMenu_Large = 2131427431;
+			// aapt resource value: 0x7f0b006f
+			public const int TextAppearance_AppCompat_Base_SearchResult_Subtitle = 2131427439;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int TextAppearance_AppCompat_Light_Base_Widget_PopupMenu_Small = 2131427432;
+			// aapt resource value: 0x7f0b006e
+			public const int TextAppearance_AppCompat_Base_SearchResult_Title = 2131427438;
 			
-			// aapt resource value: 0x7f0b0033
-			public const int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 2131427379;
+			// aapt resource value: 0x7f0b0069
+			public const int TextAppearance_AppCompat_Base_Widget_PopupMenu_Large = 2131427433;
 			
-			// aapt resource value: 0x7f0b0032
-			public const int TextAppearance_AppCompat_Light_SearchResult_Title = 2131427378;
+			// aapt resource value: 0x7f0b006a
+			public const int TextAppearance_AppCompat_Base_Widget_PopupMenu_Small = 2131427434;
 			
-			// aapt resource value: 0x7f0b002e
-			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131427374;
+			// aapt resource value: 0x7f0b0070
+			public const int TextAppearance_AppCompat_Light_Base_SearchResult = 2131427440;
 			
-			// aapt resource value: 0x7f0b002f
-			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131427375;
+			// aapt resource value: 0x7f0b0072
+			public const int TextAppearance_AppCompat_Light_Base_SearchResult_Subtitle = 2131427442;
 			
-			// aapt resource value: 0x7f0b0031
-			public const int TextAppearance_AppCompat_SearchResult_Subtitle = 2131427377;
+			// aapt resource value: 0x7f0b0071
+			public const int TextAppearance_AppCompat_Light_Base_SearchResult_Title = 2131427441;
+			
+			// aapt resource value: 0x7f0b006b
+			public const int TextAppearance_AppCompat_Light_Base_Widget_PopupMenu_Large = 2131427435;
+			
+			// aapt resource value: 0x7f0b006c
+			public const int TextAppearance_AppCompat_Light_Base_Widget_PopupMenu_Small = 2131427436;
+			
+			// aapt resource value: 0x7f0b0035
+			public const int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 2131427381;
+			
+			// aapt resource value: 0x7f0b0034
+			public const int TextAppearance_AppCompat_Light_SearchResult_Title = 2131427380;
 			
 			// aapt resource value: 0x7f0b0030
-			public const int TextAppearance_AppCompat_SearchResult_Title = 2131427376;
+			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131427376;
+			
+			// aapt resource value: 0x7f0b0031
+			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131427377;
+			
+			// aapt resource value: 0x7f0b0033
+			public const int TextAppearance_AppCompat_SearchResult_Subtitle = 2131427379;
+			
+			// aapt resource value: 0x7f0b0032
+			public const int TextAppearance_AppCompat_SearchResult_Title = 2131427378;
 			
 			// aapt resource value: 0x7f0b001a
 			public const int TextAppearance_AppCompat_Widget_ActionBar_Menu = 2131427354;
@@ -1493,92 +1475,92 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0b001f
 			public const int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = 2131427359;
 			
-			// aapt resource value: 0x7f0b0052
-			public const int TextAppearance_AppCompat_Widget_Base_ActionBar_Menu = 2131427410;
-			
 			// aapt resource value: 0x7f0b0054
-			public const int TextAppearance_AppCompat_Widget_Base_ActionBar_Subtitle = 2131427412;
+			public const int TextAppearance_AppCompat_Widget_Base_ActionBar_Menu = 2131427412;
 			
 			// aapt resource value: 0x7f0b0056
-			public const int TextAppearance_AppCompat_Widget_Base_ActionBar_Subtitle_Inverse = 2131427414;
+			public const int TextAppearance_AppCompat_Widget_Base_ActionBar_Subtitle = 2131427414;
 			
-			// aapt resource value: 0x7f0b0053
-			public const int TextAppearance_AppCompat_Widget_Base_ActionBar_Title = 2131427411;
+			// aapt resource value: 0x7f0b0058
+			public const int TextAppearance_AppCompat_Widget_Base_ActionBar_Subtitle_Inverse = 2131427416;
 			
 			// aapt resource value: 0x7f0b0055
-			public const int TextAppearance_AppCompat_Widget_Base_ActionBar_Title_Inverse = 2131427413;
+			public const int TextAppearance_AppCompat_Widget_Base_ActionBar_Title = 2131427413;
 			
-			// aapt resource value: 0x7f0b004f
-			public const int TextAppearance_AppCompat_Widget_Base_ActionMode_Subtitle = 2131427407;
+			// aapt resource value: 0x7f0b0057
+			public const int TextAppearance_AppCompat_Widget_Base_ActionBar_Title_Inverse = 2131427415;
 			
 			// aapt resource value: 0x7f0b0051
-			public const int TextAppearance_AppCompat_Widget_Base_ActionMode_Subtitle_Inverse = 2131427409;
+			public const int TextAppearance_AppCompat_Widget_Base_ActionMode_Subtitle = 2131427409;
 			
-			// aapt resource value: 0x7f0b004e
-			public const int TextAppearance_AppCompat_Widget_Base_ActionMode_Title = 2131427406;
+			// aapt resource value: 0x7f0b0053
+			public const int TextAppearance_AppCompat_Widget_Base_ActionMode_Subtitle_Inverse = 2131427411;
 			
 			// aapt resource value: 0x7f0b0050
-			public const int TextAppearance_AppCompat_Widget_Base_ActionMode_Title_Inverse = 2131427408;
+			public const int TextAppearance_AppCompat_Widget_Base_ActionMode_Title = 2131427408;
 			
-			// aapt resource value: 0x7f0b005f
-			public const int TextAppearance_AppCompat_Widget_Base_DropDownItem = 2131427423;
+			// aapt resource value: 0x7f0b0052
+			public const int TextAppearance_AppCompat_Widget_Base_ActionMode_Title_Inverse = 2131427410;
+			
+			// aapt resource value: 0x7f0b0061
+			public const int TextAppearance_AppCompat_Widget_Base_DropDownItem = 2131427425;
 			
 			// aapt resource value: 0x7f0b0021
 			public const int TextAppearance_AppCompat_Widget_DropDownItem = 2131427361;
 			
-			// aapt resource value: 0x7f0b002c
-			public const int TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131427372;
+			// aapt resource value: 0x7f0b002e
+			public const int TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131427374;
 			
-			// aapt resource value: 0x7f0b002d
-			public const int TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131427373;
+			// aapt resource value: 0x7f0b002f
+			public const int TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131427375;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int TextAppearance_Widget_AppCompat_Base_ExpandedMenu_Item = 2131427424;
+			// aapt resource value: 0x7f0b0062
+			public const int TextAppearance_Widget_AppCompat_Base_ExpandedMenu_Item = 2131427426;
 			
 			// aapt resource value: 0x7f0b0028
 			public const int TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2131427368;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int Theme = 2131427457;
-			
-			// aapt resource value: 0x7f0b0073
-			public const int Theme_AppCompat = 2131427443;
-			
-			// aapt resource value: 0x7f0b007d
-			public const int Theme_AppCompat_Base_CompactMenu = 2131427453;
-			
-			// aapt resource value: 0x7f0b007e
-			public const int Theme_AppCompat_Base_CompactMenu_Dialog = 2131427454;
-			
-			// aapt resource value: 0x7f0b0076
-			public const int Theme_AppCompat_CompactMenu = 2131427446;
+			// aapt resource value: 0x7f0b0085
+			public const int Theme = 2131427461;
 			
 			// aapt resource value: 0x7f0b0077
-			public const int Theme_AppCompat_CompactMenu_Dialog = 2131427447;
+			public const int Theme_AppCompat = 2131427447;
 			
-			// aapt resource value: 0x7f0b0074
-			public const int Theme_AppCompat_Light = 2131427444;
+			// aapt resource value: 0x7f0b0081
+			public const int Theme_AppCompat_Base_CompactMenu = 2131427457;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int Theme_AppCompat_Light_DarkActionBar = 2131427445;
-			
-			// aapt resource value: 0x7f0b0078
-			public const int Theme_Base = 2131427448;
+			// aapt resource value: 0x7f0b0082
+			public const int Theme_AppCompat_Base_CompactMenu_Dialog = 2131427458;
 			
 			// aapt resource value: 0x7f0b007a
-			public const int Theme_Base_AppCompat = 2131427450;
+			public const int Theme_AppCompat_CompactMenu = 2131427450;
 			
 			// aapt resource value: 0x7f0b007b
-			public const int Theme_Base_AppCompat_Light = 2131427451;
+			public const int Theme_AppCompat_CompactMenu_Dialog = 2131427451;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int Theme_Base_AppCompat_Light_DarkActionBar = 2131427452;
+			// aapt resource value: 0x7f0b0078
+			public const int Theme_AppCompat_Light = 2131427448;
 			
 			// aapt resource value: 0x7f0b0079
-			public const int Theme_Base_Light = 2131427449;
+			public const int Theme_AppCompat_Light_DarkActionBar = 2131427449;
+			
+			// aapt resource value: 0x7f0b007c
+			public const int Theme_Base = 2131427452;
+			
+			// aapt resource value: 0x7f0b007e
+			public const int Theme_Base_AppCompat = 2131427454;
 			
 			// aapt resource value: 0x7f0b007f
-			public const int Theme_Splash = 2131427455;
+			public const int Theme_Base_AppCompat_Light = 2131427455;
+			
+			// aapt resource value: 0x7f0b0080
+			public const int Theme_Base_AppCompat_Light_DarkActionBar = 2131427456;
+			
+			// aapt resource value: 0x7f0b007d
+			public const int Theme_Base_Light = 2131427453;
+			
+			// aapt resource value: 0x7f0b0083
+			public const int Theme_Splash = 2131427459;
 			
 			// aapt resource value: 0x7f0b0000
 			public const int Widget_AppCompat_ActionBar = 2131427328;
@@ -1607,65 +1589,68 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0b001b
 			public const int Widget_AppCompat_ActionMode = 2131427355;
 			
-			// aapt resource value: 0x7f0b0036
-			public const int Widget_AppCompat_ActivityChooserView = 2131427382;
-			
-			// aapt resource value: 0x7f0b0034
-			public const int Widget_AppCompat_AutoCompleteTextView = 2131427380;
-			
 			// aapt resource value: 0x7f0b0038
-			public const int Widget_AppCompat_Base_ActionBar = 2131427384;
+			public const int Widget_AppCompat_ActivityChooserView = 2131427384;
+			
+			// aapt resource value: 0x7f0b0036
+			public const int Widget_AppCompat_AutoCompleteTextView = 2131427382;
 			
 			// aapt resource value: 0x7f0b003a
-			public const int Widget_AppCompat_Base_ActionBar_Solid = 2131427386;
+			public const int Widget_AppCompat_Base_ActionBar = 2131427386;
 			
-			// aapt resource value: 0x7f0b0043
-			public const int Widget_AppCompat_Base_ActionBar_TabBar = 2131427395;
+			// aapt resource value: 0x7f0b003c
+			public const int Widget_AppCompat_Base_ActionBar_Solid = 2131427388;
 			
-			// aapt resource value: 0x7f0b0049
-			public const int Widget_AppCompat_Base_ActionBar_TabText = 2131427401;
+			// aapt resource value: 0x7f0b0045
+			public const int Widget_AppCompat_Base_ActionBar_TabBar = 2131427397;
 			
-			// aapt resource value: 0x7f0b0046
-			public const int Widget_AppCompat_Base_ActionBar_TabView = 2131427398;
+			// aapt resource value: 0x7f0b004b
+			public const int Widget_AppCompat_Base_ActionBar_TabText = 2131427403;
 			
-			// aapt resource value: 0x7f0b003d
-			public const int Widget_AppCompat_Base_ActionButton = 2131427389;
+			// aapt resource value: 0x7f0b0048
+			public const int Widget_AppCompat_Base_ActionBar_TabView = 2131427400;
 			
 			// aapt resource value: 0x7f0b003f
-			public const int Widget_AppCompat_Base_ActionButton_CloseMode = 2131427391;
+			public const int Widget_AppCompat_Base_ActionButton = 2131427391;
 			
 			// aapt resource value: 0x7f0b0041
-			public const int Widget_AppCompat_Base_ActionButton_Overflow = 2131427393;
+			public const int Widget_AppCompat_Base_ActionButton_CloseMode = 2131427393;
 			
-			// aapt resource value: 0x7f0b004c
-			public const int Widget_AppCompat_Base_ActionMode = 2131427404;
+			// aapt resource value: 0x7f0b0043
+			public const int Widget_AppCompat_Base_ActionButton_Overflow = 2131427395;
 			
-			// aapt resource value: 0x7f0b0071
-			public const int Widget_AppCompat_Base_ActivityChooserView = 2131427441;
+			// aapt resource value: 0x7f0b004e
+			public const int Widget_AppCompat_Base_ActionMode = 2131427406;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int Widget_AppCompat_Base_AutoCompleteTextView = 2131427439;
+			// aapt resource value: 0x7f0b0075
+			public const int Widget_AppCompat_Base_ActivityChooserView = 2131427445;
 			
-			// aapt resource value: 0x7f0b005b
-			public const int Widget_AppCompat_Base_DropDownItem_Spinner = 2131427419;
+			// aapt resource value: 0x7f0b0073
+			public const int Widget_AppCompat_Base_AutoCompleteTextView = 2131427443;
 			
 			// aapt resource value: 0x7f0b005d
-			public const int Widget_AppCompat_Base_ListView_DropDown = 2131427421;
+			public const int Widget_AppCompat_Base_DropDownItem_Spinner = 2131427421;
 			
-			// aapt resource value: 0x7f0b0062
-			public const int Widget_AppCompat_Base_ListView_Menu = 2131427426;
+			// aapt resource value: 0x7f0b0065
+			public const int Widget_AppCompat_Base_ListPopupWindow = 2131427429;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int Widget_AppCompat_Base_PopupMenu = 2131427427;
+			// aapt resource value: 0x7f0b005f
+			public const int Widget_AppCompat_Base_ListView_DropDown = 2131427423;
 			
-			// aapt resource value: 0x7f0b0058
-			public const int Widget_AppCompat_Base_ProgressBar = 2131427416;
+			// aapt resource value: 0x7f0b0064
+			public const int Widget_AppCompat_Base_ListView_Menu = 2131427428;
 			
-			// aapt resource value: 0x7f0b0057
-			public const int Widget_AppCompat_Base_ProgressBar_Horizontal = 2131427415;
+			// aapt resource value: 0x7f0b0067
+			public const int Widget_AppCompat_Base_PopupMenu = 2131427431;
+			
+			// aapt resource value: 0x7f0b005a
+			public const int Widget_AppCompat_Base_ProgressBar = 2131427418;
 			
 			// aapt resource value: 0x7f0b0059
-			public const int Widget_AppCompat_Base_Spinner = 2131427417;
+			public const int Widget_AppCompat_Base_ProgressBar_Horizontal = 2131427417;
+			
+			// aapt resource value: 0x7f0b005b
+			public const int Widget_AppCompat_Base_Spinner = 2131427419;
 			
 			// aapt resource value: 0x7f0b0024
 			public const int Widget_AppCompat_DropDownItem_Spinner = 2131427364;
@@ -1709,89 +1694,98 @@ namespace MeetupManager.Droid
 			// aapt resource value: 0x7f0b001c
 			public const int Widget_AppCompat_Light_ActionMode_Inverse = 2131427356;
 			
-			// aapt resource value: 0x7f0b0037
-			public const int Widget_AppCompat_Light_ActivityChooserView = 2131427383;
-			
-			// aapt resource value: 0x7f0b0035
-			public const int Widget_AppCompat_Light_AutoCompleteTextView = 2131427381;
-			
 			// aapt resource value: 0x7f0b0039
-			public const int Widget_AppCompat_Light_Base_ActionBar = 2131427385;
+			public const int Widget_AppCompat_Light_ActivityChooserView = 2131427385;
+			
+			// aapt resource value: 0x7f0b0037
+			public const int Widget_AppCompat_Light_AutoCompleteTextView = 2131427383;
 			
 			// aapt resource value: 0x7f0b003b
-			public const int Widget_AppCompat_Light_Base_ActionBar_Solid = 2131427387;
+			public const int Widget_AppCompat_Light_Base_ActionBar = 2131427387;
 			
-			// aapt resource value: 0x7f0b003c
-			public const int Widget_AppCompat_Light_Base_ActionBar_Solid_Inverse = 2131427388;
-			
-			// aapt resource value: 0x7f0b0044
-			public const int Widget_AppCompat_Light_Base_ActionBar_TabBar = 2131427396;
-			
-			// aapt resource value: 0x7f0b0045
-			public const int Widget_AppCompat_Light_Base_ActionBar_TabBar_Inverse = 2131427397;
-			
-			// aapt resource value: 0x7f0b004a
-			public const int Widget_AppCompat_Light_Base_ActionBar_TabText = 2131427402;
-			
-			// aapt resource value: 0x7f0b004b
-			public const int Widget_AppCompat_Light_Base_ActionBar_TabText_Inverse = 2131427403;
-			
-			// aapt resource value: 0x7f0b0047
-			public const int Widget_AppCompat_Light_Base_ActionBar_TabView = 2131427399;
-			
-			// aapt resource value: 0x7f0b0048
-			public const int Widget_AppCompat_Light_Base_ActionBar_TabView_Inverse = 2131427400;
+			// aapt resource value: 0x7f0b003d
+			public const int Widget_AppCompat_Light_Base_ActionBar_Solid = 2131427389;
 			
 			// aapt resource value: 0x7f0b003e
-			public const int Widget_AppCompat_Light_Base_ActionButton = 2131427390;
+			public const int Widget_AppCompat_Light_Base_ActionBar_Solid_Inverse = 2131427390;
 			
-			// aapt resource value: 0x7f0b0040
-			public const int Widget_AppCompat_Light_Base_ActionButton_CloseMode = 2131427392;
+			// aapt resource value: 0x7f0b0046
+			public const int Widget_AppCompat_Light_Base_ActionBar_TabBar = 2131427398;
 			
-			// aapt resource value: 0x7f0b0042
-			public const int Widget_AppCompat_Light_Base_ActionButton_Overflow = 2131427394;
+			// aapt resource value: 0x7f0b0047
+			public const int Widget_AppCompat_Light_Base_ActionBar_TabBar_Inverse = 2131427399;
+			
+			// aapt resource value: 0x7f0b004c
+			public const int Widget_AppCompat_Light_Base_ActionBar_TabText = 2131427404;
 			
 			// aapt resource value: 0x7f0b004d
-			public const int Widget_AppCompat_Light_Base_ActionMode_Inverse = 2131427405;
+			public const int Widget_AppCompat_Light_Base_ActionBar_TabText_Inverse = 2131427405;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int Widget_AppCompat_Light_Base_ActivityChooserView = 2131427442;
+			// aapt resource value: 0x7f0b0049
+			public const int Widget_AppCompat_Light_Base_ActionBar_TabView = 2131427401;
 			
-			// aapt resource value: 0x7f0b0070
-			public const int Widget_AppCompat_Light_Base_AutoCompleteTextView = 2131427440;
+			// aapt resource value: 0x7f0b004a
+			public const int Widget_AppCompat_Light_Base_ActionBar_TabView_Inverse = 2131427402;
 			
-			// aapt resource value: 0x7f0b005c
-			public const int Widget_AppCompat_Light_Base_DropDownItem_Spinner = 2131427420;
+			// aapt resource value: 0x7f0b0040
+			public const int Widget_AppCompat_Light_Base_ActionButton = 2131427392;
+			
+			// aapt resource value: 0x7f0b0042
+			public const int Widget_AppCompat_Light_Base_ActionButton_CloseMode = 2131427394;
+			
+			// aapt resource value: 0x7f0b0044
+			public const int Widget_AppCompat_Light_Base_ActionButton_Overflow = 2131427396;
+			
+			// aapt resource value: 0x7f0b004f
+			public const int Widget_AppCompat_Light_Base_ActionMode_Inverse = 2131427407;
+			
+			// aapt resource value: 0x7f0b0076
+			public const int Widget_AppCompat_Light_Base_ActivityChooserView = 2131427446;
+			
+			// aapt resource value: 0x7f0b0074
+			public const int Widget_AppCompat_Light_Base_AutoCompleteTextView = 2131427444;
 			
 			// aapt resource value: 0x7f0b005e
-			public const int Widget_AppCompat_Light_Base_ListView_DropDown = 2131427422;
+			public const int Widget_AppCompat_Light_Base_DropDownItem_Spinner = 2131427422;
 			
-			// aapt resource value: 0x7f0b0064
-			public const int Widget_AppCompat_Light_Base_PopupMenu = 2131427428;
+			// aapt resource value: 0x7f0b0066
+			public const int Widget_AppCompat_Light_Base_ListPopupWindow = 2131427430;
 			
-			// aapt resource value: 0x7f0b005a
-			public const int Widget_AppCompat_Light_Base_Spinner = 2131427418;
+			// aapt resource value: 0x7f0b0060
+			public const int Widget_AppCompat_Light_Base_ListView_DropDown = 2131427424;
+			
+			// aapt resource value: 0x7f0b0068
+			public const int Widget_AppCompat_Light_Base_PopupMenu = 2131427432;
+			
+			// aapt resource value: 0x7f0b005c
+			public const int Widget_AppCompat_Light_Base_Spinner = 2131427420;
 			
 			// aapt resource value: 0x7f0b0025
 			public const int Widget_AppCompat_Light_DropDownItem_Spinner = 2131427365;
 			
+			// aapt resource value: 0x7f0b002a
+			public const int Widget_AppCompat_Light_ListPopupWindow = 2131427370;
+			
 			// aapt resource value: 0x7f0b0027
 			public const int Widget_AppCompat_Light_ListView_DropDown = 2131427367;
 			
-			// aapt resource value: 0x7f0b002a
-			public const int Widget_AppCompat_Light_PopupMenu = 2131427370;
+			// aapt resource value: 0x7f0b002c
+			public const int Widget_AppCompat_Light_PopupMenu = 2131427372;
 			
 			// aapt resource value: 0x7f0b0023
 			public const int Widget_AppCompat_Light_Spinner_DropDown_ActionBar = 2131427363;
 			
+			// aapt resource value: 0x7f0b0029
+			public const int Widget_AppCompat_ListPopupWindow = 2131427369;
+			
 			// aapt resource value: 0x7f0b0026
 			public const int Widget_AppCompat_ListView_DropDown = 2131427366;
 			
-			// aapt resource value: 0x7f0b002b
-			public const int Widget_AppCompat_ListView_Menu = 2131427371;
+			// aapt resource value: 0x7f0b002d
+			public const int Widget_AppCompat_ListView_Menu = 2131427373;
 			
-			// aapt resource value: 0x7f0b0029
-			public const int Widget_AppCompat_PopupMenu = 2131427369;
+			// aapt resource value: 0x7f0b002b
+			public const int Widget_AppCompat_PopupMenu = 2131427371;
 			
 			// aapt resource value: 0x7f0b000a
 			public const int Widget_AppCompat_ProgressBar = 2131427338;
