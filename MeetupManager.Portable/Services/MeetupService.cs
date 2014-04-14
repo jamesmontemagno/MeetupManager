@@ -48,8 +48,8 @@ namespace MeetupManager.Portable.Services
 	    }
 		#region IMeetupService implementation
 
-        public static string ClientId = "<client id>";
-        public static string ClientSecret = "<secret>";
+		public static string ClientId = "id";
+		public static string ClientSecret = "key";
 	    public static string AuthorizeUrl = "https://secure.meetup.com/oauth2/authorize";
 	    public static string RedirectUrl = "http://www.refractored.com/login_success.html";
 	    public static string AccessTokenUrl = "https://secure.meetup.com/oauth2/access";

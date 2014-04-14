@@ -14,11 +14,5 @@
           android:icon="@drawable/ic_action_select_winner"
           local:showAsAction="never"
           android:title="@string/menu_select_winner" />
-  
-  <item
-          android:id="@+id/menu_refresh"
-          android:icon="@drawable/ic_action_refresh"
-          local:showAsAction="never"
-          android:title="@string/menu_refresh" />
 
 </menu>

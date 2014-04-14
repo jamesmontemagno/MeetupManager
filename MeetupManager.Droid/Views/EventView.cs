@@ -21,6 +21,7 @@ using Android.App;
 using Android.OS;
 using Android.Widget;
 using MeetupManager.Portable.ViewModels;
+using MeetupManager.Droid.Controls;
 
 namespace MeetupManager.Droid.Views
 {
@@ -32,7 +33,7 @@ namespace MeetupManager.Droid.Views
 		{
 			get { return viewModel ?? (viewModel = base.ViewModel as EventViewModel); }
 		}
-
+		MvxSwipeRefreshLayout refresher;
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
@@ -40,6 +41,14 @@ namespace MeetupManager.Droid.Views
 			SetContentView(Resource.Layout.view_event);
             FindViewById<GridView>(Resource.Id.grid).SetOnScrollListener(this);
 		    SupportActionBar.Title = ViewModel.EventName;
+
+			refresher = FindViewById<MvxSwipeRefreshLayout> (Resource.Id.refresher);
+			refresher.SetColorScheme (Resource.Color.xam_darkblue,
+				Resource.Color.xam_purple,
+				Resource.Color.xam_blue,
+				Resource.Color.xam_green);
+			refresher.Refreshing = true;
+			refresher.RefreshCommand = ViewModel.RefreshCommand;
 		}
 
 		public override bool OnCreateOptionsMenu (Android.Views.IMenu menu)

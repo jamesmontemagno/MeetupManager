@@ -21,47 +21,53 @@ using Android.App;
 using Android.OS;
 using Android.Widget;
 using MeetupManager.Portable.ViewModels;
+using MeetupManager.Droid.Controls;
 
 namespace MeetupManager.Droid.Views
 {
-    [Activity(Label = "Groups", Icon = "@drawable/ic_launcher")]
-    public class GroupsView : BaseView
+	[Activity (Label = "Groups", Icon = "@drawable/ic_launcher")]
+	public class GroupsView : BaseView
 	{
+		MvxSwipeRefreshLayout refresher;
+		private GroupsViewModel viewModel;
 
-        private GroupsViewModel viewModel;
-        private new GroupsViewModel ViewModel
-        {
-            get { return viewModel ?? (viewModel = base.ViewModel as GroupsViewModel); }
-        }
+		private new GroupsViewModel ViewModel {
+			get { return viewModel ?? (viewModel = base.ViewModel as GroupsViewModel); }
+		}
 
+		protected async override void OnCreate (Bundle bundle)
+		{
+			base.OnCreate (bundle);
 
-		protected async override void OnCreate(Bundle bundle)
-        {
-            base.OnCreate(bundle);
+			Tag = "Groups";
+			SetContentView (Resource.Layout.view_groups);
 
-            Tag = "Groups";
-			SetContentView(Resource.Layout.view_groups);
+			refresher = FindViewById<MvxSwipeRefreshLayout> (Resource.Id.refresher);
+			refresher.SetColorScheme (Resource.Color.xam_darkblue,
+				Resource.Color.xam_purple,
+				Resource.Color.xam_blue,
+				Resource.Color.xam_green);
+			refresher.Refreshing = true;
+			refresher.RefreshCommand = ViewModel.RefreshCommand;
+			FindViewById<GridView> (Resource.Id.grid).SetOnScrollListener (this);
+		}
 
-            FindViewById<GridView>(Resource.Id.grid).SetOnScrollListener(this);
-        }
+		public override bool OnCreateOptionsMenu (Android.Views.IMenu menu)
+		{
+			MenuInflater.Inflate (Resource.Menu.menu_groups, menu);
+			return base.OnCreateOptionsMenu (menu);
+		}
 
-        public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.menu_groups, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
-
-        public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
-        {
-            if (ViewModel.IsBusy)
-                return base.OnOptionsItemSelected(item);
-            switch (item.ItemId)
-            {
-                case Resource.Id.menu_refresh:
-                    ViewModel.RefreshCommand.Execute(null);
-                    return true;
-            }
-            return base.OnOptionsItemSelected(item);
-        }
-    }
+		public override bool OnOptionsItemSelected (Android.Views.IMenuItem item)
+		{
+			if (ViewModel.IsBusy)
+				return base.OnOptionsItemSelected (item);
+			switch (item.ItemId) {
+			case Resource.Id.menu_refresh:
+				ViewModel.RefreshCommand.Execute (null);
+				return true;
+			}
+			return base.OnOptionsItemSelected (item);
+		}
+	}
 }

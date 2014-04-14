@@ -15,10 +15,4 @@
           local:showAsAction="never"
           android:title="@string/show_all_events" />
 
-
-  <item
-          android:id="@+id/menu_refresh"
-          android:icon="@drawable/ic_action_refresh"
-          local:showAsAction="never"
-          android:title="@string/menu_refresh" />
 </menu>

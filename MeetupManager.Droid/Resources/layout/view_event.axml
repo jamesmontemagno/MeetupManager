@@ -1,57 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<MeetupManager.Droid.Controls.MvxSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:id="@+id/refresher"
+    local:MvxBind="Refreshing IsBusy"
     android:background="@color/background">
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:indeterminateOnly="true"
-        local:MvxBind="Visibility IsBusy,Converter=Visibility"
-        android:layout_marginBottom="-8dp"
-        android:layout_marginTop="-4dp" />
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/standard_padding">
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="0dp"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/standard_padding">
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/tap_to_login" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10/40"
+                android:layout_marginLeft="@dimen/standard_padding"
+                local:MvxBind="Text RSVPCount" />
+        </LinearLayout>
+        <Mvx.MvxGridView
+            android:id="@+id/grid"
+            android:padding="@dimen/standard_padding"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/tap_to_login" />
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10/40"
-            android:layout_marginLeft="@dimen/standard_padding"
-            local:MvxBind="Text RSVPCount" />
+            local:MvxBind="ItemsSource Members; ItemClick CheckInCommand; ItemLongClick DeleteUserCommand"
+            local:MvxItemTemplate="@layout/item_member"
+            android:longClickable="true"
+            android:numColumns="@integer/member_columns"
+            android:stretchMode="columnWidth"
+            android:drawSelectorOnTop="true"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:horizontalSpacing="8dp"
+            android:verticalSpacing="8dp"
+            android:gravity="center"
+            android:fastScrollEnabled="false"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="insideOverlay"
+            android:smoothScrollbar="true" />
     </LinearLayout>
-    <Mvx.MvxGridView
-        android:id="@+id/grid"
-        android:padding="@dimen/standard_padding"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        local:MvxBind="ItemsSource Members; ItemClick CheckInCommand; ItemLongClick DeleteUserCommand"
-        local:MvxItemTemplate="@layout/item_member"
-        android:longClickable="true"
-        android:numColumns="@integer/member_columns"
-        android:stretchMode="columnWidth"
-        android:drawSelectorOnTop="true"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:horizontalSpacing="8dp"
-        android:verticalSpacing="8dp"
-        android:gravity="center"
-        android:fastScrollEnabled="false"
-        android:scrollbars="vertical"
-        android:scrollbarStyle="insideOverlay"
-        android:smoothScrollbar="true" />
-</LinearLayout>
+</MeetupManager.Droid.Controls.MvxSwipeRefreshLayout>

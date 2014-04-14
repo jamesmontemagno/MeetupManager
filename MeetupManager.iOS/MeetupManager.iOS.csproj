@@ -100,38 +100,6 @@
     <MtouchArch>ARMv7, ARMv7s</MtouchArch>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cirrious.MvvmCross, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.File, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.File.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.File.Touch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.File.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Touch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Touch, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Touch.dll</HintPath>
-    </Reference>
     <Reference Include="GCDiscreetNotification">
       <HintPath>..\Components\gcdiscreetnotification-1.0\lib\ios\GCDiscreetNotification.dll</HintPath>
     </Reference>
@@ -152,16 +120,7 @@
     <Reference Include="GoogleAnalytics.iOS">
       <HintPath>..\Components\googleanalytics-3.0.2\lib\ios\GoogleAnalytics.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Auth.iOS">
-      <HintPath>..\Components\xamarin.auth-1.2.2\lib\ios\Xamarin.Auth.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows" />
-    <Reference Include="AFNetworking">
-      <HintPath>..\Components\modernhttpclient-1.1.0\lib\ios\AFNetworking.dll</HintPath>
-    </Reference>
-    <Reference Include="ModernHttpClient.iOS">
-      <HintPath>..\Components\modernhttpclient-1.1.0\lib\ios\ModernHttpClient.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="Cirrious.CrossCore.Touch">
       <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.CrossCore.Touch.dll</HintPath>
     </Reference>
@@ -194,6 +153,36 @@
     </Reference>
     <Reference Include="Xamarin.Controls.BarChart.iOS">
       <HintPath>..\Components\barchart-1.1\lib\ios\Xamarin.Controls.BarChart.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross">
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite">
+      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch">
+      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Community.Plugins.Sqlite.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.File">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.File.Touch">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.File.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Touch">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Touch">
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient.iOS">
+      <HintPath>..\Common\ModernHttpClient.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Auth.iOS">
+      <HintPath>..\Common\Xamarin.Auth.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -276,14 +265,6 @@
   <ItemGroup>
     <XamarinComponentReference Include="googleanalytics">
       <Version>3.0.2</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="modernhttpclient">
-      <Version>1.1.0</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="xamarin.auth">
-      <Version>1.2.2</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="gcdiscreetnotification">
