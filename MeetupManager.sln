@@ -1,8 +1,8 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+VisualStudioVersion = {0}
+MinimumVisualStudioVersion = {0}
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetupManager.Portable", "MeetupManager.Portable\MeetupManager.Portable.csproj", "{9189A7F8-9C9C-427D-9777-AA6B8CD7DF20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetupManager.Droid", "MeetupManager.Droid\MeetupManager.Droid.csproj", "{B5CE74CA-2012-4AE3-81CF-0552B93F33AF}"
@@ -251,7 +251,7 @@ Global
 		{C3C5A689-4BF8-4CED-87E0-0FF2EE200219}.Release|x86.ActiveCfg = Release|iPhone
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = MeetupManager.Droid\MeetupManager.Droid.csproj
+		StartupItem = MeetupManager.iOS\MeetupManager.iOS.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
