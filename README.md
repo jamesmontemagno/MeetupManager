@@ -22,6 +22,15 @@ As a user group organizer of ([Seattle Mobile .NET Developers Group](http://www.
 ## How much code is shared?
 I have included an "Analysis Project", which will count the shared lines of code. 70%+ of the code is shared between projects. All of the Models, Services, View Models, and tons of helper classes are all found in one single PCL library. The major difference is in both iOS and Android I have some custom views which act as the platform specific code. I am not counting any plugins that handle platform specific code for me since I did not have to write it.  You can find a full breakdown of shared code on ([Google Drive](https://docs.google.com/spreadsheet/ccc?key=0Aj1h7Abl0UIAdExNdHdSb093RDBnSkZ0SWZLSld1MEE&usp=sharing))
 
+## How you can test it. 
+I have my own API keys that I ship with, but you can use these test keys for yourself:
+
+ClientId: h0hrbvn9df1d817alnluab6d1s
+SecreteId = o9dv5n3uanhrp08fdmas8jdaqb
+
+Just update that code here: https://github.com/jamesmontemagno/MeetupManager/blob/master/MeetupManager.Portable/Services/MeetupService.cs#L51
+
+
 ## What technology is used?
 Everything is written in C# with Xamarin with a base PCL library. This project couldn't have been done without the following:
 
