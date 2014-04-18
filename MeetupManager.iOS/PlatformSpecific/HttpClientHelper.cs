@@ -28,7 +28,7 @@ namespace MeetupManager.iOS.PlatformSpecific
         private HttpMessageHandler handler;
         public HttpMessageHandler MessageHandler
         {
-            get { return handler ?? (handler = new AFNetworkHandler()); }
+						get { return handler ?? (handler = new NSUrlSessionHandler()); }
         }
     }
 }

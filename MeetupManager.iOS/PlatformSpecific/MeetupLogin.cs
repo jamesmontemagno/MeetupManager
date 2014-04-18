@@ -29,6 +29,12 @@ namespace MeetupManager.iOS.PlatformSpecific
 					loginCallback (ee.IsAuthenticated, ee.Account == null ? null : ee.Account.Properties);
 			};
 
+			auth.Error += (sender, e) => {
+				vc.DismissViewController (true, null);
+			};
+
+
+
 
 			vc = auth.GetUI ();
 			presenter.PresentModalViewController (vc, true);

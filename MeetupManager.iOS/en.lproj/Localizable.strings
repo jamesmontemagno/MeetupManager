@@ -1,5 +1,5 @@
 /* all strings go here "key" = "value" */
-"LoginMessage" = "Tap Login to proceed to the Meetup.com login page.";
+"LoginMessage" = "Tap Login to proceed to the Meetup login page.";
 "Login" = "Login";
 "Groups" = "Groups";
-"LoggingIn" = "Logging in to Meetup.com";
+"LoggingIn" = "Logging in to Meetup";
