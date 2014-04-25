@@ -11,7 +11,7 @@ Copyright 2014 ([Refractored LLC](http://www.refractored.com))
 
 ## Available for free on:
 * Android: Available on [Google Play](https://play.google.com/store/apps/details?id=com.refractored.meetupmanager)
-* iPhone (Finished! Awaiting oAuth fix from Meetup.com :( Feel free to joing [TestFlight Team](http://tflig.ht/Ln3R6J) if you would like to try it out!
+* iPhone: Available on [App Store](https://itunes.apple.com/us/app/meetup-manager-for-organizers/id796213890?ls=1&mt=8)
 * Windows Phone 8: Available on [Windows Phone Marketplace](http://www.windowsphone.com/en-us/store/app/meetup-manager-for-organizers/38ef03e9-3dfe-4150-b797-5ec9ed81b8cd)
 * Windows 8 (Soon, feel free to fork and start)
 
