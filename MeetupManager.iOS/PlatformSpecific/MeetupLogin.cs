@@ -13,7 +13,7 @@ namespace MeetupManager.iOS.PlatformSpecific
 	{
 		#region ILogin implementation
 
-        OAuth2Authenticator auth = new OAuth2Authenticator(MeetupService.ClientId, MeetupService.ClientSecret, string.Empty, new Uri(MeetupService.AuthorizeUrl), new Uri(MeetupService.RedirectUrl), new Uri(MeetupService.AccessTokenUrl));
+    OAuth2Authenticator auth = new OAuth2Authenticator(MeetupService.ClientId, MeetupService.ClientSecret, string.Empty, new Uri(MeetupService.AuthorizeUrl), new Uri(MeetupService.RedirectUrl), new Uri(MeetupService.AccessTokenUrl));
 
 		UIViewController vc = null;
         public void LoginAsync(Action<bool, Dictionary<string, string>> loginCallback)

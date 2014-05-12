@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProductVersion>12.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C3C5A689-4BF8-4CED-87E0-0FF2EE200219}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
@@ -55,6 +53,9 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <IpaPackageName>
     </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -84,9 +85,15 @@
     <BuildIpa>true</BuildIpa>
     <CodesignProvision>Automatic:AdHoc</CodesignProvision>
     <CodesignKey>iPhone Distribution</CodesignKey>
+    <MtouchSdkVersion>7.1</MtouchSdkVersion>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
-    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\iPhone\AppStore</OutputPath>
     <DefineConstants>__MOBILE__;__IOS__;</DefineConstants>
@@ -100,30 +107,19 @@
     </IpaPackageName>
     <MtouchI18n>
     </MtouchI18n>
-    <MtouchArch>ARMv7, ARMv7s</MtouchArch>
+    <MtouchArch>ARMv7</MtouchArch>
     <MtouchSdkVersion>7.1</MtouchSdkVersion>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GCDiscreetNotification">
       <HintPath>..\Components\gcdiscreetnotification-1.0\lib\ios\GCDiscreetNotification.dll</HintPath>
-    </Reference>
-    <Reference Include="Refractored.MvxPlugins.Settings">
-      <HintPath>..\packages\Mvx.Plugins.Settings.1.2.0\lib\monotouch\Refractored.MvxPlugins.Settings.dll</HintPath>
-    </Reference>
-    <Reference Include="Refractored.MvxPlugins.Settings.Touch">
-      <HintPath>..\packages\Mvx.Plugins.Settings.1.2.0\lib\monotouch\Refractored.MvxPlugins.Settings.Touch.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-    <Reference Include="Cirrious.FluentLayouts.Touch">
-      <HintPath>..\Common\Cirrious.FluentLayouts.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleAnalytics.iOS">
-      <HintPath>..\Components\googleanalytics-3.0.2\lib\ios\GoogleAnalytics.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="Cirrious.CrossCore.Touch">
       <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.CrossCore.Touch.dll</HintPath>
@@ -183,17 +179,24 @@
       <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Touch.dll</HintPath>
     </Reference>
     <Reference Include="ModernHttpClient.iOS">
-      <HintPath>..\Common\ModernHttpClient.iOS.dll</HintPath>
+      <HintPath>..\Components\modernhttpclient-1.2.2\lib\ios\ModernHttpClient.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Auth.iOS">
       <HintPath>..\Common\Xamarin.Auth.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleAnalytics.iOS">
+      <HintPath>..\Components\googleanalytics-3.0.3.4\lib\ios\GoogleAnalytics.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.MvxPlugins.Settings.Touch">
+      <HintPath>..\packages\Mvx.Plugins.Settings.1.2.0.2\lib\monotouch\Refractored.MvxPlugins.Settings.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.MvxPlugins.Settings">
+      <HintPath>..\packages\Mvx.Plugins.Settings.1.2.0.2\lib\monotouch\Refractored.MvxPlugins.Settings.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="en.lproj\Localizable.strings" />
-    <BundleResource Include="Resources\ic_meetup.png" />
-    <BundleResource Include="Resources\ic_checkedin.png" />
     <BundleResource Include="Resources\ic_madewithxamarin.png" />
     <BundleResource Include="Resources\Icon.png" />
     <BundleResource Include="Resources\Icon%402x.png" />
@@ -203,6 +206,21 @@
     <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Icon-72.png" />
+    <BundleResource Include="Resources\Icon-72%402x.png" />
+    <BundleResource Include="Resources\Icon-76.png" />
+    <BundleResource Include="Resources\Icon-76%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-50.png" />
+    <BundleResource Include="Resources\Icon-Small-50%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-40.png" />
+    <BundleResource Include="Resources\Default-Portrait.png" />
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\Default-Landscape.png" />
+    <BundleResource Include="Resources\Default-Landscape%402x.png" />
+    <BundleResource Include="Resources\ic_launcher.png" />
+    <BundleResource Include="Resources\ic_launcher%402x.png" />
+    <BundleResource Include="Resources\ic_checkedin.png" />
+    <BundleResource Include="Resources\ic_checkedin%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -267,10 +285,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <XamarinComponentReference Include="googleanalytics">
-      <Version>3.0.2</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
     <XamarinComponentReference Include="gcdiscreetnotification">
       <Version>1.0</Version>
       <Visible>False</Visible>
@@ -281,6 +295,14 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="json.net">
       <Version>4.5.11</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="modernhttpclient">
+      <Version>1.2.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="googleanalytics">
+      <Version>3.0.3.4</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
@@ -295,9 +317,5 @@
     <InterfaceDefinition Include="Views\Cells\GroupCell.xib" />
     <InterfaceDefinition Include="Views\Cells\MemberCell.xib" />
     <InterfaceDefinition Include="Views\StatisticsView.xib" />
-  </ItemGroup>
-  <ItemGroup>
-    <ITunesArtwork Include="iTunesArtwork" />
-    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
 </Project>

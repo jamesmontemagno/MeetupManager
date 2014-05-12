@@ -29,7 +29,7 @@ namespace MeetupManager.iOS.Views
 			TableView.RowHeight = 66;
 			TableView.Source = source;
 
-			var refreshControl = new MvxUIRefreshControl{Message = "Loading..."};
+			var refreshControl = new MvxUIRefreshControl{Message = string.Empty};
 			this.RefreshControl = refreshControl;
 
 			var set = this.CreateBindingSet<EventsView, EventsViewModel>();

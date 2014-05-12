@@ -1,0 +1,25 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.Droid/Setup.cs">
+    <Files>
+      <File FileName="MeetupManager.Droid/app.config" Line="6" Column="8" />
+      <File FileName="MeetupManager.iOS/app.config" Line="11" Column="11" />
+      <File FileName="MeetupManager.Droid/Setup.cs" Line="45" Column="42" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/Xamarin.Auth/src/Xamarin.Auth/OAuth2Authenticator.cs" line="352" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/Xamarin.Auth/src/Xamarin.Auth/ExceptionEx.cs" line="25" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/Xamarin.Auth/src/Xamarin.Auth/OAuth1Authenticator.cs" line="218" column="7" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/Xamarin.Auth/src/Xamarin.Auth/OAuth1Authenticator.cs" line="251" column="8" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/Xamarin.Auth/src/Xamarin.Auth/OAuth2Authenticator.cs" line="291" column="8" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/Xamarin.Auth/src/Xamarin.Auth/OAuth2Authenticator.cs" line="289" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MeetupManager.Droid AndroidDeviceId-Debug="0146970F1101E008" MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" />
+  <MonoDevelop.Ide.ItemProperties.MeetupManager.iOS>
+    <IPhoneZipBundleSettings CurrentFolder="/Users/jamesmontemagno/Desktop/MeetupManager" />
+  </MonoDevelop.Ide.ItemProperties.MeetupManager.iOS>
+</Properties>

@@ -19,14 +19,13 @@
  */
 using Android.Content;
 using Cirrious.CrossCore.Platform;
-using Cirrious.CrossCore.Plugins;
 using Cirrious.MvvmCross.Droid.Platform;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.CrossCore;
 using MeetupManager.Portable.Interfaces;
-using MeetupManager.Droid.PlatformSpecific;
 using Refractored.MvxPlugins.Settings;
 using Refractored.MvxPlugins.Settings.Droid;
+using MeetupManager.Droid.PlatformSpecific;
 
 namespace MeetupManager.Droid
 {

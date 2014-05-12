@@ -52,6 +52,8 @@ namespace MeetupManager.Droid.Views
 			FindViewById<GridView> (Resource.Id.grid).SetOnScrollListener (this);
 		}
 
+
+
 		public override bool OnCreateOptionsMenu (Android.Views.IMenu menu)
 		{
 			MenuInflater.Inflate (Resource.Menu.menu_groups, menu);

@@ -32,7 +32,7 @@ namespace MeetupManager.iOS.Views
 			TableView.Source = source;
 
 
-			var refreshControl = new MvxUIRefreshControl{Message = "Loading..."};
+			var refreshControl = new MvxUIRefreshControl{Message = string.Empty};
 			this.RefreshControl = refreshControl;
 
 			var set = this.CreateBindingSet<GroupsView, GroupsViewModel>();
@@ -69,7 +69,11 @@ namespace MeetupManager.iOS.Views
 				if (vm.CanLoadMore && !vm.IsBusy && (indexPath.Row == vm.Groups.Count - 1))
 					vm.LoadMoreCommand.Execute (null);
 
-				return base.GetCell (tableView, indexPath);
+				var cell = base.GetCell (tableView, indexPath);
+				cell.ImageView.ContentMode = UIViewContentMode.ScaleToFill;
+				cell.TextLabel.TextColor = UIColor.LightGray;
+				//cell.DetailTextLabel.TextColor = UIColor.DarkTextColor;
+				return cell;
 			}
 		}
 

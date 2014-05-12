@@ -4,7 +4,6 @@ using Cirrious.MvvmCross.Touch.Views;
 using MonoTouch.ObjCRuntime;
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
-using Cirrious.FluentLayouts.Touch;
 using MeetupManager.Portable.ViewModels;
 
 namespace MeetupManager.iOS.Views
@@ -27,6 +26,7 @@ namespace MeetupManager.iOS.Views
 			// ios7 layout
             if (RespondsToSelector(new Selector("edgesForExtendedLayout")))
                EdgesForExtendedLayout = UIRectEdge.None;
+
 
 			var refresh = new UIBarButtonItem (UIBarButtonSystemItem.Refresh);
 			var info = new UIBarButtonItem ("About", UIBarButtonItemStyle.Plain, null);

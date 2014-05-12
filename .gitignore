@@ -36,6 +36,7 @@ obj/
 [Rr]elease*/
 Ankh.NoLoad
 Components/
+APK/
 
 #Tooling
 _ReSharper*/

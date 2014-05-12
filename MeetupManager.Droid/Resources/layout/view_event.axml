@@ -1,40 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MeetupManager.Droid.Controls.MvxSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:layout_height="fill_parent"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:id="@+id/refresher"
-    local:MvxBind="Refreshing IsBusy"
+    android:layout_height="fill_parent"
     android:background="@color/background">
-    <LinearLayout
-        android:orientation="vertical"
+    <MeetupManager.Droid.Controls.MvxSwipeRefreshLayout
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/standard_padding">
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/tap_to_login" />
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10/40"
-                android:layout_marginLeft="@dimen/standard_padding"
-                local:MvxBind="Text RSVPCount" />
-        </LinearLayout>
+        android:id="@+id/refresher"
+        local:MvxBind="Refreshing IsBusy">
         <Mvx.MvxGridView
             android:id="@+id/grid"
             android:padding="@dimen/standard_padding"
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="fill_parent"
             local:MvxBind="ItemsSource Members; ItemClick CheckInCommand; ItemLongClick DeleteUserCommand"
             local:MvxItemTemplate="@layout/item_member"
             android:longClickable="true"
@@ -50,5 +31,24 @@
             android:scrollbars="vertical"
             android:scrollbarStyle="insideOverlay"
             android:smoothScrollbar="true" />
+    </MeetupManager.Droid.Controls.MvxSwipeRefreshLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/standard_padding">
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/tap_to_login" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10/40"
+            android:layout_marginLeft="@dimen/standard_padding"
+            local:MvxBind="Text RSVPCount" />
     </LinearLayout>
-</MeetupManager.Droid.Controls.MvxSwipeRefreshLayout>
+</LinearLayout>

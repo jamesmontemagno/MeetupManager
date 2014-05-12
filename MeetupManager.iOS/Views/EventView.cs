@@ -34,7 +34,7 @@ namespace MeetupManager.iOS.Views
 			MainTableView.Source = source;
 			MainTableView.WeakDataSource = this;
 
-			var refreshControl = new MvxUIRefreshControl{Message = "Loading..."};
+			var refreshControl = new MvxUIRefreshControl{Message = string.Empty};
 			MainTableView.AddSubview (refreshControl);
 
 			var set = this.CreateBindingSet<EventView, EventViewModel>();

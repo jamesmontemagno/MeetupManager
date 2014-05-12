@@ -87,6 +87,6 @@ Global
 		{C3C5A689-4BF8-4CED-87E0-0FF2EE200219}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = MeetupManager.iOS\MeetupManager.iOS.csproj
+		StartupItem = MeetupManager.Droid\MeetupManager.Droid.csproj
 	EndGlobalSection
 EndGlobal
