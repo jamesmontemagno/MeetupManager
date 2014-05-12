@@ -47,7 +47,7 @@ namespace MeetupManager.Droid.Views
 				Resource.Color.xam_purple,
 				Resource.Color.xam_blue,
 				Resource.Color.xam_green);
-			refresher.Refreshing = true;
+			refresher.Refreshing = viewModel.CanLoadMore && viewModel.Members.Count == 0;
 			refresher.RefreshCommand = ViewModel.RefreshCommand;
 		}
 

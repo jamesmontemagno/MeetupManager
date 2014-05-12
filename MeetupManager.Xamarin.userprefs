@@ -1,10 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.Droid/Setup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.Droid/Views/EventView.cs">
     <Files>
-      <File FileName="MeetupManager.Droid/app.config" Line="6" Column="8" />
-      <File FileName="MeetupManager.iOS/app.config" Line="11" Column="11" />
+      <File FileName="MeetupManager.Droid/app.config" Line="1" Column="1" />
+      <File FileName="MeetupManager.iOS/app.config" Line="1" Column="1" />
       <File FileName="MeetupManager.Droid/Setup.cs" Line="45" Column="42" />
+      <File FileName="MeetupManager.Droid/Views/BaseView.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Droid/Views/EventsView.cs" Line="55" Column="4" />
+      <File FileName="MeetupManager.Droid/Views/GroupsView.cs" Line="53" Column="4" />
+      <File FileName="MeetupManager.Droid/Views/EventView.cs" Line="37" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -18,8 +22,8 @@
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.MeetupManager.Droid AndroidDeviceId-Debug="0146970F1101E008" MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" />
   <MonoDevelop.Ide.ItemProperties.MeetupManager.iOS>
     <IPhoneZipBundleSettings CurrentFolder="/Users/jamesmontemagno/Desktop/MeetupManager" />
   </MonoDevelop.Ide.ItemProperties.MeetupManager.iOS>
+  <MonoDevelop.Ide.ItemProperties.MeetupManager.Droid AndroidDeviceId-Debug="0146970F1101E008" MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" />
 </Properties>
