@@ -98,7 +98,7 @@ namespace MeetupManager.Portable.ViewModels
                     Mvx.Resolve<IMessageDialog>().SendToast("There are no events for this group.");
 			}
 			catch(Exception ex) {
-				Mvx.Resolve<IMvxTrace> ().Trace (MvxTraceLevel.Error, "FirstViewModel", ex.ToString ());
+				Mvx.Resolve<IMvxTrace> ().Trace (MvxTraceLevel.Error, "EventsViewModel", ex.ToString ());
 			}
 			finally{
 				IsBusy = false;

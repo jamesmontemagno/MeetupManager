@@ -52,7 +52,10 @@ namespace MeetupManager.Droid.Views
 				Resource.Color.xam_purple,
 				Resource.Color.xam_blue,
 				Resource.Color.xam_green);
-			refresher.Refreshing = viewModel.CanLoadMore && viewModel.Events.Count == 0;
+			if(ViewModel.Events == null)
+				refresher.Refreshing = true;
+			else
+				refresher.Refreshing = ViewModel.CanLoadMore && ViewModel.Events.Count == 0;
 			refresher.RefreshCommand = ViewModel.RefreshCommand;
             LogEvent("Events", "Selected", ViewModel.GroupName);
         }
