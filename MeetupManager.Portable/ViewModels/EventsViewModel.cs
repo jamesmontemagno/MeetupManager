@@ -1,131 +1,131 @@
-/*
- * MeetupManager:
- * Copyright (C) 2013 Refractored LLC: 
- * http://github.com/JamesMontemagno
- * http://twitter.com/JamesMontemagno
- * http://refractored.com
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-using Cirrious.MvvmCross.ViewModels;
-using MeetupManager.Portable.Interfaces;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
-using MeetupManager.Portable.Models;
+
 using System;
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Platform;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using MeetupManager.Portable.Helpers;
+using MeetupManager.Portable.Models;
+using Xamarin.Forms;
+using MeetupManager.Portable.Views;
 
 namespace MeetupManager.Portable.ViewModels
 {
-	public class EventsViewModel 
+    public class EventsViewModel 
 		: BaseViewModel
-	{
-	  private string groupId;
-
-		public EventsViewModel(IMeetupService meetupService) : base(meetupService)
-		{
-			events = new ObservableCollection<Event> ();
-		}
-
-
-    public void Init(string id, string groupName)
     {
-        this.groupId = id;
-        this.GroupName = groupName;
-        ExecuteRefreshCommand();
-    }
+        
+        string groupId;
+        public EventsViewModel(Page page, Group @group) : base(page)
+        {
+            groupId = group.Id.ToString();
+            GroupName = group.Name;
+            Events = new ObservableCollection<Event>();
+            EventsGrouped = new ObservableCollection<Grouping<string, Event>>();
+        }
 
-    public string GroupName { get; set; }
-    public string GroupId { get { return groupId; } }
+        public string GroupName { get; set; }
 
-		private ObservableCollection<Event> events;
-		public ObservableCollection<Event> Events
-		{
-			get { return events; }
-			set {
-				events = value;
-				RaisePropertyChanged (() => Events);
-			}
-		}
+        public string GroupId { get { return groupId; } }
 
-		private IMvxCommand refreshCommand;
-		public IMvxCommand RefreshCommand
-		{
-			get { return refreshCommand ?? (refreshCommand = new MvxCommand (async ()=>  ExecuteRefreshCommand())); }
-		}
+        public ObservableCollection<Grouping<string, Event>> EventsGrouped { get; set; }
 
-		public async Task ExecuteRefreshCommand()
-		{
-			if (IsBusy)
-				return;
+        public ObservableCollection<Event> Events {get;set;}
 
-			events.Clear ();
-			RaisePropertyChanged (() => Events);
-		    CanLoadMore = true;
-			await ExecuteLoadMoreCommand ();
-		}
+        Command refreshCommand;
+
+        public ICommand RefreshCommand
+        {
+            get { return refreshCommand ?? (refreshCommand = new Command(async () => await ExecuteRefreshCommand())); }
+        }
+
+        public async Task ExecuteRefreshCommand()
+        {
+            if (IsBusy)
+                return;
+
+            Events.Clear();
+            OnPropertyChanged("IsBusy");
+            CanLoadMore = true;
+            await ExecuteLoadMoreCommand();
+        }
 
         protected override async Task ExecuteLoadMoreCommand()
-		{
-			if (!CanLoadMore || IsBusy)
-		        return;
+        {
+            if (!CanLoadMore || IsBusy)
+                return;
 
-			IsBusy = true;
-
-            
-			try
-			{
-				var eventResults = await this.meetupService.GetEvents(groupId, events.Count);
-				foreach(var e in eventResults.Events)
-				{
-					events.Add(e);
-				}
+            IsBusy = true;
+            var index = Events.Count == 0 ? 0 : Events.Count - 1;
+            try
+            {
+                var eventResults = await meetupService.GetEvents(groupId, Events.Count);
+                foreach (var e in eventResults.Events)
+                {
+                    Events.Add(e);
+                }
 
                 CanLoadMore = eventResults.Events.Count == 100;
 
                 if (Events.Count == 0)
-                    Mvx.Resolve<IMessageDialog>().SendToast("There are no events for this group.");
-			}
-			catch(Exception ex) {
-				Mvx.Resolve<IMvxTrace> ().Trace (MvxTraceLevel.Error, "EventsViewModel", ex.ToString ());
-			}
-			finally{
-				IsBusy = false;
-			}
-		}
+                    messageDialog.SendToast("There are no events for this group.");
 
-		private MvxCommand<Event> goToEventCommand;
-		public IMvxCommand GoToEventCommand
-		{
-			get { return goToEventCommand ?? (goToEventCommand = new MvxCommand<Event> (ExecuteGoToEventCommand)); }
-		}
+                Sort();
+            }
+            catch (Exception ex)
+            {
+                if (Settings.Insights)
+                    Xamarin.Insights.Report(ex);
+            }
+            finally
+            {
+               
+                FinishedFirstLoad?.Invoke(index);
+                IsBusy = false;
+            }
+        }
 
-		private void ExecuteGoToEventCommand(Event e)
-		{
-			ShowViewModel<EventViewModel>(new { eId = e.Id, eName = e.Name, gId = groupId, gName = GroupName, eDate = e.Time});
-		}
+        private void Sort()
+        {
 
-		private IMvxCommand goToStatsCommand;
+            EventsGrouped.Clear();
+            var sorted = from e in Events
+                orderby e.Time descending
+            group e by e.Year into eGroup
+                select new Grouping<string, Event>(eGroup.Key, eGroup);
 
-		public IMvxCommand GoToStatsCommand
-		{
-			get { return goToStatsCommand ?? (goToStatsCommand = new MvxCommand(ExecuteGoToStatsCommand)); }
-		}
+            foreach(var sort in sorted)
+                EventsGrouped.Add(sort);
+        }
 
-		public void ExecuteGoToStatsCommand()
-		{
-			ShowViewModel<StatisticsViewModel> (new {gId = this.groupId, gName = this.GroupName});
-		}
+        Command<Event> goToEventCommand;
+
+        public ICommand GoToEventCommand
+        {
+            get { return goToEventCommand ?? (goToEventCommand = new Command<Event>(ExecuteGoToEventCommand)); }
+        }
+
+        void ExecuteGoToEventCommand(Event e)
+        {
+            if (IsBusy)
+                return;
+            
+            page.Navigation.PushAsync(new EventView(e, GroupId, GroupName));
+        }
+
+        Command goToStatsCommand;
+
+        public Command GoToStatsCommand
+        {
+            get { return goToStatsCommand ?? (goToStatsCommand = new Command(ExecuteGoToStatsCommand)); }
+        }
+
+        public void ExecuteGoToStatsCommand()
+        {
+            if (IsBusy)
+                return;
+            
+            page.Navigation.PushAsync(new StatisticsView(GroupId, GroupName));
+        }
     }
 }

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="MeetupManager.Portable.Views.EventsView"
+    IsBusy="{Binding IsBusy}"
+    Title="Group">
+    <ContentPage.Content>
+     <Grid RowSpacing="0" ColumnSpacing="0">
+     <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+     </Grid.RowDefinitions>
+     <StackLayout HorizontalOptions="FillAndExpand"
+                    Padding="10"
+                    BackgroundColor="#F44336">
+          <Label Text="{Binding GroupName}"
+                 StyleId="GroupName"
+                 FontAttributes="Bold" 
+                 VerticalOptions="Center"
+                  TextColor="White" XAlign="Center" FontSize="Medium"/>
+        </StackLayout>
+    <ListView 
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            x:Name="EventsList"
+            StyleId="EventsList"
+            ItemsSource="{Binding Events}"
+            HasUnevenRows="true"
+            IsPullToRefreshEnabled="True" 
+            RefreshCommand="{Binding RefreshCommand}" 
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                     <ViewCell StyleId="EventCell">
+                        <Grid>
+                  <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness"
+                        iOS="10,5"
+                        Android="10,5"
+                        WinPhone="20,25">
+                    </OnPlatform>
+                  </Grid.Padding>
+                          <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                          </Grid.ColumnDefinitions>
+                         <StackLayout
+                                      HorizontalOptions="FillAndExpand"
+                                      Padding="8,12" 
+                                      Spacing="4"
+                                      VerticalOptions="Center">
+                            <Label XAlign="Center" HorizontalOptions="FillAndExpand" FontAttributes="Bold" Text="{Binding MonthDay}" FontSize="Medium"  TextColor="#F44336" LineBreakMode="NoWrap"/>
+                            <Label XAlign="Center" HorizontalOptions="FillAndExpand" FontAttributes="Bold" Text="{Binding Year}" FontSize="Medium" TextColor="#F44336" LineBreakMode="NoWrap"/>
+                          </StackLayout>
+                          <StackLayout Grid.Column="1"
+                                      HorizontalOptions="FillAndExpand"
+                                      Padding="8,12" 
+                                      Spacing="4"
+                                      VerticalOptions="Center">
+                              <Label StyleId="Name" Text="{Binding Name}" FontSize="Small" LineBreakMode="WordWrap"/>
+                              <Label StyleId="RSVPCount" Grid.Row="1" Text="{Binding YesRSVPCount, StringFormat='{0} RSVPs'}" TextColor="#FF8D00" FontSize="Small" LineBreakMode="NoWrap"/>
+                       </StackLayout>
+                        </Grid>
+                      </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Grid.Row="2" 
+                    BackgroundColor="#F44336"
+                    HorizontalOptions="FillAndExpand" 
+                    Orientation="Horizontal" 
+                    Spacing="10" 
+                    Padding="10" IsVisible="{Binding IsBusy}">
+                <ActivityIndicator  HorizontalOptions="EndAndExpand"
+                                   IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   Color="#FF8D00"/>
+                <Label HorizontalOptions="StartAndExpand"
+                     VerticalOptions="Center" 
+                     TextColor="White"
+                     Text="Loading..."/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

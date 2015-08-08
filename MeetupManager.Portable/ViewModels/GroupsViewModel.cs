@@ -1,67 +1,40 @@
-﻿/*
- * MeetupManager:
- * Copyright (C) 2013 Refractored LLC: 
- * http://github.com/JamesMontemagno
- * http://twitter.com/JamesMontemagno
- * http://refractored.com
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+﻿
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Platform;
-using Cirrious.MvvmCross.ViewModels;
+using System.Windows.Input;
 using MeetupManager.Portable.Helpers;
-using MeetupManager.Portable.Interfaces;
 using MeetupManager.Portable.Models;
+using Xamarin.Forms;
+using MeetupManager.Portable.Views;
 
 namespace MeetupManager.Portable.ViewModels
 {
     public class GroupsViewModel : BaseViewModel
     {
-        public GroupsViewModel(IMeetupService meetupService) : base(meetupService)
+        public GroupsViewModel(Page page) : base(page)
         {
             groups = new ObservableCollection<Group>();
             
         }
 
-        public void Init()
-        {
-            ExecuteRefreshCommand();
-        }
-
-
-
-        private ObservableCollection<Group> groups;
+        ObservableCollection<Group> groups;
 
         public ObservableCollection<Group> Groups
         {
             get { return groups; }
             set
             {
-                groups = value;
-                RaisePropertyChanged(() => Groups);
+                SetProperty(ref groups, value);
             }
         }
 
 
-        private IMvxCommand refreshCommand;
+        Command refreshCommand;
 
-        public IMvxCommand RefreshCommand
+        public ICommand RefreshCommand
         {
-            get { return refreshCommand ?? (refreshCommand = new MvxCommand(async () => ExecuteRefreshCommand())); }
+            get { return refreshCommand ?? (refreshCommand = new Command(async () => await ExecuteRefreshCommand())); }
         }
 
         public async Task ExecuteRefreshCommand()
@@ -70,7 +43,7 @@ namespace MeetupManager.Portable.ViewModels
 				return;
 
             groups.Clear();
-            RaisePropertyChanged(() => Groups);
+            OnPropertyChanged("Groups");
             CanLoadMore = true;
             await ExecuteLoadMoreCommand();
         }
@@ -84,7 +57,7 @@ namespace MeetupManager.Portable.ViewModels
 
             IsBusy = true;
 
-
+            var index = Groups.Count == 0 ? 0 : Groups.Count - 1;
             try
             {
                 var groupResults = await this.meetupService.GetGroups(Settings.UserId, groups.Count);
@@ -94,44 +67,58 @@ namespace MeetupManager.Portable.ViewModels
 					{
 						group.GroupPhoto = new GroupPhoto{
 							PhotoId = 0,
-							HighResLink = "http://img2.meetupstatic.com/9602342981488429316/img/header/logo.png",
-							PhotoLink = "http://img2.meetupstatic.com/9602342981488429316/img/header/logo.png",
-							ThumbLink = "http://img2.meetupstatic.com/9602342981488429316/img/header/logo.png"
+                            HighResLink = "http://refractored.com/default.png",
+                            PhotoLink = "http://refractored.com/default.png",
+                            ThumbLink = "http://refractored.com/default.png"
 						};
 					}
                     Groups.Add(group);
 				}
 
-                RaisePropertyChanged(() => Groups);
+                OnPropertyChanged("Groups");
 				CanLoadMore = groupResults.Groups.Count == 100;
 
                 if(Groups.Count == 0)
-                    Mvx.Resolve<IMessageDialog>().SendToast("You do not have any groups.");
+                    messageDialog.SendToast("You do not have any groups.");
             }
             catch (Exception ex)
             {
-                Mvx.Resolve<IMvxTrace>().Trace(MvxTraceLevel.Error, "GroupsViewModel", ex.ToString());
+							if(Settings.Insights)
+								Xamarin.Insights.Report (ex);
             }
             finally
             {
+
+                FinishedFirstLoad?.Invoke(index);
                 IsBusy = false;
             }
         }
 
-        private MvxCommand<Group> goToGroupCommand;
+      
 
-        public IMvxCommand GoToGroupCommand
+		public void GoToAbout()
+		{
+            //TODO: Navigate
+			//ShowViewModel<AboutViewModel> ();
+		}
+
+        Command<Group> goToGroupCommand;
+
+        public ICommand GoToGroupCommand
         {
             get
             {
                 return goToGroupCommand ??
-                       (goToGroupCommand = new MvxCommand<Group>(ExecuteGoToGroupCommand));
+                    (goToGroupCommand = new Command<Group>(async g => await ExecuteGoToGroupCommand(g)));
             }
         }
 
-        private void ExecuteGoToGroupCommand(Group e)
+        async Task ExecuteGoToGroupCommand(Group @group)
         {
-            ShowViewModel<EventsViewModel>(new {id = e.Id, groupName = e.Name});
+            if (IsBusy)
+                return;
+            
+            await page.Navigation.PushAsync(new EventsView(group));
         }
     }
 }

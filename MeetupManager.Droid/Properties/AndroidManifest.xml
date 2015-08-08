@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.6" package="com.refractored.meetupmanager" android:installLocation="auto" android:versionCode="11">
-	<uses-sdk android:minSdkVersion="10" android:targetSdkVersion="19" />
-	<application android:icon="@drawable/ic_launcher" android:theme="@style/BaseTheme" android:hardwareAccelerated="true" android:label="Meetup Manager">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.refractored.meetupmanager" android:installLocation="auto" android:versionName="2.0" android:versionCode="20">
+	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="21" />
+	<application android:icon="@drawable/ic_launcher" android:theme="@style/MyTheme" android:hardwareAccelerated="true" android:label="Meetup Manager">
 	</application>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

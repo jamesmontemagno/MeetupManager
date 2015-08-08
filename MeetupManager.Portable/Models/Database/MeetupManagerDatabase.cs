@@ -1,94 +1,70 @@
-/*
- * MeetupManager:
- * Copyright (C) 2013 Refractored LLC: 
- * http://github.com/JamesMontemagno
- * http://twitter.com/JamesMontemagno
- * http://refractored.com
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 using System.Collections.Generic;
 
 using MeetupManager.Portable.Interfaces.Database;
-using Cirrious.MvvmCross.Community.Plugins.Sqlite;
 using System.Linq;
+using SQLite;
+using System.IO;
 
 namespace MeetupManager.Portable.Models.Database
 {
 
-	public class MeetupManagerDatabase
+    public class MeetupManagerDatabase
     {
-        private readonly ISQLiteConnection m_Connection;
-// ReSharper disable InconsistentNaming
-		private const string SQLiteDataBaseLocation = "meetupmanager.db3";
-// ReSharper restore InconsistentNaming
+        const string location = "meetupmanager.db3";
+        public static string Root {get;set;}
+        SQLiteConnection Connection { get; }
 
-        private static readonly object Locker = new object();
-
-		public MeetupManagerDatabase(ISQLiteConnectionFactory factory)
+        public MeetupManagerDatabase()
         {
-            this.m_Connection = factory.Create(SQLiteDataBaseLocation);
-            //create taables
-			this.m_Connection.CreateTable<EventRSVP>();
-		    this.m_Connection.CreateTable<NewMember>();
+            Connection = new SQLiteConnection(Path.Combine(Root, location));
+            //create tables
+            Connection.CreateTable<EventRSVP>();
+            Connection.CreateTable<NewMember>();
         }
-
-		/// <summary>
-		/// Gets all items of type T
-		/// </summary>
-		/// <typeparam name="T">Type of item to get</typeparam>
-		/// <returns></returns>
-		public IEnumerable<T> GetItems<T>() where T : IBusinessEntity, new()
-		{
-			lock (Locker)
-			{
-				return (from i in this.m_Connection.Table<T>() select i);
-			}
-		}
 
         /// <summary>
         /// Gets all items of type T
         /// </summary>
         /// <typeparam name="T">Type of item to get</typeparam>
         /// <returns></returns>
-		public EventRSVP GetEventRSVP(string eventId, string userId)
+        public IEnumerable<T> GetItems<T>() where T : IBusinessEntity, new()
         {
-            lock (Locker)
-            {
-				var items = (from i in this.m_Connection.Table<EventRSVP> ()
-				        where i.UserId == userId && i.EventId == eventId
-				        select i);
-
-				if (items.Any())
-					return items.ElementAt(0);
-
-				return null;
-            }
+			
+            return (from i in Connection.Table<T>()
+                             select i);
+			
         }
 
-		public IEnumerable<EventRSVP> GetRSVPsByDate(string groupId)
-		{
-			return  (from i in this.m_Connection.Table<EventRSVP> ()
-				where i.GroupId == groupId
-			         select i).OrderBy (n => n.EventDate);
-		}
+        /// <summary>
+        /// Gets all items of type T
+        /// </summary>
+        /// <typeparam name="T">Type of item to get</typeparam>
+        /// <returns></returns>
+        public EventRSVP GetEventRSVP(string eventId, string userId)
+        {
 
-		public IEnumerable<NewMember> GetNewMembersByDate(string groupId)
-		{
-			return  (from i in this.m_Connection.Table<NewMember> ()
-				where i.GroupId == groupId
-				select i).OrderBy (n => n.EventDate);
-		}
+            var items = (from i in Connection.Table<EventRSVP>()
+                                  where i.UserId == userId && i.EventId == eventId
+                                  select i);
+
+            return items.Any() ? items.ElementAt(0) : null;
+
+        }
+
+        public IEnumerable<EventRSVP> GetRSVPsByDate(string groupId)
+        {
+            return  (from i in Connection.Table<EventRSVP>()
+                              where i.GroupId == groupId
+                              select i).OrderBy(n => n.EventDate);
+        }
+
+        public IEnumerable<NewMember> GetNewMembersByDate(string groupId)
+        {
+            return  (from i in Connection.Table<NewMember>()
+                              where i.GroupId == groupId
+                              select i).OrderBy(n => n.EventDate);
+        }
 
         /// <summary>
         /// Gets all items of type T
@@ -97,14 +73,12 @@ namespace MeetupManager.Portable.Models.Database
         /// <returns></returns>
         public IEnumerable<NewMember> GetNewMembers(string eventId)
         {
-            lock (Locker)
-            {
-                var items = (from i in this.m_Connection.Table<NewMember>()
-                             where i.EventId == eventId
-                             select i);
+           
+            var items = (from i in Connection.Table<NewMember>()
+                                  where i.EventId == eventId
+                                  select i);
 
-                return items;
-            }
+            return items;
         }
 
         /// <summary>
@@ -115,12 +89,11 @@ namespace MeetupManager.Portable.Models.Database
         /// <returns>Item type T or null.</returns>
         public T GetItem<T>(int id) where T : IBusinessEntity, new()
         {
-            lock (Locker)
-            {
-                return (from i in this.m_Connection.Table<T>()
-                        where i.Id == id
-                        select i).FirstOrDefault();
-            }
+           
+            return (from i in Connection.Table<T>()
+                                 where i.Id == id
+                                 select i).FirstOrDefault();
+           
         }
 
         /// <summary>
@@ -131,16 +104,15 @@ namespace MeetupManager.Portable.Models.Database
         /// <returns>ID of item</returns>
         public int SaveItem<T>(T item) where T : IBusinessEntity
         {
-            lock (Locker)
+            
+            if (item.Id != 0)
             {
-                if (item.Id != 0)
-                {
-					this.m_Connection.Update(item);
-                    return item.Id;
-                }
-                
-                return this.m_Connection.Insert(item);
+                Connection.Update(item);
+                return item.Id;
             }
+                
+            return Connection.Insert(item);
+
         }
 
         /// <summary>
@@ -150,17 +122,16 @@ namespace MeetupManager.Portable.Models.Database
         /// <param name="items">List of items</param>
         public void SaveItems<T>(IEnumerable<T> items) where T : IBusinessEntity
         {
-            lock (Locker)
+            
+            Connection.BeginTransaction();
+
+            foreach (T item in items)
             {
-                this.m_Connection.BeginTransaction();
-
-                foreach (T item in items)
-                {
-                    this.SaveItem(item);
-                }
-
-                this.m_Connection.Commit();
+                SaveItem(item);
             }
+
+            Connection.Commit();
+
         }
 
         /// <summary>
@@ -172,10 +143,9 @@ namespace MeetupManager.Portable.Models.Database
         /// <returns></returns>
         public int DeleteItem<T>(T item) where T : IBusinessEntity, new()
         {
-            lock (Locker)
-            {
-                return this.m_Connection.Delete(item);
-            }
+           
+            return Connection.Delete(item);
+
         }
 
 
@@ -188,10 +158,9 @@ namespace MeetupManager.Portable.Models.Database
         /// <returns></returns>
         public int DeleteItem<T>(int id) where T : IBusinessEntity, new()
         {
-            lock (Locker)
-            {
-                return this.m_Connection.Delete<T>(id);
-            }
+            
+            return this.Connection.Delete<T>(id);
+
         }
 
         /// <summary>
@@ -200,10 +169,9 @@ namespace MeetupManager.Portable.Models.Database
         /// <typeparam name="T">Type to clear table</typeparam>
         public void ClearTable<T>() where T : IBusinessEntity, new()
         {
-            lock (Locker)
-            {
-                this.m_Connection.Execute(string.Format("delete from \"{0}\"", typeof(T).Name));
-            }
+            
+            Connection.Execute(string.Format("delete from \"{0}\"", typeof(T).Name));
+
         }
     }
 }

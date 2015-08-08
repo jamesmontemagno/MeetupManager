@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="MeetupManager.Portable.Views.GroupsView"
+    xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+    Title="Groups"
+    IsBusy="{Binding IsBusy}">
+    <ContentPage.Content>
+     <Grid RowSpacing="0" ColumnSpacing="0">
+     <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+     </Grid.RowDefinitions>
+        <ListView 
+            Grid.RowSpan="2"
+            x:Name="GroupsList"
+            StyleId="GroupsList"
+            ItemsSource="{Binding Groups}"
+            HasUnevenRows="true"
+            IsPullToRefreshEnabled="True" 
+            RefreshCommand="{Binding RefreshCommand}" 
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                     <ViewCell StyleId="GroupCell">
+                        <Grid>
+                  <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness"
+                        iOS="10,5"
+                        Android="10,5"
+                        WinPhone="20,25">
+                    </OnPlatform>
+                  </Grid.Padding>
+                          <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                          </Grid.ColumnDefinitions>
+                          <controls:CircleImage VerticalOptions="Center"
+                                        BorderColor="#D32F2F" 
+                                        Aspect="AspectFill"
+                                        Source="{Binding PhotoLink}">
+                            <controls:CircleImage.BorderThickness>
+                              <OnPlatform x:TypeArguments="x:Int32"
+                                iOS="0"
+                                Android="0"
+                                WinPhone="0">
+                                </OnPlatform>
+                             </controls:CircleImage.BorderThickness>
+                            <controls:CircleImage.WidthRequest>
+                              <OnPlatform x:TypeArguments="x:Double"
+                                iOS="55"
+                                Android="55"
+                                WinPhone="75">
+                                </OnPlatform>
+                             </controls:CircleImage.WidthRequest>
+                          <controls:CircleImage.HeightRequest>
+                              <OnPlatform x:TypeArguments="x:Double"
+                                iOS="55"
+                                Android="55"
+                                WinPhone="75">
+                                </OnPlatform>
+                             </controls:CircleImage.HeightRequest>
+                          </controls:CircleImage>
+                          <StackLayout Grid.Column="1" 
+                                       Padding="8,12" 
+                                       Spacing="4"
+                                       VerticalOptions="Center">
+                            <Label StyleId="Name" Text="{Binding Name}" FontSize="Medium"  LineBreakMode="NoWrap"/>
+                            <Label StyleId="MemberCount" Text="{Binding Members, StringFormat='{0} Members'}" TextColor="#FF8D00" FontSize="Small" LineBreakMode="NoWrap"/>
+                          </StackLayout>
+                        </Grid>
+                      </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout 
+                Grid.Row="1"
+                BackgroundColor="#F44336"
+                HorizontalOptions="FillAndExpand" 
+                Orientation="Horizontal" 
+                Spacing="10" Padding="10" 
+                IsVisible="{Binding IsBusy}">
+                <ActivityIndicator  
+                                    HorizontalOptions="EndAndExpand"
+                                   IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   Color="#FF8D00"/>
+                <Label HorizontalOptions="StartAndExpand"
+                     VerticalOptions="Center" 
+                     Text="Loading..." 
+                     TextColor="White"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

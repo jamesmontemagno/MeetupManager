@@ -1,41 +1,58 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="AppStore|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+﻿<Properties StartupItem="MeetupManager.Droid/MeetupManager.Droid.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
   <MonoDevelop.Ide.Workbench ActiveDocument="MeetupManager.Portable/Services/MeetupService.cs">
     <Files>
-      <File FileName="MeetupManager.Portable/Services/MeetupService.cs" Line="52" Column="66" />
-      <File FileName="MeetupManager.iOS/PlatformSpecific/MeetupLogin.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Portable/ViewModels/LoginViewModel.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/Views/EventView.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/Views/EventView.designer.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/PlatformSpecific/HttpClientHelper.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/Views/StatisticsView.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Portable/ViewModels/MemberViewModel.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Portable/Interfaces/Database/IDataService.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Portable/ViewModels/GroupsViewModel.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/Views/BaseView.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Portable/Services/Database/DataService.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Portable/ViewModels/EventsViewModel.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/Views/GroupsView.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.iOS/Views/EventsView.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Portable/ViewModels/StatisticsViewModel.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Droid/Helpers/BarHelper.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Droid/Controls/MvxSwipeRefreshLayout.cs" Line="1" Column="1" />
-      <File FileName="MeetupManager.Droid/Views/GroupsView.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/Services/Responses/RefreshRootObject.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/Models/RSVPGroup.cs" Line="3" Column="8" />
+      <File FileName="MeetupManager.Portable/Models/Meta.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/Models/LoggedInUser.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/Models/Member.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/Models/MemberPhoto.cs" Line="3" Column="1" />
+      <File FileName="MeetupManager.Portable/Models/RSVP.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/Services/Responses/RSVPsRootObject.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.UITests/Tests.cs" Line="146" Column="57" />
+      <File FileName="MeetupManager.Droid/Properties/AndroidManifest.xml" Line="1" Column="1" />
+      <File FileName="MeetupManager.Droid/app.config" Line="1" Column="1" />
+      <File FileName="MeetupManager.Droid/MainActivity.cs" Line="55" Column="51" />
+      <File FileName="MeetupManager.iOS/AppDelegate.cs" Line="9" Column="16" />
+      <File FileName="MeetupManager.iOS/Main.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/ViewModels/BaseViewModel.cs" Line="1" Column="1" />
+      <File FileName="MeetupManager.Portable/Services/MeetupService.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MeetupManager" expanded="True">
+            <Node name="MeetupManager.Analysis" expanded="True" />
+            <Node name="MeetupManager.iOS" expanded="True" />
+            <Node name="MeetupManager.Portable" expanded="True">
+              <Node name="Services" expanded="True">
+                <Node name="MeetupService.cs" selected="True" />
+              </Node>
+              <Node name="ViewModels" expanded="True" />
+              <Node name="Views" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Droid/Views/EventsView.cs" line="42" column="43" />
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Droid/Views/EventsView.cs" line="41" column="1" />
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.Droid/PlatformSpecific/Login.cs" line="45" column="1" />
-      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.iOS/PlatformSpecific/MeetupLogin.cs" line="37" column="1" />
       <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.iOS/PlatformSpecific/MeetupLogin.cs" line="58" column="14" />
-      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager/MeetupManager.iOS/PlatformSpecific/MeetupLogin.cs" line="27" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager-Private/MeetupManager.Portable/ViewModels/MemberViewModel.cs" line="51" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager-Private/MeetupManager.iOS/PlatformSpecific/MvxDeleteSimpleTableViewSource.cs" line="52" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager-Private/MeetupManager.iOS/PlatformSpecific/MvxDeleteSimpleTableViewSource.cs" line="64" column="1" />
+      <Breakpoint file="/Users/jamesmontemagno/Documents/GitHub/MeetupManager-Private/MeetupManager.iOS/PlatformSpecific/MvxDeleteSimpleTableViewSource.cs" line="69" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.MeetupManager.Droid MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" AndroidDeviceId-Debug="emulator-5554" />
   <MonoDevelop.Ide.ItemProperties.MeetupManager.iOS>
     <IPhoneZipBundleSettings CurrentFolder="/Users/jamesmontemagno/Desktop/MeetupManager" />
+    <IPhoneTestFlightSettings_27CAd-Hoc ApiToken="d18ce6d107e5b5aa8b0d8d7390198e81_MTQ3MDA0MDIwMTMtMTEtMjUgMTI6MTM6NDIuODU0MzIy" TeamToken="68f5b8606222346d9ff57a7dbbf0b075_NDI0NTIzMjAxNC0wOC0yNiAyMzowODoyNi42MDE1NTg" ReleaseNotes="test for ios 8 2" NotifyTeamMembers="False" ReplaceBinaries="False" DistributionLists="" />
   </MonoDevelop.Ide.ItemProperties.MeetupManager.iOS>
+  <MonoDevelop.Ide.ItemProperties.MeetupManager.Droid MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" AndroidDeviceId-Debug="emulator-5554" />
 </Properties>

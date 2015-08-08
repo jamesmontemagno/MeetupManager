@@ -1,106 +1,129 @@
 ﻿using System;
-using Cirrious.CrossCore;
-using MeetupManager.Portable.Interfaces;
 using System.Collections.Generic;
-using Cirrious.MvvmCross.ViewModels;
+using System.Linq;
 using System.Threading.Tasks;
-using MeetupManager.Portable.Interfaces.Database;
+using System.Windows.Input;
+using MeetupManager.Portable.Helpers;
+using Xamarin.Forms;
 using System.Collections.ObjectModel;
+
 
 namespace MeetupManager.Portable.ViewModels
 {
-	public class StatisticsViewModel : BaseViewModel
-	{
-		IDataService dataService;
+    public class DataPoint
+    {
+        public long Time { get; set; }
+        public string Date { get; set; }
+        public int CheckIns { get; set; }
+        public int Guests { get; set; }
+    }
+    public class StatisticsViewModel : BaseViewModel
+    {
         public bool ShowPopUps { get; set; }
-		private string groupId;
 
-		public StatisticsViewModel (IMeetupService service, IDataService dataService) : base(service)
-		{
-			GroupsEventsCount = new Dictionary<long, int> ();
-		    ShowPopUps = true;
-			this.dataService = dataService;
-		}
+        string groupId;
 
-		public Dictionary<long, int> GroupsEventsCount
-		{
-			get; set;
-		}
+        public ObservableCollection<DataPoint> CheckInData { get; set; }
 
-		public void Init(string gId, string gName)
-		{
-			groupId = gId;
-			GroupName = gName;
-		}
+        public StatisticsViewModel(Page page,string gId, string gName) : base(page)
+        {
+            groupId = gId;
+            GroupName = gName;
+            CheckInData = new ObservableCollection<DataPoint>();
+            ShowPopUps = true;
+        }
+            
 
-		public string GroupName{ get; set; }
+        public string GroupName{ get; set; }
 
 
-		public DateTime FromUnixTime(long unixTime)
-		{
-			var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-			return epoch.AddMilliseconds(unixTime);
-		}
+        public DateTime FromUnixTime(long unixTime)
+        {
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return epoch.AddMilliseconds(unixTime);
+        }
 
-		private IMvxCommand refreshCommand;
+        Command refreshCommand;
 
-		public IMvxCommand RefreshCommand
-		{
-			get { return refreshCommand ?? (refreshCommand = new MvxCommand(async () => ExecuteRefreshCommand())); }
-		}
+        public ICommand RefreshCommand
+        {
+            get { return refreshCommand ?? (refreshCommand = new Command(async () => ExecuteRefreshCommand())); }
+        }
 
 
-		public async Task ExecuteRefreshCommand()
-		{
-			if (IsBusy)
-				return;
+        public async Task ExecuteRefreshCommand()
+        {
+            if (IsBusy)
+                return;
 
-			IsBusy = true;
-			try
-			{
-				GroupsEventsCount.Clear ();
+            IsBusy = true;
+            try
+            {
+                CheckInData.Clear();
 			
+                var dataPoints = new List<DataPoint>();
+                var newMembers = await dataService.GetNewMembersForGroup(groupId);
+                var rsvps = await dataService.GetRSVPsForGroup(groupId);
 
-				var newMembers = await dataService.GetNewMembersForGroup (groupId);
-				var rsvps = await dataService.GetRSVPsForGroup (groupId);
+                foreach (var member in newMembers)
+                {
+                    var data = dataPoints.FirstOrDefault(d => d.Time == member.EventDate);
+                    if(data == null)
+                    {
+                        data = new DataPoint 
+                            { 
+                                Time = member.EventDate, 
+                                Date = FromUnixTime(member.EventDate).ToString("MM/dd/yy")
+                            };
+                        dataPoints.Add(data);
+                    }
 
-				foreach (var member in newMembers) {
+                    data.Guests++;
 
-					if (!GroupsEventsCount.ContainsKey (member.EventDate)) {
-						GroupsEventsCount.Add (member.EventDate, 0);
-					}
+                }
 
-					GroupsEventsCount [member.EventDate]++;
-				}
-				foreach (var member in rsvps) {
-					if (!GroupsEventsCount.ContainsKey (member.EventDate)) {
-						GroupsEventsCount.Add (member.EventDate, 0);
-					}
+                foreach (var member in rsvps)
+                {
+                    var data = dataPoints.FirstOrDefault(d => d.Time == member.EventDate);
+                    if(data == null)
+                    {
+                        data = new DataPoint 
+                            { 
+                                Time = member.EventDate, 
+                                Date = FromUnixTime(member.EventDate).ToString("MM/dd/yy")
+                            };
+                        dataPoints.Add(data);
+                    }
 
-					GroupsEventsCount [member.EventDate]++;
-				}
+                    data.CheckIns++;
+                }
 
-			    if (ShowPopUps)
-			    {
-			        if (GroupsEventsCount.Count == 0)
-			            Mvx.Resolve<IMessageDialog>()
-			                .SendMessage("There is no data for this group, please check in a few members first to a meetup.",
-			                    "No Statistics");
-			        else if (GroupsEventsCount.ContainsKey(0))
-			            Mvx.Resolve<IMessageDialog>()
-			                .SendMessage(
-			                    "Data for group needs synced, please re-visit all meetups to synchronize data and return for in depth statistics.",
-			                    "No Statistics");
-			    }
 
-			}
-			catch(Exception ex) {
-			}
-			finally{
-				IsBusy = false;
-			}
+                foreach(var item in dataPoints.OrderBy(s => s.Time))
+                    CheckInData.Add(item);
 
-		}
-	}
+                if (ShowPopUps)
+                {
+                    if (CheckInData.Count == 0)
+                    {
+                        messageDialog
+                            .SendMessage("There is no data for this group, please check-in a few members first to a meetup.",
+                                "No Statistics");
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                if (Settings.Insights)
+                    Xamarin.Insights.Report(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+
+        }
+    }
 }
 

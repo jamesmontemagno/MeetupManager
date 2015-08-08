@@ -1,6 +1,6 @@
 using System;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
+using UIKit;
+using Foundation;
 
 namespace MeetupManager.iOS.PlatformSpecific
 {
@@ -20,7 +20,7 @@ namespace MeetupManager.iOS.PlatformSpecific
 			if (Invoker == null)
 				Invoker = new NSObject ();
 
-			Invoker.BeginInvokeOnMainThread (() => action ());
+            Invoker.BeginInvokeOnMainThread(action);
 		}
 
 		public static bool IsPhone

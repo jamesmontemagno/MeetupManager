@@ -5,7 +5,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>7.0</string>
+	<string>8.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -40,10 +40,6 @@
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.refractored.meetupmanager</string>
-	<key>CFBundleVersion</key>
-	<string>2</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -53,5 +49,15 @@
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Manager</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>CFBundleVersion</key>
+	<string>2.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0</string>
 </dict>
 </plist>

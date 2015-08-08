@@ -1,60 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cirrious.CrossCore;
-using Cirrious.MvvmCross.ViewModels;
-using MeetupManager.Portable.Interfaces;
-using MeetupManager.Portable.Interfaces.Database;
-using MeetupManager.Portable.Models;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using MeetupManager.Portable.Models.Database;
+using Xamarin.Forms;
 
 namespace MeetupManager.Portable.ViewModels
 {
-    public class NewUserViewModel : MvxViewModel
+    public class NewUserViewModel : BaseViewModel
     {
-        private string eventId, eventName, groupId, groupName;
-      private long eventDate;
-        private IDataService dataService;
-        public NewUserViewModel(IDataService dataService)
+        public NewUserViewModel(Page page) : base(page)
         {
-            this.dataService = dataService;
         }
+        string eventId, eventName, groupId, groupName;
+        long eventDate;
 
         public void Init(string id, string eName, string gId, string gName, long eDate)
         {
-          this.eventId = id;
-            this.eventName = eName;
-          this.groupId = gId;
-          this.groupName = gName;
-          this.eventDate = eDate;
+            eventId = id;
+            eventName = eName;
+            groupId = gId;
+            groupName = gName;
+            eventDate = eDate;
         }
 
-        private string userName = string.Empty;
+        string userName = string.Empty;
+
         public string UserName
         {
             get { return userName; }
-            set { userName = value; RaisePropertyChanged(()=>UserName); }
+            set { SetProperty(ref userName, value); }
         }
 
-        private IMvxCommand saveUserCommand;
-        public IMvxCommand SaveUserCommand
+        Command saveUserCommand;
+
+        public ICommand SaveUserCommand
         {
-            get { return saveUserCommand ?? (saveUserCommand = new MvxCommand(async () => ExecuteSaveUserCommand())); }
+            get { return saveUserCommand ?? (saveUserCommand = new Command(async () => ExecuteSaveUserCommand())); }
         }
 
-        private async Task ExecuteSaveUserCommand()
+        async Task ExecuteSaveUserCommand()
         {
             if (string.IsNullOrWhiteSpace(UserName))
             {
-                Mvx.Resolve<IMessageDialog>().SendToast("Please enter a valid name to check in.");
+                messageDialog.SendToast("Please enter a valid name to check in.");
                 return;
             }
             else
             {
                 await dataService.AddNewMember(new NewMember(eventId, UserName, eventName, groupId, groupName, eventDate));
-                Mvx.Resolve<IMessageDialog>().SendMessage(UserName + " you are all set!");
+                messageDialog.SendMessage(UserName + " you are all set!");
             }
         }
     }

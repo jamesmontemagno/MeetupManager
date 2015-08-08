@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="MeetupManager.Portable.Views.LoginView" 
+             Title="Meetup Manager" 
+             IsBusy="{Binding IsBusy}">
+    <ContentPage.Content>
+        <Grid RowSpacing="10" ColumnSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Image x:Name="HeroImage"
+                   Grid.Row="1" 
+                   Source="ic_meetup.png" 
+                   Aspect="AspectFit" 
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand" />
+           <StackLayout Grid.Row="3" StyleId="BusyStack" HorizontalOptions="Center" Orientation="Horizontal" Spacing="10" Padding="10" IsVisible="{Binding IsBusy}">
+                <ActivityIndicator  StyleId="BusySpinner"
+                                   HorizontalOptions="Center"
+                                   IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"/>
+                <Label 
+                     StyleId="BusyLabel"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center" 
+                     Text="Signing in..."/>
+            </StackLayout>
+            <StackLayout Grid.Row="4" Padding="10" HorizontalOptions="FillAndExpand">
+                <Label Grid.Row="4" 
+                       TextColor="Gray"
+                       XAlign="Center"
+                       Text="To get started with Meetup Manager please login to your Meetup account.  After you login you will be taken to a list of you Meetup groups."/>
+           </StackLayout>
+            <Button x:Name="ButtonLogin" 
+                    StyleId="ButtonLogin"
+                    Grid.Row="5" 
+                    BackgroundColor="#F44336" 
+                    BorderRadius="0" 
+                    TextColor="White" 
+                    Text="Login to Meetup"
+                    Command="{Binding LoginCommand}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

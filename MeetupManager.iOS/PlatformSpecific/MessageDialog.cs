@@ -1,8 +1,11 @@
-
-using MonoTouch.UIKit;
-using MeetupManager.Portable.Interfaces;
 using GCDiscreetNotification;
+using MeetupManager.iOS.PlatformSpecific;
+using MeetupManager.Portable.Interfaces;
+using UIKit;
+using Xamarin.Forms;
 
+
+[assembly:Dependency(typeof(MessageDialog))]
 namespace MeetupManager.iOS.PlatformSpecific
 {
   public class MessageDialog : IMessageDialog

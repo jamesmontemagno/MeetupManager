@@ -19,11 +19,14 @@
  */
 
 using System.Collections.Generic;
-using Cirrious.MvvmCross.Community.Plugins.Sqlite;
+using System.Threading.Tasks;
 using MeetupManager.Portable.Interfaces.Database;
 using MeetupManager.Portable.Models.Database;
-using System.Threading.Tasks;
+using MeetupManager.Portable.Services.Database;
+using Xamarin.Forms;
 
+
+[assembly:Dependency(typeof(DataService))]
 namespace MeetupManager.Portable.Services.Database
 {
   /// <summary>
@@ -32,9 +35,9 @@ namespace MeetupManager.Portable.Services.Database
 	public class DataService : IDataService
   {
     private readonly MeetupManagerDatabase database;
-    public DataService(ISQLiteConnectionFactory factory)
+    public DataService()
     {
-      this.database = new MeetupManagerDatabase(factory);
+      this.database = new MeetupManagerDatabase();
     }
 
     #region IDataService implementation

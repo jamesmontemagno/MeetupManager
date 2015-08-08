@@ -1,25 +1,7 @@
-﻿/*
- * MeetupManager:
- * Copyright (C) 2013 Refractored LLC: 
- * http://github.com/JamesMontemagno
- * http://twitter.com/JamesMontemagno
- * http://refractored.com
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-using Cirrious.CrossCore;
-using Refractored.MvxPlugins.Settings;
+﻿
 using System;
+using Refractored.Xam.Settings.Abstractions;
+using Refractored.Xam.Settings;
 
 namespace MeetupManager.Portable.Helpers
 {
@@ -33,34 +15,41 @@ namespace MeetupManager.Portable.Helpers
         /// <summary>
         /// Simply setup your settings once when it is initialized.
         /// </summary>
-        private static ISettings m_Settings;
-        private static ISettings AppSettings
+        static ISettings AppSettings
         {
             get
             {
-                return m_Settings ?? (m_Settings = Mvx.GetSingleton<ISettings>());
+                return CrossSettings.Current;
             }
         }
 
 #region Setting Constants
 
-		private const string AccessTokenKey = "access_token";
-		private static string AccessTokenDefault = string.Empty;
+		const string AccessTokenKey = "access_token";
+		static string AccessTokenDefault = string.Empty;
 
-		private const string RefreshTokenKey = "refresh_token";
-		private static string RefreshTokenDefault = string.Empty;
+		const string RefreshTokenKey = "refresh_token";
+		static string RefreshTokenDefault = string.Empty;
 
-		private const string KeyValidUntilKey = "key_valid";
-		private const long KeyValidUntilDefault = 0;
+		const string KeyValidUntilKey = "key_valid";
+		const long KeyValidUntilDefault = 0;
 
-        private const string ShowAllEventsKey = "show_all_events";
-        private const bool ShowAllEventsDefault = false;
+		const string InsightsKey = "insights";
+		const bool InsightsDefault = true;
 
-        private const string UserIdKey = "user_id";
-        private static string UserIdDefault = string.Empty;
+        const string ShowAllEventsKey = "show_all_events";
+        const bool ShowAllEventsDefault = false;
 
-        private const string UserNameKey = "user_name";
-        private static string UserNameDefault = string.Empty;
+        const string UserIdKey = "user_id";
+        static string UserIdDefault = string.Empty;
+
+        const string UserNameKey = "user_name";
+        static string UserNameDefault = string.Empty;
+
+		const string OrganizerModeKey = "organizer_mode";
+		const bool OrganizerModeDefault = false;
+
+
 
 #endregion
 
@@ -69,13 +58,11 @@ namespace MeetupManager.Portable.Helpers
         {
             get
             {
-				return AppSettings.GetValueOrDefault(AccessTokenKey, AccessTokenDefault);
+                return AppSettings.GetValueOrDefault<string>(AccessTokenKey, AccessTokenDefault);
             }
             set
             {
-                //if value has changed then save it!
-				if (AppSettings.AddOrUpdateValue(AccessTokenKey, value))
-                    AppSettings.Save();
+               AppSettings.AddOrUpdateValue<string>(AccessTokenKey, value);
             }
         }
 
@@ -83,13 +70,24 @@ namespace MeetupManager.Portable.Helpers
 		{
 			get
 			{
-				return AppSettings.GetValueOrDefault(RefreshTokenKey, RefreshTokenDefault);
+                return AppSettings.GetValueOrDefault<string>(RefreshTokenKey, RefreshTokenDefault);
 			}
 			set
 			{
-				//if value has changed then save it!
-				if (AppSettings.AddOrUpdateValue(RefreshTokenKey, value))
-					AppSettings.Save();
+				AppSettings.AddOrUpdateValue<string>(RefreshTokenKey, value);
+			}
+		}
+
+
+		public static bool Insights
+		{
+			get
+			{
+                return AppSettings.GetValueOrDefault<bool>(InsightsKey, InsightsDefault);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<bool>(InsightsKey, value);
 			}
 		}
 
@@ -97,13 +95,11 @@ namespace MeetupManager.Portable.Helpers
         {
             get
             {
-                return AppSettings.GetValueOrDefault(ShowAllEventsKey, ShowAllEventsDefault);
+                return AppSettings.GetValueOrDefault<bool>(ShowAllEventsKey, ShowAllEventsDefault);
             }
             set
             {
-                //if value has changed then save it!
-                if (AppSettings.AddOrUpdateValue(ShowAllEventsKey, value))
-                    AppSettings.Save();
+                AppSettings.AddOrUpdateValue<bool>(ShowAllEventsKey, value);
             }
         }
 
@@ -111,13 +107,11 @@ namespace MeetupManager.Portable.Helpers
         {
             get
             {
-                return AppSettings.GetValueOrDefault(UserIdKey, UserIdDefault);
+                return AppSettings.GetValueOrDefault<string>(UserIdKey, UserIdDefault);
             }
             set
             {
-                //if value has changed then save it!
-                if (AppSettings.AddOrUpdateValue(UserIdKey, value))
-                    AppSettings.Save();
+                AppSettings.AddOrUpdateValue<string>(UserIdKey, value);
             }
         }
 
@@ -126,13 +120,11 @@ namespace MeetupManager.Portable.Helpers
         {
             get
             {
-                return AppSettings.GetValueOrDefault(UserNameKey, UserNameDefault);
+                return AppSettings.GetValueOrDefault<string>(UserNameKey, UserNameDefault);
             }
             set
             {
-                //if value has changed then save it!
-                if (AppSettings.AddOrUpdateValue(UserNameKey, value))
-                    AppSettings.Save();
+                AppSettings.AddOrUpdateValue<string>(UserNameKey, value);
             }
         }
 
@@ -140,13 +132,23 @@ namespace MeetupManager.Portable.Helpers
 		{
 			get
 			{
-				return AppSettings.GetValueOrDefault(KeyValidUntilKey, KeyValidUntilDefault);
+                return AppSettings.GetValueOrDefault<long>(KeyValidUntilKey, KeyValidUntilDefault);
 			}
 			set
 			{
-				//if value has changed then save it!
-				if (AppSettings.AddOrUpdateValue(KeyValidUntilKey, value))
-					AppSettings.Save();
+				AppSettings.AddOrUpdateValue<long>(KeyValidUntilKey, value);
+			}
+		}
+
+		public static bool OrganizerMode
+		{
+			get
+			{
+                return AppSettings.GetValueOrDefault<bool>(OrganizerModeKey, OrganizerModeDefault);
+			}
+			set
+			{
+                AppSettings.AddOrUpdateValue<bool>(OrganizerModeKey, value);
 			}
 		}
 

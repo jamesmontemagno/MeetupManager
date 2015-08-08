@@ -1,103 +1,112 @@
-/*
- * MeetupManager:
- * Copyright (C) 2013 Refractored LLC: 
- * http://github.com/JamesMontemagno
- * http://twitter.com/JamesMontemagno
- * http://refractored.com
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-using System;
-using Cirrious.MvvmCross.ViewModels;
-using MeetupManager.Portable.Models;
+
 using System.Threading.Tasks;
-using Cirrious.CrossCore;
-using MeetupManager.Portable.Interfaces.Database;
+using System.Windows.Input;
+using MeetupManager.Portable.Models;
 using MeetupManager.Portable.Models.Database;
+using Xamarin.Forms;
 
 namespace MeetupManager.Portable.ViewModels
 {
 
-  public class MemberViewModel : MvxViewModel
-  {
-    public static string DefaultIcon = @"http://refractored.com/default.png";
-    public Member Member { get; set; }
-    private bool checkedIn;
-    public bool CheckedIn
+    public class MemberViewModel : BaseViewModel
     {
-      get { return checkedIn; }
-      set
-      {
-        if (checkedIn == value)
-          return;
+        public MemberViewModel(Page page) : base(page)
+        {
+        }
+        public static string DefaultIcon = @"http://refractored.com/default.png";
 
-        checkedIn = value;
-        RaisePropertyChanged(() => CheckedIn);
-      }
+        public Member Member { get; set; }
+
+        bool checkedIn;
+
+        public bool CheckedIn
+        {
+            get { return checkedIn; }
+            set
+            {
+                SetProperty(ref checkedIn, value);
+            }
+        }
+
+        private string guests;
+        public string Guests
+        {
+            get { return guests; }
+        }
+
+        public bool CanDelete
+        {
+            get { return NewUserId != 0; }
+        }
+
+        public int NewUserId { get; set; }
+        public bool HasGuests { get { return !string.IsNullOrWhiteSpace(guests); } }
+
+        public MemberPhoto Photo { get; set; }
+        public string ThumbLink 
+        {
+            get 
+            { 
+                if (Photo == null)
+                    return DefaultIcon;
+                
+                return Photo.ThumbLink;
+            }
+        }
+        readonly string eventId, eventName, groupId, groupName;
+        readonly long eventDate;
+
+        public MemberViewModel(Page page, Member member, MemberPhoto photo, string eventId, string eName, string gId, string gName, long eDate, int guests = 0) : base(page)
+        {
+            this.guests = string.Empty;
+
+            if (guests == 1)
+                this.guests = "1 guest";
+            else if (guests > 1)
+                this.guests = guests + " guests";
+                
+            Member = member;
+            this.eventId = eventId;
+            eventName = eName;
+            groupId = gId;
+            groupName = gName;
+            eventDate = eDate;
+            Photo = photo ?? new MemberPhoto
+            {
+                HighResLink = DefaultIcon,
+                PhotoId = 0,
+                ThumbLink = DefaultIcon,
+                PhotoLink = DefaultIcon
+            };
+
+            if (string.IsNullOrWhiteSpace(Photo.HighResLink))
+                Photo.HighResLink = DefaultIcon;
+
+
+            if (string.IsNullOrWhiteSpace(Photo.ThumbLink))
+                Photo.ThumbLink = DefaultIcon;
+
+            if (string.IsNullOrWhiteSpace(Photo.PhotoLink))
+                Photo.PhotoLink = DefaultIcon;
+        }
+
+        public string Name { get { return Member.Name; } }
+
+        Command checkInCommand;
+
+        public ICommand CheckInCommand
+        {
+            get { return checkInCommand ?? (checkInCommand = new Command(async () => await ExecuteCheckInCommand())); }
+        }
+
+        async Task ExecuteCheckInCommand()
+        {
+
+            await dataService.CheckInMember(new EventRSVP(eventId, Member.MemberId.ToString(), eventName, groupId, groupName, eventDate));
+
+            CheckedIn = true;
+
+        }
     }
-
-    public bool CanDelete
-    {
-      get { return NewUserId != 0; }
-    }
-
-    public int NewUserId { get; set; }
-    public MemberPhoto Photo { get; set; }
-    private readonly string eventId, eventName, groupId, groupName;
-    private long eventDate;
-    public MemberViewModel(Member member, MemberPhoto photo, string eventId, string eName, string gId, string gName, long eDate)
-    {
-      this.Member = member;
-      this.eventId = eventId;
-      this.eventName = eName;
-      this.groupId = gId;
-      this.groupName = gName;
-      this.eventDate = eDate;
-      this.Photo = photo ?? new MemberPhoto
-      {
-        HighResLink = DefaultIcon,
-        PhotoId = 0,
-        ThumbLink = DefaultIcon,
-        PhotoLink = DefaultIcon
-      };
-
-      if (string.IsNullOrWhiteSpace(this.Photo.HighResLink))
-        this.Photo.HighResLink = DefaultIcon;
-
-
-      if (string.IsNullOrWhiteSpace(this.Photo.ThumbLink))
-        this.Photo.ThumbLink = DefaultIcon;
-
-      if (string.IsNullOrWhiteSpace(this.Photo.PhotoLink))
-        this.Photo.PhotoLink = DefaultIcon;
-    }
-
-    public string Name { get { return this.Member.Name; } }
-
-    private IMvxCommand checkInCommand;
-    public IMvxCommand CheckInCommand
-    {
-      get { return checkInCommand ?? (checkInCommand = new MvxCommand(async () => ExecuteCheckInCommand())); }
-    }
-
-    private async Task ExecuteCheckInCommand()
-    {
-
-      await Mvx.Resolve<IDataService>().CheckInMember(new EventRSVP(eventId, this.Member.MemberId.ToString(), eventName, groupId, groupName, eventDate));
-
-      CheckedIn = true;
-
-    }
-  }
 }
 

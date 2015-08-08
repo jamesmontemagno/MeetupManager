@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="Preferences">
+		<CheckBoxPreference 
+		android:key="organizer_mode" 
+		android:title="Organizer Mode" 
+		android:summary="Display only the groups that I am an organizer of." 
+		android:defaultValue="false" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="About">
+		<Preference android:title="Created by" android:summary="James Montemagno">
+			<intent android:action="android.intent.action.VIEW" android:data="http://www.twitter.com/JamesMontemagno" />
+		</Preference>
+		<Preference android:title="v1.6.1" android:summary="Copyright 2014 Refractored LLC" >
+			<intent android:action="android.intent.action.VIEW" android:data="http://www.refractored.com" />
+		</Preference>
+		<Preference android:title="Created with" android:summary="C# and Xamarin">
+			<intent android:action="android.intent.action.VIEW" android:data="http://www.xamarin.com" />
+		</Preference>
+ 		<Preference
+	            android:title="Review App"
+	            android:summary="Want my undying love and eternal gratitude? Please take a moment to give feedbac on Meetup Manager.">
+	      <intent android:action="android.intent.action.VIEW"
+	              android:data="http://market.android.com/details?id=com.refractored.meetupmanager" />
+	    </Preference>
+	</PreferenceCategory>
+</PreferenceScreen>

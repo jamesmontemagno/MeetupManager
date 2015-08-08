@@ -13,7 +13,7 @@
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AssemblyName>MeetupManager.Droid</AssemblyName>
-    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <MandroidI18n />
@@ -24,7 +24,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;</DefineConstants>
+    <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;UITEST</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -33,10 +33,9 @@
     <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants>__MOBILE__;__ANDROID__;</DefineConstants>
+    <DefineConstants>__MOBILE__;__ANDROID__;UITEST</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -47,124 +46,72 @@
   <ItemGroup>
     <Reference Include="Mono.Android.Export" />
     <Reference Include="System" />
-    <Reference Include="System.Net">
-      <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Windows">
-      <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Windows.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml.Serialization">
-      <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Xml.Serialization.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Auth.Android">
-      <HintPath>..\Common\Xamarin.Auth.Android.dll</HintPath>
+      <HintPath>..\Components\xamarin.auth-1.2.3.1\lib\android\Xamarin.Auth.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.CrossCore.dll</HintPath>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.CrossCore.Droid">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.CrossCore.Droid.dll</HintPath>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.dll</HintPath>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\ModernHttpClient.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Binding.dll</HintPath>
+    <Reference Include="OkHttp">
+      <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\OkHttp.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding.Droid">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Binding.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite">
-      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Community.Plugins.Sqlite.Droid">
-      <HintPath>..\packages\MvvmCross.Community.Plugin.Sqlite.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Community.Plugins.Sqlite.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Droid">
-      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Localization">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Localization.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.DownloadCache.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.DownloadCache.Droid">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.DownloadCache.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.DownloadCache.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.File">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.File.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.File.Droid">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.File.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.File.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.Json">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Json.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.ResourceLoader">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.ResourceLoader.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.ResourceLoader.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.ResourceLoader.Droid">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.ResourceLoader.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.ResourceLoader.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Droid">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Visibility.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Json.3.1.1\lib\MonoAndroid\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\Components\xamandroidsupportv7appcompat-19.1.0\lib\android\Xamarin.Android.Support.v4.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Android.Support.v4.21.0.3.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
-      <HintPath>..\Components\xamandroidsupportv7appcompat-19.1.0\lib\android\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Platform.Android">
+      <HintPath>..\packages\Xamarin.Forms.1.4.4.6392\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Controls.BarChart.Android">
-      <HintPath>..\Components\barchart-1.1\lib\android\Xamarin.Controls.BarChart.Android.dll</HintPath>
+    <Reference Include="FormsViewGroup">
+      <HintPath>..\packages\Xamarin.Forms.1.4.4.6392\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
     </Reference>
-    <Reference Include="GoogleAnalytics.Android">
-      <HintPath>..\Components\googleanalytics-3.0.3.4\lib\android\GoogleAnalytics.Android.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.1.4.4.6392\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Refractored.MvxPlugins.Settings.Droid">
-      <HintPath>..\packages\Mvx.Plugins.Settings.1.2.0.2\lib\monoandroid\Refractored.MvxPlugins.Settings.Droid.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.1.4.4.6392\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="Refractored.MvxPlugins.Settings">
-      <HintPath>..\packages\Mvx.Plugins.Settings.1.2.0.2\lib\monoandroid\Refractored.MvxPlugins.Settings.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.1.4.4.6392\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.Xam.Settings">
+      <HintPath>..\packages\Xam.Plugins.Settings.1.5.2\lib\MonoAndroid10\Refractored.Xam.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.Xam.Settings.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Settings.1.5.2\lib\MonoAndroid10\Refractored.Xam.Settings.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCL.raw">
+      <HintPath>..\packages\SQLitePCL.raw_basic.0.7.1\lib\MonoAndroid\SQLitePCL.raw.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net">
+      <HintPath>..\packages\sqlite-net-pcl.1.0.11\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.Android">
+      <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.1.1.3\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.1.1.3\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
-    <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
-    <Compile Include="Bootstrap\JsonPluginBootstrap.cs" />
-    <Compile Include="Bootstrap\ResourceLoaderPluginBootstrap.cs" />
-    <Compile Include="Helpers\BarHelper.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DebugTrace.cs" />
-    <Compile Include="Setup.cs" />
-    <Compile Include="SplashScreen.cs" />
-    <Compile Include="LinkerPleaseInclude.cs" />
-    <Compile Include="Bootstrap\CommunitySqlitePluginBootstrap.cs" />
-    <Compile Include="Views\BaseView.cs" />
-    <Compile Include="Views\GroupsView.cs" />
-    <Compile Include="Views\EventsView.cs" />
-    <Compile Include="Views\EventView.cs" />
-    <Compile Include="Controls\MvxHeightAdjustableImageView.cs" />
-    <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="PlatformSpecific\MessageDialog.cs" />
-    <Compile Include="Helpers\MvxActionBarActivity.cs" />
-    <Compile Include="Helpers\MvxActionBarEventSourceActivity.cs" />
     <Compile Include="PlatformSpecific\MeetupLogin.cs" />
-    <Compile Include="Views\LoginView.cs" />
-    <Compile Include="Views\StatisticsView.cs" />
-    <Compile Include="Controls\MvxSwipeRefreshLayout.cs" />
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="PlatformSpecific\LoginPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -172,112 +119,69 @@
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="packages.config" />
-    <AndroidResource Include="Resources\layout\view_groups.axml" />
-    <AndroidResource Include="Resources\layout\item_group.axml" />
-    <AndroidResource Include="Resources\layout\dialog_add_member.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\view_stats.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_checkedin.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_checkedin.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_checkedin.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_checkedin.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_meetup.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_meetup.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_meetup.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_meetup.png" />
-    <AndroidResource Include="Resources\drawable-land\splash.png" />
-    <AndroidResource Include="Resources\layout-land\view_login.axml" />
-    <AndroidResource Include="Resources\layout\view_login.axml" />
+    <AndroidResource Include="Resources\xml\preferences_general.xml" />
+    <None Include="PluginsHelp\SettingsReadme.txt" />
+    <AndroidResource Include="Resources\values-v21\styles.xml" />
+    <AndroidResource Include="Resources\layout\dialog_add_member.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_toggle_check_box_outline_blank.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_toggle_check_box.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_toggle_check_box_outline_blank.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_toggle_check_box.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_toggle_check_box_outline_blank.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_toggle_check_box.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_toggle_check_box_outline_blank.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_toggle_check_box.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_action_toggle_check_box_outline_blank.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_action_toggle_check_box.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_trending_up.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_trending_up.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_trending_up.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_trending_up.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_action_trending_up.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_settings.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_settings.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_settings.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_settings.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_action_settings.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_navigation_arrow_forward.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_navigation_arrow_forward.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_navigation_arrow_forward.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_navigation_arrow_forward.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_action_navigation_arrow_forward.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_social_person_add.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_social_person_add.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_social_person_add.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_social_person_add.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_action_social_person_add.png" />
+    <AndroidResource Include="Resources\drawable\ic_action_winner.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_action_winner.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_action_winner.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_winner.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_winner.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_action_winner.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\background_card.9.png" />
-    <AndroidResource Include="Resources\values\analytics.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\layout\SplashScreen.axml" />
     <AndroidResource Include="Resources\values\integers.xml" />
     <AndroidResource Include="Resources\values-land\integers.xml" />
-    <AndroidResource Include="Resources\layout\item_member.axml" />
-    <AndroidResource Include="Resources\layout\view_events.axml" />
-    <AndroidResource Include="Resources\layout\view_event.axml" />
-    <AndroidResource Include="Resources\layout\item_event.axml" />
     <AndroidResource Include="Resources\values-sw600dp\integers.xml" />
     <AndroidResource Include="Resources\values-sw600dp-land\integers.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
-    <AndroidResource Include="Resources\layout\view_home.axml" />
-    <AndroidResource Include="Resources\drawable\no_photo.png" />
-    <AndroidResource Include="Resources\values\attrs.xml" />
-    <AndroidResource Include="Resources\menu\menu_event.xml" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_select_winner.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_refresh.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_select_winner.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_refresh.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_action_select_winner.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_action_refresh.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_action_select_winner.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_action_refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\ic_madewithxamarin.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_madewithxamarin.png" />
-    <AndroidResource Include="Resources\drawable\splash.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_madewithxamarin.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_madewithxamarin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\menu\menu_events.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\menu\menu_groups.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_action_about.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_action_about.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\ic_action_action_about.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ic_action_action_about.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\menu\menu_login.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ic_action_social_add_person.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\ic_action_social_add_person.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_social_add_person.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_social_add_person.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ic_action_stats.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ic_action_stats.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_action_stats.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_stats.png" />
-    <AndroidResource Include="Resources\menu\menu_stats.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\SplashStyle.xml" />
-    <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
-    <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
-  </ItemGroup>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Xamarin.Insights.1.10.5\build\MonoAndroid10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.5\build\MonoAndroid10\Xamarin.Insights.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <ItemGroup>
     <ProjectReference Include="..\MeetupManager.Portable\MeetupManager.Portable.csproj">
       <Project>{9189A7F8-9C9C-427D-9777-AA6B8CD7DF20}</Project>
@@ -285,20 +189,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable-land\" />
-    <Folder Include="Resources\layout-land\" />
+    <Folder Include="Resources\xml\" />
+    <Folder Include="Resources\values-v21\" />
+    <Folder Include="Resources\layout\" />
+    <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <XamarinComponentReference Include="xamandroidsupportv7appcompat">
-      <Version>19.1.0</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="barchart">
-      <Version>1.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="googleanalytics">
-      <Version>3.0.3.4</Version>
+    <XamarinComponentReference Include="xamarin.auth">
+      <Version>1.2.3.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

@@ -1,68 +1,109 @@
-/*
- * MeetupManager:
- * Copyright (C) 2013 Refractored LLC: 
- * http://github.com/JamesMontemagno
- * http://twitter.com/JamesMontemagno
- * http://refractored.com
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 using System;
 using System.Threading.Tasks;
 using MeetupManager.Portable.Interfaces;
-using Cirrious.MvvmCross.ViewModels;
+using Xamarin.Forms;
+using System.Windows.Input;
+using System.ComponentModel;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using MeetupManager.Portable.Interfaces.Database;
+using MeetupManager.Portable.Views;
 
 namespace MeetupManager.Portable.ViewModels
 {
-	public class BaseViewModel : MvxViewModel
+	public class BaseViewModel : INotifyPropertyChanged
 	{
 		internal readonly IMeetupService meetupService;
-		public BaseViewModel (IMeetupService meetupService)
-		{
-			this.meetupService = meetupService;
+        internal readonly IMessageDialog messageDialog;
+        internal readonly Random random;
+        internal readonly IDataService dataService;
+        internal readonly Page page;
+        public BaseViewModel (Page page)
+        {
+            this.page = page;
+            meetupService = DependencyService.Get<IMeetupService>();
+            messageDialog = DependencyService.Get<IMessageDialog>();
+            dataService = DependencyService.Get<IDataService>();
+            random = new Random();
 		}
 
-		private bool isBusy = false;
+		bool isBusy = false;
 		public bool IsBusy
 		{ 
 			get { return isBusy; }
 			set { 
-				isBusy = value; 
-				RaisePropertyChanged(() => IsBusy); 
+                SetProperty(ref isBusy, value);
 				if (IsBusyChanged != null)
 					IsBusyChanged (isBusy);
 			}
 		}
 
-        private bool canLoadMore = false;
+        bool canLoadMore = false;
         public bool CanLoadMore
         {
             get { return canLoadMore; }
-            set { canLoadMore = value; RaisePropertyChanged(() => CanLoadMore); }
+            set { SetProperty(ref canLoadMore, value); }
         }
 
 		public Action<bool> IsBusyChanged { get; set; }
 
-        private MvxCommand loadMoreCommand;
+        Command loadMoreCommand;
 
-        public IMvxCommand LoadMoreCommand
+        public ICommand LoadMoreCommand
         {
-            get { return loadMoreCommand ?? (loadMoreCommand = new MvxCommand(async () => ExecuteLoadMoreCommand())); }
+            get { return loadMoreCommand ?? (loadMoreCommand = new Command(async () => ExecuteLoadMoreCommand())); }
         }
 
 	    protected virtual async Task ExecuteLoadMoreCommand()
 	    {
 	    }
+
+        public Action<int> FinishedFirstLoad { get; set; }
+
+        public ICommand GoToAboutCommand
+        {
+
+            get {
+                return new Command(async () => 
+                    {
+                        if(IsBusy)
+                            return;
+                        await page.Navigation.PushAsync(new AboutView());
+                    });
+            }
+
+        }
+
+        protected void SetProperty<T>(
+            ref T backingStore, T value,
+            [CallerMemberName]string propertyName = "",
+            Action onChanged = null) 
+        {
+
+
+            if (EqualityComparer<T>.Default.Equals(backingStore, value)) 
+                return;
+
+            backingStore = value;
+
+            if (onChanged != null) 
+                onChanged();
+
+            OnPropertyChanged(propertyName);
+        }
+
+        #region INotifyPropertyChanged implementation
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged == null)
+                return;
+
+            PropertyChanged (this, new PropertyChangedEventArgs (propertyName));
+        }
 	}
 }
 

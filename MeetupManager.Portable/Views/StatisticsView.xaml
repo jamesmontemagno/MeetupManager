@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="MeetupManager.Portable.Views.StatisticsView"
+    xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+    Title="{Binding GroupName}">
+    <ContentPage.Content>
+    <Grid RowSpacing="0" ColumnSpacing="0">
+     <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+     </Grid.RowDefinitions>
+     <Label Text="Please follow the README to add syncfusion chart controls" YAlign="Center"/>
+     <!---<chart:SfChart Grid.RowSpan="2" x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+     <chart:SfChart.PrimaryAxis>
+        <chart:CategoryAxis LabelRotationAngle = "-45">
+          <chart:CategoryAxis.Title>
+            <chart:ChartAxisTitle Text ="Meetup Date"/>
+          </chart:CategoryAxis.Title>
+        </chart:CategoryAxis>
+      </chart:SfChart.PrimaryAxis>
+
+      <chart:SfChart.SecondaryAxis>
+        <chart:NumericalAxis>
+          <chart:NumericalAxis.Title>
+            <chart:ChartAxisTitle Text ="Count"/>
+          </chart:NumericalAxis.Title>
+        </chart:NumericalAxis>
+      </chart:SfChart.SecondaryAxis>
+      
+    
+      <chart:SfChart.Series>
+          <chart:StackingColumnSeries 
+                ItemsSource="{Binding CheckInData}" 
+                XBindingPath="Date" 
+                YBindingPath="CheckIns"  
+                Label="Check-in"
+                DataMarkerPosition = "Center"
+                EnableDataPointSelection = "false"
+                Color="#FF8D00">
+            <chart:StackingColumnSeries.DataMarker>
+                <chart:ChartDataMarker>
+                  <chart:ChartDataMarker.LabelStyle>
+                    <chart:DataMarkerLabelStyle LabelPosition = "Center"/>
+                  </chart:ChartDataMarker.LabelStyle>
+                </chart:ChartDataMarker>
+              </chart:StackingColumnSeries.DataMarker>
+          </chart:StackingColumnSeries>
+
+        <chart:StackingColumnSeries 
+            ItemsSource="{Binding CheckInData}" 
+            XBindingPath="Date" 
+            YBindingPath="Guests" 
+            Label="Guests"
+            DataMarkerPosition = "Center"
+            EnableDataPointSelection = "false"
+            Color="#D32F2F"/>
+  
+     
+      </chart:SfChart.Series>
+
+      <chart:SfChart.Legend>
+        <chart:ChartLegend/>
+      </chart:SfChart.Legend>
+
+      <chart:SfChart.ChartBehaviors>
+        <chart:ChartZoomPanBehavior EnablePanning="true" EnableDoubleTap="false"/>
+      </chart:SfChart.ChartBehaviors>
+
+    </chart:SfChart>-->
+    <StackLayout Grid.Row="1" HorizontalOptions="Center" Orientation="Horizontal" Spacing="10" Padding="10" IsVisible="{Binding IsBusy}">
+                <ActivityIndicator  HorizontalOptions="Center"
+                                   IsRunning="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"/>
+                <Label HorizontalOptions="Center"
+                     VerticalOptions="Center" 
+                     Text="Loading..."/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
