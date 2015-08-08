@@ -38,6 +38,8 @@ Ankh.NoLoad
 Components/
 APK/
 Common/
+*.userprefs
+packages/
 
 #Tooling
 _ReSharper*/
