@@ -14,6 +14,8 @@ Copyright 2015 ([Refractored LLC](http://www.refractored.com))
 * iPhone: Available on [App Store](https://itunes.apple.com/us/app/meetup-manager-for-organizers/id796213890?ls=1&mt=8)
 * Windows Phone 8: Available on [Windows Phone Marketplace](http://www.windowsphone.com/en-us/store/app/meetup-manager-for-organizers/38ef03e9-3dfe-4150-b797-5ec9ed81b8cd)
 
+Built with C# 6 features, you must be running VS 2015 or Xamarin Studio to compile. 
+
 ![](Art/promo.png)
 
 
