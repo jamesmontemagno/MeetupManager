@@ -20,16 +20,17 @@ Built with C# 6 features, you must be running VS 2015 or Xamarin Studio to compi
 
 
 ## Why did I create this?
-As a user group organizer of ([Seattle Mobile .NET Developers Group](http://www.meetup.com/SeattleMobileDevelopers/)) I found our right away that there was an issue with finding out not only how many people attended the event but also who was there. I thought that there had to be a better way of checking people in at the door and the using this data to do giveaways as well. After realizing that Meetup.com had a great restful API that I could tap into I spent my holiday break between Dec 24th and Dec 30th 2013 to create Meetup Manager v1 using MVVMCross. 
+As a user group organizer of ([Seattle Mobile .NET Developers Group](http://www.meetup.com/SeattleMobileDevelopers/)) I found out right away that there was an issue with finding out not only how many people attended the event but also who was there. I thought that there had to be a better way of checking people in at the door and using this data to do giveaways as well. After realizing that Meetup.com had a great restful API that I could tap into. I spent my holiday break between Dec 24th and Dec 30th 2013 to create Meetup Manager v1 using MVVMCross. 
 
 Since then Meetup Manager has evolved and has been optimized. You can now easily visualize your groups performance over time with beautiful charts and at the start of August 2015 I completely re-wrote Meetup Manager using Xamarin.Forms to create a shared user interface and also give it a huge refresh.
 
 ## How much code is shared?
+
 I have included an "Analysis Project", which will count the shared lines of code. 95%+ of the code is shared between projects. All of the Models, Services, View Models, Views, and tons of helper classes are all found in one single PCL library. 
 
 ## How you can test it. 
 
-Simply download the app from the app store or download the code and run! It is that simple as I have provided sample API keys to get you going.
+Simply download the app from the app store or download the code and run! It's that simple as I have provided sample API keys to get you going.
 
 ### Enabling Xamarin.UITest
 
@@ -65,7 +66,7 @@ Open up Views/Statistics.xaml and comment back in the chart. Open Views/Statisti
 
 
 ## What technology is used?
-Everything is written in C# with Xamarin with a base PCL library. This project couldn't have been done without the following:
+Everything is written in C# with Xamarin, with a base PCL library. This project couldn't have been done without the following:
 
 ### Xamarin.Forms 
 http://www.xamarin.com/forms: Use the Xamarin.Forms API to quickly build native apps for iOS, Android and Windows completely in C#.
